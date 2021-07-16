@@ -12,5 +12,7 @@ html
   body
     = render 'layouts/header'
     .container-fluid
+      p.notice = notice
+      p.alert  = alert
       = yield
     = render 'layouts/footer'
