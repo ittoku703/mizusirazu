@@ -1,0 +1,12 @@
+footer.footer.fixed-bottom.py-5.bg-footer
+  .row.px-5
+    .col-sm
+      = link_to site_logo(size: 200), root_path
+    .col-sm
+      ul.list-group.list-group-flush
+        li.list-group-item
+          = link_to "Help", help_path
+        li.list-group-item
+          = link_to "About", about_path
+        li.list-group-item
+          = link_to "Contact", contact_path
