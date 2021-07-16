@@ -1,1 +1,27 @@
 @import '~bootstrap/scss/bootstrap';
+
+// ************************
+// variables
+// ***********************
+
+.bg-header {
+  background-color: $yellow-500;
+}
+
+.bg-footer {
+  background-color: $gray-400;
+}
+
+// **********************
+// header
+// *********************
+
+// **********************
+// footer
+// **********************
+
+footer {
+  .list-group-item {
+    background-color: $gray-400;
+  }
+}
