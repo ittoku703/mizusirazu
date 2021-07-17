@@ -14,18 +14,25 @@ header.navbar.navbar-expand-lg.navbar-light.bg-header[aria-label="Fifth navbar e
         li.nav-item
           a.nav-link.disabled[href="#" tabindex="-1" aria-disabled="true"]
             | disabled item
-        li.nav-item.dropdown
-          a#dropdown05.nav-link.dropdown-toggle[href="#" data-bs-toggle="dropdown" aria-expanded="false"]
-            | user
-          ul.dropdown-menu[aria-labelledby="dropdown05"]
-            li
-              a.dropdown-item[href="#"]
-                | Blogs
-            li
-              a.dropdown-item[href="#"]
-                | ToDo
-            li
-              a.dropdown-item[href="#"]
-                | etc...
+        - if user_signed_in?
+          li.nav-item.dropdown
+            a#dropdown05.nav-link.dropdown-toggle[href="#" data-bs-toggle="dropdown" aria-expanded="false"]
+              | user
+            ul.dropdown-menu[aria-labelledby="dropdown05"]
+              li
+                = link_to 'My page', current_user.name, pages_show_path, class: 'drop-item'
+              li
+                = link_to 'Blogs', '#', class: 'dropdown-item'
+              li
+                = link_to 'ToDo', '#', class: 'dropdown-item'
+              li
+                = link_to "Edit profile", edit_user_registration_path, class: "dropdown-item"
+              li
+                = link_to 'Log out', destroy_user_session_path, method: :delete
+        - else
+          li.nav-item
+            = link_to 'Sign up', new_user_registration_path, class: 'nav-link'
+          li.nav-item
+            = link_to 'Log in', new_user_session_path, class: 'nav-link'
       form
         input.form-control[type="text" placeholder="search for..." aria-label="Search"]
