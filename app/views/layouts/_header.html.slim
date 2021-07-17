@@ -20,7 +20,7 @@ header.navbar.navbar-expand-lg.navbar-light.bg-header[aria-label="Fifth navbar e
               | user
             ul.dropdown-menu[aria-labelledby="dropdown05"]
               li
-                = link_to 'My page', current_user.name, pages_show_path, class: 'drop-item'
+                = link_to 'My page', user_path, class: 'drop-item'
               li
                 = link_to 'Blogs', '#', class: 'dropdown-item'
               li
