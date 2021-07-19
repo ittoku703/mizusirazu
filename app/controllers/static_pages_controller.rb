@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  before_action :sign_in_required, only: :user
+
   def root
   end
 
@@ -9,5 +11,8 @@ class StaticPagesController < ApplicationController
   end
 
   def contact
+  end
+
+  def user
   end
 end
