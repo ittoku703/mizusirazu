@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
 
   private
 
+    # redirect login page if not logged in user
     def sign_in_required
       flash[:danger] = "please log in"
       redirect_to new_user_session_url unless user_signed_in?
@@ -19,9 +20,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+    # Allow name params to devise user
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:name])
     end
 
 end

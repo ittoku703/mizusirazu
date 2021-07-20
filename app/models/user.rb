@@ -5,12 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, 
          :confirmable, :lockable, :timeoutable, :trackable, 
          :omniauthable, omniauth_providers: [:twitter]
+  NAME_REGEXP = /\A^\w{4,99}$\z/
+  validates :name, format: { with: NAME_REGEXP }
 
   def User.from_omniauth(auth)
     find_or_create_by!(provider: auth.provider, uid: auth.uid) do |user|
+      user.name      = auth.info.nickname
       user.email     = auth.info.email
       user.password  = Devise.friendly_token[0, 20]
-      user.nickname  = auth.info.nickname
       user.image_url = auth.info.image_url
     end
   end

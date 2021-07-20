@@ -1,4 +1,7 @@
 h1 StaticPages#root
 = site_logo
-p Find me in app/views/static_pages/root.html.slim
-p hgoehoge
+- if user_signed_in?
+  h2 hello, #{current_user.name}
+- else
+  p Find me in app/views/static_pages/root.html.slim
+
