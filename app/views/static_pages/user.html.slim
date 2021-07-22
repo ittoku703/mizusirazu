@@ -1,2 +1,11 @@
-h1 hello #{current_user.name}
-p app/views/static_pages/user.html.slim
+.row.justify-content-md-center
+  .col-lg
+    h1 hello #{current_user.name}
+    p followers
+    p following
+    = link_to 'Edit profile', edit_user_registration_path
+  .col-lg-7
+    p user profile
+    p Todo
+    p Blog
+

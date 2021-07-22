@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   as :user do
     get    '/signup/cancel', to: 'devise/registrations#cancel', as: :cancel_user_registration
     get    '/settings', to: 'devise/registrations#edit',        as: :edit_user_registration
-    get    '/signup', to: 'devise/registrations#new',            as: :new_user_registration
-    post   '/users', to: 'devise/registrations#create',        as: :user_registration
+    get    '/signup', to: 'devise/registrations#new',           as: :new_user_registration
+    post   '/users', to: 'devise/registrations#create',         as: :user_registration
     patch  '/users', to: 'devise/registrations#update'
     put    '/users', to: 'devise/registrations#update'
     delete '/users', to: 'devise/registrations#destroy'

@@ -1,7 +1,27 @@
-h1 StaticPages#root
-= site_logo
 - if user_signed_in?
-  h2 hello, #{current_user.name}
+  .row.justify-content-md-center
+    nav.col-lg.d-md-block.bg-light
+      ul.nav.flex-column
+        li.nav-item
+          a.nav-link.active Navigations 
+        li.nav-item
+          a.nav-link 1
+        li.nav-item
+          a.nav-link 2
+        li.nav-item
+          a.nav-link 3
+    main.col-md-8.px-4[role="main"]
+      h2 hello, #{current_user.name}
+    nav.col-lg.d-md-block.bg-light
+      ul.nav.flex-column
+        li.nav-item
+          a.nav-link.active Advertisement
+        li.nav-item
+          a.nav-link 1
+        li.nav-item
+          a.nav-link 2
+        li.nav-item
+          a.nav-link 3
 - else
   p Find me in app/views/static_pages/root.html.slim
 

@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
 
     # redirect login page if not logged in user
     def sign_in_required
-      flash[:danger] = "please log in"
       redirect_to new_user_session_url unless user_signed_in?
     end
 
