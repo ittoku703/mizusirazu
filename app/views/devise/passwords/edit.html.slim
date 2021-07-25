@@ -1,0 +1,25 @@
+body.password-reset
+.container-fluid.d-flex.flex-column
+  = render 'devise/shared/form_header'
+  h1.text-center.text-light.py-2  Change your password
+  .password-reset-form.text-light.mx-auto.py-2
+    = form_for(resource, as: resource_name, url: password_path(resource_name), 
+               html: { method: :put }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+
+      = f.hidden_field :reset_password_token
+
+      .form-group.py-2
+        = f.label :password, "New password"
+        - if @minimum_password_length
+          = content_tag(:em, "(#{@minimum_password_length} characters minimum)")
+        = f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control'
+
+      .form-group.py-2
+        = f.label :password_confirmation, "Confirm new password"
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'
+
+      .form-group.text-center.py-2
+        = f.submit "Change my password", class: 'btn border-light text-light'
+
+    = render "devise/shared/links"

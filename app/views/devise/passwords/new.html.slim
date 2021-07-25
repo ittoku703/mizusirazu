@@ -1,0 +1,17 @@
+body.password-reset
+.container-fluid.d-flex.flex-column
+  = render 'devise/shared/form_header'
+  h1.text-center.text-light.py-2 Forgot your password?
+  .password-reset-form.text-light.mx-auto.py-2
+    = form_for(resource, as: resource_name, url: password_path(resource_name), 
+               html: { method: :post }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+
+      .form-group.py-2
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+
+      .form-group.text-center.py-2
+        = f.submit "Send me reset password instructions", class: "btn border-light text-light"
+
+    = render "devise/shared/links"

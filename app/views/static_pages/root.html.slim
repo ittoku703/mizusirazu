@@ -1,27 +1,37 @@
 - if user_signed_in?
-  .row.justify-content-md-center
-    nav.col-lg.d-md-block.bg-light
-      ul.nav.flex-column
-        li.nav-item
-          a.nav-link.active Navigations 
-        li.nav-item
-          a.nav-link 1
-        li.nav-item
-          a.nav-link 2
-        li.nav-item
-          a.nav-link 3
-    main.col-md-8.px-4[role="main"]
-      h2 hello, #{current_user.name}
-    nav.col-lg.d-md-block.bg-light
-      ul.nav.flex-column
-        li.nav-item
-          a.nav-link.active Advertisement
-        li.nav-item
-          a.nav-link 1
-        li.nav-item
-          a.nav-link 2
-        li.nav-item
-          a.nav-link 3
+  body.root
+  .container-fluid
+    .row.justify-content-md-center
+      nav.col-lg.d-md-block.bg-light
+        ul.nav.flex-column
+          li.nav-item
+            a.nav-link.active Navigations 
+          li.nav-item
+            a.nav-link 1
+          li.nav-item
+            a.nav-link 2
+          li.nav-item
+            a.nav-link 3
+      main.col-md-8.px-4.page-root[role="main"]
+        h2 hello, #{current_user.name}
+      nav.col-lg.d-md-block.bg-light
+        ul.nav.flex-column
+          li.nav-item
+            a.nav-link.active Advertisement
+          li.nav-item
+            a.nav-link 1
+          li.nav-item
+            a.nav-link 2
+          li.nav-item
+            a.nav-link 3
 - else
-  p Find me in app/views/static_pages/root.html.slim
+  body.welcome
+  main.d-flex.flex-column.page-welcome
+    .card.border-0
+      = background_video
+      .card-img-overlay.text-light
+        h1 Welcome to the mizusirazu.net!!
+        p Please #{link_to "Sign up", new_user_registration_path} now!!
+    .2
+    .3
 

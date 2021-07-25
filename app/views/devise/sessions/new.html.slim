@@ -1,0 +1,25 @@
+body.login
+.container-fluid.d-flex.flex-column
+  = render 'devise/shared/form_header'
+  h1.text-center.text-light.py-2 Log in
+  .login-form.text-light.mx-auto.py-2
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = render 'devise/shared/notifications'
+
+      .form-group.py-2
+        = f.label :email
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
+    
+      .form-group.py-2
+        = f.label :password
+        = f.password_field :password, autocomplete: "current-password", class: 'form-control'
+    
+      - if devise_mapping.rememberable?
+        .form-check.py-2
+          = f.check_box :remember_me, class: 'form-check-input'
+          = f.label :remember_me, class: 'form-check-label'
+    
+      .form-group.py-2.text-center
+        = f.submit "Log in", class: "btn border-light text-light"
+
+    = render "devise/shared/links"
