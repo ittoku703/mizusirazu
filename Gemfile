@@ -27,10 +27,12 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'dotenv-rails'
-gem 'slim-rails',       '~> 3.2'
-gem 'devise',           '~> 4.8'
-gem 'omniauth-twitter', '~> 1.4'
-gem 'omniauth-rails_csrf_protection'
+gem 'slim-rails',                     '~> 3.2'
+gem 'devise',                         '~> 4.8'
+gem 'omniauth-twitter',               '~> 1.4'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'react-rails',                    '~> 2.6', '>= 2.6.1'
+gem 'react_on_rails',                 '~> 12.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
