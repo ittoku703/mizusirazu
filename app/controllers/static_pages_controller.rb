@@ -15,4 +15,8 @@ class StaticPagesController < ApplicationController
 
   def user
   end
+
+  def games
+    @app_name = "TicTacToe"
+  end
 end

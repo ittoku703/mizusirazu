@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get  '/help',    to: 'static_pages#help'
   get  '/about',   to: 'static_pages#about'
   get  '/contact', to: 'static_pages#contact'
+  get  '/games',   to: 'static_pages#games'
 
   devise_for :users, path: '', controllers: { omniauth_callbacks: "omniauth_callbacks" },
     path_names: { sign_in: 'login', sign_out: 'logout', edit: 'settings' }, 

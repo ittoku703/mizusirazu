@@ -87,6 +87,63 @@ footer {
   }
 }
 
+// games
+.games {
+
+  .game {
+    font: 14px "Century Gothic", Futura, sans-serif;
+    min-width: 320px;
+
+    > * {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .page-header, .page-footer {
+    display: none;
+  }
+
+  .title {
+    font-size: 3rem;
+    color: $red-500;
+    font-weight: bold;
+  }
+
+  .square {
+    background: white;
+    border: 3px solid $red-700;
+    margin: 0 0 -3px -3px;
+    font-size: 3rem;
+    color: $gray-800;
+    font-weight: bold;
+    text-align: center;
+    width: 5rem;
+    height: 5rem;
+    line-height: 5rem;
+  }
+
+  .game-info {
+    font-size: 1.2rem;
+
+    ol {
+      list-style: none;
+      padding-left: 0;
+
+      li button {
+        border: none;
+        background: white;
+        text-decoration: underline;
+        line-height: 3rem;
+
+        &:hover {
+          color: $red-500;
+        }
+      }
+    }
+  }
+}
+
+
 // debug
 .debug_dump {
   background: $cyan-200;
