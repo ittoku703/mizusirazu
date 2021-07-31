@@ -38,6 +38,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
+
+  gem 'rspec-rails',              '~> 5.0', '>= 5.0.1'
 end
 
 group :development do
@@ -58,10 +60,10 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   # add test
-  gem 'rspec-rails',              '~> 5.0', '>= 5.0.1'
   gem 'factory_bot_rails',        '~> 6.2'
   gem 'faker',                    '~> 2.18'
   gem 'rexml',                    '~> 3.2', '>= 3.2.5'
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
 end
 
 group :production do

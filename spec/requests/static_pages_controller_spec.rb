@@ -29,4 +29,10 @@ RSpec.describe "StaticPagesController", type: :request do
     end
   end
 
+  describe "GET games" do
+    it "request success" do
+      get games_path
+      expect(response.status).to eq 200
+    end
+  end
 end
