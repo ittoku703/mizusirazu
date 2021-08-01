@@ -15,9 +15,8 @@ RSpec.describe "SiteLayouts", type: :request do
     end
 
     context 'logged-in user' do
-      before_login_user
-
       it "is correct site layouts" do
+        login_as(create(:user))
         get root_path
         assert_select "a[href=?]", root_path, count: 2
         assert_select "a[href=?]", help_path

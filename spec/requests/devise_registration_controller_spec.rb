@@ -20,9 +20,9 @@ RSpec.describe "Devise::RegistrationsController", type: :request do
     end
 
     context 'logged-in user' do
-      before_login_user
 
       it 'request success' do
+        login_as(create(:user))
         get edit_user_registration_path
         expect(response.status).to eq 200
       end
@@ -38,9 +38,8 @@ RSpec.describe "Devise::RegistrationsController", type: :request do
     end
 
     context 'logged-in user' do
-      before_login_user
-
       it 'redirect to user page' do
+        login_as(create(:user))
         get cancel_user_registration_path
         expect(response).to redirect_to(user_url)
       end
@@ -103,8 +102,8 @@ RSpec.describe "Devise::RegistrationsController", type: :request do
     end
 
     context 'valid params' do
-      before_login_user
       before do
+        login_as(create(:user))
         patch users_path, params: { user: valid_params }
       end
 
@@ -119,8 +118,8 @@ RSpec.describe "Devise::RegistrationsController", type: :request do
     end
 
     context 'invalid params' do
-      before_login_user
       before do
+        login_as(create(:user))
         patch users_path, params: { user: invalid_params }
       end
 
@@ -143,7 +142,9 @@ RSpec.describe "Devise::RegistrationsController", type: :request do
     end
 
     context 'logged-in user' do
-      before_login_user
+      before do
+        login_as(create(:user))
+      end
 
       it 'deleted user' do
         expect { delete users_path }.to change(User, :count).by -1

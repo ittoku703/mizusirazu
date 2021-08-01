@@ -24,6 +24,9 @@ require 'rspec/rails'
 require 'devise'
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
+# use capybara
+include Warden::Test::Helpers
+
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin
@@ -66,7 +69,7 @@ RSpec.configure do |config|
   #
   # use devise methods in ControllerMacros
   config.include Devise::Test::IntegrationHelpers, type: :request
-  config.extend  TestHelpersSupport,               type: :request
+  config.extend  TestHelperSupport,                type: :request
 
   # use FactoryBot
   config.include FactoryBot::Syntax::Methods

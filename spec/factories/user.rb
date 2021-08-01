@@ -4,5 +4,6 @@ FactoryBot.define do
     email { "kaz@valid.com" }
     password              { "password" }
     password_confirmation { "password" }
+    confirmed_at { Date.today }
   end
 end

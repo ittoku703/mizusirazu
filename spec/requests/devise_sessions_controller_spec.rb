@@ -17,10 +17,6 @@ RSpec.describe "Devise::SessionsController", type: :request do
 
   describe 'POST /login' do
     let!(:user) { create(:user) }
-    # Account Activation
-    before do
-      user.confirm
-    end
 
     context 'valid_params' do
       before do

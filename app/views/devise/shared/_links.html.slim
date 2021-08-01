@@ -1,7 +1,7 @@
 .form-links.py-2
   ul.list-group.p-0
     - if controller_name != 'sessions'
-      = link_to "Are you already sign up?", new_session_path(resource_name), class: 'list-group-item'
+      = link_to "Log in", new_session_path(resource_name), class: 'list-group-item'
   
     - if devise_mapping.registerable? && controller_name != 'registrations'
       = link_to "Sign up", new_registration_path(resource_name), class: 'list-group-item'
