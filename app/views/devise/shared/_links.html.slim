@@ -20,5 +20,5 @@
     - if devise_mapping.omniauthable?
       - resource_class.omniauth_providers.each do |provider|
         = link_to omniauth_authorize_path(resource_name, provider), method: :post, class: "list-group-item" do
-          = icon(OmniAuth::Utils.camelize(provider), class: "me-2")
+          = bootstrap_icon(OmniAuth::Utils.camelize(provider), class: "me-2")
           span Sign in with #{OmniAuth::Utils.camelize(provider)}

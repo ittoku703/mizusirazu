@@ -6,14 +6,14 @@ module ApplicationHelper
   end
 
   # bootstrap icon
-  def icon(icon, options = {})
-    file = File.read("node_modules/bootstrap-icons/icons/#{icon}.svg")
+  def bootstrap_icon(icon, options = {})
+    file = File.read("node_modules/bootstrap-icons/icons/#{icon.downcase}.svg")
     doc  = Nokogiri::HTML::DocumentFragment.parse file
     svg  = doc.at_css 'svg'
     if options[:class].present?
       svg['class'] += " " + options[:class]
     end
-    doc.to_html.html_safe
+    svg.to_html.html_safe
   end
 
   def background_video
