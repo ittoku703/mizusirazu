@@ -39,6 +39,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener
   host = 'localhost:5000'
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+  config.action_mailer.asset_host = host
   ActionMailer::Base.smtp_settings = {
     :address              => 'smtp.gmail.com', 
     :port                 => 587, 
