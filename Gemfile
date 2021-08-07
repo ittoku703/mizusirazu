@@ -31,6 +31,7 @@ gem 'devise',                         '~> 4.8'
 gem 'omniauth-twitter',               '~> 1.4'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'react-rails',                    '~> 2.6', '>= 2.6.1'
+gem 'premailer-rails',                '~> 1.11', '>= 1.11.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
