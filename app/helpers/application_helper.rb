@@ -1,7 +1,7 @@
 module ApplicationHelper
 
-  def site_logo(size: "100x50")
-    logo = "svg/mizushirazu_light.svg"
+  def site_logo(mode, size: "100x50")
+    logo = "svg/mizushirazu_#{mode}.svg"
     link_to image_pack_tag(logo, size: size), root_url
   end
 
