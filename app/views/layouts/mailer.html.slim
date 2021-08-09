@@ -1,7 +1,40 @@
-doctype html
+doctype strict
 html
   head
     meta[content="text/html; charset=utf-8" http-equiv="Content-Type"]
     = stylesheet_pack_tag 'mailer', media: 'all'
   body
-    = yield
+    table.bg
+      tr
+        td.y-margin
+      = render 'layouts/header_email'
+      tr
+        td.y-margin
+      tr
+        td.x-margin
+        td.align-center
+          table.frame
+            tr
+              td.y-margin
+            tr
+              td.x-margin
+              td = yield
+              td.x-margin
+            tr
+              td.y-margin
+        td.x-margin
+
+      tr
+        td.y-margin
+      = render 'layouts/footer_email'
+      tr
+        td.y-margin
+      
+    / background
+    / .container-fluid.d-flex.flex-column
+    /   header.text-center.py-2
+    /     = email_site_logo
+    /   main.mx-auto.p-4.bg-main.radius
+    /     = yield
+    /   footer.text-center.py-2
+    /     p mizushirazu.net

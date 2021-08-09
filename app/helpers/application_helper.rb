@@ -1,8 +1,15 @@
 module ApplicationHelper
 
-  def site_logo(size: 40)
-    logo = "mizusirazu.svg"
+  def site_logo(size: "100x50")
+    logo = "svg/mizushirazu_light.svg"
     link_to image_pack_tag(logo, size: size), root_url
+  end
+
+  def email_site_logo(opts={size: "100x50"})
+    logo = "png/mizushirazu_dark.png"
+    attachments.inline[logo] = File.read("app/javascript/images/#{logo}")
+    logo_url = attachments[logo].url
+    link_to image_tag(logo_url, opts), root_url
   end
 
   # bootstrap icon

@@ -1,7 +1,13 @@
-p Welcome #{@email} !
+body.confirmation
+p ·*:..。o♬*ﾟ·*:..。o♬*ﾟ·*:..。o♬*ﾟ·*:..。o♬*ﾟ
+p Hey #{@email} !
+p ·*:..。o♬*ﾟ·*:..。o♬*ﾟ·*:..。o♬*ﾟ·*:..。o♬*ﾟ
 
 p  You can confirm your account email through the link below:
 
-p = link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)
+= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), 
+  class: 'btn btn-primary'
+
+p
 
 p Please ignore it if you know nothing about this email
