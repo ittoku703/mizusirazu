@@ -33,6 +33,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'terminal-notifier', '~> 2.0'
   gem 'terminal-notifier-guard', '~> 1.7'
+  gem 'rspec-rails', '~> 5.0', '>= 5.0.2'
 end
 
 group :development do
