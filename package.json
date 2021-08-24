@@ -17,6 +17,6 @@
     "webpack-dev-server": "^4.0.0"
   },
   "resolutions": {
-    "glob-parent": "5.1.2"
+    "chokidar": "^3.4.0"
   }
 }
