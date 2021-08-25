@@ -1,0 +1,16 @@
+<div class="welcome__list row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+  <% 6.times do |n| %>
+    <div class="col position-relative py-2">
+      <div class="welcome__content">
+        <svg class="welcome__image rounded" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect></svg>
+        <div class="card-body welcome__textarea d-flex flex-column">
+          <strong>mizusirazu.net</strong>
+          <h3>shinzanmono</h3>
+          <div class="text-muted"><%= Date.today %></div>
+          <p class="card-text mb-auto">このサイトは面白い！</p>
+          <a href=<%= "##{n+1}" %> class="stretched-link"></a>
+        </div>
+      </div> 
+    </div>
+  <% end %>
+</div>
