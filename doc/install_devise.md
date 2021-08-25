@@ -65,7 +65,7 @@ config.scoped_views = true
 
 Usage: https://github.com/heartcombo/devise#configuring-controllers
 
-## changed routings
+## changed devise routing
 
 config/routes.rb
 
@@ -76,5 +76,29 @@ devise_for :users, path: '', path_names: {
   confirmation: 'verification', unlock: 'unblock', 
   registration: '', sign_up: 'signup', edit: 'settings' 
 }
+```
+
+## customize I18n
+
+### set default locale
+
+config/application.rb
+
+```ruby
+config.i18n.default_locale = :ja
+```
+
+### add locale file
+
+config/locales/devise.ja.yml
+
+See: https://gist.github.com/satour/6c15f27211fdc0de58b4
+
+### add rails-i18-n to gem
+
+Gemfile
+
+```ruby
+gem 'rails-i18n',  '~> 6.0'
 ```
 
