@@ -47,3 +47,15 @@ protected
   end
 ```
 
+## add devise views
+
+`rails generate devise views users`
+
+### use users directory on views
+
+config/initializers/devise.rb
+
+```ruby
+config.scoped_views = true
+```
+

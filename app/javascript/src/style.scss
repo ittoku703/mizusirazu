@@ -77,6 +77,29 @@ body {
   color: red;
 }
 
+.login {
+  &__form {
+    max-width: 400px;
+  }
+
+  &__headline {
+    padding: 1rem;
+  }
+
+  .new_user, &__links {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem 0;
+    input {
+      margin-bottom: 1rem;
+      &[type=text], &[type=email], &[type=password] {
+        min-width: 200px;
+      }
+    }
+  }
+}
+
 .debug_dump {
   background-color: white;
   padding: 1rem;
