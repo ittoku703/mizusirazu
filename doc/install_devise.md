@@ -64,3 +64,17 @@ config.scoped_views = true
 `rails generate devise:controllers users`
 
 Usage: https://github.com/heartcombo/devise#configuring-controllers
+
+## changed routings
+
+config/routes.rb
+
+```ruby
+devise_for :users, path: '', path_names: { 
+  sign_in: 'login', sign_out: 'logout', 
+  password: 'password', 
+  confirmation: 'verification', unlock: 'unblock', 
+  registration: '', sign_up: 'signup', edit: 'settings' 
+}
+```
+
