@@ -4,6 +4,11 @@ $site-color:   $teal-300;
 $header-color: $gray-900;
 $footer-color: $gray-900;
 
+@font-face {
+  font-family: "maru-gosic";
+  src: url('./Corporate-Logo-Rounded.ttf') format('truetype');
+}
+
 body {
   background-color: $teal-300;
 }
@@ -48,7 +53,11 @@ body {
 }
 
 .welcome__blog__post {
-  border: 1px solid black;
+  font-family: "maru-gosic";
+  background: white;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
 .welcome__blog__post__title {
