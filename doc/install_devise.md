@@ -59,3 +59,8 @@ config/initializers/devise.rb
 config.scoped_views = true
 ```
 
+## add devise controllers
+
+`rails generate devise:controllers users`
+
+Usage: https://github.com/heartcombo/devise#configuring-controllers
