@@ -13,6 +13,19 @@ body {
   background-color: $teal-300;
 }
 
+.notification {
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  &__alert {
+    background-color: $danger;
+  }
+  &__notice {
+    background-color: $info;
+  }
+}
+
 .welcome__headline {
   background-color: $header-color;
   color: white;
