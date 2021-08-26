@@ -110,3 +110,11 @@ gem 'rails-i18n',  '~> 6.0'
 gem 'rexml', '~> 3.2', '>= 3.2.5'
 ```
 
+### add guard-rspec
+
+```ruby
+gem 'guard-rspec', '~> 4.7', '>= 4.7.3', require: false
+```
+
+run `bundle exec guard init rspec`
+
