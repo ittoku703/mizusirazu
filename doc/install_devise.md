@@ -102,3 +102,11 @@ Gemfile
 gem 'rails-i18n',  '~> 6.0'
 ```
 
+## add Test (RSpec)
+
+### add rexml (Necessaly to use rspec)
+
+```ruby
+gem 'rexml', '~> 3.2', '>= 3.2.5'
+```
+
