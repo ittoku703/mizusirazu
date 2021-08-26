@@ -144,3 +144,17 @@ spec/rails_helper.rb
 config.include FactoryBot::Syntax::Methods
 ```
 
+### add devise test helper
+
+spec/rails_helper.rb
+
+```ruby
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+
+config.extend  ControllerMacros, type: :controller
+```
+
+created __spec/support/controller_macros.rb__
+
+See: https://github.com/heartcombo/devise/wiki/How-To:-Test-controllers-with-Rails-(and-RSpec)#controller-specs
+
