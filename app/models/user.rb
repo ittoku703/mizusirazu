@@ -4,5 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true, format: { with: /\A[\w+\-.]+\z/i, message: "英数字のみ使えます" }, length: { in: 2..20 }, uniqueness: true
+  NAME_REGEXP = /\A[\w+\-.\s]+\z/i
+  validates :name, presence: true, format: { with: NAME_REGEXP }, length: { in: 2..20 }, uniqueness: true
+  EMAIL_REGEXP = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  validates :email, presence: true, format: { with: EMAIL_REGEXP }, length: { maximum: 255 }, uniqueness: true
 end
