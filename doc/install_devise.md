@@ -118,3 +118,17 @@ gem 'guard-rspec', '~> 4.7', '>= 4.7.3', require: false
 
 run `bundle exec guard init rspec`
 
+### changed name and email regexp
+
+app/models/user.rb
+
+```ruby
+  validates :name, presence: true, format: { with: /\A[\w+\-.]+\z/i, message: "英数字のみ使えます" }, length: { in: 2..20 }, uniqueness: true
+```
+
+config/initializers/devise.rb
+
+```ruby
+  config.email_regexp = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+```
+
