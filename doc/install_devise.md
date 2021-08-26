@@ -130,5 +130,17 @@ validates :email, presence: true, format: { with: EMAIL_REGEXP }, length: { maxi
 e
 ```
 
+### add FactoryBot
 
+Gemfile
+
+```ruby
+gem 'factory_bot_rails', '~> 6.2'
+```
+
+spec/rails_helper.rb
+
+```ruby
+config.include FactoryBot::Syntax::Methods
+```
 
