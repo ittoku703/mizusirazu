@@ -158,3 +158,9 @@ created __spec/support/controller_macros.rb__
 
 See: https://github.com/heartcombo/devise/wiki/How-To:-Test-controllers-with-Rails-(and-RSpec)#controller-specs
 
+### add model test
+
+created: __spec/models/user_spec__
+
+
+
