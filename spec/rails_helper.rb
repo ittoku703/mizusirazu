@@ -71,4 +71,8 @@ RSpec.configure do |config|
 
   # use FactoryBot
   config.include FactoryBot::Syntax::Methods
+
+  # use warden
+  config.include Warden::Test::Helpers, type: :feature
+  Warden.test_mode!
 end

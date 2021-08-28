@@ -162,5 +162,33 @@ See: https://github.com/heartcombo/devise/wiki/How-To:-Test-controllers-with-Rai
 
 created: __spec/models/user_spec__
 
+### add controller test
 
+config/environments/test.rb
 
+```ruby
+config.action_mailer.default_url_options = { host: 'localhost', port: 5000 }
+```
+
+created: 
+
+- spec/requests/users/password_controller_spec.rb
+- spec/requests/users/registration_spec.rb
+- spec/requests/users/sessions_controller_spec.rb
+
+### add feature test
+
+spec/rails_helper.rb
+
+```ruby
+# use warden
+config.include Warden::Test::Helpers, type: :feature
+Warden.test_mode!
+```
+
+created: 
+
+- spec/features/registrations_spec.rb
+- spec/features/sessions_spec.rb
+
+- spec/features/passwords_spec.rb
