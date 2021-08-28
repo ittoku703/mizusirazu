@@ -192,3 +192,16 @@ created:
 - spec/features/sessions_spec.rb
 
 - spec/features/passwords_spec.rb
+
+### add mailer test
+
+config/initializers/devise.rb
+
+```ruby
+config.mailer_sender = 'noreply@mizusirazu.net'
+```
+
+created:
+
+- spec/mailers/devise/mailer_spec.rb
+- spec/mailers/previews/devise/mailer_preview.rb
