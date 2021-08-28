@@ -13,6 +13,17 @@ body {
   background-color: $teal-300;
 }
 
+.site__header {
+  background-color: $header-color;
+  #toggler > * {
+    padding: 0 1rem;
+  }
+}
+
+.site__header__list {
+  margin-right: auto !important;
+}
+
 .notification {
   color: white;
   text-align: center;
@@ -31,6 +42,7 @@ body {
   color: white;
   border-radius: 1rem !important;
   padding: 3rem;
+  margin: 1rem 0;
   h1 {
     font-size: 3rem;
   }
