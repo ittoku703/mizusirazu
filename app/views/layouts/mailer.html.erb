@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,6 +6,38 @@
   </head>
 
   <body>
-    <%= yield %>
+    <table class="background">
+      <tr>
+        <td class="y-margin"><%= render 'layouts/header_email' %></td>
+      </tr>
+      <tr>
+        <td class="y-margin"></td>
+      </tr>
+      <tr>
+        <td class="x-margin"></td>
+        <td class="align-center">
+          <table class="frame">
+            <tr>
+              <td class="y-margin"></td>
+            </tr>
+            <tr>
+              <td class="x-margin"></td>
+              <td><%= yield %></td>
+              <td class="x-margin"></td>
+            </tr>
+            <tr>
+              <td class="y-margin"></td>
+            </tr>
+          </table>
+        </td>
+        <td class="x-margin"></td>
+      </tr>
+      <tr>
+        <td class="y-margin"><%= render 'layouts/footer_email' %></td>
+      </tr>
+      <tr>
+        <td class="y-margin"></td>
+      </tr>
+    </table>
   </body>
 </html>

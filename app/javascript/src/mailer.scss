@@ -1,3 +1,32 @@
-.test {
-  color: red;
+table {
+  width: 100%;
+  border: none;
+  border-collapse: collapse;
+  tr td {
+    padding: 0;
+  }
+}
+
+.y-margin {
+  height: 15px;
+}
+
+.x-margin {
+  width: 15px;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.background {
+  background-color: #e9ecef;
+  max-width: 640px;
+}
+
+.frame {
+  background-color: white;
+  max-width: 420px;
+  border-radius: 1rem;
+  padding: 1rem;
 }
