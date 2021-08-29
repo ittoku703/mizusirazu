@@ -41,6 +41,9 @@ Rails.application.configure do
   # settings mailer URL
   config.action_mailer.default_url_options = { host: 'localhost', port: 5000 }
 
+  # 
+  config.action_mailer.asset_host = 'localhost:5000'
+
   # mailer use smtp protocol
   config.action_mailer.delivery_method = :smtp
 

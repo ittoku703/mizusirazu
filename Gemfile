@@ -29,6 +29,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'react-rails', '~> 2.6', '>= 2.6.1'
 gem 'devise',      '~> 4.8'
 gem 'rails-i18n',  '~> 6.0'
+gem 'premailer-rails', '~> 1.11', '>= 1.11.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

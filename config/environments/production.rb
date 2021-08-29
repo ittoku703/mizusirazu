@@ -65,6 +65,9 @@ Rails.application.configure do
   # settings mailer URL
   config.action_mailer.default_url_options = { host: 'mizusirazu.herokuapp.com' }
 
+  # 
+  config.action_mailer.asset_host = 'mizusirazu.herokuapp.com'
+
   # mailer use smtp protocol
   config.action_mailer.delivery_method = :smtp
 
