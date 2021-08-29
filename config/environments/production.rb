@@ -62,6 +62,26 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "mizusirazu_net_production"
 
+  # settings mailer URL
+  config.action_mailer.default_url_options = { host: 'mizusirazu.herokuapp.com' }
+
+  # 
+  config.action_mailer.asset_host = 'mizusirazu.herokuapp.com'
+
+  # mailer use smtp protocol
+  config.action_mailer.delivery_method = :smtp
+
+  # smtp protocol details
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.gmail.com',
+    :domain         => 'gmail.com',
+    :port           => 587,
+    :user_name      => ENV['GMAIL_ADDRESS'],
+    :password       => ENV['GMAIL_PASSWORD'],
+    :authentication => :login,
+  }
+
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
