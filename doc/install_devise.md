@@ -205,3 +205,34 @@ created:
 
 - spec/mailers/devise/mailer_spec.rb
 - spec/mailers/previews/devise/mailer_preview.rb
+
+### add confirmable
+
+app/models/user.rb
+
+```ruby
+devise :confirmable
+```
+
+db/migrate/_devise_create_users.rb
+
+```ruby
+## Confirmable
+t.string   :confirmation_token
+t.datetime :confirmed_at
+t.datetime :confirmation_sent_at
+t.string   :unconfirmed_email # Only if using reconfirmable
+```
+
+app/controllers/users/confirmations_controller.rb
+
+```ruby
+class Users::ConfirmationsController < Devise::ConfirmationsController
+  protected
+  
+  def after_confirmation_path_for(resource_name, resource)
+    sign_in(resource)
+    root_path
+  end
+end
+```
