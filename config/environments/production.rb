@@ -63,7 +63,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "mizusirazu_net_production"
 
   # settings mailer URL
-  config.action_mailer.default_url_options = { host: 'mizusirazu.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'mizusirazu.herokuapp.com', protocol: 'https' }
 
   # 
   config.action_mailer.asset_host = 'mizusirazu.herokuapp.com'
