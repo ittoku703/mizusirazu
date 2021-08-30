@@ -4,6 +4,7 @@ FactoryBot.define do
     email { "admin0123@adminstrator.com" }
     password { "password" }
     password_confirmation { "password" }
+    confirmed_at { Time.now }
   end
 
   factory :user do
@@ -11,5 +12,6 @@ FactoryBot.define do
     email { "shinzanmono1192@gmail.com" }
     password { "password" }
     password_confirmation { "password" }
+    confirmed_at { Time.now }
   end
 end

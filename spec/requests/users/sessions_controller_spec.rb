@@ -7,7 +7,7 @@ RSpec.describe Users::SessionsController, type: :request do
     subject { get new_user_session_path }
 
     context 'logged-in' do
-      login_user
+      before { login_user }
       it { is_expected.to redirect_to root_url }
     end
 

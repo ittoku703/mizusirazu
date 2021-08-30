@@ -4,7 +4,7 @@ RSpec.describe Users::RegistrationsController, type: :request do
   describe "GET /signup" do
     subject { get new_user_registration_path }
     context "logged-in" do
-      login_user
+      before { login_user }
       it { is_expected.to redirect_to root_url }
     end
 
@@ -30,7 +30,7 @@ RSpec.describe Users::RegistrationsController, type: :request do
     end
 
     context "logged-in" do
-      login_user
+      before { login_user }
       it { is_expected.to redirect_to root_url }
     end
   end
@@ -39,7 +39,7 @@ RSpec.describe Users::RegistrationsController, type: :request do
     subject { get edit_user_registration_path }
 
     context "logged-in" do
-      login_user
+      before { login_user }
       it { is_expected.to eq 200 }
     end
 
@@ -53,7 +53,7 @@ RSpec.describe Users::RegistrationsController, type: :request do
     subject { put user_registration_path, params: { user: update_params } }
 
     context "valid params" do
-      login_user
+      before { login_user }
       it { is_expected.to eq 302 }
     end
 
@@ -64,7 +64,7 @@ RSpec.describe Users::RegistrationsController, type: :request do
   describe "DELETE /" do
     subject { delete user_registration_path }
     context "logged-in" do
-      login_user
+      before { login_user }
       it { expect{subject}.to change(User, :count).by(-1) }
       it { is_expected.to redirect_to root_url }
     end

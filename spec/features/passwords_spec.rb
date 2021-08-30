@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.feature "Passwords", type: :feature do
   let(:user) { create(:user) }
-  background { ActionMailer::Base.deliveries.clear }
   scenario 'password reset' do
     # send password reset email
     visit new_user_password_path
@@ -10,10 +9,7 @@ RSpec.feature "Passwords", type: :feature do
     click_button 'Send me reset password instruction'
     expect(page).to have_content 'パスワードの再設定について数分以内にメールでご連絡いたします。'
     # mail check
-    mail = ActionMailer::Base.deliveries.last
-    url = extract_url(mail)
-    # edit password 
-    visit url
+    visit_email_link_url
     expect(page).to have_content 'Change your password'
     fill_in 'New password', with: 'new_password'
     fill_in 'Confirm new password', with: 'new_password'
@@ -31,12 +27,8 @@ RSpec.feature "Passwords", type: :feature do
    end
 
   scenario 'edit password page element check' do
-    # setup
     user.send_reset_password_instructions
-    mail = ActionMailer::Base.deliveries.last
-    url = extract_url(mail)
-    # edit password page !!!
-    visit url
+    visit_email_link_url
     expect(page).to have_content "Change your password"
     expect(page).to have_selector 'input#user_password'
     expect(page).to have_selector 'input#user_password_confirmation'

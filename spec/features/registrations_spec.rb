@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "registration user", type: :feature do
   let(:user) { build(:user) }
-  scenario 'signup -> edit -> delete' do
+  scenario 'signup -> confirm -> edit -> delete' do
     # sign up user !!!
     visit new_user_registration_path
     fill_in "Name", with: user.name
@@ -10,9 +10,12 @@ RSpec.feature "registration user", type: :feature do
     fill_in "Password", with: user.password
     fill_in "Password confirmation", with: user.password
     click_button 'Sign up'
-    expect(page).to have_content 'アカウント登録が完了しました。'
+    expect(page).to have_content '本人確認用のメールを送信しました。メール内のリンクからアカウントを有効化させてください。'
+    # confirm user !!!
+    visit_email_link_url
+    expect(page).to have_content 'アカウントを登録しました。'
     # edit user !!!
-    visit edit_user_registration_path
+    click_link 'Settings'
     fill_in "Name", with: user.name
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
@@ -21,7 +24,7 @@ RSpec.feature "registration user", type: :feature do
     click_button "Update"
     expect(page).to have_content "アカウント情報を変更しました。"
     # delete user !!!
-    visit edit_user_registration_path
+    click_link 'Settings'
     click_button "Cancel my account"
     expect(page).to have_content 'アカウントを削除しました。またのご利用をお待ちしております。'
   end

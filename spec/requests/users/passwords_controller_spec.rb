@@ -6,7 +6,7 @@ RSpec.describe "Users::PasswordsControllers", type: :request do
   describe "GET /password/new" do
     subject { get new_user_password_path }
     context 'logged-in' do
-      login_user
+      before { login_user }
       it { is_expected.to redirect_to root_url }
     end
 
@@ -31,7 +31,7 @@ RSpec.describe "Users::PasswordsControllers", type: :request do
   describe 'GET /password/edit?reset_password_token=abcdef' do
     subject { get edit_user_password_path }
     context 'logged-in' do
-      login_user
+      before { login_user }
       it { is_expected.to redirect_to root_url }
     end
 

@@ -64,12 +64,12 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   # my settings
+  config.include RequestHelper, type: :request
   config.include FeatureHelper, type: :feature
 
   # use devise helper
   config.include Devise::Test::ControllerHelpers,  type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :request
-  config.extend  ControllerMacros,                 type: :request
 
   # use FactoryBot
   config.include FactoryBot::Syntax::Methods
