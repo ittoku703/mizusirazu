@@ -37,7 +37,7 @@ RSpec.feature "registration user", type: :feature do
   end
 
   scenario "edit page element check" do
-    login_as build(:user)
+    login_user
     visit edit_user_registration_path
     expect(page).to have_content "Edit User"
     expect(page).to have_selector 'input#user_name'
