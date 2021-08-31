@@ -10,4 +10,10 @@ module FeatureHelper
     login_as build(:user)
   end
 
+  def failed_login
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: 'wrong-passwd'
+    click_button 'Log in'
+  end
+
 end

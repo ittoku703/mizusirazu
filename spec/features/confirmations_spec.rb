@@ -19,5 +19,6 @@ RSpec.feature "Confirmations", type: :feature do
     expect(page).to have_link 'Log in'
     expect(page).to have_link 'Sign up'
     expect(page).to have_link 'Forgot your password?'
+    expect(page).to have_link 'Didn\'t receive unlock instructions?'
   end
 end

@@ -9,6 +9,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.reset_password_instructions(User.first, 'fake token')
   end
 
+  def unlock_instructions
+    UserMailer.unlock_instructions(User.first, 'fake token')
+  end
+
   def email_changed
     UserMailer.email_changed(User.first)
   end

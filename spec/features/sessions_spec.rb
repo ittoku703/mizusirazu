@@ -18,6 +18,10 @@ RSpec.feature "session user", type: :feature do
     expect(page).to have_link 'Sign up'
     expect(page).to have_selector 'input#user_email'
     expect(page).to have_selector 'input#user_password'
+    expect(page).to have_selector 'input#user_remember_me'
+    expect(page).to have_button 'Log in'
     expect(page).to have_link 'Forgot your password?'
+    expect(page).to have_link 'Didn\'t receive confirmation instructions?'
+    expect(page).to have_link 'Didn\'t receive unlock instructions?'
   end
 end

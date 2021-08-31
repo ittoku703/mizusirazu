@@ -37,6 +37,8 @@ RSpec.feature "registration user", type: :feature do
     expect(page).to have_selector 'input#user_password'
     expect(page).to have_selector 'input#user_password_confirmation'
     expect(page).to have_link "Log in"
+    expect(page).to have_link 'Didn\'t receive confirmation instructions?'
+    expect(page).to have_link 'Didn\'t receive unlock instructions?'
   end
 
   scenario "edit page element check" do

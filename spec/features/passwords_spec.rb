@@ -35,5 +35,7 @@ RSpec.feature "Passwords", type: :feature do
     expect(page).to have_button 'Change my password'
     expect(page).to have_link 'Log in'
     expect(page).to have_link 'Sign up'
+    expect(page).to have_link 'Didn\'t receive confirmation instructions?'
+    expect(page).to have_link 'Didn\'t receive unlock instructions?'
   end
 end
