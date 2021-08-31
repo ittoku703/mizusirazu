@@ -12,6 +12,10 @@ class UserMailer < Devise::Mailer
     super
   end
 
+  def unlock_instructions(record, token, opts={})
+    super
+  end
+
   def email_changed(record, opts={})
     super
   end
