@@ -45,17 +45,21 @@ Rails.application.configure do
   config.action_mailer.asset_host = 'localhost:5000'
 
   # mailer use smtp protocol
-  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.delivery_method = :smtp
 
   # smtp protocol details
-  config.action_mailer.smtp_settings = {
-    :address        => 'smtp.gmail.com',
-    :domain         => 'gmail.com',
-    :port           => 587,
-    :user_name      => ENV['GMAIL_ADDRESS'],
-    :password       => ENV['GMAIL_PASSWORD'],
-    :authentication => :login,
-  }
+  # config.action_mailer.smtp_settings = {
+  #   :address        => 'smtp.gmail.com',
+  #   :domain         => 'gmail.com',
+  #   :port           => 587,
+  #   :user_name      => ENV['GMAIL_ADDRESS'],
+  #   :password       => ENV['GMAIL_PASSWORD'],
+  #   :authentication => :login,
+  # }
+
+  # use letter_opener
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
