@@ -3,12 +3,10 @@ require 'rails_helper'
 RSpec.feature "session user", type: :feature do
   let(:user) { create(:user) }
   background { visit new_user_session_path }
-  scenario 'login and logout' do
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
+  scenario 'login -> logout' do
+    success_login
     expect(page).to have_content 'ログインしました'
-    visit root_path
+    click_link 'Home'
     click_link 'Log out'
     expect(page).to have_content 'ログアウトしました'
   end

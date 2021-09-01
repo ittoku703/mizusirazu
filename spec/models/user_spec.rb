@@ -88,5 +88,10 @@ RSpec.describe User, type: :model do
       expect(user).to be_invalid
     end
 
+    it 'is timeout after 1 day' do
+      user.save
+      expect(user.timedout?(1.day.ago)).to eq true
+    end
+
   end
 end

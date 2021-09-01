@@ -77,4 +77,7 @@ RSpec.configure do |config|
   # use warden
   config.include Warden::Test::Helpers, type: :feature
   Warden.test_mode!
+
+  # use travel_to
+  config.include ActiveSupport::Testing::TimeHelpers
 end
