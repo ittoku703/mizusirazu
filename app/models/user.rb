@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :confirmable, :lockable, :timeoutable
+         :confirmable, :lockable, :timeoutable, :trackable
 
   NAME_REGEXP = /\A[\w+\-.\s]+\z/i
   validates :name, presence: true, format: { with: NAME_REGEXP }, length: { in: 2..20 }, uniqueness: true
