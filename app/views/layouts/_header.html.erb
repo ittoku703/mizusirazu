@@ -16,7 +16,7 @@
           <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">User</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown05">
             <li><a class="dropdown-item" href="#"></a></li>
-            <%= link_to current_user.name, '#', class: "dropdown-item" %>
+            <%= link_to current_user.name, user_path, class: "dropdown-item" %>
             <%= link_to 'Settings', edit_user_registration_path, class: 'dropdown-item' %>
             <%= link_to 'Log out', destroy_user_session_path, class: 'dropdown-item', method: :delete %>
           </ul>

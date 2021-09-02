@@ -112,6 +112,25 @@ body {
   }
 }
 
+.user__page {
+  & > * {
+    margin: 1rem 0;
+  }
+  &__avatar {
+    background-color: white;
+    text-align: center;
+    & > * {
+      padding: 1rem;
+    }
+    &--img img {
+      border-radius: 50% !important;
+    }
+  }
+  &__content {
+    background-color: white;
+  }
+}
+
 .debug_dump {
   background-color: white;
   padding: 1rem;

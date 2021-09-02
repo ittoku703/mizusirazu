@@ -35,6 +35,19 @@ RSpec.describe Users::RegistrationsController, type: :request do
     end
   end
 
+  describe 'GET /user' do
+    subject { get user_path }
+
+    context 'logged-in' do
+      before { login_user }
+      it { is_expected.to eq 200 }
+    end
+
+    context 'non-logged-in' do
+      it { is_expected.to redirect_to root_url }
+    end
+  end
+
   describe "GET /settings" do
     subject { get edit_user_registration_path }
 

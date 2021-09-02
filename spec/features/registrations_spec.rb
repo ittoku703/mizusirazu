@@ -41,6 +41,14 @@ RSpec.feature "registration user", type: :feature do
     expect(page).to have_link 'Didn\'t receive unlock instructions?'
   end
 
+  scenario 'show page element check' do
+    login_user
+    visit user_path
+    expect(page).to have_content user.name
+    expect(page).to have_content "Email: #{user.email}"
+    expect(page).to have_content "Sign in count: #{user.sign_in_count}"
+  end
+
   scenario "edit page element check" do
     login_user
     visit edit_user_registration_path
