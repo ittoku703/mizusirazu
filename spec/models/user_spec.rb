@@ -13,13 +13,8 @@ RSpec.describe User, type: :model do
       expect(user).to be_invalid
     end
 
-    it "is invalid if name is less then 2 characters" do
-      user.name = "X" * 1
-      expect(user).to be_invalid
-    end
-
     it "is invalid if name is longer then 20 characters" do
-      user.name = "X" * 21
+      user.name = "X" * 51
       expect(user).to be_invalid
     end
 
