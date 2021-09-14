@@ -1,6 +1,5 @@
 # Preview all emails at http://localhost:5000/rails/mailers/user_mailer
 class UserMailerPreview < ActionMailer::Preview
-
   def confirmation_instructions
     UserMailer.confirmation_instructions(User.first, 'fake token')
   end
@@ -20,5 +19,4 @@ class UserMailerPreview < ActionMailer::Preview
   def password_change
     UserMailer.password_change(User.first)
   end
-
 end

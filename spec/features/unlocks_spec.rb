@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Unlocks", type: :feature do
+RSpec.feature 'Unlocks', type: :feature do
   let(:user) { create(:user) }
   scenario 'warning -> lock -> unlock' do
     visit new_user_session_path

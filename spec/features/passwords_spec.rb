@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Passwords", type: :feature do
+RSpec.feature 'Passwords', type: :feature do
   let(:user) { create(:user) }
   scenario 'password reset' do
     # send password reset email
@@ -24,12 +24,12 @@ RSpec.feature "Passwords", type: :feature do
     expect(page).to have_button 'Send me reset password instruction'
     expect(page).to have_link 'Log in'
     expect(page).to have_link 'Sign up'
-   end
+  end
 
   scenario 'edit password page element check' do
     user.send_reset_password_instructions
     visit_email_link_url
-    expect(page).to have_content "Change your password"
+    expect(page).to have_content 'Change your password'
     expect(page).to have_selector 'input#user_password'
     expect(page).to have_selector 'input#user_password_confirmation'
     expect(page).to have_button 'Change my password'

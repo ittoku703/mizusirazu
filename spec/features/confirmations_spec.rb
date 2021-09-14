@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Confirmations", type: :feature do
+RSpec.feature 'Confirmations', type: :feature do
   let(:user) { create(:user, confirmed_at: nil) }
   background { visit new_user_confirmation_path }
   scenario 'user confirmation' do

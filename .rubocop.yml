@@ -1,0 +1,71 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+
+AllCops:
+  Exclude:
+    - "vender/**/*"
+    - "bin/**"
+    - "db/schema.rb"
+    - "node_module/**/*"
+    - "tmp/**/*"
+    - "lib/**/*"
+  DisplayCopNames: true
+  TargetRubyVersion: 3.1
+  SuggestExtensions: false
+  NewCops: enable
+
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+
+# enable comment of japanese
+Style/AsciiComments:
+  Enabled: true
+
+# allow public class without document
+Style/Documentation:
+  Enabled: false
+
+# allow !!
+Style/DoubleNegation:
+  Enabled: true
+
+# freeze at string
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# self
+Style/RedundantSelf:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - "db/migrate/*.rb"
+
+Matrics/BlockLength:
+  Max: 99
+
+Layout/LineLength:
+  Max: 160
+  Exclude:
+    - "db/migrate/*.rb"
+
+FileName:
+  Enabled: false
+  Exclude:
+    - '**/Rakefile'
+    - "**/Gemfile"
+    - '**/Capfile'
+    - "**/Guardfile"

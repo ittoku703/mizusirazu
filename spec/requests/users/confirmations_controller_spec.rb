@@ -10,9 +10,6 @@ RSpec.describe Users::ConfirmationsController, type: :request do
   describe 'POST /verification' do
     subject { post user_confirmation_path, params: { user: { email: user.email } } }
     it { is_expected.to redirect_to new_user_session_path }
-    it { expect{subject}.to change{ActionMailer::Base.deliveries.size}.by(2) }
-  end
-
-  describe 'GET /verification?confirmation_token=abcdef' do
+    it { expect { subject }.to change { ActionMailer::Base.deliveries.size }.by(2) }
   end
 end
