@@ -5,6 +5,9 @@
   },
   "name": "mizusirazu-net",
   "private": true,
+  "browserslist": [
+    "defaults"
+  ],
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@popperjs/core": "^2.9.3",
