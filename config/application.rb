@@ -21,5 +21,6 @@ module MizusirazuNet
 
     # my settings
     config.i18n.default_locale = :ja
+    config.assets.enabled = false
   end
 end
