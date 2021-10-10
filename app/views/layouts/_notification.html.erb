@@ -1,4 +1,0 @@
-<% flash.each do |key, value| %>
-  <%= next if key == 'timedout' %>
-  <%= content_tag(:div, value, class: "notification notification__#{key}") %>
-<% end %>
