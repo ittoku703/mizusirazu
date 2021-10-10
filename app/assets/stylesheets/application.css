@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+@font-face {
+  font-family: "nu-kinakomochi";
+  src: url("NuKinakoMochi-Reg.otf") format("opentype");
+}
+
+html, body, pre, code, kbd, samp {
+  font-family: "nu-kinakomochi";
+}
+
