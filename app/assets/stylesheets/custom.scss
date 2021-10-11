@@ -1,0 +1,169 @@
+
+/* variables */
+
+$media-pc: 1024px;
+$media-sp: 1023px;
+
+$is-primary: #209cee;
+$is-success: #92cc41;
+$is-warning: #f7d51d;
+$is-error: #e76e55;
+$is-disabled: #d3d3d3;
+$is-light: #ffffff;
+$is-dark: #000000;
+/* mixin */
+
+@mixin pc {
+  @media only screen and (min-width: $media-pc) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media only screen and (max-width: $media-sp) {
+    @content;
+  }
+}
+
+/* header */
+
+.header {
+  height: 68px;
+}
+
+.l-wrap--header {
+  @include pc {
+    margin: 0 5%;
+  }
+
+  @include sp {
+    position: relative;
+    max-width: 1200px;
+  }
+}
+
+.header__logo-wrap {
+  position: relative;
+  float: left;
+  z-index: 1;
+
+  @include pc {
+    top: 12px;
+    font-size: 40px;
+  }
+
+  @include sp {
+    top: 9px;
+    left: 5%;
+    font-size: 32px;
+  }
+}
+
+.header__nav-links-wrap {
+  width: 100%;
+}
+
+.header__nav-links {
+  float: right;
+}
+
+.header__nav-link {
+  text-transform: uppercase;
+  color: red;
+  display: inline-block;
+  margin-right: 16px;
+  margin-left: 16px;
+  padding: 25px 0;
+}
+
+/* main */
+.home__heading {
+  margin: 0 auto;
+  padding-top: 28px;
+  position: relative;
+  width: 90%;
+  font-weight: 300;
+  line-height: 1.2rem;
+  text-align: center;
+  color: green;
+  z-index: 1;
+}
+
+.home__introduce {
+  margin: 0 auto;
+  padding-top: 28px;
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+
+  h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  a {
+    color: $is-primary;
+    &:hover {
+      color: $is-success;
+    }
+  }
+}
+
+/* footer */
+.footer {
+  padding: 48px 0;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.overflow {
+  overflow: auto;
+}
+
+.l-wrap--footer {
+  margin: 0 auto;
+  max-width: 940px;
+  width: 90%;
+  overflow: auto;
+}
+
+.footer__technology-links {
+  box-sizing: border-box;
+  float: right;
+
+  @include pc {
+    width: 20%;
+    width: calc(240px);
+  }
+
+  @include sp {
+    float: none;
+  }
+
+  a {
+    display: block;
+    line-height: 2rem;
+    color: $is-disabled;
+  }
+}
+
+.footer__about {
+  box-sizing: border-box;
+  float: left;
+
+  @include pc {
+    width: 70%;
+    width: calc(100% - 300px);
+  }
+
+  @include sp {
+    float: none;
+  }
+}
+
+.footer__copyright {
+  width: 100%;
+  padding-top: 28px;
+  text-align: center;
+}
