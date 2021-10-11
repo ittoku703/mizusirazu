@@ -17,7 +17,7 @@
 /* NES.css Settings */
 @font-face {
   font-family: "nu-kinakomochi";
-  src: url("NuKinakoMochi-Reg.otf") format("opentype");
+  src: asset_url("NuKinakoMochi-Reg.otf") format("opentype");
 }
 
 html, body, pre, code, kbd, samp {
