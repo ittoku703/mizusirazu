@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<section class="user__show nes-container">
+  <div class="user__show-avatar">
+    <i class="nes-bcrikko"></i>
+  </div>
+  <div class="user__show-profile">
+    <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+    </p>
+    <p>
+    <strong>Crypted password:</strong>
+    <%= @user.crypted_password %>
+    </p>
+    <p>
+    <strong>Salt:</strong>
+    <%= @user.salt %>
+    </p>
+  </div>
+</section>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
