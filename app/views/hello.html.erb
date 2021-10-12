@@ -10,10 +10,13 @@
     <!-- Links -->
     <div class="header__nav-links-wrap">
       <nav class="header__nav-links">
-        <%= link_to "link1", '#1', class: "header__nav-link" %>
-        <%= link_to "link2", '#2', class: "header__nav-link" %>
-        <%= link_to "link3", '#3', class: "header__nav-link" %>
-        <%= link_to "link4", '#4', class: "header__nav-link" %>
+        <% if current_user %>
+          <%= link_to 'Edit Profile', edit_user_path(current_user.id), class: 'header__nav-link' %>
+          <%= link_to 'Log out', logout_path, method: :delete, class: 'header__nav-link' %>
+        <% else %>
+          <%= link_to 'Register', new_user_path, class: 'header__nav-link' %>
+          <%= link_to 'Log in', login_path, class: 'header__nav-link' %>
+        <% end %>
       </nav>
     </div>
   </div>
