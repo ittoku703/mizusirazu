@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_login, only: [:index, :edit, :update, :destroy]
+  before_action :already_logged_in, only: [:new, :create]
 
   # GET /users or /users.json
   def index
@@ -43,19 +44,18 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    logout
     @user.destroy
     redirect_to users_url, notice: "User was successfully destroyed."
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_user
-    @user = User.find(params[:id])
-  end
-
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
   end
 end
