@@ -7,6 +7,20 @@
     <%= f.password_field :password, class: 'user__form-input nes-input', placeholder: 'Password' %>
   </div>
 
+  <div class="user__form-field nes-field">
+    <span>Remenber Me?</span>
+
+    <%= label_tag do %>
+      <input class="nes-radio" type="radio" name="remember" value="on" checked>
+      <span>Yes</span>
+    <% end %>
+
+    <%= label_tag do %>
+      <input class="nes-radio" type="radio" name="remember" value="">
+      <span>No</span>
+    <% end %>
+  </div>
+
   <div class="user__form-field">
     <%= f.submit class: 'nes-btn is-primary' %>
   </div>
