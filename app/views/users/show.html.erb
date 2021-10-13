@@ -1,21 +1,31 @@
-<section class="user__show nes-container">
-  <div class="user__show-avatar">
-    <i class="nes-bcrikko"></i>
+<body class="body--user-show"></body>
+
+<div class="user__show-wrap">
+  <section class="user__show nes-container">
+    <div class="user__show-avatar">
+      <i class="nes-bcrikko"></i>
+    </div>
+    <div class="user__show-profile">
+      <p>
+      <strong>Email:</strong>
+      <%= @user.email %>
+      </p>
+      <p>
+      <strong>Crypted password:</strong>
+      <%= @user.crypted_password %>
+      </p>
+      <p>
+      <strong>Salt:</strong>
+      <%= @user.salt %>
+      </p>
+    </div>
+  </section>
+
+  <!-- links -->
+  <div class="user__show-links">
+    <ul class="nes-list is-circle">
+      <li><%= link_to 'Edit user', edit_user_path(@user) %></li>
+      <li><%= link_to 'Back', root_path %></li>
+    </ul>
   </div>
-  <div class="user__show-profile">
-    <p>
-    <strong>Email:</strong>
-    <%= @user.email %>
-    </p>
-    <p>
-    <strong>Crypted password:</strong>
-    <%= @user.crypted_password %>
-    </p>
-    <p>
-    <strong>Salt:</strong>
-    <%= @user.salt %>
-    </p>
-  </div>
-</section>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+</div>

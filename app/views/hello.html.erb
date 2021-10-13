@@ -1,75 +1,25 @@
 <body class="body--index"></body>
-<header class="header">
-  <div class="l-wrap--header">
 
-    <!-- My Homepage logo -->
-    <%= link_to root_path, class: "header__logo-wrap", title: "MizusirazuNet" do %>
-      <%= image_tag 'logo.svg', size: '64x64', class: 'header__logo' %>
-    <% end %>
-
-    <!-- Links -->
-    <div class="header__nav-links-wrap">
-      <nav class="header__nav-links">
-        <% if current_user %>
-          <%= link_to 'Edit Profile', edit_user_path(current_user.id), class: 'header__nav-link' %>
-          <%= link_to 'Log out', logout_path, method: :delete, class: 'header__nav-link' %>
-        <% else %>
-          <%= link_to 'Register', new_user_path, class: 'header__nav-link' %>
-          <%= link_to 'Log in', login_path, class: 'header__nav-link' %>
-        <% end %>
-      </nav>
-    </div>
+<h1 class="home__heading">Mizusirazu.Net</h1>
+<div class="home__introduce">
+  <h2>じこしょうかい</h2>
+  <div class="nes-container is-rounded">
+    <p>こんにちは。サイト主の「shinzanmono」です。</p>
+    <p>このサイトでは、ユーザをとうろくしたり、そのとうろくしたユーザであそぶことができる予定です！（まだ、できてないけどね(´·ω·`)ｼｮﾎﾞｰﾝ）</p>
+    <p>そうそう！これを見ている人は気になってると思うんだけど、このサイトでは、<a href="https://nostalgic-css.github.io/NES.css/">NES.css</a>を使ってるんだよね。</p>
+    <p>なかなかイイよね(ﾟ∀三ﾟ三∀ﾟ) ｳﾎｰ!</p>
+    <p>あとフォントは<a href="http://kokagem.sakura.ne.jp/font/mochi/">Nu-きなこもち</a>をつかってるよ</p>
+    <p>このドットかんというかなんというか...なつかしさというものをかんじるんだよね！</p>
+    <br>
+    <p>あとはそうだな〜。おれはふだんプログラムを書いたりするのが好きだよ！</p>
+    <p>あと、おんがくとかアニメとか、というか「えいぞうさくひん」だな！</p>
+    <p>ゲームもたまにするよ！今は「Gran tu risumo sports」をやってるよ。ドット関係ないけど(ﾟ∀ﾟ )</p>
+    <p>YouTubeでゲーム実況してるのとかもみるな〜。「どれ見てるの？」とかは言わないけど(ﾟ∀ﾟ ) </p>
+    <br>
+    <p>そんなところかな〜。じゃあ、このサイトをどんどん大きくしていって、「こうこく」とかも入れて、そのしゅうにゅうでやきにくくいたいな〜</p>
+    <br>
+    <p>... じゃあね！ ε＝『(·ω·)』</p>
   </div>
-</header>
+</div>
 
-<main>
-  <h1 class="home__heading">MizusirazuNet</h1>
-  <div class="home__introduce">
-    <h2>じこしょうかい</h2>
-    <div class="nes-container is-rounded">
-      <p>こんにちは。サイト主の「shinzanmono」です。</p>
-      <p>このサイトでは、ユーザをとうろくしたり、そのとうろくしたユーザであそぶことができる予定です！（まだ、できてないけどね(´·ω·`)ｼｮﾎﾞｰﾝ）</p>
-      <p>そうそう！これを見ている人は気になってると思うんだけど、このサイトでは、<a href="https://nostalgic-css.github.io/NES.css/">NES.css</a>を使ってるんだよね。</p>
-      <p>なかなかイイよね(ﾟ∀三ﾟ三∀ﾟ) ｳﾎｰ!</p>
-      <p>あとフォントは<a href="http://kokagem.sakura.ne.jp/font/mochi/">Nu-きなこもち</a>をつかってるよ</p>
-      <p>このドットかんというかなんというか...なつかしさというものをかんじるんだよね！</p>
-      <br>
-      <p>あとはそうだな〜。おれはふだんプログラムを書いたりするのが好きだよ！</p>
-      <p>あと、おんがくとかアニメとか、というか「えいぞうさくひん」だな！</p>
-      <p>ゲームもたまにするよ！今は「Gran tu risumo sports」をやってるよ。ドット関係ないけど(ﾟ∀ﾟ )</p>
-      <p>YouTubeでゲーム実況してるのとかもみるな〜。「どれ見てるの？」とかは言わないけど(ﾟ∀ﾟ ) </p>
-      <br>
-      <p>そんなところかな〜。じゃあ、このサイトをどんどん大きくしていって、「こうこく」とかも入れて、そのしゅうにゅうでやきにくくいたいな〜</p>
-      <br>
-      <p>... じゃあね！ ε＝『(·ω·)』</p>
-    </div>
-  </div>
-</main>
 
-<footer class="footer">
-  <div class="l-wrap--footer">
-    <div class="nes-container is-rounded is-dark">
-      <div class="overflow">
-        <!-- My site Links -->
-        <div class="footer__technology-links nes-container is-dark with-title">
-          <p class="title">Technology</p>
-          <%= link_to 'Source Code', 'https://github.com/shinzanmono/mizusirazu.net', class: 'footer__technology-link' %>
-          <%= link_to "Contact", 'mailto:shinzanmono@example.com', class: 'footer__technology-link' %>
-        </div>
-
-        <!-- My site About -->
-        <div class="footer__about">
-          <p>Mizurazu.netはいいサイトです。</p>
-          <p>なぜなら、いいサイトはいいサイトだからです。</p>
-          <p>ということは、このサイトもいいサイトということになるでしょう。</p>
-        </div>
-
-      </div>
-      <div class="footer__copyright">
-        <i class="nes-kirby"></i>
-        <p>copyright (c) shinzanmono. All right received</p>
-      </div>
-    </div>
-
-  </div>
-</footer>

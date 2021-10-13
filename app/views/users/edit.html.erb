@@ -1,9 +1,19 @@
-<div class="nes-container with-title">
-  <h1 class="title">Editing User</h1>
+<body class="body--user-edit"></body>
 
-  <%= render 'form', user: @user %>
+<div class="user__form">
+  <!-- form -->
+  <div class="nes-container is-rounded">
+    <h1 class="title">Editing User</h1>
+    <%= render 'form', user: @user %>
+  </div>
+
+  <!-- links -->
+  <div class="user__form-links">
+    <ul class="nes-list is-circle">
+      <li><%= link_to 'Profile', @user %></li>
+      <li><%= link_to 'Back', root_path %></li>
+    </ul>
+  </div>
 </div>
 
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>

@@ -1,0 +1,73 @@
+/* form */
+.user__form {
+  margin: 0 auto;
+  padding-top: $spacer;
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+}
+
+.user__form-links {
+  padding-top: $spacer;
+  margin-left: $spacer;
+
+  li {
+    line-height: 2rem;
+  }
+}
+
+.user__form-field {
+  padding-top: 1rem;
+}
+
+.user__form-input {
+  max-width: 400px;
+}
+
+.field_with_errors {
+  input {
+    background-color: $is-error;
+  }
+}
+
+/* user */
+.users__index-headline {
+  text-align: center;
+}
+
+.users__table {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacer;
+
+  table {
+    table-layout: fixed;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+}
+
+.user__show-wrap {
+  padding-top: $spacer;
+  margin-left: $spacer;
+  margin-bottom: $spacer;
+}
+
+.user__show {
+  display: flex;
+  padding: 1rem 1.5rem;
+  width: 470px;
+  overflow: scroll;
+}
+
+.user__show-avatar {
+  padding-top: 8px;
+}
+
+.user__show-profile{
+  padding-left: 1rem;
+}
+
+.user__show-links ul li {
+  line-height: 2rem;
+}
