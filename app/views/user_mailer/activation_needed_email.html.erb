@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content="text/html" charset="UTF-8" http-equiv="Content-Type" />
-  </head>
-  <body>
-    <h1>Hey <%= @user.email %></h1>
+<p>Hey <%= @user.email %>!</p>
 
-    <p>You have successfully signed up to mizusirazu.net,your username is <%= @user.email %></p>
+<p>You have successfully signed up.</p>
 
-    <p>To login to the site, just follow this link: <%= @url %></p>
+<p>Please activate this account, just follow this link</p>
 
-    <p>Thanks.</p>
-  </body>
-</html>
+<p><%= @url %></p>
+
+<p>Thanks.</p>
