@@ -9,4 +9,7 @@ class User < ApplicationRecord
     user.validates :password, length: { minimum: 3 }, confirmation: true
     user.validates :password_confirmation, presence: true
   end
+
+  before_update :setup_activation, if: -> { email_changed? }
+  after_update :send_activation_needed_email!, if: -> { previous_changes["email"].present? }
 end

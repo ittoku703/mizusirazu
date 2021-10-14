@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_login, only: [:index, :edit, :update, :destroy]
-  before_action :already_logged_in, only: [:new, :create]
+  before_action :already_logged_in, only: [:new, :create, :activate]
 
   # GET /users or /users.json
   def index
@@ -26,8 +26,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      login(user_params[:email], user_params[:password])
-      redirect_to @user, notice: "User was successfully created."
+      redirect_to root_path, notice: "Please check your email to activate your account"
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +35,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: "User was successfully updated."
+      redirect_to @user, notice: "Successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,7 +44,18 @@ class UsersController < ApplicationController
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy
-    redirect_to users_url, notice: "User was successfully destroyed."
+    redirect_to users_url, notice: "Successfully destroyed."
+  end
+
+  # GET /users/1/activate
+  def activate
+    if @user = User.load_from_activation_token(params[:id])
+      @user.activate!
+      auto_login(@user)
+      redirect_to(@user, notice: 'Successfully activated')
+    else
+      not_authenticated
+    end
   end
 
   private
