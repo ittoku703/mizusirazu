@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
 
     if @user
       params[:remember] == 'on' ? remember_me! : forget_me!
-      redirect_back_or_to(@user, notice: 'Login successful')
+      redirect_to(@user, notice: 'Login successful')
     else
       flash.now[:alert] = 'Login failed'
       render action: 'new', status: :unprocessable_entity

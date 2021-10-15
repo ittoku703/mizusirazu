@@ -1,11 +1,16 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_login, only: [:index, :edit, :update, :destroy]
+  before_action :require_login, only: [:edit, :update, :destroy]
   before_action :already_logged_in, only: [:new, :create, :activate]
+  before_action :require_login_from_http_basic, only: [:index]
 
   # GET /users or /users.json
   def index
-    @users = User.all
+    if current_user.admin?
+      @users = User.all
+    else
+      redirect_to root_path, alert: 'You are not admin'
+    end
   end
 
   # GET /users/1 or /users/1.json
@@ -56,6 +61,10 @@ class UsersController < ApplicationController
     else
       not_authenticated
     end
+  end
+
+  def login_from_http_basic
+    redirect_to users_path, notice: 'Login from basic auth successful'
   end
 
   private
