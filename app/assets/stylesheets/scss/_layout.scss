@@ -45,20 +45,51 @@
   }
 }
 
+.header__togglebtn {
+  @include pc {
+    display: none;
+  }
+
+  @include sp {
+    float: right;
+    margin: 2%;
+    font-size: 12px;
+  }
+}
+
 .header__nav-links-wrap {
   width: 100%;
 }
 
 .header__nav-links {
-  float: right;
+  @include pc { 
+    float: right;
+  }
+
+  @include sp {
+    display: none;
+    margin: 1rem 0;
+    padding: 16px;
+    position: absolute;
+    top: 84px;
+    right: 12px;
+    z-index: 2;
+  }
 }
 
 .header__nav-link {
   text-transform: uppercase;
-  display: inline-block;
-  margin-right: 16px;
-  margin-left: 16px;
-  padding: 25px 0;
+  @include pc {
+    display: inline-block;
+    margin-right: 16px;
+    margin-left: 16px;
+    padding: 25px 0;
+  }
+
+  @include sp {
+    display: block;
+    line-height: 2rem;
+  }
 }
 
 /* flash msg */

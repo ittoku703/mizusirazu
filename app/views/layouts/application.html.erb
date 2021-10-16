@@ -11,8 +11,6 @@
     <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
 
     <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
   </head>
 
   <body>
@@ -24,10 +22,14 @@
           <%= image_tag 'logo.svg', size: '64x64', class: 'header__logo' %>
         <% end %>
 
+        <!-- header toggle btn -->
+        <a class="header__togglebtn nes-btn" href="#">*</a>
+
         <!-- Links -->
         <div class="header__nav-links-wrap">
           <nav class="header__nav-links">
             <% if current_user %>
+              <%= link_to 'My profile', user_path(current_user.id), class: 'header__nav-link' %>
               <%= link_to 'Edit Profile', edit_user_path(current_user.id), class: 'header__nav-link' %>
               <%= link_to 'Log out', logout_path, method: :delete, class: 'header__nav-link' %>
             <% else %>
@@ -78,5 +80,7 @@
     </footer> 
 
     <%= debug(params) if Rails.env.development? %> 
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
