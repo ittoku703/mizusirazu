@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :destroy]
   before_action :require_login, only: [:edit, :update, :destroy]
   before_action :already_logged_in, only: [:new, :create, :activate]
   before_action :require_login_from_http_basic, only: [:index]
@@ -39,8 +39,8 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    if @user.update(user_params)
-      redirect_to @user, notice: "Successfully updated."
+    if current_user.update(user_params)
+      redirect_to current_user, notice: "Successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -48,8 +48,13 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
-    redirect_to users_url, notice: "Successfully destroyed."
+    if current_user == @user || current_user.admin?
+      @user.destroy
+      flash[:notice] = "Successfully destroyed."
+    else
+      flash[:alert] = 'destroy failed'
+    end
+    redirect_to root_path
   end
 
   # GET /users/1/activate

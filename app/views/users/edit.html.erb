@@ -4,7 +4,7 @@
   <!-- form -->
   <div class="nes-container is-rounded">
     <h1 class="title">Editing User</h1>
-    <%= render 'form', user: @user %>
+    <%= render 'form', user: current_user %>
   </div>
 
   <!-- links -->
@@ -12,6 +12,8 @@
     <ul class="nes-list is-circle">
       <li><%= link_to 'Profile', @user %></li>
       <li><%= link_to 'Back', root_path %></li>
+      <li><%= button_to "Destroy", current_user, data: { confirm: "Are you sure?" }, method: :delete %></li>
+
     </ul>
   </div>
 </div>
