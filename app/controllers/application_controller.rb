@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :ensure_domain
   FQDN = 'www.mizusirazu.net'
 
+  # GET /
   def hello
     render template: 'hello'
   end
@@ -21,8 +22,7 @@ class ApplicationController < ActionController::Base
   # redirect to MYDOMAIN to herokuapp.com
   def ensure_domain
     return unless /\.herokuapp.com/ =~ request.host
-    # for the test
-    port = ":#{request.port}" unless [80, 443].include?(request.port)
+    port = ":#{request.port}" unless [80, 443].include?(request.port)  # <---- for the test
     redirect_to "#{request.protocol}#{FQDN}#{port}#{request.path}", status: :moved_permanently
   end
 end

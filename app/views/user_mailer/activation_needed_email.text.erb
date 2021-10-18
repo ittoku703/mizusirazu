@@ -2,6 +2,8 @@ Hey <%= @user.email %>!
 
 You have successfully signed up.
 
-Please activate this account, just follow this link: <%= @url %>
+Please activate this account, just follow this link
+
+<%= activate_user_url(@user.activation_token) %>
 
 Thanks.

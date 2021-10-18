@@ -2,9 +2,11 @@ class UserSessionsController < ApplicationController
   before_action :require_login, only: [:destroy]
   before_action :already_logged_in, only: [:new, :create]
 
+  # GET /login
   def new
   end
 
+  # POST /login
   def create
     @user = login(params[:email], params[:password], params[:remember])
 
@@ -17,6 +19,7 @@ class UserSessionsController < ApplicationController
     end
   end
 
+  # DELETE /logout
   def destroy
     logout
     redirect_to(root_path, notice: 'Logged out')

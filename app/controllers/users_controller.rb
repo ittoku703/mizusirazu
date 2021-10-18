@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :already_logged_in, only: [:new, :create, :activate]
   before_action :require_login_from_http_basic, only: [:index]
 
-  # GET /users or /users.json
+  # GET /users
   def index
     if current_user.admin?
       @users = User.all
@@ -13,20 +13,20 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1 or /users/1.json
+  # GET /users/:id
   def show
   end
 
-  # GET /users/new
+  # GET /signup
   def new
     @user = User.new
   end
 
-  # GET /users/1/edit
+  # GET /settings
   def edit
   end
 
-  # POST /users or /users.json
+  # POST /users
   def create
     @user = User.new(user_params)
 
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1 or /users/1.json
+  # PATCH/PUT /users/:id
   def update
     if current_user.update(user_params)
       redirect_to current_user, notice: "Successfully updated."
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1 or /users/1.json
+  # DELETE /users/:id
   def destroy
     if current_user == @user || current_user.admin?
       @user.destroy
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  # GET /users/1/activate
+  # GET /users/:id/activate
   def activate
     if @user = User.load_from_activation_token(params[:id])
       @user.activate!
@@ -66,10 +66,6 @@ class UsersController < ApplicationController
     else
       not_authenticated
     end
-  end
-
-  def login_from_http_basic
-    redirect_to users_path, notice: 'Login from basic auth successful'
   end
 
   private

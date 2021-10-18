@@ -5,8 +5,9 @@
     <thead>
       <tr>
         <th>Email</th>
-        <th>Crypted password</th>
-        <th>Salt</th>
+        <th>Activation state</th>
+        <th>Created at</th>
+        <th>Updated at</th>
         <th>Controls</th>
       </tr>
     </thead>
@@ -15,8 +16,9 @@
       <% @users.each do |user| %>
         <tr>
           <td><%= user.email %></td>
-          <td><%= user.crypted_password %></td>
-          <td><%= user.salt %></td>
+          <td><%= user.activation_state %></td>
+          <td><%= user.created_at.to_s %></td>
+          <td><%= user.updated_at.to_s %></td>
           <td>
             <ul class="nes-list is-disc">
               <li><%= link_to 'Show', user %></li>
