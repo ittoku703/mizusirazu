@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :ensure_domain
-  FQDN = 'www.mizusirazu.net'
 
   # GET /
   def hello
@@ -17,12 +16,12 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, notice: 'You are already logged in' if logged_in?
   end
 
-  private
-
   # redirect to MYDOMAIN to herokuapp.com
   def ensure_domain
-    return unless /\.herokuapp.com/ =~ request.host
+    return unless request.host.match?(/\.herokuapp.com/)
+
+    fqdn = 'www.mizusirazu.net'
     port = ":#{request.port}" unless [80, 443].include?(request.port)  # <---- for the test
-    redirect_to "#{request.protocol}#{FQDN}#{port}#{request.path}", status: :moved_permanently
+    redirect_to "#{request.protocol}#{fqdn}#{port}#{request.path}", status: :moved_permanently
   end
 end

@@ -1,10 +1,9 @@
 class UserSessionsController < ApplicationController
   before_action :require_login, only: [:destroy]
-  before_action :already_logged_in, only: [:new, :create]
+  before_action :already_logged_in, only: %i[new create]
 
   # GET /login
-  def new
-  end
+  def new; end
 
   # POST /login
   def create

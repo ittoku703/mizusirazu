@@ -11,6 +11,24 @@
 
 
 
+## Before git commit
+
+- `bundle exec rubocop`
+
+
+
+## rubocop
+
+1. `bundle exec rubocop --auto-gen-cofig`
+2. delete list in `.rubocop_todo.yml`
+3. `bundle exec rubocop`
+4. file fixed
+5. loop 2 -> 3 -> 4
+
+- `buncle exec rubocop --auto-correct` is convenient (Don`t use too match)
+
+
+
 ## user configuration
 
 - admin

@@ -1,0 +1,47 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 3.0
+  TargetRailsVersion: 6.1
+  Exclude:
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'tmp/**/*'
+
+
+Rails:
+  Enabled: true
+
+# EnforcedStyle:
+# Rails.root.join('app', 'hoge1', 'hoge2')  <--- ok
+Rails/FilePath:
+  EnforcedStyle: arguments
+  Exclude:
+    - 'spec/rails_helper.rb'
+
+# Japanese comment is allow
+Style/AsciiComments:
+ Enabled: false
+
+# do not check top comment of class or module
+Style/Documentation:
+  Enabled: false
+
+# no need to use frozen_string_literal: true
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# hoge, bar = 1, 2  <--- ok
+Style/ParallelAssignment:
+  Enabled: false
+
+Metrics/BlockLength:
+  CountComments: false
+  Exclude:
+    - 'config/environments/*'
