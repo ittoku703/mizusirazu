@@ -14,6 +14,7 @@
 ## Before git commit
 
 - `bundle exec rubocop`
+- `bundle exec rspec`
 
 
 
@@ -26,6 +27,12 @@
 5. loop 2 -> 3 -> 4
 
 - `buncle exec rubocop --auto-correct` is convenient (Don`t use too match)
+
+
+
+## rspec
+
+参考記事: https://qiita.com/jnchito/items/42193d066bd61c740612
 
 
 
