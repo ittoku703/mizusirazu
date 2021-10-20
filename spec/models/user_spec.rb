@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { build(:user) }
+  let(:user) { build(:user, activation_state: nil) }
 
   valid_email_regexp = %w[
     user@example.com

@@ -30,10 +30,10 @@
             <% if current_user %>
               <%= link_to 'My profile', user_path(current_user.id), class: 'header__nav-link' %>
               <%= link_to 'Edit Profile', edit_user_path(current_user.id), class: 'header__nav-link' %>
-              <%= link_to 'Log out', logout_path, method: :delete, class: 'header__nav-link' %>
+              <%= link_to 'Log out', user_session_path, method: :delete, class: 'header__nav-link' %>
             <% else %>
               <%= link_to 'Register', new_user_path, class: 'header__nav-link' %>
-              <%= link_to 'Log in', login_path, class: 'header__nav-link' %>
+              <%= link_to 'Log in', new_user_session_path, class: 'header__nav-link' %>
             <% end %>
           </nav>
         </div>
