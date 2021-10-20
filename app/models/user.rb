@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, format: { with: EMAIL_REGEXP }, length: { maximum: 255 }, uniqueness: true
   with_options if: -> { new_record? || changes[:crypted_password] } do
-    validates :password, length: { minimum: 3 }, confirmation: true
+    validates :password, length: { in: 3..999 }, confirmation: true
     validates :password_confirmation, presence: true
   end
 
