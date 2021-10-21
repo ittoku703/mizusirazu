@@ -52,3 +52,4 @@ Metrics/BlockLength:
   Exclude:
     - 'config/environments/*'
     - 'spec/**/*'
+    - 'Guardfile'

@@ -36,6 +36,20 @@
 
 
 
+## guard-rspec
+
+```ruby
+group :test do
+	# only macOS
+  gem 'terminal-notifier'
+	gem 'terminal-notifier-guard'
+end
+```
+
+`bundle exec guard`を実行し、ファイルを保存することで自動テスト＋デスクトップ通知が可能になる。(maxOS)
+
+
+
 ## user configuration
 
 - admin

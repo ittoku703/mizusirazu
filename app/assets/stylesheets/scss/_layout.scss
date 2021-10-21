@@ -161,11 +161,11 @@
   @include sp {
     float: none;
   }
+}
 
-  a {
-    display: block;
-    line-height: 2rem;
-  }
+.footer__technology-link {
+  display: table;
+  line-height: 2rem;
 }
 
 .footer__about {

@@ -34,8 +34,13 @@ group :test do
   gem 'capybara'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'guard-rspec', require: false
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+
+  # only macOS
+  gem 'terminal-notifier'
+  gem 'terminal-notifier-guard'
 end
 
 group :production do
