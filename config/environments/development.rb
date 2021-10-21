@@ -40,6 +40,8 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.preview_path = Rails.root.join('spec', 'mailers', 'previews')
+
   host, port = 'localhost', 3000
   config.action_mailer.default_url_options = { host: host, port: port }
   config.action_mailer.asset_host = "http://#{host}:#{port}"
