@@ -29,7 +29,15 @@ RSpec/ContextWording:
 
 # test block lines 5 --> 6
 RSpec/ExampleLength:
-  Max: 6
+  Enabled: false
+
+# scinario -> it
+RSpec/Capybara/FeatureMethods:
+  Enabled: false
+
+# 1 example 1 expect
+RSpec/MultipleExpectations:
+  Enabled: false
 
 # Japanese comment is allow
 Style/AsciiComments:

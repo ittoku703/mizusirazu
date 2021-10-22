@@ -29,7 +29,7 @@
           <nav class="header__nav-links">
             <% if current_user %>
               <%= link_to 'My profile', user_path(current_user.id), class: 'header__nav-link' %>
-              <%= link_to 'Edit Profile', edit_user_path(current_user.id), class: 'header__nav-link' %>
+              <%= link_to 'Edit Profile', edit_user_path, class: 'header__nav-link' %>
               <%= link_to 'Log out', user_session_path, method: :delete, class: 'header__nav-link' %>
             <% else %>
               <%= link_to 'Register', new_user_path, class: 'header__nav-link' %>
@@ -42,7 +42,7 @@
 
     <% flash.each do |name, msg| %>
       <div class="flash">
-        <%= content_tag 'div', id: "name_#{name}" do %>
+        <%= content_tag 'div', id: name do %>
           <span><%= msg %></span>
         <% end %>
       </div>

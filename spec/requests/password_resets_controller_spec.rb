@@ -30,7 +30,7 @@ RSpec.describe PasswordResetsController, type: :request do
         expect(response).to redirect_to root_url
       end
 
-      # why 2????
+      # text and html email send
       it 'is sending password reset email' do
         expect(ActionMailer::Base.deliveries.count).to eq 2
       end
@@ -42,7 +42,7 @@ RSpec.describe PasswordResetsController, type: :request do
       end
 
       it 'is redirect to root' do
-        expect(response).to redirect_to root_url
+        expect(response).to render_template :new
       end
 
       it 'is not sending password reset email' do

@@ -8,12 +8,19 @@ class PasswordResetsController < ApplicationController
   # POST /password
   def create
     @user = User.find_by(email: params[:email])
-    @user&.deliver_reset_password_instructions!
-    redirect_to(root_path, notice: 'sent reset password to your email')
+    if @user
+      @user.deliver_reset_password_instructions!
+      redirect_to(root_path, notice: 'sent reset password to your email')
+    else
+      flash[:alert] = 'Not found email'
+      render :new
+    end
   end
 
   # GET /password/:id/edit
-  def edit; end
+  def edit
+    flash[:notice] = 'Please set password'
+  end
 
   # PUT /password/:id
   def update

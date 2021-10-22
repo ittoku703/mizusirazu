@@ -68,4 +68,6 @@ RSpec.configure do |config|
   config.include Sorcery::TestHelpers::Rails::Request, type: :request
   # use request helper
   config.include RequestHelper, type: :request
+  # use feature helper
+  config.include FeatureHelper, type: :feature
 end
