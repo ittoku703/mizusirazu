@@ -25,14 +25,17 @@ module MizusirazuNet
     config.load_defaults 6.1
 
     # Configuration for the application, engines, and railties goes here.
-    #
+
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
 
-    # Don't generate system test files.
+    config.time_zone = 'UTC'
+    config.encoding = 'utf-8'
+    config.i18n.available_locales = %i[en ja]
+    config.i18n.fallbacks = [:en]
+
     config.generators.system_tests = nil
+
+    # config.eager_load_paths << Rails.root.join("extras")
   end
 end
