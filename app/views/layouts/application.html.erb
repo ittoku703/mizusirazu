@@ -28,11 +28,11 @@
         <div class="header__nav-links-wrap">
           <nav class="header__nav-links">
             <% if current_user %>
-              <%= link_to 'My profile', user_path(current_user.id), class: 'header__nav-link' %>
-              <%= link_to 'Edit Profile', edit_user_path, class: 'header__nav-link' %>
+              <%= link_to 'My page', user_path(current_user.id), class: 'header__nav-link' %>
+              <%= link_to 'Edit profile', edit_user_path, class: 'header__nav-link' %>
               <%= link_to 'Log out', user_session_path, method: :delete, class: 'header__nav-link' %>
             <% else %>
-              <%= link_to 'Register', new_user_path, class: 'header__nav-link' %>
+              <%= link_to 'New user', new_user_path, class: 'header__nav-link' %>
               <%= link_to 'Log in', new_user_session_path, class: 'header__nav-link' %>
             <% end %>
           </nav>
@@ -59,7 +59,7 @@
             <!-- My site Links -->
             <div class="footer__technology-links nes-container is-dark with-title">
               <p class="title">Technology</p>
-              <%= link_to 'Source Code', 'https://github.com/shinzanmono/mizusirazu.net', class: 'footer__technology-link' %>
+              <%= link_to 'Source code', 'https://github.com/shinzanmono/mizusirazu.net', class: 'footer__technology-link' %>
               <%= link_to "Contact", 'mailto:shinzanmono@example.com', class: 'footer__technology-link' %>
               <%= link_to 'NES.css', 'https://nostalgic-css.github.io/NES.css/', class: 'footer__technology-link' %>
               <%= link_to 'Nu-きなこもち(font)', 'http://kokagem.sakura.ne.jp/font/mochi/', class: 'footer__technology-link' %>

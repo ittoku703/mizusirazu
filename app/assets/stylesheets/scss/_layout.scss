@@ -95,10 +95,10 @@
 /* flash msg */
 .flash {
   animation: leftToRight 25s;
-  #name_notice {
+  #notice {
     color: $is-success;
   }
-  #name_alert {
+  #alert {
     color: $is-error;
   }
 }
