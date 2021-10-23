@@ -9,7 +9,7 @@ en:
   delete: Delete
   delete_user: Delete user
   forget_password: Forget password?
-  introduce: Introduction
+  introduction: Introduction
   login: Log in
   login_user: Log in user
   logout: Log out
@@ -24,16 +24,8 @@ en:
   signup: Sign up
   source_code: Source code
   technology: Technology
-  update: こうしん
-  update_user: ユーザをこうしんする
   updated_at: Updated at
   user: User
   users: All user
   user_page: User page
   yes: Yes
-  activerecord:
-    models:
-      user: User
-    attributes:
-      user:
-        

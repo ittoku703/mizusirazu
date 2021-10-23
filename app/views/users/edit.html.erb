@@ -3,17 +3,23 @@
 <div class="user__form">
   <!-- form -->
   <div class="nes-container is-rounded">
-    <h1 class="title">Editing User</h1>
-    <%= render 'form', user: current_user %>
+    <h1 class="title"><%= t('edit_user') %></h1>
+    <%= form_with(model: current_user) do |f| %>
+      <%= render 'shared/error_messages', object: current_user %>
+
+      <%= render 'form', object: f %>
+
+      <div class="user__form-field">
+        <%= f.submit t('edit'), class: 'nes-btn is-primary' %>
+      </div>
+    <% end %>
   </div>
 
   <!-- links -->
   <div class="user__form-links">
     <ul class="nes-list is-circle">
-      <li><%= link_to 'My page', user_path(current_user) %></li>
-      <li><%= link_to 'Delete user', current_user, data: { confirm: 'Are you sure?' }, method: :delete %></li>
+      <li><%= link_to t('my_page'), user_path(current_user) %></li>
+      <li><%= link_to t('delete_user'), current_user, data: { confirm: 'Are you sure?' }, method: :delete %></li>
     </ul>
   </div>
 </div>
-
-

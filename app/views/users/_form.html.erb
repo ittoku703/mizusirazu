@@ -1,20 +1,11 @@
-<%= form_with(model: user) do |form| %>
+<div class="user__form-field nes-field">
+  <%= object.text_field :email, class: 'user__form-input nes-input', placeholder: t('email') %>
+</div>
 
-  <%= render 'shared/error_messages', object: user %>
+<div class="user__form-field nes-field">
+  <%= object.password_field :password, class: 'user__form-input nes-input', placeholder: t('password') %>
+</div>
 
-  <div class="user__form-field nes-field">
-    <%= form.text_field :email, class: 'user__form-input nes-input', placeholder: 'Email' %>
-  </div>
-
-  <div class="user__form-field nes-field">
-    <%= form.password_field :password, class: 'user__form-input nes-input', placeholder: 'Password' %>
-  </div>
-
-  <div class="user__form-field nes-field">
-    <%= form.password_field :password_confirmation, class: 'user__form-input nes-input', placeholder: 'Password Again' %>
-  </div>
-
-  <div class="user__form-field">
-    <%= form.submit class: 'nes-btn is-primary' %>
-  </div>
-<% end %>
+<div class="user__form-field nes-field">
+  <%= object.password_field :password_confirmation, class: 'user__form-input nes-input', placeholder: t('password_confirmation') %>
+</div>

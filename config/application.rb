@@ -31,6 +31,7 @@ module MizusirazuNet
 
     config.time_zone = 'UTC'
     config.encoding = 'utf-8'
+
     config.i18n.available_locales = %i[en ja]
     config.i18n.fallbacks = [:en]
 

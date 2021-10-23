@@ -1,14 +1,14 @@
-<h1 class="users__index-headline">Users</h1>
+<h1 class="users__index-headline"><%= t('users') %></h1>
 
 <div class="users__table">
   <table class="nes-table is-bordered is-centered">
     <thead>
       <tr>
-        <th>Email</th>
-        <th>Activation state</th>
-        <th>Created at</th>
-        <th>Updated at</th>
-        <th>Controls</th>
+        <th><%= t('email') %></th>
+        <th><%= t('activation') %></th>
+        <th><%= t('created_at') %></th>
+        <th><%= t('updated_at') %></th>
+        <th><%= t('user') %></th>
       </tr>
     </thead>
 
@@ -21,8 +21,8 @@
           <td><%= user.updated_at.to_s %></td>
           <td>
             <ul class="nes-list is-disc">
-              <li><%= link_to 'Show', user %></li>
-              <li><%= link_to "Destroy", user, data: { confirm: "Are you sure?" }, method: :delete %></li>
+              <li><%= link_to t('user_page'), user %></li>
+              <li><%= link_to t('delete_user'), user, data: { confirm: "Are you sure?" }, method: :delete %></li>
             </ul>
           </td>
         </tr>
