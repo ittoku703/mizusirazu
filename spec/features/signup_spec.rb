@@ -8,7 +8,7 @@ RSpec.feature 'Signups', type: :feature do
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
     fill_in 'user[password_confirmation]', with: user.password_confirmation
-    click_on 'Create User'
+    click_button t('signup')
     expect(page).to have_selector '#notice', text: 'Please check your email to activate your account'
   end
 
@@ -17,7 +17,7 @@ RSpec.feature 'Signups', type: :feature do
     fill_in 'user[email]', with: 'hogehoge'
     fill_in 'user[password]', with: 'bar'
     fill_in 'user[password_confirmation]', with: 'baz'
-    click_on 'Create User'
+    click_button t('signup')
     expect(page).to have_selector '#error_explanation'
   end
 
@@ -26,7 +26,7 @@ RSpec.feature 'Signups', type: :feature do
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
     fill_in 'user[password_confirmation]', with: user.password_confirmation
-    click_on 'Create User'
+    click_button t('signup')
     expect(page).to have_selector '#notice', text: 'Please check your email to activate your account'
     # needed_activation_email
     visit email_link

@@ -12,7 +12,7 @@ RSpec.feature 'Settings', type: :feature do
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: 'password'
     fill_in 'user[password_confirmation]', with: 'password'
-    click_on 'Update User'
+    click_button t('edit')
     expect(page).to have_selector '#notice', text: 'Successfully updated'
   end
 
@@ -20,7 +20,7 @@ RSpec.feature 'Settings', type: :feature do
     fill_in 'user[email]', with: 'hogehoge'
     fill_in 'user[password]', with: 'bar'
     fill_in 'user[password_confirmation]', with: 'baz'
-    click_on 'Update User'
+    click_button t('edit')
     expect(page).to have_selector '#error_explanation'
   end
 end
