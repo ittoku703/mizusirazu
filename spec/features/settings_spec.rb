@@ -13,7 +13,7 @@ RSpec.feature 'Settings', type: :feature do
     fill_in 'user[password]', with: 'password'
     fill_in 'user[password_confirmation]', with: 'password'
     click_button t('edit')
-    expect(page).to have_selector '#notice', text: 'Successfully updated'
+    expect(page).to have_selector '#notice', text: t('update_success')
   end
 
   scenario 'settings failed' do

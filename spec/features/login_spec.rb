@@ -12,15 +12,15 @@ RSpec.feature 'Logins', type: :feature do
     fill_in 'email', with: user.email
     fill_in 'password', with: 'password'
     click_button t('login')
-    expect(page.has_selector?('#notice', text: 'Login successful')).to eq true
+    expect(page).to have_selector '#notice', text: t('login_success')
     click_link t('logout')
-    expect(page.has_selector?('#notice', text: 'Logged out')).to eq true
+    expect(page).to have_selector '#notice', text: t('logged_out')
   end
 
   scenario 'login failed' do
     fill_in 'email', with: 'hogehoge'
     fill_in 'password', with: ''
     click_button t('login')
-    expect(page).to have_selector '#alert', text: 'Login failed'
+    expect(page).to have_selector '#alert', text: t('login_failed')
   end
 end
