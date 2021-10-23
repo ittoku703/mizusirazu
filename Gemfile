@@ -6,6 +6,7 @@ gem 'rails', '~> 6.1.0'
 gem 'rails-i18n'
 
 gem 'bootsnap', require: false
+gem 'http_accept_language'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'puma'
