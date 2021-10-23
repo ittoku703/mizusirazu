@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if current_user.admin?
       @users = User.all
     else
-      redirect_to root_path, alert: 'You are not admin'
+      redirect_to root_path, alert: t('not_admin')
     end
   end
 
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to root_path, notice: 'Please check your email to activate your account'
+      redirect_to(root_path, notice: t('check_email_activate'))
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/:id
   def update
     if current_user.update(user_params)
-      redirect_to current_user, notice: 'Successfully updated.'
+      redirect_to(current_user, notice: t('update_success'))
     else
       render :edit, status: :unprocessable_entity
     end
@@ -48,9 +48,9 @@ class UsersController < ApplicationController
   def destroy
     if current_user == @user || current_user.admin?
       @user.destroy
-      flash[:notice] = 'Successfully destroyed.'
+      flash[:notice] = t('delete_success')
     else
-      flash[:alert] = 'destroy failed'
+      flash[:alert] = t('delete_failed')
     end
     redirect_to root_path
   end
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
 
     if @user.activate!
       auto_login(@user)
-      redirect_to(@user, notice: 'Successfully activated')
+      redirect_to(@user, notice: t('activate_success'))
     else
       not_authenticated
     end

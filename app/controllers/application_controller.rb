@@ -10,11 +10,11 @@ class ApplicationController < ActionController::Base
   private
 
   def not_authenticated
-    redirect_to new_user_session_path, alert: 'Please login'
+    redirect_to new_user_session_path, alert: t('please_login')
   end
 
   def already_logged_in
-    redirect_to root_path, notice: 'You are already logged in' if logged_in?
+    redirect_to root_path, notice: t('already_logged_in') if logged_in?
   end
 
   # redirect to MYDOMAIN to herokuapp.com

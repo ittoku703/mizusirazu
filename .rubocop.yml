@@ -55,6 +55,9 @@ Style/FrozenStringLiteralComment:
 Style/ParallelAssignment:
   Enabled: false
 
+Metrics/AbcSize:
+  Max: 20
+
 Metrics/BlockLength:
   CountComments: false
   Exclude:

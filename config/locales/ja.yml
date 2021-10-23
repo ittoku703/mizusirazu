@@ -1,31 +1,59 @@
 ja:
+  activate_success: アカウントをゆうこうにしました
   activation: ゆうこうか
+  already_logged_in: すでにログインしています
   contact: れんらくする
   change_password: パスワードをへんこうする
+  check_email_activate: アカウントゆうこうのメールをかくにんしてください
   created_at: さくせいじ
   edit: へんしゅう
   edit_user: ユーザをへんしゅうする
   email: メールアドレス
   delete: さくじょ
+  delete_failed: さくじょにしっぱいしました
+  delete_success: さくじょにせいこうしました
   delete_user: ユーザをさくじょする
   forget_password: パスワードをおわすれですか？
   introduction: じこしょうかい
+  logged_out: ログアウトしました
   login: ログイン
+  login_failed: ログインにしっぱいしました
   login_user: ログインする
+  login_success: ログインしました
   logout: ログアウト
   logout_user: ログアウトする
   my_page: じぶんのページ
   new_user: ユーザをさくせいする
-  no: いいえ
+  'no': 'いいえ'
+  not_admin: 管理者のみアクセスかのうです
+  not_found_email: メールがみつかりません
   password: パスワード
   password_confirmation: パスワード（もういちど）
+  password_reset_email: パスワードをさいせっていするメールをおくりました。
+  password_reset_failed: パスワードをせっていできませんでした
+  password_reset_success: パスワードをせっていしました
+  please_login: ログインしてください
+  please_set_password: パスワードをせっていしてください
   remember_me: ログインをほぞんしますか？
   reset_password: パスワードをリセット
   signup: しんきさくせい
   source_code: ソースコード
   technology: ぎじゅつ
+  update_success: こうしんにせいこうしました
   updated_at: こうしんじ
   user: ユーザー
   users: ユーザいちらん
   user_page: ユーザのページ
-  yes: はい
+  'yes': 'はい'
+  activerecord:
+    models:
+      user: ユーザ
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（もういちど) 
+  errors:
+    template:
+      header:
+        other: "%{model}に%{count}つのエラーがでました"

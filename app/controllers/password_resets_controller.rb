@@ -10,25 +10,25 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user
       @user.deliver_reset_password_instructions!
-      redirect_to(root_path, notice: 'sent reset password to your email')
+      redirect_to(root_path, notice: t('password_reset_email'))
     else
-      flash[:alert] = 'Not found email'
+      flash[:alert] = t('not_found_email')
       render :new
     end
   end
 
   # GET /password/:id/edit
   def edit
-    flash[:notice] = 'Please set password'
+    flash[:notice] = t('please_set_password')
   end
 
   # PUT /password/:id
   def update
     @user.password_confirmation = params[:password_confirmation]
     if @user.change_password(params[:password])
-      redirect_to(root_path, notice: 'Reset password successfully')
+      redirect_to(root_path, notice: t('password_reset_success'))
     else
-      render(action: 'edit', alert: 'Reset password failed')
+      render(action: 'edit', alert: t('password_reset_failed'))
     end
   end
 

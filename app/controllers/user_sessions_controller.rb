@@ -11,9 +11,9 @@ class UserSessionsController < ApplicationController
 
     if @user
       params[:remember] == 'on' ? remember_me! : forget_me!
-      redirect_to(@user, notice: 'Login successful')
+      redirect_to(@user, notice: t('login_success'))
     else
-      flash.now[:alert] = 'Login failed'
+      flash.now[:alert] = t('login_failed')
       render action: 'new', status: :unprocessable_entity
     end
   end
@@ -21,6 +21,6 @@ class UserSessionsController < ApplicationController
   # DELETE /logout
   def destroy
     logout
-    redirect_to(root_path, notice: 'Logged out')
+    redirect_to(root_path, notice: t('logged_out'))
   end
 end

@@ -1,31 +1,59 @@
 en:
+  activate_success: Activate successfully
   activation: Activation
+  already_logged_in: You are Already logged_in
   contact: Contact
   change_password: Change password
+  check_email_activate: Please check your email to activate your account
   created_at: Created at
   edit: Edit
   edit_user: Editing user
   email: Email
   delete: Delete
+  delete_failed: Delete failed
+  delete_success: Delete successfully
   delete_user: Delete user
   forget_password: Forget password?
   introduction: Introduction
+  logged_out: Logged out
   login: Log in
+  login_failed: Login failed
   login_user: Log in user
+  login_success: Successfully login
   logout: Log out
   logout_user: Log out user
   my_page: My page
   new_user: New user
-  no: No
+  'no': 'No'
+  not_admin: You are not admin
+  not_found_email: Not found email
   password: Password
   password_confirmation: Password Again
+  password_reset_email: Sent password reset email
+  password_reset_failed: Failed password reset
+  password_reset_success: Successfully password reset
+  please_login: Please logged in
+  please_set_password: Please set password
   remember_me: Remember me?
   reset_password: Reset password
   signup: Sign up
   source_code: Source code
   technology: Technology
+  update_success: Update successfully
   updated_at: Updated at
   user: User
   users: All user
   user_page: User page
-  yes: Yes
+  'yes': 'Yes'
+  activerecord:
+    models:
+      user: User
+    attributes:
+      user:
+        email: Email
+        password: Password
+        password_confirmation: Password confirmation
+  errors:
+    template:
+      header:
+        other: "%{count} errors prohibited this %{model} from being saved"
