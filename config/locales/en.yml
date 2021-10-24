@@ -1,9 +1,12 @@
 en:
   en: English
   ja: Japanese
+  activate: Activate
   activate_success: Activate successfully
-  activation: Activation
+  activate_user: Activate user
+  already_activated: Already activate account
   already_logged_in: You are Already logged_in
+  authenticate_failed: Authenticate failed
   contact: Contact
   change_password: Change password
   check_email_activate: Please check your email to activate your account
@@ -37,6 +40,7 @@ en:
   please_login: Please logged in
   please_set_password: Please set password
   remember_me: Remember me?
+  resend_activation_email: Resend activation email
   reset_password: Reset password
   signup: Sign up
   source_code: Source code

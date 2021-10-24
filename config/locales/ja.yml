@@ -1,9 +1,12 @@
 ja:
   en: えいご
   ja: にほんご
+  activate: ゆうこうか
   activate_success: アカウントをゆうこうにしました
-  activation: ゆうこうか
+  activate_user: アカウントをゆうこうかする
+  already_activated: すでにゆうこうかしています
   already_logged_in: すでにログインしています
+  authenticate_failed: にんしょうにしっぱいしました
   contact: れんらくする
   change_password: パスワードをへんこうする
   check_email_activate: アカウントゆうこうのメールをかくにんしてください
@@ -37,6 +40,7 @@ ja:
   please_login: ログインしてください
   please_set_password: パスワードをせっていしてください
   remember_me: ログインをほぞんしますか？
+  resend_activation_email: ゆうこうかメールをもういちどおくる
   reset_password: パスワードをリセット
   signup: しんきさくせい
   source_code: ソースコード
