@@ -11,6 +11,9 @@ RSpec.feature 'SiteLayouts', type: :feature do
     expect(page).to have_link t('contact')
     expect(page).to have_link 'NES.css'
     expect(page).to have_link 'Nu-きなこもち(font)'
+    I18n.available_locales.each do |language|
+      expect(page).to have_link t(language)
+    end
   end
 
   scenario 'root links (logged in)' do
