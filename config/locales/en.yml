@@ -1,56 +1,63 @@
 en:
   en: English
   ja: Japanese
-  activate: Activate
-  activate_success: Activate successfully
-  activate_user: Activate user
-  already_activated: Already activate account
-  already_logged_in: You are Already logged_in
   authenticate_failed: Authenticate failed
   contact: Contact
-  change_password: Change password
-  check_email_activate: Please check your email to activate your account
-  created_at: Created at
+  control: Control
   edit: Edit
-  edit_user: Editing user
-  email: Email
   delete: Delete
   delete_failed: Delete failed
   delete_success: Delete successfully
-  delete_user: Delete user
-  forget_password: Forget password?
   introduction: Introduction
-  logged_out: Logged out
-  login: Log in
-  login_failed: Login failed
-  login_user: Log in user
-  login_success: Successfully login
-  logout: Log out
-  logout_user: Log out user
   my_page: My page
-  new_user: New user
   'no': 'No'
   not_admin: You are not admin
   not_found_email: Not found email
-  password: Password
-  password_confirmation: Password Again
-  password_reset_email: Sent password reset email
-  password_reset_failed: Failed password reset
-  password_reset_success: Successfully password reset
-  please_login: Please logged in
-  please_set_password: Please set password
   remember_me: Remember me?
-  resend_activation_email: Resend activation email
-  reset_password: Reset password
-  signup: Sign up
+  select_language: Select language
   source_code: Source code
   technology: Technology
   update_success: Update successfully
-  updated_at: Updated at
-  user: User
+  'yes': 'Yes'
+  # user
+  activate_user: Activate user
+  delete_user: Delete user
+  edit_user: Editing user
+  login_user: Log in user
+  logout_user: Log out user
+  new_user: New user
+  signup: Sign up
   users: All user
   user_page: User page
-  'yes': 'Yes'
+  # session
+  already_logged_in: You are Already logged_in
+  logged_out: Logged out
+  login: Log in
+  login_failed: Login failed
+  login_success: Successfully login
+  logout: Log out
+  please_login: Please logged in
+  # password reset
+  change_password: Change password
+  check_password_reset_email: Check password reset email
+  forget_password: Forget password?
+  password_reset_failed: Failed password reset
+  password_reset_success: Successfully password reset
+  please_set_password: Please set password
+  reset_password: Reset password
+  # activation
+  activate: Activate
+  activate_failed: Activate failed
+  activate_success: Activate successfully
+  already_activated: Already activate account
+  check_activation_email: Please check your email to activate your account
+  user:
+    created_at: Created at
+    email: Email
+    password: Password
+    password_confirmation: Password Again
+    updated_at: Updated at
+  # other
   activerecord:
     models:
       user: User

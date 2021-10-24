@@ -5,7 +5,7 @@
 * Configuration: ???
 * Database creation: `rails db:migrate`
 * Database initialization: `heroku pg:reset`
-* How to run the test suite: not yet
+* How to run the test suite: `bundle exec guard`
 * Services (job queues, cache servers, search engines, etc.): not yet
 * Deployment instructions: none
 

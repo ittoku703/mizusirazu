@@ -10,7 +10,7 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user
       @user.deliver_reset_password_instructions!
-      redirect_to(root_path, notice: t('password_reset_email'))
+      redirect_to(root_path, notice: t('check_password_reset_email'))
     else
       flash[:alert] = t('not_found_email')
       render :new

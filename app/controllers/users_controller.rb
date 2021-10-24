@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to(root_path, notice: t('check_email_activate'))
+      redirect_to(root_path, notice: t('check_activation_email'))
     else
       render :new, status: :unprocessable_entity
     end
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
       auto_login(@user)
       redirect_to(@user, notice: t('activate_success'))
     else
-      not_authenticated
+      redirect_to(root_path, notice: t('activate_failed'))
     end
   end
 

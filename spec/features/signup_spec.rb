@@ -9,7 +9,7 @@ RSpec.feature 'Signups', type: :feature do
     fill_in 'user[password]', with: user.password
     fill_in 'user[password_confirmation]', with: user.password_confirmation
     click_button t('signup')
-    expect(page).to have_selector '#notice', text: t('check_email_activate')
+    expect(page).to have_selector '#notice', text: t('check_activation_email')
   end
 
   scenario 'bad signup' do
@@ -27,7 +27,7 @@ RSpec.feature 'Signups', type: :feature do
     fill_in 'user[password]', with: user.password
     fill_in 'user[password_confirmation]', with: user.password_confirmation
     click_button t('signup')
-    expect(page).to have_selector '#notice', text: t('check_email_activate')
+    expect(page).to have_selector '#notice', text: t('check_activation_email')
     # needed_activation_email
     visit email_link
     expect(page).to have_selector '#notice', text: t('activate_success')

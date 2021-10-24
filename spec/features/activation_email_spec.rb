@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Resend activation email', type: :feature do
+RSpec.feature 'Activation email', type: :feature do
   let(:user) { create(:user) }
 
   scenario 'success' do
@@ -8,7 +8,7 @@ RSpec.feature 'Resend activation email', type: :feature do
     fill_in 'email', with: user.email
     fill_in 'password', with: 'password'
     click_button t('activate')
-    expect(page).to have_selector '#notice', text: t('check_email_activate')
+    expect(page).to have_selector '#notice', text: t('check_activation_email')
     visit email_link
     expect(page).to have_selector '#notice', text: t('activate_success')
   end

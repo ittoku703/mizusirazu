@@ -1,56 +1,63 @@
 ja:
   en: えいご
   ja: にほんご
-  activate: ゆうこうか
-  activate_success: アカウントをゆうこうにしました
-  activate_user: アカウントをゆうこうかする
-  already_activated: すでにゆうこうかしています
-  already_logged_in: すでにログインしています
   authenticate_failed: にんしょうにしっぱいしました
   contact: れんらくする
-  change_password: パスワードをへんこうする
-  check_email_activate: アカウントゆうこうのメールをかくにんしてください
-  created_at: さくせいじ
+  control: そうさ
   edit: へんしゅう
-  edit_user: ユーザをへんしゅうする
-  email: メールアドレス
   delete: さくじょ
   delete_failed: さくじょにしっぱいしました
   delete_success: さくじょにせいこうしました
-  delete_user: ユーザをさくじょする
-  forget_password: パスワードをおわすれですか？
   introduction: じこしょうかい
-  logged_out: ログアウトしました
-  login: ログイン
-  login_failed: ログインにしっぱいしました
-  login_user: ログインする
-  login_success: ログインしました
-  logout: ログアウト
-  logout_user: ログアウトする
   my_page: じぶんのページ
-  new_user: ユーザをさくせいする
   'no': 'いいえ'
   not_admin: 管理者のみアクセスかのうです
   not_found_email: メールがみつかりません
-  password: パスワード
-  password_confirmation: パスワード（もういちど）
-  password_reset_email: パスワードをさいせっていするメールをおくりました。
-  password_reset_failed: パスワードをせっていできませんでした
-  password_reset_success: パスワードをせっていしました
-  please_login: ログインしてください
-  please_set_password: パスワードをせっていしてください
   remember_me: ログインをほぞんしますか？
-  resend_activation_email: ゆうこうかメールをもういちどおくる
-  reset_password: パスワードをリセット
-  signup: しんきさくせい
+  select_language: げんごをせんたくしてください
   source_code: ソースコード
   technology: ぎじゅつ
   update_success: こうしんにせいこうしました
-  updated_at: こうしんじ
-  user: ユーザー
+  'yes': 'はい'
+  # user
+  activate_user: アカウントをゆうこうかする
+  delete_user: ユーザをさくじょする
+  edit_user: ユーザをへんしゅうする
+  login_user: ログインする
+  logout_user: ログアウトする
+  new_user: ユーザをさくせいする
+  signup: しんきさくせい
   users: ユーザいちらん
   user_page: ユーザのページ
-  'yes': 'はい'
+  # session
+  already_logged_in: すでにログインしています
+  logged_out: ログアウトしました
+  login: ログイン
+  login_failed: ログインにしっぱいしました
+  login_success: ログインしました
+  logout: ログアウト
+  please_login: ログインしてください
+  # password reset
+  change_password: パスワードをへんこうする
+  check_password_reset_email: パスワードさいせっていメールをかくにんしてください
+  forget_password: パスワードをおわすれですか？
+  password_reset_failed: パスワードをせっていできませんでした
+  password_reset_success: パスワードをせっていしました
+  please_set_password: パスワードをせっていしてください
+  reset_password: パスワードをリセット
+  # activation
+  activate: ゆうこうか
+  activate_failed: アカウントをゆうこうにできませんでした
+  activate_success: アカウントをゆうこうにしました
+  already_activated: すでにゆうこうかしています
+  check_activation_email: アカウントゆうこうのメールをかくにんしてください
+  user:
+    created_at: さくせいじ
+    email: メールアドレス
+    password: パスワード
+    password_confirmation: パスワード（もういちど）
+    updated_at: こうしんじ
+  # other
   activerecord:
     models:
       user: ユーザ

@@ -7,7 +7,7 @@ RSpec.feature 'ResetPasswords', type: :feature do
     visit new_password_reset_path
     fill_in 'email', with: user.email
     click_button t('reset_password')
-    expect(page).to have_selector '#notice', text: t('password_reset_email')
+    expect(page).to have_selector '#notice', text: t('check_password_reset_email')
     visit email_link
     expect(page).to have_selector '#notice', text: t('please_set_password')
     fill_in 'password', with: 'new-password'

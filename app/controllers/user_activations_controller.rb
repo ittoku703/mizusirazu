@@ -20,7 +20,7 @@ class UserActivationsController < ApplicationController
   def authenticate_success
     if @user.activation_state == 'pending'
       UserMailer.activation_needed_email(@user).deliver_now
-      redirect_to(root_path, notice: t('check_email_activate'))
+      redirect_to(root_path, notice: t('check_activation_email'))
     else
       redirect_to(root_path, notice: t('already_activated'))
     end

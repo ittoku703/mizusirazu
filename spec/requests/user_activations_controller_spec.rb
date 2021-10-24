@@ -12,7 +12,7 @@ RSpec.describe UserActivationsController, type: :request do
       end
     end
 
-    context 'when logged in user' do
+    context 'when non logged in user' do
       it 'is OK' do
         get new_user_activation_path
         expect(response.status).to eq 200
