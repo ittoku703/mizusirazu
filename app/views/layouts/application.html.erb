@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
   <head>
     <title>MizusirazuNet</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -72,6 +72,20 @@
               <p>ということは、このサイトもいいサイトということになるでしょう。</p>
             </div>
           </div>
+
+          <!-- language selector -->
+          <div class="footer__language_selector">
+            <h2>Select language</h2>
+            <div class="footer__languages">
+              <% I18n.available_locales.each do |language| %>
+                <div class="footer__language">
+                  <%= link_to t(language), url_for(locale: language) %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <!-- copyright -->
           <div class="footer__copyright">
             <i class="nes-kirby"></i>
             <p>copyright (c) shinzanmono. All right received</p>

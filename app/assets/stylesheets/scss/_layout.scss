@@ -169,6 +169,7 @@
 }
 
 .footer__about {
+  padding-top: $spacer;
   box-sizing: border-box;
   float: left;
 
@@ -182,10 +183,24 @@
   }
 }
 
+.footer__language_selector {
+  padding-top: $spacer;
+  text-align: center;
+}
+
+.footer__languages {
+  padding-top: 8px;
+}
+
+.footer__language {
+  display: inline-block;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
 .footer__copyright {
   width: 100%;
   padding-top: $spacer;
   text-align: center;
 }
-
 
