@@ -51,6 +51,7 @@ en:
   activate_success: Activate successfully
   already_activated: Already activate account
   check_activation_email: Please check your email to activate your account
+  failed_send_activation_email: Failed send activation email
   user:
     created_at: Created at
     email: Email

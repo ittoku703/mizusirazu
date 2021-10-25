@@ -14,6 +14,10 @@ class User < ApplicationRecord
     validates :password_confirmation, presence: true
   end
 
+  def resend_activation_email!
+    send_activation_needed_email!
+  end
+
   private
 
   def downcase_email

@@ -11,7 +11,7 @@ ja:
   introduction: じこしょうかい
   my_page: じぶんのページ
   'no': 'いいえ'
-  not_admin: 管理者のみアクセスかのうです
+  not_admin: かんりしゃのみアクセスかのうです
   not_found_email: メールがみつかりません
   remember_me: ログインをほぞんしますか？
   select_language: げんごをせんたくしてください
@@ -51,6 +51,7 @@ ja:
   activate_success: アカウントをゆうこうにしました
   already_activated: すでにゆうこうかしています
   check_activation_email: アカウントゆうこうのメールをかくにんしてください
+  failed_send_activation_email: アカウントゆうこうのメールが送れませんでした
   user:
     created_at: さくせいじ
     email: メールアドレス
