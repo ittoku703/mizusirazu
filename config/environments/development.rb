@@ -46,10 +46,6 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: host, port: port }
   config.action_mailer.asset_host = "http://#{host}:#{port}"
 
-  # letter_opner
-  config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.perform_deliveries = true
-
   # # gmail
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.perform_deliveries = true
