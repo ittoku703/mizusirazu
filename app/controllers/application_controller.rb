@@ -2,11 +2,6 @@ class ApplicationController < ActionController::Base
   before_action :ensure_domain
   before_action :set_locale
 
-  # GET /
-  def hello
-    render template: 'hello'
-  end
-
   private
 
   # redirect to MYDOMAIN to herokuapp.com
