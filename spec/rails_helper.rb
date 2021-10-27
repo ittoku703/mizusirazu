@@ -64,8 +64,6 @@ RSpec.configure do |config|
 
   # use factory_bot_rails
   config.include FactoryBot::Syntax::Methods
-  # use sorcery helper
-  config.include Sorcery::TestHelpers::Rails::Request, type: :request
   # use request helper
   config.include RequestHelper, type: :request
   # use feature helper

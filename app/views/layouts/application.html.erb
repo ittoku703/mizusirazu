@@ -30,14 +30,6 @@
         <!-- Links -->
         <div class="header__nav-links-wrap">
           <nav class="header__nav-links">
-            <% if current_user %>
-              <%= link_to t('my_page'), user_path(current_user.id), class: 'header__nav-link' %>
-              <%= link_to t('edit'), edit_user_path, class: 'header__nav-link' %>
-              <%= link_to t('logout'), user_session_path, method: :delete, class: 'header__nav-link' %>
-            <% else %>
-              <%= link_to t('signup'), new_user_path, class: 'header__nav-link' %>
-              <%= link_to t('login'), new_user_session_path, class: 'header__nav-link' %>
-            <% end %>
           </nav>
         </div>
       </div>

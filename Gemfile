@@ -11,7 +11,6 @@ gem 'jbuilder'
 gem 'jquery-rails'
 gem 'puma'
 gem 'sass-rails'
-gem 'sorcery'
 gem 'turbolinks'
 
 group :development, :test do
