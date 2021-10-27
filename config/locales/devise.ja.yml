@@ -1,0 +1,62 @@
+ja:
+  devise:
+    confirmations:
+      confirmed: "アカウントをとうろくしました"
+      send_instructions: "アカウントのゆうこうかのメールをそうしんしました"
+      send_paranoid_instructions: "メールアドレスがとうろくされていれば、ほんにんかくにんようのメールがそうしんされます"
+    failure:
+      already_authenticated: "すでにサインインしています"
+      inactive: "まだアカウントがゆうこうかされていません。メールのてじゅんにしたがって、アカウントをゆうこうかしてください"
+      invalid: "%{authentication_keys} もしくはパスワードがふせいです"
+      locked: "アカウントがロックされています"
+      last_attempt: "ラストチャンスです"
+      not_found_in_database: "むこうな %{authentication_keys} もしくはパスワードがふせいです"
+      timeout: "セッションのがタイムアウトしました。もういちどサインインしてください"
+      unauthenticated: "サインイン、もしくはサインアップしてください"
+      unconfirmed: "めーるあどれすのほんにんかくにんがひつようです"
+    mailer:
+      confirmation_instructions:
+        subject: "アカウントゆうこうかについて"
+      reset_password_instructions:
+        subject: "パスワードリセットについて"
+      unlock_instructions:
+        subject: "ロックかいじょについて"
+      email_changed:
+        subject: "メールアドレスへんこうについて"
+      password_change:
+        subject: "パスワードへんこうについて"
+    omniauth_callbacks:
+      failure: "%{kind} アカウントによるにんしょうにができませんでした りゆう: (%{reason})"
+      success: "%{kind} アカウントをにんしょうしました"
+    passwords:
+      no_token: "このページにはあくせすできません。パスワードリセットメールのリンクからアクセスしてください"
+      send_instructions: "パスワードリセットメールをそうしんしました"
+      send_paranoid_instructions: "メールアドレスがとうろくされていれば、パスワードリセットメールがとどきます"
+      updated: "パスワードをへんこうしました"
+      updated_not_active: "パスワードをへんこうしました"
+    registrations:
+      destroyed: "アカウントをさくじょしました。さようなら"
+      signed_up: "サインアップしました。ようこそ！"
+      signed_up_but_inactive: "サインアップしました。アカウントをゆうこうにしてください"
+      signed_up_but_locked: "サインアップしました。アカウントのロックをかいじょしてください"
+      signed_up_but_unconfirmed: "ほんにんかくにんようのメールをそうしんしました。アカウントをゆうこうにしてください"
+      update_needs_confirmation: "アカウントをこうしんしました。あたらしいメールアドレスをゆうこうかしてください"
+      updated: "アカウントをこうしんしました"
+      updated_but_not_signed_in: "アカウントをこうしんしました。あたらしいパスワードでもういちどログインしてください"
+    sessions:
+      signed_in: "サインインしました"
+      signed_out: "サインアウトしました"
+      already_signed_out: "すでにサインアウトしています"
+    unlocks:
+      send_instructions: "ロックかいじょようのメールをそうしんしました。アカウントのロックをかいじょしてください"
+      send_paranoid_instructions: "アカウントがとうろくされていれば、アカウントロックかいじょようのメールがそうしんされます"
+      unlocked: "ロックがかいじょされました"
+  errors:
+    messages:
+      already_confirmed: "はすでにかくにんずみです。サインインしてください"
+      confirmation_period_expired: "のきげんがきれました。%{period} いないに、にんしょうしてください。"
+      not_found: "はみつかりません"
+      not_locked: "はロックされていません"
+      not_saved:
+        one: "エラーがでたため、%{resource} はほぞんされませんでした:"
+        other: "%{count} つのエラーがあり、%{resource} はほぞんされませんでした:"
