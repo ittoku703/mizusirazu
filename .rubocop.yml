@@ -68,3 +68,7 @@ Metrics/BlockLength:
 Layout/LineLength:
   Exclude:
     - 'config/**/*'
+
+Lint/UnusedMethodArgument:
+  Exclude: 
+    - 'app/controllers/*'
