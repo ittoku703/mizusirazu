@@ -1,2 +1,14 @@
-hello. this place is users/registrations show!!!
-<p><%= @user.email %></p>
+<body class="body--registration"></body>
+
+<div class="user__show-wrap">
+  <section class="user__show nes-container">
+    <div class="user__show-avatar">
+      <i class="nes-bcrikko"></i>
+    </div>
+    <div class="user__show-profile">
+      <p><strong>Email: </strong><%= @user.email %></p>
+      <p><strong>Created at: </strong><%= @user.created_at %></p>
+      <p><strong>Updated at: </strong><%= @user.updated_at %></p>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,13 @@
+<div class="user__form-field">
+  <%= f.email_field :email,
+    class: 'user__form-input nes-input',
+    placeholder: t('user.email'),
+    autofocus: true,
+    autocomplete: "email"
+  %>
+</div>
+
+<div class="user__form-field">
+  <%= f.submit t('unlock'), class: 'nes-btn is-primary' %>
+</div>
+

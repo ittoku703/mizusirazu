@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   root 'home#home'
   devise_for :users, path: '/', controllers: {
+    confirmations: 'confirmations',
+    passwords: 'passwords',
     registrations: 'registrations',
-    confirmations: 'confirmations'
+    sessions: 'sessions',
+    unlocks: 'unlocks'
   }, path_names: {
     sign_in: 'login',
     sign_out: 'logout',

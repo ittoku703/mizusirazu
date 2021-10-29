@@ -1,0 +1,36 @@
+<div class="user__form-field">
+  <%= f.email_field :email,
+    class: 'user__form-input nes-input',
+    placeholder: t('user.email'),
+    autofocus: true,
+    autocomplete: "email"
+  %>
+</div>
+
+<div class="user__form-field">
+  <%= f.password_field :password,
+    class: 'user__form-input nes-input',
+    placeholder: t('user.password'),
+    autocomplete: "new-password"
+  %>
+</div>
+
+<% if devise_mapping.rememberable? %>
+  <div class="user__form-field nes-field">
+    <span><%= t('remember_me') %></span>
+
+    <%= label_tag do %>
+      <input class="nes-radio" type="radio" name="remember" value="1" checked>
+      <span><%= t('yes') %></span>
+    <% end %>
+
+    <%= label_tag do %>
+      <input class="nes-radio" type="radio" name="remember" value="0">
+      <span><%= t('no') %></span>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="user__form-field">
+  <%= f.submit t('login'), class: 'nes-btn is-primary' %>
+</div>
