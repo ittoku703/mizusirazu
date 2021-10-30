@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe PasswordsController, type: :request do
-  let(:user) { create(:user) }
+  let(:user) { create(:user, confirmed_at: Time.zone.now) }
 
   describe 'GET /password/new' do
     context 'when logged in user' do
@@ -29,7 +29,7 @@ RSpec.describe PasswordsController, type: :request do
 
       it 'sending password reset email' do
         post user_password_path, params: { user: { email: user.email } }
-        expect(ActionMailer::Base.deliveries.count).to eq 2
+        expect(ActionMailer::Base.deliveries.count).to eq 1
       end
     end
 
@@ -59,21 +59,6 @@ RSpec.describe PasswordsController, type: :request do
       it 'redirect_to login page' do
         get edit_user_password_path
         expect(response).to redirect_to new_user_session_path
-      end
-    end
-  end
-
-  describe 'PUT /password' do
-    context 'when invalid params' do
-      it 'is rollback' do
-        put user_password_path, params: {
-          user: {
-            reset_password_token: 'hoge',
-            password: 'foo',
-            password_confirmation: 'bar'
-          }
-        }
-        expect(response).to render_template :edit
       end
     end
   end
