@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # POST /
+  # POST /users
   # def create
   #   super
   # end
@@ -24,17 +24,17 @@ class RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # PUT /
+  # PUT /users
   # def update
   #   super
   # end
 
-  # DELETE /
+  # DELETE /users
   # def destroy
   #   super
   # end
 
-  # GET /cancel
+  # GET /users/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to
   # cancel oauth signing in/up in the middle of the process,
@@ -43,7 +43,7 @@ class RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -56,12 +56,16 @@ class RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  def after_sign_up_path_for(resource)
-    root_path
-  end
+  # def after_sign_up_path_for(resource)
+  #   super(resource)
+  # end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def after_update_path_for(resource)
+    settings_path
+  end
 end
