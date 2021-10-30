@@ -39,6 +39,10 @@ pre {
   overflow: auto;
 }
 
+:focus {
+  outline: none;
+}
+
 ::-webkit-input-placeholder {
   font-style: italic;
 }

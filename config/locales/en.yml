@@ -17,6 +17,7 @@ en:
   select_language: Select language
   source_code: Source code
   technology: Technology
+  unlock: Unlock
   update_success: Update successfully
   'yes': 'Yes'
   # user
@@ -27,6 +28,7 @@ en:
   logout_user: Log out user
   new_user: New user
   signup: Sign up
+  unlock_user: Unlock user
   users: All user
   user_page: User page
   # session
@@ -58,6 +60,7 @@ en:
     password: Password
     password_confirmation: Password Again
     updated_at: Updated at
+    current_password: Current password
   # other
   activerecord:
     models:

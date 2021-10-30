@@ -68,4 +68,8 @@ RSpec.configure do |config|
   config.include RequestHelper, type: :request
   # use feature helper
   config.include FeatureHelper, type: :feature
+  # use devise helper
+  config.include Warden::Test::Helpers
+  # use devise integration helper
+  config.include Devise::Test::IntegrationHelpers, type: :request
 end

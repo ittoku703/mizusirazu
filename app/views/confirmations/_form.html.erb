@@ -1,0 +1,13 @@
+<div class="user__form-field">
+  <%= f.email_field :email,
+    class: 'user__form-input nes-input',
+    placeholder: t('user.email'),
+    autofocus: true,
+    autocomplete: "email",
+    value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
+  %>
+</div>
+
+<div class="user__form-field">
+  <%= f.submit t('activate'), class: 'nes-btn is-primary' %>
+</div>

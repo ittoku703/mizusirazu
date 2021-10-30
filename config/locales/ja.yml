@@ -17,6 +17,7 @@ ja:
   select_language: げんごをせんたくしてください
   source_code: ソースコード
   technology: ぎじゅつ
+  unlock: かいじょ
   update_success: こうしんにせいこうしました
   'yes': 'はい'
   # user
@@ -27,6 +28,7 @@ ja:
   logout_user: ログアウトする
   new_user: ユーザをさくせいする
   signup: しんきさくせい
+  unlock_user: ユーザをアンロックする
   users: ユーザいちらん
   user_page: ユーザのページ
   # session
@@ -58,6 +60,7 @@ ja:
     password: パスワード
     password_confirmation: パスワード（もういちど）
     updated_at: こうしんじ
+    current_password: いまのパスワード
   # other
   activerecord:
     models:

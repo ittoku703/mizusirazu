@@ -64,3 +64,11 @@ Metrics/BlockLength:
     - 'config/environments/*'
     - 'spec/**/*'
     - 'Guardfile'
+
+Layout/LineLength:
+  Exclude:
+    - 'config/**/*'
+
+Lint/UnusedMethodArgument:
+  Exclude: 
+    - 'app/controllers/*'
