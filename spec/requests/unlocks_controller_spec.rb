@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe  UnlocksController , type: :request do
+RSpec.describe UnlocksController, type: :request do
   let(:user) { create(:user, confirmed_at: Time.zone.now) }
 
   describe 'GET /unlock/new' do
