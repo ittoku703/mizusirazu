@@ -1,0 +1,94 @@
+/* welcome */
+.home__heading {
+  margin: 0 auto;
+  padding-top: $spacer;
+  position: relative;
+  width: 90%;
+  line-height: 1.2rem;
+  text-align: center;
+  z-index: 1;
+}
+
+.home__introduce {
+  margin: 0 auto;
+  padding-top: $spacer;
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+
+  h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+/* user */
+.root-wrap {
+  margin: 0 12px;
+  padding-top: $spacer;
+}
+
+.root-container.nes-container {
+  padding: 0;
+}
+
+.root {
+  width: 100%;
+
+  > * {
+    padding-top: $spacer;
+    padding-bottom: $spacer;
+  }
+
+  @include pc {
+    display: flex;
+  }
+}
+
+.root__sidebar{
+  word-break: break-all;
+
+  @include pc {
+    flex: 1;
+    border-right: 1px solid $is-primary;
+    margin-right: 12px;
+  }
+
+  @include sp {
+    border-bottom: 1px solid $is-primary;
+  }
+}
+
+.root__main {
+  @include pc {
+    flex: 4;
+    display: flex;
+  }
+}
+
+.root__main-page {
+  word-break: break-all;
+  padding-left: 12px;
+  padding-right: 12px;
+
+  @include pc {
+    flex: 3;
+  }
+
+  @include sp {
+    margin-bottom: $spacer;
+  }
+}
+
+.root__main-sidebar{
+  word-break: break-all;
+
+  @include pc {
+    flex: 1;
+  }
+
+  @include sp {
+    border-top: 1px solid $is-primary;
+    padding-top: $spacer;
+  }
+}

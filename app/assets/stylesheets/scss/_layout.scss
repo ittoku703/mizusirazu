@@ -12,6 +12,16 @@
   }
 }
 
+body {
+  @include pc {
+    font-size: 16px;
+  }
+
+  @include sp {
+    font-size: 14px;
+  }
+}
+
 /* header */
 
 .header {
@@ -103,38 +113,11 @@
   }
 }
 
-/* main */
-.home__heading {
-  margin: 0 auto;
-  padding-top: $spacer;
-  position: relative;
-  width: 90%;
-  line-height: 1.2rem;
-  text-align: center;
-  z-index: 1;
-}
-
-.home__introduce {
-  margin: 0 auto;
-  padding-top: $spacer;
-  position: relative;
-  width: 90%;
-  max-width: 800px;
-
-  div {
-  }
-
-  h2 {
-    font-size: 24px;
-    text-align: center;
-  }
-}
-
 /* footer */
 .footer {
   padding: 48px 0;
   position: relative;
-  z-index: 2;
+  z-index: 1;
   width: 100%;
 }
 

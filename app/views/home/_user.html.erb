@@ -1,0 +1,39 @@
+<body class="body--user"></body>
+
+<div class="root-wrap">
+  <div class="root-container nes-container is-rounded">
+    <div class="root">
+      <!-- side bar -->
+      <aside class="root__sidebar">
+        <ul class="nes-list is-circle">
+          <li>list 1</li>
+          <li>list 1</li>
+          <li>list 1</li>
+          <li>list 1</li>
+          <li>list 1</li>
+        </ul>
+      </aside>
+
+      <!-- main content -->
+      <div class="root__main">
+        <div class="root__main-page">
+          <% ['email', 'sign_in_count', 'created_at', 'updated_at'].each do |attr| %>
+            <%= content_tag(:p, "#{attr}: #{current_user.send(attr)}") %>
+          <% end %>
+        </div>
+
+        <!-- right sidebar -->
+        <aside class="root__main-sidebar">
+          <ul class="nes-list is-circle">
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+            <li>list</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
