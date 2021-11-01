@@ -11,6 +11,8 @@ RSpec.feature 'SiteLinks', type: :feature do
     expect(page).to have_link t('contact')
     expect(page).to have_link 'NES.css'
     expect(page).to have_link 'Nu-きなこもち(font)'
+    expect(page).to have_link t('en')
+    expect(page).to have_link t('ja')
   end
 
   scenario 'home links (login_user)' do

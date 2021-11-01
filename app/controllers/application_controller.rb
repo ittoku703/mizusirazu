@@ -5,14 +5,6 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
-  # protected
-
-  # def configure_permitted_parameters
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-  # end
-
-  private
-
   # redirect to MYDOMAIN to herokuapp.com
   def ensure_domain
     return unless request.host.match?(/\.herokuapp.com/)
@@ -24,7 +16,20 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = user_locale
+
+    # after store current locale
+    session[:locale] = params[:locale] if params[:locale]
+  rescue I18n::InvalidLocale
+    I18n.locale = I18n.default_locale
   end
+
+  # protected
+
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  # end
+
+  private
 
   def user_locale
     params[:locale] || session[:locale] || http_head_locale || I18n.default_locale
