@@ -44,6 +44,7 @@
     </header>
 
     <% flash.each do |name, msg| %>
+      <%= next if name == 'timedout' %>
       <div class="flash">
         <%= content_tag 'div', id: name do %>
           <span><%= msg %></span>
