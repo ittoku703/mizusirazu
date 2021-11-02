@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "ChangedLocale", type: :feature do
+RSpec.feature 'ChangedLocale', type: :feature do
   scenario 'changed locale' do
     visit root_path
     click_link t('ja')
