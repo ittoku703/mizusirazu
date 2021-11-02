@@ -17,6 +17,8 @@ gem 'turbolinks'
 group :development, :test do
   gem 'byebug'
   gem 'sqlite3'
+
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -33,7 +35,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'factory_bot_rails'
   gem 'faker'
   gem 'guard-rspec', require: false
   gem 'rails-controller-testing'

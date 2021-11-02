@@ -72,3 +72,7 @@ Layout/LineLength:
 Lint/UnusedMethodArgument:
   Exclude: 
     - 'app/controllers/*'
+
+Lint/UselessMethodDefinition:
+  Exclude:
+    - 'app/controllers/registrations_controller.rb'

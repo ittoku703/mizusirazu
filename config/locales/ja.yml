@@ -3,6 +3,7 @@ ja:
   ja: にほんご
   authenticate_failed: にんしょうにしっぱいしました
   back: もどる
+  created_at: さくせいじ
   contact: れんらくする
   control: そうさ
   edit: へんしゅう
@@ -19,9 +20,14 @@ ja:
   source_code: ソースコード
   technology: ぎじゅつ
   unlock: かいじょ
+  updated_at: こうしんじ
   update_success: こうしんにせいこうしました
   'yes': 'はい'
   # user
+  email: メールアドレス
+  password: パスワード
+  password_confirmation: パスワード（もういちど）
+  current_password: いまのパスワード
   activate_user: アカウントをゆうこうかする
   delete_user: ユーザをさくじょする
   edit_user: ユーザをへんしゅうする
@@ -55,13 +61,12 @@ ja:
   already_activated: すでにゆうこうかしています
   check_activation_email: アカウントゆうこうのメールをかくにんしてください
   failed_send_activation_email: アカウントゆうこうのメールが送れませんでした
-  user:
-    created_at: さくせいじ
-    email: メールアドレス
-    password: パスワード
-    password_confirmation: パスワード（もういちど）
-    updated_at: こうしんじ
-    current_password: いまのパスワード
+  # micropost
+  content: ないよう
+  title: タイトル
+  micropost_deleted: きじをさくじょしました
+  micropost_success: きじをとうこうしました
+  micropost_updated: きじをこうしんしました
   # other
   activerecord:
     models:
@@ -71,6 +76,10 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（もういちど) 
+      micropost:
+        title: タイトル
+        content: ないよう
+  # error message
   errors:
     template:
       header:

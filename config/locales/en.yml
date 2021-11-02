@@ -3,6 +3,7 @@ en:
   ja: Japanese
   authenticate_failed: Authenticate failed
   back: Back
+  created_at: Created at
   contact: Contact
   control: Control
   edit: Edit
@@ -19,9 +20,14 @@ en:
   source_code: Source code
   technology: Technology
   unlock: Unlock
+  updated_at: Updated at
   update_success: Update successfully
   'yes': 'Yes'
   # user
+  email: Email
+  password: Password
+  password_confirmation: Password Again
+  current_password: Current password
   activate_user: Activate user
   delete_user: Delete user
   edit_user: Editing user
@@ -55,13 +61,12 @@ en:
   already_activated: Already activate account
   check_activation_email: Please check your email to activate your account
   failed_send_activation_email: Failed send activation email
-  user:
-    created_at: Created at
-    email: Email
-    password: Password
-    password_confirmation: Password Again
-    updated_at: Updated at
-    current_password: Current password
+  # micropost
+  content: Content
+  title: Title
+  micropost_deleted: Micropost deleted
+  micropost_success: Successfully micropost
+  micropost_updated: Micropost updated
   # other
   activerecord:
     models:
@@ -71,6 +76,10 @@ en:
         email: Email
         password: Password
         password_confirmation: Password confirmation
+      micropost:
+        title: Title
+        content: Content
+  # error message
   errors:
     template:
       header:

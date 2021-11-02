@@ -61,12 +61,21 @@ end
   - 他のユーザを削除できない（自分自身のみ）
   - 自分のユーザのみ編集が可能
 
-### User routing
+### routing
 
 - /
-  - /signup (users#new)
-  - /users (users#index)
-    - /:id (users#show)
-  - /settings (users#edit)
-  - /login (userSession#new)
+
+- /login
+- /password/new
+- /password/edit
+- /confirmation/new
+- /unlock/new
+- /signup
+- /settings
+- /users/:id
+- /users/:id/microposts
+- /microposts
+- /microposts/new
+- /microposts/:id
+- /microposts/:id/edit
 
