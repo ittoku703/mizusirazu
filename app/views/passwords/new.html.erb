@@ -5,7 +5,7 @@
   <div class="nes-container is-rounded">
     <h1 class="title"><%= t('change_password') %></h1>
     <%= form_with(scope: resource_name, url: password_path(resource_name), method: :post) do |f| %>
-      <%= render "shared/error_messages", resource: resource %>
+      <%= render "shared/error_messages", object: resource %>
 
       <%= render 'form', f: f %>
     <% end %>

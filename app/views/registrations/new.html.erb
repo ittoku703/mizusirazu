@@ -5,7 +5,7 @@
   <div class="nes-container is-rounded">
     <h1 class="title"><%= t('new_user') %></h1>
     <%= form_with(scope: resource_name, url: user_registration_path) do |f| %>
-      <%= render 'shared/error_messages', resource: resource %>
+      <%= render 'shared/error_messages', object: resource %>
 
       <%= render 'form', f: f %>
    <% end %>
