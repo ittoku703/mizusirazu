@@ -23,6 +23,12 @@ class ApplicationController < ActionController::Base
     I18n.locale = I18n.default_locale
   end
 
+  # if resource is not found, render 404 page
+  def render_not_found(error = nil)
+    logger.info "Rendering 404 with exception: #{error.message}" if error
+    render file: Rails.root.join('public', '404.html'), status: :not_found, layout: false
+  end
+
   # protected
 
   # def configure_permitted_parameters
@@ -37,11 +43,5 @@ class ApplicationController < ActionController::Base
 
   def http_head_locale
     http_accept_language.language_region_compatible_from(I18n.available_locales)
-  end
-
-  # render 404 page
-  def render_not_found(error = nil)
-    logger.info "Rendering 404 with exception: #{error.message}" if error
-    render file: Rails.root.join('public', '404.html'), status: :not_found, layout: false
   end
 end
