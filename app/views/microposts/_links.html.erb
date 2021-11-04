@@ -1,0 +1,15 @@
+<div class="form-links">
+  <ul class="nes-list is-circle">
+    <li><%= link_to t('micropost_list'), user_microposts_path(@micropost.user) %></li>
+
+    <% if current_user&.id == @micropost.user_id && action_name.match?(/show/) %>
+      <li><%= link_to t('micropost_edit'), edit_micropost_path(@micropost) %></li>
+    <% end %>
+
+    <% if action_name.match?(/edit|update/) %>
+      <li><%= link_to t('look_microposts'), micropost_path(@micropost) %></li>
+      <li><%= link_to t('micropost_write'), new_micropost_path %></li>
+    <% end %>
+  </ul>
+</div>
+

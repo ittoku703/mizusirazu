@@ -43,7 +43,7 @@ class MicropostsController < ApplicationController
   # DELETE /microposts/:id
   def destroy
     @micropost.destroy
-    redirect_to(user_microposts_path, notice: t('micropost_deleted'))
+    redirect_to(user_microposts_path(@micropost.user), notice: t('micropost_deleted'))
   end
 
   private

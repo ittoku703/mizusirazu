@@ -19,6 +19,7 @@ ja:
   'no': 'いいえ'
   not_admin: かんりしゃのみアクセスかのうです
   not_found_email: メールがみつかりません
+  post: とうこう
   remember_me: ログインをほぞんしますか？
   select_language: げんごをせんたくしてください
   source_code: ソースコード
@@ -37,6 +38,7 @@ ja:
   edit_user: ユーザをへんしゅうする
   login_user: ログインする
   logout_user: ログアウトする
+  micropost_user: きじをとうこうする
   new_user: ユーザをさくせいする
   signup: しんきさくせい
   unlock_user: ユーザをアンロックする
@@ -68,7 +70,10 @@ ja:
   # micropost
   content: ないよう
   title: タイトル
+  micropost_edit: きじをへんしゅうする
+  micropost_delete: きじをさくじょする
   micropost_deleted: きじをさくじょしました
+  micropost_list: きじいちらん
   micropost_success: きじをとうこうしました
   micropost_updated: きじをこうしんしました
   micropost_write: きじをかく

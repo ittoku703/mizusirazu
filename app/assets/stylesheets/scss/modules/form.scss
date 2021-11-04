@@ -6,6 +6,10 @@
   @include sp {
     text-align: center;
     width: 90%;
+
+    .nes-list {
+      text-align: left;
+    }
   }
 }
 
@@ -27,6 +31,11 @@
 }
 
 .form-input {
+  max-width: 400px;
+}
+
+.form-area {
+  height: 300px;
   max-width: 400px;
 }
 

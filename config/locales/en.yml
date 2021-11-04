@@ -19,6 +19,7 @@ en:
   'no': 'No'
   not_admin: You are not admin
   not_found_email: Not found email
+  post: Post
   remember_me: Remember me?
   select_language: Select language
   source_code: Source code
@@ -37,6 +38,7 @@ en:
   edit_user: Editing user
   login_user: Log in user
   logout_user: Log out user
+  micropost_user: Post micropost
   new_user: New user
   signup: Sign up
   unlock_user: Unlock user
@@ -68,7 +70,10 @@ en:
   # micropost
   content: Content
   title: Title
+  micropost_edit: Editing micropost
+  micropost_delete: Delete micropost
   micropost_deleted: Micropost deleted
+  micropost_list: Micropost list
   micropost_success: Successfully micropost
   micropost_updated: Micropost updated
   micropost_write: Write micropost

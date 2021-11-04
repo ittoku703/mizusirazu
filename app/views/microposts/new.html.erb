@@ -1,0 +1,16 @@
+<body class="body--micropost"></body>
+
+<div class="form">
+  <!-- form -->
+  <div class="nes-container is-rounded">
+    <%= content_tag(:h1, t('micropost_user')) %>
+    <%= form_with(model: @micropost) do |f| %>
+      <%= render 'shared/error_messages', object: @micropost %>
+
+      <%= render 'form', f: f %>
+    <% end %>
+  </div>
+
+  <!-- links -->
+  <%= render 'links' %>
+</div>

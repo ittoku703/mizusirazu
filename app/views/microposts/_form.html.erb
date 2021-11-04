@@ -1,0 +1,37 @@
+<div class="form-field">
+  <%= f.text_field :title,
+    class: 'form-input nes-input',
+    placeholder: t('title'),
+    autofocus: true,
+    autocomplete: 'title'
+  %>
+</div>
+
+<div class="form-field">
+  <%= f.text_area :content,
+    class: 'form-area nes-input',
+    placeholder: t('content'),
+    autocomplete: 'content'
+  %>
+</div>
+
+<div class="form-field">
+  <% if action_name.match?(/new|create/) %>
+    <%= f.submit t('post'), class: 'nes-btn is-primary' %>
+  <% elsif action_name.match?(/edit|update/) %>
+    <%= f.submit t('edit'), class: 'nes-btn is-warning' %>
+  <% end %>
+</div>
+
+<% if action_name.match?(/edit|update/) %>
+  <div class="form-field">
+    <%= content_tag(:h2, t('micropost_delete')) %>
+    <br />
+    <%= link_to t('delete'),
+      micropost_path(@micropost),
+      class: 'nes-btn is-error',
+      method: :delete,
+      data: { confirm: t('are_you_sure') }
+    %>
+  </div>
+<% end %>
