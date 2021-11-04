@@ -33,10 +33,12 @@
             <% if user_signed_in? %>
               <%= link_to t('my_page'), user_profile_path(current_user), class: 'header__nav-link' %>
               <%= link_to t('edit'), settings_path, class: 'header__nav-link' %>
+              <%= link_to t('micropost_write'), new_micropost_path, class: 'header__nav-link' %>
               <%= link_to t('logout'), destroy_user_session_path, method: :delete, class: 'header__nav-link' %>
             <% else %>
               <%= link_to t('signup'), signup_path, class: 'header__nav-link' %>
               <%= link_to t('login'), new_user_session_path, class: 'header__nav-link' %>
+              <%= link_to t('look_microposts'), microposts_path, class: 'header__nav-link' %>
             <% end %>
           </nav>
         </div>

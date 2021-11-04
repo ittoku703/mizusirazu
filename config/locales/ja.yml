@@ -71,6 +71,7 @@ ja:
   micropost_deleted: きじをさくじょしました
   micropost_success: きじをとうこうしました
   micropost_updated: きじをこうしんしました
+  micropost_write: きじをかく
   # other
   activerecord:
     models:
@@ -80,6 +81,7 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（もういちど) 
+        current_password: げんざいのパスワード
       micropost:
         title: タイトル
         content: ないよう

@@ -71,6 +71,7 @@ en:
   micropost_deleted: Micropost deleted
   micropost_success: Successfully micropost
   micropost_updated: Micropost updated
+  micropost_write: Write micropost
   # other
   activerecord:
     models:
@@ -80,6 +81,7 @@ en:
         email: Email
         password: Password
         password_confirmation: Password confirmation
+        current_password: Current password
       micropost:
         title: Title
         content: Content

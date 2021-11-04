@@ -77,4 +77,10 @@ html, body, pre, code, kbd, samp {
   background-color: inherit;
 }
 
+.nes-container.member-card {
+  display: flex;
+  padding: 1rem 1.5rem;
+  width: 470px;
+  overflow: scroll;
+}
 
