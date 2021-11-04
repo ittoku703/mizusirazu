@@ -4,17 +4,24 @@
 
     <%= content_tag(:h2, micropost.title, class: 'micropost__post-title') %>
 
-    <%= link_to "#{t('author')}: #{micropost.user.email}", user_profile_path(micropost.user), class: 'micropost__post-author' %>
+    <%= link_to "#{t('author')}: #{micropost.user.email}",
+      user_profile_path(micropost.user),
+      class: 'micropost__post-author'
+    %>
 
     <%= content_tag(:p, micropost.content, class: 'micropost__post-content') %>
 
     <ul class="nes-list is-disc">
-      <%= content_tag(:li, "#{t('created_at')}: #{micropost.created_at}", class: 'micropost__post-date') %>
-      <%= content_tag(:li, "#{t('updated_at')}: #{micropost.updated_at}", class: 'micropost__post-date') %>
+      <%= content_tag :li, "#{t('created_at')}: #{micropost.created_at}", class: 'micropost__post-date' %>
+      <%= content_tag :li, "#{t('updated_at')}: #{micropost.updated_at}", class: 'micropost__post-date' %>
     </ul>
 
     <div class="micropost__post-links">
-      <%= link_to t('look'), micropost_path(micropost), class: 'micropost__post-link nes-btn is-success' %>
+      <%= link_to t('look'),
+        micropost_path(micropost),
+        class: 'micropost__post-link nes-btn is-success'
+      %>
+
       <% if current_user&.id == micropost.user_id %>
         <%= link_to t('edit'), edit_micropost_path(micropost), class: 'micropost__post-link nes-btn is-warning' %>
         <%= link_to t('delete'),

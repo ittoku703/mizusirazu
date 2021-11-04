@@ -14,7 +14,9 @@
 
   <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-  <% end %><br />
+  <% end %>
+
+  <br />
 
   <%= f.password_field :password,
     class: 'form-input nes-input',
@@ -31,12 +33,6 @@
   %>
 </div>
 
-<% if action_name.match?(/new|create/) %>
-  <div class="form-field">
-    <%= f.submit t('signup'), class: 'nes-btn is-primary' %>
-  </div>
-<% end %>
-
 <% if action_name.match?(/edit|update/) %>
   <div class="form-field">
     <%= f.password_field :current_password,
@@ -45,8 +41,13 @@
       autocomplete: "current-password"
     %>
   </div>
-
-  <div class="form-field">
-    <%= f.submit t('edit'), class: 'nes-btn is-primary' %>
-  </div>
 <% end %>
+
+<div class="form-field">
+  <% if action_name.match?(/new|create/) %>
+    <%= f.submit t('signup'), class: 'nes-btn is-primary' %>
+  <% elsif action_name.match?(/edit|update/) %>
+    <%= f.submit t('edit'), class: 'nes-btn is-primary' %>
+  <% end %>
+</div>
+

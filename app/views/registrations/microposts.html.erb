@@ -1,13 +1,5 @@
 <body class="body--registration"></body>
 
 <div class="registration__microposts">
-  <div class="registration__microposts-list">
-    <%= render partial: 'shared/micropost', collection: @microposts %>
-  </div>
-
-  <div class="registration__microposts-links">
-    <ul class="nes-list is-disc">
-      <li><%= link_to t('back'), :back %></li>
-    </ul>
-  </div>
+  <%= render partial: 'shared/micropost', collection: @microposts %>
 </div>
