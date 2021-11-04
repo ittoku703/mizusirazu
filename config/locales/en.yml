@@ -1,6 +1,8 @@
 en:
   en: English
   ja: Japanese
+  are_you_sure: Are you sure?
+  author: Author
   authenticate_failed: Authenticate failed
   back: Back
   created_at: Created at
@@ -11,6 +13,8 @@ en:
   delete_failed: Delete failed
   delete_success: Delete successfully
   introduction: Introduction
+  look: Look
+  look_microposts: Look microposts
   my_page: My page
   'no': 'No'
   not_admin: You are not admin

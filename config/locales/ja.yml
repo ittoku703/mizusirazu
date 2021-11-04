@@ -1,6 +1,8 @@
 ja:
   en: えいご
   ja: にほんご
+  are_you_sure: ほんとうによろしいですか？
+  author: 作者
   authenticate_failed: にんしょうにしっぱいしました
   back: もどる
   created_at: さくせいじ
@@ -11,6 +13,8 @@ ja:
   delete_failed: さくじょにしっぱいしました
   delete_success: さくじょにせいこうしました
   introduction: じこしょうかい
+  look: みる
+  look_microposts: きじをみる
   my_page: じぶんのページ
   'no': 'いいえ'
   not_admin: かんりしゃのみアクセスかのうです

@@ -59,6 +59,7 @@ RSpec.feature 'SiteLinks', type: :feature do
     expect(page).to have_content user.email
     expect(page).to have_content user.created_at
     expect(page).to have_content user.updated_at
+    expect(page).to have_link t('look_microposts')
   end
 
   scenario 'settings page links' do
