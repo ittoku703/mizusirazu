@@ -1,12 +1,11 @@
 .micropost__post {
   padding-top: $spacer;
-  margin-left: 12px;
-  margin-right: 12px;
+  margin-left: $gap;
+  margin-right: $gap;
 }
 
 .micropost__post-title {
   font-size: 24px;
-  
 }
 
 .micropost__post-content {
@@ -18,14 +17,14 @@
 }
 
 .micropost__post-link {
-  margin-right: 12px;
-  margin-bottom: 12px;
+  margin-right: $gap;
+  margin-bottom: $gap;
 }
 
 .micropost__show-wrap {
   padding-top: $spacer;
-  margin-right: 12px;
-  margin-left: 12px;
+  margin-right: $gap;
+  margin-left: $gap;
 }
 
 .micropost__show-title {

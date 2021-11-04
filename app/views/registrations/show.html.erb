@@ -1,20 +1,22 @@
 <body class="body--registration"></body>
 
-<div class="user__show-wrap">
-  <div class="user__show">
+<div class="registration-wrap">
+  <div class="registration">
     <section class="nes-container member-card">
-      <div class="user__show-avatar">
+      <div class="registration-avatar">
         <i class="nes-bcrikko"></i>
       </div>
-      <div class="user__show-profile">
+      <div class="registration-profile">
         <p><strong>Email: </strong><%= @user.email %></p>
         <p><strong>Created at: </strong><%= @user.created_at %></p>
         <p><strong>Updated at: </strong><%= @user.updated_at %></p>
       </div>
     </section>
 
-    <div class="user__show__microposts">
-      <%= link_to t('look_microposts'), user_microposts_path(@user), class: 'user__show__microposts-links' %>
+    <div class="registration-links">
+      <ul class="nes-list is-circle">
+        <li><%= link_to t('look_microposts'), user_microposts_path(@user) %></li> 
+      </ul>
     </div>
   </div>
 </div>

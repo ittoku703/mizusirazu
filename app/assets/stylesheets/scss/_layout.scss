@@ -1,34 +1,10 @@
-/* mixin */
-
-@mixin pc {
-  @media only screen and (min-width: $media-pc) {
-    @content;
-  }
-}
-
-@mixin sp {
-  @media only screen and (max-width: $media-sp) {
-    @content;
-  }
-}
-
-body {
-  @include pc {
-    font-size: 16px;
-  }
-
-  @include sp {
-    font-size: 14px;
-  }
-}
-
 /* header */
 
 .header {
   height: 68px;
 }
 
-.l-wrap--header {
+.header-wrap {
   @include pc {
     margin: 0 5%;
   }
@@ -106,9 +82,11 @@ body {
 /* flash msg */
 .flash {
   animation: leftToRight 25s;
+
   #notice {
     color: $is-success;
   }
+
   #alert {
     color: $is-error;
   }
@@ -122,14 +100,14 @@ body {
   width: 100%;
 }
 
-.overflow {
-  overflow: auto;
-}
-
-.l-wrap--footer {
+.footer-wrap {
   margin: 0 auto;
   max-width: 940px;
   width: 90%;
+  overflow: auto;
+}
+
+.footer__overflow {
   overflow: auto;
 }
 

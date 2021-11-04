@@ -18,7 +18,7 @@
 
   <body>
     <header class="header">
-      <div class="l-wrap--header">
+      <div class="header-wrap">
         <!-- My Homepage logo -->
         <%= link_to root_path, class: "header__logo-wrap", title: "MizusirazuNet" do %>
           <%= image_tag '/images/logo.svg', size: '64x64', class: 'header__logo' %>
@@ -59,9 +59,9 @@
     </main>
 
     <footer class="footer">
-      <div class="l-wrap--footer">
+      <div class="footer-wrap">
         <div class="nes-container is-rounded is-dark">
-          <div class="overflow">
+          <div class="footer__overflow">
             <!-- My site Links -->
             <div class="footer__technology-links nes-container is-dark with-title">
               <p class="title"><%= t('technology') %></p>

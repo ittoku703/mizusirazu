@@ -1,0 +1,25 @@
+.registration-wrap {
+  padding-top: $spacer;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.registration {
+  overflow: scroll;
+}
+
+.registration-avatar {
+  padding-top: 8px;
+}
+
+.registration-profile{
+  padding-left: 1rem;
+}
+
+.registration-links ul li {
+  line-height: 2rem;
+}
+
+.registration-links {
+  padding-top: $spacer;
+}
