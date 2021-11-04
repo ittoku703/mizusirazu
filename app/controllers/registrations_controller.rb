@@ -3,7 +3,6 @@
 class RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  prepend_before_action :authenticate_scope!, only: %i[edit update destroy microposts]
 
   # GET /signup
   # def new
@@ -46,7 +45,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   # GET /users/:id/microposts
   def microposts
-    @microposts = current_user.microposts
+    @microposts = User.find(params[:id]).microposts
   end
 
   protected

@@ -161,19 +161,9 @@ RSpec.describe RegistrationsController, type: :request do
   # end
 
   describe 'GET /users/:id/microposts' do
-    context 'when logged in user' do
-      it 'is OK' do
-        login_user
-        get user_microposts_path(user)
-        expect(response.status).to eq 200
-      end
-    end
-
-    context 'when non logged in user' do
-      it 'redirect to login page' do
-        get user_microposts_path(1)
-        expect(response).to redirect_to new_user_session_path
-      end
+    it 'is OK' do
+      get user_microposts_path(user)
+      expect(response.status).to eq 200
     end
   end
 end
