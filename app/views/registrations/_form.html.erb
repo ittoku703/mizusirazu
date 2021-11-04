@@ -1,13 +1,13 @@
-<div class="user__form-field">
+<div class="form-field">
   <%= f.email_field :email,
-    class: 'user__form-input nes-input',
+    class: 'form-input nes-input',
     placeholder: t('email'),
     autofocus: true,
     autocomplete: "email"
   %>
 </div>
 
-<div class="user__form-field">
+<div class="form-field">
   <% if action_name.match?(/edit|update/) && devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
@@ -17,36 +17,36 @@
   <% end %><br />
 
   <%= f.password_field :password,
-    class: 'user__form-input nes-input',
+    class: 'form-input nes-input',
     placeholder: t('password'),
     autocomplete: "new-password"
   %>
 </div>
 
-<div class="user__form-field">
+<div class="form-field">
   <%= f.password_field :password_confirmation,
-    class: 'user__form-input nes-input',
+    class: 'form-input nes-input',
     placeholder: t('password_confirmation'),
     autocomplete: "new-password"
   %>
 </div>
 
 <% if action_name.match?(/new|create/) %>
-  <div class="user__form-field">
+  <div class="form-field">
     <%= f.submit t('signup'), class: 'nes-btn is-primary' %>
   </div>
 <% end %>
 
 <% if action_name.match?(/edit|update/) %>
-  <div class="user__form-field">
+  <div class="form-field">
     <%= f.password_field :current_password,
-      class: 'user__form-input nes-input',
+      class: 'form-input nes-input',
       placeholder: t('current_password'),
       autocomplete: "current-password"
     %>
   </div>
 
-  <div class="user__form-field">
+  <div class="form-field">
     <%= f.submit t('edit'), class: 'nes-btn is-primary' %>
   </div>
 <% end %>

@@ -1,7 +1,7 @@
 <% if action_name.match?(/new|create/) %>
-  <div class="user__form-field">
+  <div class="form-field">
     <%= f.email_field :email,
-      class: 'user__form-input nes-input',
+      class: 'form-input nes-input',
       placeholder: t('email'),
       autofocus: true,
       autocomplete: "email"
@@ -12,28 +12,28 @@
 <% if action_name.match?(/edit|update/) %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="user__form-field">
+  <div class="form-field">
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em><br />
     <% end %>
 
     <%= f.password_field :password,
-      class: 'user__form-input nes-input',
+      class: 'form-input nes-input',
       placeholder: t('password'),
       autofocus: true,
       autocomplete: "new-password"
     %>
   </div>
 
-  <div class="user__form-field">
+  <div class="form-field">
     <%= f.password_field :password_confirmation,
-      class: 'user__form-input nes-input',
+      class: 'form-input nes-input',
       placeholder: t('password_confirmation'),
       autocomplete: "new-password"
     %>
   </div>
 <% end %>
 
-<div class="user__form-field">
+<div class="form-field">
   <%= f.submit t('reset_password'), class: 'nes-btn is-primary' %>
 </div>

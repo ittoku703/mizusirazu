@@ -1,0 +1,38 @@
+.form {
+  margin: 0 auto;
+  padding-top: $spacer;
+  max-width: 600px;
+
+  @include sp {
+    text-align: center;
+    width: 90%;
+  }
+}
+
+.form-links {
+  padding-top: $spacer;
+  margin-left: $spacer;
+
+  li {
+    line-height: 2rem;
+  }
+}
+
+.form-field {
+  padding-top: 1rem;
+
+  label {
+    display: inline-block;
+  }
+}
+
+.form-input {
+  max-width: 400px;
+}
+
+.field_with_errors {
+  input, textarea {
+    background-color: $is-error;
+  }
+}
+

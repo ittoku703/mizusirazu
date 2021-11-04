@@ -9,7 +9,12 @@
 /* Layout & Components */
 @import 'scss/base';
 @import 'scss/layout';
+
+/* Devise user controller */
 @import 'scss/user';
 
 /* Home controller */
 @import 'scss/home';
+
+/* modules */
+@import 'scss/modules/form'
