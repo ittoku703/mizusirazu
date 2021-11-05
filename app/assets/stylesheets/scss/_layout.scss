@@ -1,34 +1,15 @@
 /* header */
 
 .header {
-  height: 68px;
-}
-
-.header-wrap {
-  @include pc {
-    margin: 0 5%;
-  }
-
-  @include sp {
-    position: relative;
-    max-width: $media-sp;
-  }
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: $spacer;
+  margin-right: $spacer;
 }
 
 .header__logo-wrap {
-  position: relative;
-  float: left;
   z-index: 1;
-
-  @include pc {
-    position: absolute;
-    top: 0;
-    left: $spacer;
-  }
-
-  @include sp {
-    padding-left: $spacer;
-  }
 }
 
 .header__togglebtn {
@@ -37,40 +18,36 @@
   }
 
   @include sp {
-    float: right;
     margin-top: 12px;
-    margin-right: 4%;
     font-size: 16px;
   }
 }
 
-.header__nav-links-wrap {
-  width: 100%;
-}
-
 .header__nav-links {
-  @include pc { 
-    float: right;
-  }
-
   @include sp {
     display: none;
-    margin: 1rem 0;
-    padding: 16px;
     position: absolute;
-    top: 84px;
-    right: 12px;
+    top: 80px;
+    right: 20px;
     z-index: 2;
   }
 }
 
 .header__nav-link {
   text-transform: uppercase;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   @include pc {
     display: inline-block;
-    margin-right: 16px;
-    margin-left: 16px;
-    padding: 25px 0;
+    padding-top: $spacer;
+    margin-right: $gap;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   @include sp {
@@ -94,55 +71,28 @@
 
 /* footer */
 .footer {
-  padding: 48px 0;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-}
-
-.footer-wrap {
+  padding-top: $spacer;
   margin: 0 auto;
-  max-width: 940px;
   width: 90%;
+  max-width: 940px;
   overflow: auto;
 }
 
-.footer__overflow {
-  overflow: auto;
-}
-
-.footer__technology-links {
-  box-sizing: border-box;
-  float: right;
-
+.footer__info {
   @include pc {
-    width: 20%;
-    width: calc(240px);
-  }
-
-  @include sp {
-    float: none;
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-between;
   }
 }
 
-.footer__technology-link {
+.footer__info__technology-links a {
   display: table;
   line-height: 2rem;
 }
 
-.footer__about {
+.footer__info__about {
   padding-top: $spacer;
-  box-sizing: border-box;
-  float: left;
-
-  @include pc {
-    width: 70%;
-    width: calc(100% - 300px);
-  }
-
-  @include sp {
-    float: none;
-  }
 }
 
 .footer__language_selector {
@@ -156,8 +106,11 @@
 
 .footer__language {
   display: inline-block;
-  margin-left: 6px;
   margin-right: 6px;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .footer__copyright {

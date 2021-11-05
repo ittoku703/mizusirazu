@@ -18,31 +18,27 @@
 
   <body>
     <header class="header">
-      <div class="header-wrap">
-        <!-- My Homepage logo -->
-        <%= link_to root_path, class: "header__logo-wrap", title: "MizusirazuNet" do %>
-          <%= image_tag '/images/logo.svg', size: '64x64', class: 'header__logo' %>
+      <!-- My Homepage logo -->
+      <%= link_to root_path, class: "header__logo-wrap", title: "MizusirazuNet" do %>
+        <%= image_tag '/images/logo.svg', size: '64x64', class: 'header__logo' %>
+      <% end %>
+
+      <!-- header toggle btn -->
+      <a class="header__togglebtn nes-btn" href="#">*</a>
+
+      <!-- Links -->
+      <nav class="header__nav-links">
+        <% if user_signed_in? %>
+          <%= link_to t('my_page'), user_profile_path(current_user), class: 'header__nav-link' %>
+          <%= link_to t('edit'), settings_path, class: 'header__nav-link' %>
+          <%= link_to t('micropost_write'), new_micropost_path, class: 'header__nav-link' %>
+          <%= link_to t('logout'), destroy_user_session_path, method: :delete, class: 'header__nav-link' %>
+        <% else %>
+          <%= link_to t('signup'), signup_path, class: 'header__nav-link' %>
+          <%= link_to t('login'), new_user_session_path, class: 'header__nav-link' %>
+          <%= link_to t('look_microposts'), microposts_path, class: 'header__nav-link' %>
         <% end %>
-
-        <!-- header toggle btn -->
-        <a class="header__togglebtn nes-btn" href="#">*</a>
-
-        <!-- Links -->
-        <div class="header__nav-links-wrap">
-          <nav class="header__nav-links">
-            <% if user_signed_in? %>
-              <%= link_to t('my_page'), user_profile_path(current_user), class: 'header__nav-link' %>
-              <%= link_to t('edit'), settings_path, class: 'header__nav-link' %>
-              <%= link_to t('micropost_write'), new_micropost_path, class: 'header__nav-link' %>
-              <%= link_to t('logout'), destroy_user_session_path, method: :delete, class: 'header__nav-link' %>
-            <% else %>
-              <%= link_to t('signup'), signup_path, class: 'header__nav-link' %>
-              <%= link_to t('login'), new_user_session_path, class: 'header__nav-link' %>
-              <%= link_to t('look_microposts'), microposts_path, class: 'header__nav-link' %>
-            <% end %>
-          </nav>
-        </div>
-      </div>
+      </nav>
     </header>
 
     <% flash.each do |name, msg| %>
@@ -59,45 +55,42 @@
     </main>
 
     <footer class="footer">
-      <div class="footer-wrap">
-        <div class="nes-container is-rounded is-dark">
-          <div class="footer__overflow">
-            <!-- My site Links -->
-            <div class="footer__technology-links nes-container is-dark with-title">
-              <p class="title"><%= t('technology') %></p>
-              <%= link_to t('source_code'), 'https://github.com/shinzanmono/mizusirazu.net', class: 'footer__technology-link' %>
-              <%= link_to t('contact'), 'mailto:shinzanmono@example.com', class: 'footer__technology-link' %>
-              <%= link_to 'NES.css', 'https://nostalgic-css.github.io/NES.css/', class: 'footer__technology-link' %>
-              <%= link_to 'Nu-きなこもち(font)', 'http://kokagem.sakura.ne.jp/font/mochi/', class: 'footer__technology-link' %>
-            </div>
-
-            <!-- My site About -->
-            <div class="footer__about">
-              <p>Mizurazu.netはいいサイトです。</p>
-              <p>なぜなら、いいサイトはいいサイトだからです。</p>
-              <p>ということは、このサイトもいいサイトということになるでしょう。</p>
-            </div>
+      <div class="nes-container is-rounded is-dark">
+        <div class="footer__info">
+          <!-- My site Links -->
+          <div class="footer__info__technology-links nes-container is-dark with-title">
+            <p class="title"><%= t('technology') %></p>
+            <%= link_to t('source_code'), 'https://github.com/shinzanmono/mizusirazu.net' %>
+            <%= link_to t('contact'), 'mailto:shinzanmono@example.com' %>
+            <%= link_to 'NES.css', 'https://nostalgic-css.github.io/NES.css/' %>
+            <%= link_to 'Nu-きなこもち(font)', 'http://kokagem.sakura.ne.jp/font/mochi/' %>
           </div>
 
-          <!-- language selector -->
-          <div class="footer__language_selector">
-            <h2><%= t('select_language') %></h2>
-            <div class="footer__languages">
-              <% I18n.available_locales.each do |language| %>
-                <div class="footer__language">
-                  <%= link_to t(language), url_for(locale: language) %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-
-          <!-- copyright -->
-          <div class="footer__copyright">
-            <i class="nes-kirby"></i>
-            <p>copyright (c) shinzanmono. All right received</p>
+          <!-- My site About -->
+          <div class="footer__info__about">
+            <p>Mizurazu.netはいいサイトです。</p>
+            <p>なぜなら、いいサイトはいいサイトだからです。</p>
+            <p>ということは、このサイトもいいサイトということになるでしょう。</p>
           </div>
         </div>
-      </div>
+
+        <!-- language selector -->
+        <div class="footer__language_selector">
+          <h2><%= t('select_language') %></h2>
+          <div class="footer__languages">
+            <% I18n.available_locales.each do |language| %>
+              <div class="footer__language">
+                <%= link_to t(language), url_for(locale: language) %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- copyright -->
+        <div class="footer__copyright">
+          <i class="nes-kirby"></i>
+          <p>copyright (c) shinzanmono. All right received</p>
+        </div>
     </footer> 
 
     <%= debug(params) if Rails.env.development? %> 
