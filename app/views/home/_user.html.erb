@@ -16,22 +16,46 @@
 
       <!-- main content -->
       <div class="root__main">
-        <div class="root__main-page">
-          <% ['email', 'sign_in_count', 'created_at', 'updated_at'].each do |attr| %>
-            <%= content_tag(:p, "#{attr}: #{current_user.send(attr)}") %>
-          <% end %>
+        <div class="root__main__page">
+          <div class="root__main__page-user">
+            <h2>User</h2>
+            <ul class="nes-list is-disc">
+            <% ['email', 'sign_in_count', 'created_at', 'updated_at'].each do |attr| %>
+              <li><%= content_tag(:p, "#{t(attr)}: #{current_user.send(attr)}") %></li>
+            <% end %>
+            </ul>
+          </div>
+
+          <div class="root__main__page-micropost">
+            <h2>Micropost</h2>
+            <ul class="nes-list is-disc">
+              <li><%= link_to t('micropost_write'), new_micropost_path %></li>
+            </ul>
+          </div>
         </div>
 
         <!-- right sidebar -->
-        <aside class="root__main-sidebar">
-          <ul class="nes-list is-circle">
-            <li>list</li>
-            <li>list</li>
-            <li>list</li>
-            <li>list</li>
-            <li>list</li>
-            <li>list</li>
-          </ul>
+        <aside class="root__main__sidebar">
+          <% if current_user.microposts.any? %>
+            <%= link_to t('micropost_list'), user_microposts_path(current_user), class: 'root__main__sidebar-title' %>
+            <% current_user.microposts[0..3].each do |micropost| %>
+              <div class="nes-container with-title is-centered">
+                <%= content_tag(:h1, micropost.title, class: 'title') %>
+                <%= content_tag(:p, micropost.content, class: 'content') %>
+                <%= content_tag(:p, "#{t('created_at')}: #{micropost.created_at}", class: 'date') %>
+                <%= content_tag(:p, "#{t('updated_at')}: #{micropost.updated_at}", class: 'date') %>
+                <br />
+                <div class="root__main__sidebar-links">
+                  <%= link_to t('look'), micropost_path(micropost) %>
+                  <%= link_to t('edit'), edit_micropost_path(micropost) %>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="nes-container">
+              <h1><%= t('micropost_write') %></h1>
+            </div>
+          <% end %>
         </aside>
       </div>
     </div>

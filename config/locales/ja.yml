@@ -33,6 +33,7 @@ ja:
   password: パスワード
   password_confirmation: パスワード（もういちど）
   current_password: いまのパスワード
+  sign_in_count: ログインかいすう
   activate_user: アカウントをゆうこうかする
   delete_user: ユーザをさくじょする
   edit_user: ユーザをへんしゅうする
