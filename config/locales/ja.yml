@@ -96,3 +96,7 @@ ja:
     template:
       header:
         other: "%{model}に%{count}つのエラーがでました"
+  # time format
+  time:
+    formats:
+      default: "%Y/%m/%d"

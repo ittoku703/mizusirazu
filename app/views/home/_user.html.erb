@@ -20,9 +20,10 @@
           <div class="root__main__page-user">
             <h2>User</h2>
             <ul class="nes-list is-disc">
-            <% ['email', 'sign_in_count', 'created_at', 'updated_at'].each do |attr| %>
-              <li><%= content_tag(:p, "#{t(attr)}: #{current_user.send(attr)}") %></li>
-            <% end %>
+              <li><%= content_tag(:p, "#{t('email')}: #{current_user.email}") %></li>
+              <li><%= content_tag(:p, "#{t('sign_in_count')}: #{current_user.sign_in_count}") %></li>
+              <li><%= content_tag(:p, "#{t('created_at')}: #{l(current_user.created_at)}") %></li>
+              <li><%= content_tag(:p, "#{t('updated_at')}: #{l(current_user.updated_at)}") %></li>
             </ul>
           </div>
 
@@ -42,8 +43,8 @@
               <div class="nes-container with-title is-centered">
                 <%= content_tag(:h1, micropost.title, class: 'title') %>
                 <%= content_tag(:p, micropost.content, class: 'content') %>
-                <%= content_tag(:p, "#{t('created_at')}: #{micropost.created_at}", class: 'date') %>
-                <%= content_tag(:p, "#{t('updated_at')}: #{micropost.updated_at}", class: 'date') %>
+                <%= content_tag(:p, "#{t('created_at')}: #{l(micropost.created_at)}", class: 'date') %>
+                <%= content_tag(:p, "#{t('updated_at')}: #{l(micropost.updated_at)}", class: 'date') %>
                 <br />
                 <div class="root__main__sidebar-links">
                   <%= link_to t('look'), micropost_path(micropost) %>

@@ -8,8 +8,8 @@
       </div>
       <div class="registration-profile">
         <p><strong>Email: </strong><%= @user.email %></p>
-        <p><strong>Created at: </strong><%= @user.created_at %></p>
-        <p><strong>Updated at: </strong><%= @user.updated_at %></p>
+        <p><strong>Created at: </strong><%= l(@user.created_at) %></p>
+        <p><strong>Updated at: </strong><%= l(@user.updated_at) %></p>
       </div>
     </section>
 

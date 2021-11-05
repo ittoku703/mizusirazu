@@ -5,8 +5,8 @@
     <div class="nes-container is-rounded">
       <div class="micropost__show-info">
         <%= content_tag(:p, "#{t('author')}: #{@micropost.user.email}") %>
-        <%= content_tag(:p, "#{t('created_at')}: #{@micropost.created_at}") %>
-        <%= content_tag(:p, "#{t('updated_at')}: #{@micropost.updated_at}") %>
+        <%= content_tag(:p, "#{t('created_at')}: #{l(@micropost.created_at)}") %>
+        <%= content_tag(:p, "#{t('updated_at')}: #{l(@micropost.updated_at)}") %>
       </div>
 
       <div class="micropost__show-title">

@@ -96,3 +96,7 @@ en:
     template:
       header:
         other: "%{count} errors prohibited this %{model} from being saved"
+  # time format
+  time:
+    formats:
+      default: "%Y/%m/%d"

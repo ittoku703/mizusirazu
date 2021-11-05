@@ -13,6 +13,10 @@ module FeatureHelper
     I18n.t(value)
   end
 
+  def l(value)
+    I18n.localize(value)
+  end
+
   def edit_user_password_link
     visit new_user_password_path
     fill_in 'user[email]', with: user.email

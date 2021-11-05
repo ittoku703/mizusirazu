@@ -12,8 +12,8 @@
     <%= content_tag(:p, micropost.content, class: 'micropost__post-content') %>
 
     <ul class="nes-list is-circle">
-      <%= content_tag :li, "#{t('created_at')}: #{micropost.created_at}", class: 'micropost__post-date' %>
-      <%= content_tag :li, "#{t('updated_at')}: #{micropost.updated_at}", class: 'micropost__post-date' %>
+      <%= content_tag :li, "#{t('created_at')}: #{l(micropost.created_at)}", class: 'micropost__post-date' %>
+      <%= content_tag :li, "#{t('updated_at')}: #{l(micropost.updated_at)}", class: 'micropost__post-date' %>
     </ul>
 
     <div class="micropost__post-links">
