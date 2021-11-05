@@ -109,3 +109,9 @@ html, body, pre, code, kbd, samp {
 .nes-container.is-centered > p {
   text-align: left;
 }
+
+.nes-container.with-title.is-centered > .title {
+  display: revert;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
