@@ -1,5 +1,14 @@
 <body class="body--micropost"></body>
 
 <div class="micropost__index">
-  <%= render partial: 'shared/micropost', collection: @microposts %>
+  <% if @microposts.any? %>
+    <%= render partial: 'shared/micropost', collection: @microposts %>
+  <% else %>
+    <div class="micropost__nothing">
+      <div class="nes-container">
+        <h1>Micropost nothing</h1>
+        <p>oh my god...</p>
+      </div>
+    </div>
+  <% end %>
 </div>

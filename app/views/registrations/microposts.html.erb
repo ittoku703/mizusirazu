@@ -1,5 +1,16 @@
 <body class="body--registration"></body>
 
 <div class="registration__microposts">
-  <%= render partial: 'shared/micropost', collection: @microposts %>
+  <% if @microposts.any? %>
+    <%= render partial: 'shared/micropost', collection: @microposts %>
+  <% else %>
+    <div class="micropost__nothing">
+      <div class="nes-container">
+        <h1>Micropost nothing</h1>
+        <% if current_user&.id == params[:id].to_i %>
+          <p>please write micropost</p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
