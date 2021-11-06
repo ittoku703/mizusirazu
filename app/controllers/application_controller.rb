@@ -1,19 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery prepend: true
-  before_action :ensure_domain
   before_action :set_locale
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
-
-  # redirect to MYDOMAIN to herokuapp.com
-  def ensure_domain
-    return unless request.host.match?(/\.herokuapp.com/)
-
-    fqdn = 'www.mizusirazu.net'
-    port = ":#{request.port}" unless [80, 443].include?(request.port) # <---- for the test
-    redirect_to "#{request.protocol}#{fqdn}#{port}#{request.path}", status: :moved_permanently
-  end
 
   def set_locale
     I18n.locale = user_locale
