@@ -69,7 +69,7 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = false
 
-  host = 'mizusirazu.herokuapp.com'
+  host = 'mizusirazu.net'
   config.action_mailer.asset_host = "https://#{host}"
   config.action_mailer.default_url_options = { host: host }
 
