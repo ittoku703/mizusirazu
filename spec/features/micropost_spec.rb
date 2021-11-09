@@ -16,7 +16,7 @@ RSpec.feature 'Microposts', type: :feature do
     fill_in 'micropost[title]', with: 'Title'
     fill_in 'micropost[content]', with: 'This is content.'
     click_button t('post')
-    expect(page).to have_selector('#notice', text: t('micropost_success'))
+    expect(page).to have_selector('#notice', text: t('microposts.success'))
   end
 
   scenario 'edit micropost' do
@@ -31,13 +31,13 @@ RSpec.feature 'Microposts', type: :feature do
     fill_in 'micropost[title]', with: 'new Title'
     fill_in 'micropost[content]', with: 'new content.'
     click_button t('edit')
-    expect(page).to have_selector('#notice', text: t('micropost_updated'))
+    expect(page).to have_selector('#notice', text: t('microposts.updated'))
   end
 
   scenario 'delete micropost' do
     login_user
     visit edit_micropost_path(micropost)
     click_link t('delete')
-    expect(page).to have_selector('#notice', text: t('micropost_deleted'))
+    expect(page).to have_selector('#notice', text: t('microposts.deleted'))
   end
 end

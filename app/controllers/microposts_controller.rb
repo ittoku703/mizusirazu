@@ -17,7 +17,7 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.build(micropost_params)
 
     if @micropost.save
-      redirect_to(micropost_path(@micropost), notice: t('micropost_success'))
+      redirect_to(micropost_path(@micropost), notice: t('microposts.success'))
     else
       render :new
     end
@@ -34,7 +34,7 @@ class MicropostsController < ApplicationController
   # PATCH or PUT /microposts/:id
   def update
     if @micropost.update(micropost_params)
-      redirect_to(micropost_path(@micropost), notice: t('micropost_updated'))
+      redirect_to(micropost_path(@micropost), notice: t('microposts.updated'))
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class MicropostsController < ApplicationController
   # DELETE /microposts/:id
   def destroy
     @micropost.destroy
-    redirect_to(user_microposts_path(@micropost.user), notice: t('micropost_deleted'))
+    redirect_to(user_microposts_path(@micropost.user), notice: t('microposts.deleted'))
   end
 
   private

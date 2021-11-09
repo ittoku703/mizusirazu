@@ -1,96 +1,81 @@
 ja:
-  en: えいご
-  ja: にほんご
-  are_you_sure: ほんとうによろしいですか？
-  author: 作者
-  authenticate_failed: にんしょうにしっぱいしました
-  back: もどる
-  created_at: さくせいじ
-  contact: れんらくする
-  control: そうさ
-  edit: へんしゅう
-  delete: さくじょ
-  delete_failed: さくじょにしっぱいしました
-  delete_success: さくじょにせいこうしました
-  introduction: じこしょうかい
-  look: みる
-  look_microposts: きじをみる
-  my_page: じぶんのページ
+  en: 英語
+  ja: 日本語
+  are_you_sure: 本当によろしいですか？
+  author: 著者
+  back: 戻る
+  created_at: 作成時
+  contact: 連絡する
+  edit: 編集
+  delete: 削除
+  delete_failed: 削除に失敗しました
+  delete_success: 削除に成功しました
+  introduction: 自己紹介
+  look: 見る
+  look_microposts: 記事を見る
+  my_page: 自分のページ
   'no': 'いいえ'
-  not_admin: かんりしゃのみアクセスかのうです
-  not_found_email: メールがみつかりません
-  post: とうこう
-  remember_me: ログインをほぞんしますか？
-  select_language: げんごをせんたくしてください
+  post: 投稿
+  remember_me: ログインを保存しますか？
+  select_language: 言語を選択してください
   source_code: ソースコード
-  technology: ぎじゅつ
-  unlock: かいじょ
-  updated_at: こうしんじ
-  update_success: こうしんにせいこうしました
+  technology: 技術
+  unlock: 解除
+  updated_at: 更新時
   'yes': 'はい'
   # user
   email: メールアドレス
   password: パスワード
   password_confirmation: パスワード（もういちど）
-  current_password: いまのパスワード
-  sign_in_count: ログインかいすう
-  activate_user: アカウントをゆうこうかする
-  delete_user: ユーザをさくじょする
-  edit_user: ユーザをへんしゅうする
+  current_password: 現在のパスワード
+  sign_in_count: ログイン回数
+  activate_user: アカウントを有効化する
+  delete_user: ユーザを削除する
+  edit_user: ユーザを編集する
   login_user: ログインする
   logout_user: ログアウトする
-  micropost_user: きじをとうこうする
-  new_user: ユーザをさくせいする
-  signup: しんきさくせい
+  micropost_user: 記事を投稿する
+  new_user: ユーザを作成する
+  signup: 新規作成
   unlock_user: ユーザをアンロックする
-  users: ユーザいちらん
   user_page: ユーザのページ
   # session
-  already_logged_in: すでにログインしています
-  logged_out: ログアウトしました
   login: ログイン
-  login_failed: ログインにしっぱいしました
-  login_success: ログインしました
   logout: ログアウト
-  please_login: ログインしてください
   # password reset
-  change_password: パスワードをへんこうする
-  check_password_reset_email: パスワードさいせっていメールをかくにんしてください
-  forget_password: パスワードをおわすれですか？
-  password_reset_failed: パスワードをせっていできませんでした
-  password_reset_success: パスワードをせっていしました
-  please_set_password: パスワードをせっていしてください
+  change_password: パスワードを変更する
+  forget_password: パスワードをお忘れですか？
   reset_password: パスワードをリセット
   # activation
-  activate: ゆうこうか
-  activate_failed: アカウントをゆうこうにできませんでした
-  activate_success: アカウントをゆうこうにしました
-  already_activated: すでにゆうこうかしています
-  check_activation_email: アカウントゆうこうのメールをかくにんしてください
-  failed_send_activation_email: アカウントゆうこうのメールが送れませんでした
+  activate: 有効化
   # micropost
-  content: ないよう
+  content: 内容
   title: タイトル
-  micropost_edit: きじをへんしゅうする
-  micropost_delete: きじをさくじょする
-  micropost_deleted: きじをさくじょしました
-  micropost_list: きじいちらん
-  micropost_success: きじをとうこうしました
-  micropost_updated: きじをこうしんしました
-  micropost_write: きじをかく
-  # other
+  micropost_edit: 記事を編集する
+  micropost_delete: 記事を削除する
+  micropost_list: 記事一覧
+  micropost_write: 記事をかく
+  # controller
+  confirmations:
+    already_logged_in: すでにログインしています
+  microposts:
+    success: 記事を投稿しました
+    updated: 記事を更新しました
+    deleted: 記事を削除しました
+  # model
   activerecord:
     models:
       user: ユーザ
-    attributes:
-      user:
-        email: メールアドレス
-        password: パスワード
-        password_confirmation: パスワード（もういちど) 
-        current_password: げんざいのパスワード
-      micropost:
-        title: タイトル
-        content: ないよう
+      micropost: マイクロポスト
+  attributes:
+    user:
+      email: メールアドレス
+      password: パスワード
+      password_confirmation: パスワード（もういちど)
+      current_password: 現在のパスワード
+    micropost:
+      title: タイトル
+      content: 内容
   # error message
   errors:
     template:

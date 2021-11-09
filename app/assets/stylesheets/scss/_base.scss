@@ -26,7 +26,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 body {
   background: $background-color;
   color: #000000;
-  font-family: "nu-kinakomochi";
+  letter-spacing: 1px;
 
   @include pc {
     font-size: 16px;
@@ -41,7 +41,7 @@ i, em {
   font-style: italic;
 }
 
-a {
+a, button {
   color: $is-primary;
   text-decoration: none;
   transition-duration: 0.50s;
@@ -82,17 +82,16 @@ pre {
 
 /* NES.css Settings */
 @font-face {
-  font-family: "nu-kinakomochi";
-  src: url("/fonts/NuKinakoMochi-Reg.otf") format("opentype");
+  font-family: "misaki_gothic";
+  src: url("/fonts/misaki_gothic.woff") format("woff"), url("/fonts/misaki_gothic.woff2") format("woff2");
 }
 
 html, body, pre, code, kbd, samp {
-  font-family: "nu-kinakomochi";
+  font-family: "misaki_gothic";
 }
 
 .nes-container {
-  // default: color is white
-  background: $container-background-color;
+  background: $container-background-color; // default: color is white
 }
 
 .nes-container.with-title > .title {

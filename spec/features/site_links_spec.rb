@@ -10,7 +10,7 @@ RSpec.feature 'SiteLinks', type: :feature do
     expect(page).to have_link t('source_code')
     expect(page).to have_link t('contact')
     expect(page).to have_link 'NES.css'
-    expect(page).to have_link 'Nu-きなこもち(font)'
+    expect(page).to have_link '美咲フォント'
     expect(page).to have_link t('en')
     expect(page).to have_link t('ja')
   end

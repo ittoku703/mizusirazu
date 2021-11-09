@@ -3,11 +3,9 @@ en:
   ja: Japanese
   are_you_sure: Are you sure?
   author: Author
-  authenticate_failed: Authenticate failed
   back: Back
   created_at: Created at
   contact: Contact
-  control: Control
   edit: Edit
   delete: Delete
   delete_failed: Delete failed
@@ -17,8 +15,6 @@ en:
   look_microposts: Look microposts
   my_page: My page
   'no': 'No'
-  not_admin: You are not admin
-  not_found_email: Not found email
   post: Post
   remember_me: Remember me?
   select_language: Select language
@@ -26,7 +22,6 @@ en:
   technology: Technology
   unlock: Unlock
   updated_at: Updated at
-  update_success: Update successfully
   'yes': 'Yes'
   # user
   email: Email
@@ -43,45 +38,35 @@ en:
   new_user: New user
   signup: Sign up
   unlock_user: Unlock user
-  users: All user
   user_page: User page
   # session
-  already_logged_in: You are Already logged_in
-  logged_out: Logged out
   login: Log in
-  login_failed: Login failed
-  login_success: Successfully login
   logout: Log out
-  please_login: Please logged in
   # password reset
   change_password: Change password
-  check_password_reset_email: Check password reset email
   forget_password: Forget password?
-  password_reset_failed: Failed password reset
-  password_reset_success: Successfully password reset
-  please_set_password: Please set password
   reset_password: Reset password
   # activation
   activate: Activate
-  activate_failed: Activate failed
-  activate_success: Activate successfully
-  already_activated: Already activate account
-  check_activation_email: Please check your email to activate your account
-  failed_send_activation_email: Failed send activation email
   # micropost
   content: Content
   title: Title
   micropost_edit: Editing micropost
-  micropost_delete: Delete micropost
   micropost_deleted: Micropost deleted
   micropost_list: Micropost list
-  micropost_success: Successfully micropost
-  micropost_updated: Micropost updated
   micropost_write: Write micropost
-  # other
+  # controller
+  confirmations:
+    already_logged_in: You are Already logged_in
+  microposts:
+    success: Successfully micropost
+    updated: Micropost updated
+    delete: Delete micropost
+  # model
   activerecord:
     models:
       user: User
+      micropost: Micropost
     attributes:
       user:
         email: Email
