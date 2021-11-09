@@ -68,15 +68,18 @@ ja:
     models:
       user: ユーザ
       micropost: マイクロポスト
-  attributes:
-    user:
-      email: メールアドレス
-      password: パスワード
-      password_confirmation: パスワード（もういちど)
-      current_password: 現在のパスワード
-    micropost:
-      title: タイトル
-      content: 内容
+      comment: コメント
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（もういちど)
+        current_password: 現在のパスワード
+      micropost:
+        title: タイトル
+        content: 内容
+      comment:
+        content: コメント
   # error message
   errors:
     template:

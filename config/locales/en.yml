@@ -68,6 +68,7 @@ en:
     models:
       user: User
       micropost: Micropost
+      comment: Comment
     attributes:
       user:
         email: Email
@@ -77,6 +78,8 @@ en:
       micropost:
         title: Title
         content: Content
+      comment:
+        content: Comment
   # error message
   errors:
     template:

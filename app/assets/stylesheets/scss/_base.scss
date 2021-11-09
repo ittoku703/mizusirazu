@@ -26,7 +26,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 body {
   background: $background-color;
   color: #000000;
-  letter-spacing: 1px;
 
   @include pc {
     font-size: 16px;
@@ -86,8 +85,13 @@ pre {
   src: url("/fonts/misaki_gothic.woff") format("woff"), url("/fonts/misaki_gothic.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "nu-kinakomochi";
+  src: url("/fonts/NuKinakoMochi-Reg.otf")
+}
+
 html, body, pre, code, kbd, samp {
-  font-family: "misaki_gothic";
+  font-family: "nu-kinakomochi", "misaki_gothic";
 }
 
 .nes-container {
