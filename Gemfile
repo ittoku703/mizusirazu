@@ -19,6 +19,7 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -35,7 +36,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'faker'
   gem 'guard-rspec', require: false
   gem 'rails-controller-testing'
   gem 'rspec-rails'

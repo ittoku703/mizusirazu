@@ -16,4 +16,10 @@ FactoryBot.define do
     title { Faker::Lorem.sentence(word_count: 3) }
     content { Faker::Lorem.paragraphs }
   end
+
+  factory :comment do
+    user
+    micropost_id { 1 }
+    content { Faker::Lorem.sentence(word_count: 3) }
+  end
 end

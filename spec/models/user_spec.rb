@@ -12,4 +12,12 @@ RSpec.describe User, type: :model do
       expect { user.destroy }.to change(Micropost, :count).by(-1)
     end
   end
+
+  describe 'comments' do
+    it 'associated should be destroyed' do
+      user.save
+      user.comments.create!(micropost_id: user.id, content: 'content')
+      expect { user.destroy }.to change(Comment, :count).by(-1)
+    end
+  end
 end

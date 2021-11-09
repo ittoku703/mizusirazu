@@ -66,7 +66,6 @@ RSpec.feature 'SiteLinks', type: :feature do
     login_user
     visit settings_path
     expect(page).to have_link t('delete')
-    expect(page).to have_link t('back')
   end
 
   scenario 'login page links' do

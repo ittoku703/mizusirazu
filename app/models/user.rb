@@ -4,4 +4,5 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable, :trackable
 
   has_many :microposts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
