@@ -28,6 +28,7 @@ ja:
   password: パスワード
   password_confirmation: パスワード（もういちど）
   current_password: 現在のパスワード
+  minimum_password_length: "%{length} 文字以内"
   sign_in_count: ログイン回数
   activate_user: アカウントを有効化する
   delete_user: ユーザを削除する

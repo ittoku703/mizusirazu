@@ -13,7 +13,7 @@
   <% end %>
 
   <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= t('minimum_password_length', length: @minimum_password_length) %>)</em>
   <% end %>
 
   <br />

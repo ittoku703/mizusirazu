@@ -14,7 +14,7 @@
 
   <div class="form-field">
     <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+      <em><%= t('minimum_password_length', length: @minimum_password_length) %></em>
     <% end %>
 
     <%= f.password_field :password,
