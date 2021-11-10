@@ -23,4 +23,6 @@ Rails.application.routes.draw do
   end
 
   resources :microposts
+
+  resources :comments, only: %i[create update destroy]
 end
