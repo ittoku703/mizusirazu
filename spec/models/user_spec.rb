@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
   describe 'microposts' do
     it 'associated should be destroyed' do
       user.save
-      user.microposts.create!(title: 'Title', content: 'Content')
+      user.microposts.create!(attributes_for(:micropost))
       expect { user.destroy }.to change(Micropost, :count).by(-1)
     end
   end
@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
   describe 'comments' do
     it 'associated should be destroyed' do
       user.save
-      user.comments.create!(micropost_id: user.id, content: 'content')
+      user.comments.create!(attributes_for(:comment))
       expect { user.destroy }.to change(Comment, :count).by(-1)
     end
   end

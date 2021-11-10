@@ -7,6 +7,13 @@ RSpec.describe Comment, type: :model do
 
   it { is_expected.to eq true }
 
+  describe 'micropost_id' do
+    it 'is required' do
+      comment.micropost_id = nil
+      expect(valid).to eq false
+    end
+  end
+
   describe 'content' do
     it 'is required' do
       comment.content = nil
