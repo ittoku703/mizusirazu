@@ -39,6 +39,7 @@ group :test do
   gem 'guard-rspec', require: false
   gem 'rails-controller-testing'
   gem 'rspec-rails'
+  gem 'selenium-webdriver'
 
   # only macOS
   gem 'terminal-notifier'
