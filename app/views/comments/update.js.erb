@@ -1,0 +1,2 @@
+$('.comment-content').html("<%= j simple_format(@comment.content) %>")
+$('.comment-updated_at').html("<%= j "#{t('updated_at')}: #{l @comment.updated_at}" %>")

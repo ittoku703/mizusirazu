@@ -1,3 +1,9 @@
+.spacer {
+  margin-top: $spacer;
+  margin-bottom: $spacer;
+  border-bottom: 1px solid $is-disabled;
+}
+
 .form {
   margin: 0 auto;
   padding-top: $spacer;

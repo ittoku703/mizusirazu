@@ -1,0 +1,25 @@
+<%= f.hidden_field(:micropost_id, value: params[:id]) %>
+
+<div class="comment__form-field">
+  <%= f.text_area :content,
+    class: 'comment__form-textarea nes-textarea',
+    placeholder: t('content'),
+    autocomplete: 'content'
+  %>
+</div>
+
+<div class="comment__form-field">
+  <% if f.options[:method] == :post %>
+    <%= f.button t('post'),
+      class: 'nes-btn is-primary',
+      disabled: true,
+      data: { disable_with: t('sending') }
+    %>
+  <% elsif f.options[:method] == :patch %>
+    <%= f.button t('edit'),
+      class: 'nes-btn is-warning',
+      disabled: true,
+      data: { disable_with: t('sending') }
+    %>
+  <% end %>
+</div>

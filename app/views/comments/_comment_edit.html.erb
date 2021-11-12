@@ -1,0 +1,12 @@
+<%= form_with(model: comment, id: 'edit_comment', method: :patch, local: false) do |f| %>
+  <%= render 'comments/form', f: f, object: comment %>
+<% end %>
+
+<%= link_to t('delete'),
+  comment_path(comment),
+  class: 'nes-btn is-error',
+  method: :delete,
+  remote: true,
+  data: { confirm: t('are_you_sure') }
+%>
+

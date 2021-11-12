@@ -1,0 +1,16 @@
+<div class="comment__list">
+  <% if @micropost.comments.any? %>
+    <%= render @micropost.comments %>
+  <% end %>
+</div>
+
+<div class="comment__form">
+  <% if user_signed_in? %>
+    <div class="nes-container with-title">
+      <h1 class="title"><%= t('new_comment') %></h1>
+      <%= form_with(url: comments_path, scope: :comment, id: 'new_comment', method: :post, local: false) do |f| %>
+        <%= render 'comments/form', f: f %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

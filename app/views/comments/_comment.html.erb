@@ -1,0 +1,28 @@
+<div class="comment__list-item-<%= comment.id %>">
+  <div class="nes-container with-title">
+    <h1 class="title"><%= comment_counter + 1 %></h1>
+
+    <div class="comment__show">
+      <%= link_to "#{t('author')}: #{comment.user.email}", user_profile_path(comment.user), class: 'comment-author' %>
+
+      <div class="comment-content">
+        <%= simple_format(comment.content) %>
+      </div>
+
+      <ul class="nes-list is-circle">
+        <%= content_tag :li, "#{t('created_at')}: #{l(comment.created_at)}", class: 'comment-created_at' %>
+        <%= content_tag :li, "#{t('updated_at')}: #{l(comment.updated_at)}", class: 'comment-updated_at' %>
+      </ul>
+    </div>
+
+    <% if current_user&.id == comment.user_id %>
+      <div class="comment__edit">
+        <div class="nes-container with-title">
+          <h1 class="title"><%= t('edit_comment') %></h1>
+
+          <%= render 'comments/comment_edit', comment: comment %>
+       </div>
+      </div>
+    <% end %>
+  </div>
+</div>

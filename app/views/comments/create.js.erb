@@ -1,0 +1,6 @@
+$('.comment__list').append("<%= j render(
+  'comments/comment',
+  comment: @comment,
+  comment_counter: -1)
+  %>")
+
