@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'puma'
 gem 'sass-rails'
 gem 'turbolinks'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'byebug'

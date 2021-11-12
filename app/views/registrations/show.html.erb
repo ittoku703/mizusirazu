@@ -16,6 +16,9 @@
     <div class="registration-links">
       <ul class="nes-list is-circle">
         <li><%= link_to t('look_microposts'), user_microposts_path(@user) %></li> 
+        <% if current_user&.id == params[:id].to_i %>
+          <li><%= link_to t('micropost_write'), new_micropost_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>

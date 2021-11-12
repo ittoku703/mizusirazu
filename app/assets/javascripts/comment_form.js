@@ -7,7 +7,6 @@ $('#edit_comment textarea').on('input', () => {
 });
 
 function check_textarea(textarea, button) {
-  console.log(textarea, button)
   if($.trim($(textarea).val()) == '') {
     $(button).prop('disabled', true);
   } else {

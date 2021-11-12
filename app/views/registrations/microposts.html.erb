@@ -3,6 +3,7 @@
 <div class="registration__microposts">
   <% if @microposts.any? %>
     <%= render partial: 'shared/micropost', collection: @microposts %>
+    <%= will_paginate @microposts %>
   <% else %>
     <div class="micropost__nothing">
       <div class="nes-container">
