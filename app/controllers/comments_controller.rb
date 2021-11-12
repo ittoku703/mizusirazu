@@ -6,12 +6,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
 
     @comment.save
-    redirect_to @comment.micropost
-
-    # respond_to do |format|
-    #   format.html { redirect_to @comment.micropost }
-    #   format.js
-    # end
+    respond_to_ajax
   end
 
   # PATCH /comment/:id
@@ -19,12 +14,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
 
     @comment.update(comment_params)
-    redirect_to @comment.micropost
-
-    # respond_to do |format|
-    #   format.html { redirect_to @comment.micropost }
-    #   format.js
-    # end
+    respond_to_ajax
   end
 
   # DELETE /comment/:id
@@ -32,15 +22,17 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
 
     @comment.destroy
-    redirect_to @comment.micropost
-
-    # respond_to do |format|
-    #   format.html { redirect_to @comment.micropost }
-    #   format.js
-    # end
+    respond_to_ajax
   end
 
   private
+
+  def respond_to_ajax
+    respond_to do |format|
+      format.html { redirect_to @comment.micropost }
+      format.js
+    end
+  end
 
   def comment_params
     params.require(:comment).permit(:micropost_id, :content)

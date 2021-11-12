@@ -18,6 +18,7 @@ en:
   post: Post
   remember_me: Remember me?
   select_language: Select language
+  sending: Sending...
   source_code: Source code
   technology: Technology
   unlock: Unlock
@@ -56,6 +57,11 @@ en:
   micropost_deleted: Micropost deleted
   micropost_list: Micropost list
   micropost_write: Write micropost
+  # comment
+  new_comment: New comment
+  edit_comment: Edit comment
+  comment_success: Successfully comment
+  comment_failed: Failed comment
   # controller
   confirmations:
     already_logged_in: You are Already logged_in

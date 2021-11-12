@@ -18,6 +18,7 @@ ja:
   post: 投稿
   remember_me: ログインを保存しますか？
   select_language: 言語を選択してください
+  sending: 送信中...
   source_code: ソースコード
   technology: 技術
   unlock: 解除
@@ -56,6 +57,9 @@ ja:
   micropost_delete: 記事を削除する
   micropost_list: 記事一覧
   micropost_write: 記事をかく
+  # comment
+  new_comment: コメントを作成する
+  edit_comment: コメントを編集する
   # controller
   confirmations:
     already_logged_in: すでにログインしています
