@@ -10,12 +10,19 @@ end
 
 users = User.all
 10.times do
-  title = Faker::Lorem.sentence(word_count: 3)
-  content = Faker::Lorem.paragraph(sentence_count: 2)
-  users.each { |user| user.microposts.create!(title: title, content: content) }
+  users.each do |user|
+    user.microposts.create!(
+      title: Faker::Lorem.sentence(word_count: 3),
+      content: Faker::Lorem.paragraph(sentence_count: 2)
+    )
+  end
 end
 
 10.times do
-  content = Faker::Lorem.sentence(word_count: 3)
-  users.each { |user| user.comments.create!(micropost_id: rand(1..100), content: content) }
+  users.each do |user|
+    user.comments.create!(
+      micropost_id: rand(1..100),
+      content:Faker::Lorem.sentence(word_count: 3)
+    )
+  end
 end

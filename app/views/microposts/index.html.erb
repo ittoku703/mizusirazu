@@ -2,7 +2,7 @@
 
 <div class="micropost__index">
   <% if @microposts.any? %>
-    <%= render partial: 'shared/micropost', collection: @microposts %>
+    <%= render @microposts %>
     <%= will_paginate %>
   <% else %>
     <div class="micropost__nothing">
