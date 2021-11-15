@@ -272,6 +272,8 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
+    tailwindcss-rails (0.5.1)
+      rails (>= 6.0.0)
     terminal-notifier (2.0.0)
     terminal-notifier-guard (1.7.0)
     thor (1.1.0)
@@ -328,6 +330,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   sqlite3
+  tailwindcss-rails
   terminal-notifier
   terminal-notifier-guard
   turbolinks

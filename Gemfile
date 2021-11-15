@@ -12,6 +12,7 @@ gem 'jbuilder'
 gem 'jquery-rails'
 gem 'puma'
 gem 'sass-rails'
+gem 'tailwindcss-rails'
 gem 'turbolinks'
 gem 'will_paginate'
 
@@ -50,3 +51,4 @@ end
 group :production do
   gem 'pg'
 end
+
