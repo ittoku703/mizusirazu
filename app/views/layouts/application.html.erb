@@ -9,6 +9,10 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
 
+    <!-- Tailwindcss -->
+    <%= stylesheet_link_tag "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+
     <!-- NES.css -->
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
@@ -17,28 +21,59 @@
   </head>
 
   <body>
-    <header class="header">
+    <header class="flex items-center justify-between flex-wrap p-4">
       <!-- My Homepage logo -->
-      <%= link_to root_path, class: "header__logo-wrap", title: "MizusirazuNet" do %>
-        <%= image_tag '/images/logo.svg', size: '64x64', class: 'header__logo' %>
-      <% end %>
+        <%= link_to root_path class: 'mr-6', title: "MizusirazuNet" do %>
+          <%= image_tag '/images/logo.svg', size: '64x64', class: '' %>
+        <% end %>
 
-      <!-- header toggle btn -->
-      <a class="header__togglebtn nes-btn" href="#">*</a>
+      <!-- toggle btn -->
+      <div class="block sm:hidden">
+        <button id="header-togglebtn" class="nes-btn is-warning">*</button>
+      </div>
 
       <!-- Links -->
-      <nav class="header__nav-links">
-        <% if user_signed_in? %>
-          <%= link_to t('my_page'), user_profile_path(current_user), class: 'header__nav-link' %>
-          <%= link_to t('edit'), settings_path, class: 'header__nav-link' %>
-          <%= link_to t('micropost_list'), microposts_path, class: 'header__nav-link' %>
-          <%= link_to t('logout'), destroy_user_session_path, method: :delete, class: 'header__nav-link' %>
-        <% else %>
-          <%= link_to t('signup'), signup_path, class: 'header__nav-link' %>
-          <%= link_to t('login'), new_user_session_path, class: 'header__nav-link' %>
-          <%= link_to t('look_microposts'), microposts_path, class: 'header__nav-link' %>
-        <% end %>
-      </nav>
+      <div id="header-links" class="w-full hidden sm:block sm:items-center sm:w-auto">
+        <div class="text-sm sm:flex-grow is-primary">
+          <% if user_signed_in? %>
+            <%= link_to t('my_page'),
+              user_profile_path(current_user),
+              class: 'block mt-2 sm:inline-block sm:mr-4 sm:mt-0'
+            %>
+
+            <%= link_to t('edit'),
+              settings_path,
+              class: 'block mt-2 sm:inline-block sm:mr-4 sm:mt-0'
+            %>
+
+            <%= link_to t('micropost_list'),
+              microposts_path,
+              class: 'block mt-2 sm:inline-block sm:mr-4 sm:mt-0'
+            %>
+
+            <%= link_to t('logout'),
+              destroy_user_session_path,
+              class: 'block mt-2 sm:inline-block sm:mr-4 sm:mt-0',
+              method: :delete
+            %>
+          <% else %>
+            <%= link_to t('signup'),
+              signup_path,
+              class: 'block mt-2 sm:inline-block sm:mr-4 sm:mt-0'
+            %>
+
+            <%= link_to t('login'),
+              new_user_session_path,
+              class: 'block mt-2 sm:inline-block sm:mr-4 sm:mt-0'
+            %>
+
+            <%= link_to t('look_microposts'),
+              microposts_path,
+              class: 'block mt-2 sm:inline-block sm:mr-4 sm:mt-0'
+            %>
+          <% end %>
+        </div>
+      </div>
     </header>
 
     <% flash.each do |name, msg| %>
@@ -54,43 +89,50 @@
       <%= yield %>
     </main>
 
-    <footer class="footer">
+    <footer class="pt-4 px-2 text-sm">
       <div class="nes-container is-rounded is-dark">
-        <div class="footer__info">
+        <div class="block justify-center sm:flex">
           <!-- My site Links -->
-          <div class="footer__info__technology-links nes-container is-dark with-title">
-            <p class="title"><%= t('technology') %></p>
-            <%= link_to t('source_code'), 'https://github.com/shinzanmono/mizusirazu.net' %>
-            <%= link_to t('contact'), 'mailto:shinzanmono@example.com' %>
-            <%= link_to 'NES.css', 'https://nostalgic-css.github.io/NES.css/' %>
-            <%= link_to 'Nu きなこもち', 'http://kokagem.sakura.ne.jp/font/mochi/' %>
-            <%= link_to '美咲フォント', 'https://littlelimit.net/misaki.htm' %>
-            <%= link_to 'PixcelGaro (icon)', 'https://hpgpixer.jp/' %>
-            <%= link_to 'Wallhaven (background)', 'https://wallhaven.cc/' %>
+          <div class="pt-4 sm:mr-4">
+            <div class="nes-container is-dark with-title">
+              <p class="title"><%= t('technology') %></p>
+              <ul class="nes-list is-circle is-dark">
+                <li><%= link_to t('source_code'), 'https://github.com/shinzanmono/mizusirazu.net' %></li>
+                <li><%= link_to t('contact'), 'mailto:shinzanmono@example.com' %></li>
+                <li><%= link_to 'NES.css', 'https://nostalgic-css.github.io/NES.css/' %></li>
+                <li><%= link_to 'Nu きなこもち', 'http://kokagem.sakura.ne.jp/font/mochi/' %></li>
+                <li><%= link_to '美咲フォント', 'https://littlelimit.net/misaki.htm' %></li>
+                <li><%= link_to 'PixcelGaro (icon)', 'https://hpgpixer.jp/' %></li>
+                <li><%= link_to 'Wallhaven (background)', 'https://wallhaven.cc/' %></li>
+              </ul>
+            </div>
           </div>
 
           <!-- My site About -->
-          <div class="footer__info__about">
-            <p>Mizurazu.netはいいサイトです。</p>
-            <p>なぜなら、いいサイトはいいサイトだからです。</p>
-            <p>ということは、このサイトもいいサイトということになるでしょう。</p>
+          <div class="pt-4">
+            <div class="nes-container is-dark with-title">
+              <h1 class="title"><%= t('about') %></h1>
+              <p>Mizurazu.netはいいサイトです。</p>
+              <p>なぜなら、いいサイトはいいサイトだからです。</p>
+              <p>ということは、このサイトもいいサイトということになるでしょう。</p>
+            </div>
           </div>
         </div>
 
         <!-- language selector -->
-        <div class="footer__language_selector">
-          <h2><%= t('select_language') %></h2>
-          <div class="footer__languages">
-            <% I18n.available_locales.each do |language| %>
-              <div class="footer__language">
-                <%= link_to t(language), url_for(locale: language) %>
-              </div>
-            <% end %>
+        <div class="text-center pt-4">
+          <div class="nes-container is-dark with-title is-centered">
+            <h1 class="title"><%= t('select_language') %></h2>
+            <div class="flex justify-center">
+              <% I18n.available_locales.each do |language| %>
+                <%= link_to t(language), url_for(locale: language), class: 'mr-4' %>
+              <% end %>
+            </div>
           </div>
         </div>
 
         <!-- copyright -->
-        <div class="footer__copyright">
+        <div class="text-center pt-4">
           <i class="nes-kirby"></i>
           <p>copyright (c) shinzanmono. All right received</p>
         </div>

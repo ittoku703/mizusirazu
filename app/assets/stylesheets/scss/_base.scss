@@ -26,14 +26,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 body {
   background: $background-color;
   color: #000000;
-
-  @include pc {
-    font-size: 16px;
-  }
-
-  @include sp {
-    font-size: 14px;
-  }
 }
 
 i, em {
@@ -117,4 +109,9 @@ html, body, pre, code, kbd, samp {
   display: revert;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.nes-list.is-disc.is-dark li::before,
+.nes-list.is-circle.is-dark li::before {
+  color: white;
 }

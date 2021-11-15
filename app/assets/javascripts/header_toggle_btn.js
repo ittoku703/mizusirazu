@@ -1,5 +1,3 @@
-$('.header__togglebtn').click(function() {
-  $('.header__nav-links')
-    .slideToggle()
-    .toggleClass('nes-container is-rounded')
+$('#header-togglebtn').on('click', () => {
+  $('#header-links').toggleClass('hidden');
 });
