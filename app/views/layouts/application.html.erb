@@ -21,10 +21,10 @@
   </head>
 
   <body>
-    <header class="flex items-center justify-between flex-wrap p-4">
+    <header class="flex items-center justify-between flex-wrap px-4">
       <!-- My Homepage logo -->
         <%= link_to root_path class: 'mr-6', title: "MizusirazuNet" do %>
-          <%= image_tag '/images/logo.svg', size: '64x64', class: '' %>
+          <%= image_tag '/images/logo.svg', size: '64x64' %>
         <% end %>
 
       <!-- toggle btn -->
@@ -36,41 +36,14 @@
       <div id="header-links" class="w-full hidden sm:block sm:items-center sm:w-auto">
         <div class="text-sm sm:flex-grow is-primary">
           <% if user_signed_in? %>
-            <%= link_to t('my_page'),
-              user_profile_path(current_user),
-              class: 'block mt-2 sm:inline-block sm:mr-4 sm:mt-0'
-            %>
-
-            <%= link_to t('edit'),
-              settings_path,
-              class: 'block mt-2 sm:inline-block sm:mr-4 sm:mt-0'
-            %>
-
-            <%= link_to t('micropost_list'),
-              microposts_path,
-              class: 'block mt-2 sm:inline-block sm:mr-4 sm:mt-0'
-            %>
-
-            <%= link_to t('logout'),
-              destroy_user_session_path,
-              class: 'block mt-2 sm:inline-block sm:mr-4 sm:mt-0',
-              method: :delete
-            %>
+            <%= header_link_to t('my_page'), user_profile_path(current_user) %>
+            <%= header_link_to t('edit'), settings_path %>
+            <%= header_link_to t('micropost_list'), microposts_path %>
+            <%= header_link_to t('logout'), destroy_user_session_path, method: :delete %>
           <% else %>
-            <%= link_to t('signup'),
-              signup_path,
-              class: 'block mt-2 sm:inline-block sm:mr-4 sm:mt-0'
-            %>
-
-            <%= link_to t('login'),
-              new_user_session_path,
-              class: 'block mt-2 sm:inline-block sm:mr-4 sm:mt-0'
-            %>
-
-            <%= link_to t('look_microposts'),
-              microposts_path,
-              class: 'block mt-2 sm:inline-block sm:mr-4 sm:mt-0'
-            %>
+            <%= header_link_to t('signup'), signup_path %>
+            <%= header_link_to t('login'), new_user_session_path %>
+            <%= header_link_to t('look_microposts'), microposts_path %>
           <% end %>
         </div>
       </div>
@@ -97,13 +70,13 @@
             <div class="nes-container is-dark with-title">
               <p class="title"><%= t('technology') %></p>
               <ul class="nes-list is-circle is-dark">
-                <li><%= link_to t('source_code'), 'https://github.com/shinzanmono/mizusirazu.net' %></li>
-                <li><%= link_to t('contact'), 'mailto:shinzanmono@example.com' %></li>
-                <li><%= link_to 'NES.css', 'https://nostalgic-css.github.io/NES.css/' %></li>
-                <li><%= link_to 'Nu きなこもち', 'http://kokagem.sakura.ne.jp/font/mochi/' %></li>
-                <li><%= link_to '美咲フォント', 'https://littlelimit.net/misaki.htm' %></li>
-                <li><%= link_to 'PixcelGaro (icon)', 'https://hpgpixer.jp/' %></li>
-                <li><%= link_to 'Wallhaven (background)', 'https://wallhaven.cc/' %></li>
+                <li class="py-1"><%= link_to t('source_code'), 'https://github.com/shinzanmono/mizusirazu.net' %></li>
+                <li class="py-1"><%= link_to t('contact'), 'mailto:shinzanmono@example.com' %></li>
+                <li class="py-1"><%= link_to 'NES.css', 'https://nostalgic-css.github.io/NES.css/' %></li>
+                <li class="py-1"><%= link_to 'Nu きなこもち', 'http://kokagem.sakura.ne.jp/font/mochi/' %></li>
+                <li class="py-1"><%= link_to '美咲フォント', 'https://littlelimit.net/misaki.htm' %></li>
+                <li class="py-1"><%= link_to 'PixcelGaro (icon)', 'https://hpgpixer.jp/' %></li>
+                <li class="py-1"><%= link_to 'Wallhaven (background)', 'https://wallhaven.cc/' %></li>
               </ul>
             </div>
           </div>
