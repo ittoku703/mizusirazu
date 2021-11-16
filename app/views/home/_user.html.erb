@@ -1,24 +1,24 @@
 <body class="body--user"></body>
 
-<div class="root-wrap">
+<div class="py-4 px-2 text-sm">
   <div class="root-container nes-container is-rounded">
-    <div class="root">
+    <div class="block sm:flex">
       <!-- side bar -->
-      <aside class="root__sidebar">
+      <aside class="pr-4 mr-4 border-b border-solid mb-4 sm:max-w-xs sm:flex-initial sm:border-b-0 sm:border-r sm:mb-0">
         <ul class="nes-list is-circle">
-          <li>list 1</li>
-          <li>list 1</li>
-          <li>list 1</li>
-          <li>list 1</li>
-          <li>list 1</li>
+          <li class="break-words">list 1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</li>
+          <li class="break-words">list 1</li>
+          <li class="break-words">list 1</li>
+          <li class="break-words">list 1</li>
+          <li class="break-words">list 1</li>
         </ul>
       </aside>
 
       <!-- main content -->
-      <div class="root__main">
-        <div class="root__main__page">
-          <div class="root__main__page-user">
-            <h2>User</h2>
+      <div class="px-4 lg:flex">
+        <div class="lg:mr-4">
+          <div class="nes-container with-title">
+            <h2 class="title text-lg">User</h2>
             <ul class="nes-list is-disc">
               <li><%= content_tag(:p, "#{t('email')}: #{current_user.email}") %></li>
               <li><%= content_tag(:p, "#{t('sign_in_count')}: #{current_user.sign_in_count}") %></li>
@@ -27,8 +27,8 @@
             </ul>
           </div>
 
-          <div class="root__main__page-micropost">
-            <h2>Micropost</h2>
+          <div class="nes-container with-title mt-4">
+            <h2 class="title">Micropost</h2>
             <ul class="nes-list is-disc">
               <li><%= link_to t('micropost_write'), new_micropost_path %></li>
             </ul>
@@ -36,18 +36,19 @@
         </div>
 
         <!-- right sidebar -->
-        <aside class="root__main__sidebar">
+        <aside class="mt-4 lg:mt-0">
           <% if current_user.microposts.any? %>
-            <%= link_to t('micropost_list'), user_microposts_path(current_user), class: 'root__main__sidebar-title' %>
+            <%= link_to t('micropost_list'), user_microposts_path(current_user), class: 'block text-center text-lg' %>
             <% current_user.microposts[0..3].each do |micropost| %>
-              <div class="nes-container with-title is-centered">
+              <div class="nes-container with-title is-centered mt-4 max-w-xs">
                 <%= content_tag(:h1, micropost.title, class: 'title') %>
-                <%= content_tag(:p, micropost.content, class: 'content') %>
-                <%= content_tag(:p, "#{t('created_at')}: #{l(micropost.created_at)}", class: 'date') %>
-                <%= content_tag(:p, "#{t('updated_at')}: #{l(micropost.updated_at)}", class: 'date') %>
-                <br />
-                <div class="root__main__sidebar-links">
+                <%= content_tag(:p, micropost.content, class: 'is-disabled truncate') %>
+                <%= content_tag(:p, "#{t('created_at')}: #{l(micropost.created_at)}") %>
+                <%= content_tag(:p, "#{t('updated_at')}: #{l(micropost.updated_at)}") %>
+
+                <div class="pt-2 mt-2 border-t border-solid">
                   <%= link_to t('look'), micropost_path(micropost) %>
+                  <span>|</span>
                   <%= link_to t('edit'), edit_micropost_path(micropost) %>
                 </div>
               </div>

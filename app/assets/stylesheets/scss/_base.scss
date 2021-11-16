@@ -115,3 +115,7 @@ html, body, pre, code, kbd, samp {
 .nes-list.is-circle.is-dark li::before {
   color: white;
 }
+
+.is-disabled {
+  color: $is-disabled;
+}

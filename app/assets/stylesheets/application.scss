@@ -8,19 +8,12 @@
 
 /* Layout & Components */
 @import 'scss/base';
-@import 'scss/layout';
 
 /* Devise registrations controller */
 @import 'scss/registration';
 
-/* Home controller */
-@import 'scss/home';
-
 /* Microposts controller */
 @import 'scss/micropost';
-
-/* comment */
-@import 'scss/comment';
 
 /* shared */
 @import 'scss/shared';
