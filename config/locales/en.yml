@@ -60,8 +60,7 @@ en:
   # comment
   new_comment: New comment
   edit_comment: Edit comment
-  comment_success: Successfully comment
-  comment_failed: Failed comment
+  delete_comment: Delete comment
   # controller
   confirmations:
     already_logged_in: You are Already logged_in

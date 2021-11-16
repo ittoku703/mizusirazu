@@ -1,27 +1,37 @@
-<div class="comment__list-item-<%= comment.id %>">
+<div id="comment-<%= comment.id %>" class="text-sm pt-4">
   <div class="nes-container with-title">
     <h1 class="title"><%= comment_counter + 1 %></h1>
 
-    <div class="comment__show">
-      <%= link_to "#{t('author')}: #{comment.user.email}", user_profile_path(comment.user), class: 'comment-author' %>
+    <%= link_to "#{t('author')}: #{comment.user.email}", user_profile_path(comment.user) %>
 
-      <div class="comment-content">
-        <%= simple_format(comment.content) %>
-      </div>
-
-      <ul class="nes-list is-circle">
-        <%= content_tag :li, "#{t('created_at')}: #{l(comment.created_at)}", class: 'comment-created_at' %>
-        <%= content_tag :li, "#{t('updated_at')}: #{l(comment.updated_at)}", class: 'comment-updated_at' %>
-      </ul>
+    <div id="comment-content">
+      <%= simple_format(comment.content,  class: 'truncate') %>
     </div>
 
-    <% if current_user&.id == comment.user_id %>
-      <div class="comment__edit">
-        <div class="nes-container with-title">
-          <h1 class="title"><%= t('edit_comment') %></h1>
+    <ul class="nes-list is-circle">
+      <%= content_tag :li, "#{t('created_at')}: #{l(comment.created_at)}" %>
+      <%= content_tag :li, "#{t('updated_at')}: #{l(comment.updated_at)}", id: 'comment-updated_at' %>
+    </ul>
 
-          <%= render 'comments/comment_edit', comment: comment %>
-       </div>
+    <% if current_user&.id == comment.user_id %>
+      <!-- comment toggle btn -->
+      <div class="inline-block">
+        <button id="edit_comment_btn" class="nes-btn is-warning"><%= t('edit_comment') %></button>
+        <%= link_to t('delete_comment'),
+          comment_path(comment),
+          class: 'nes-btn is-error',
+          remote: true,
+          method: :delete,
+          data: { confirm: t('are_you_sure') }
+        %>
+      </div>
+
+      <!-- edit comment form -->
+      <div id="edit_comment_form" class="nes-container with-title is-centered hidden mt-4 table">
+        <h1 class="title"><%= t('edit_comment') %></h1>
+        <%= form_with(model: comment, method: :patch, local: false) do |f| %>
+          <%= render 'comments/form', f: f, object: comment %>
+        <% end %>
       </div>
     <% end %>
   </div>

@@ -60,6 +60,7 @@ ja:
   # comment
   new_comment: コメントを作成する
   edit_comment: コメントを編集する
+  delete_comment: コメントを削除する
   # controller
   confirmations:
     already_logged_in: すでにログインしています

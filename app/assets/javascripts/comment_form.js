@@ -1,15 +1,6 @@
-$('#new_comment textarea').on('input',() => {
-  check_textarea('#new_comment textarea', '#new_comment button');
-});
-
-$('#edit_comment textarea').on('input', () => {
-  check_textarea('#edit_comment textarea', '#edit_comment button'); 
-});
-
-function check_textarea(textarea, button) {
-  if($.trim($(textarea).val()) == '') {
-    $(button).prop('disabled', true);
-  } else {
-    $(button).prop('disabled', false);
-  }
-}
+// edit comment toggler btn
+$('#comments > *').each((index, element) => {
+  $(element).find('#edit_comment_btn').on('click', () => {
+    $(element).find('#edit_comment_form').toggleClass('hidden');
+  })
+})

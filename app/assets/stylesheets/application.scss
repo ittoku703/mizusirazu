@@ -24,3 +24,21 @@
 
 /* shared */
 @import 'scss/shared';
+
+header {
+  background-color: $is-dark;
+  border-bottom: 1px solid $is-disabled;
+
+  a {
+    color: white;
+
+    &:hover {
+      color: $is-disabled;
+    }
+  }
+}
+
+#edit_comment-btn,
+#delete_comment-btn {
+  margin-top: 1rem;
+}
