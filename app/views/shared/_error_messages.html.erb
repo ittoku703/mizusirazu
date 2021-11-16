@@ -1,6 +1,6 @@
 <% if object.errors.any? %>
   <div id="error_explanation">
-    <h2>
+    <h2 class="italic">
       <%= I18n.t "errors.messages.not_saved",
         count: object.errors.count,
         resource: object.class.model_name.human.downcase
@@ -9,7 +9,7 @@
 
     <ul class="nes-list is-disc">
       <% object.errors.full_messages.each do |message| %>
-        <li class="nes-text is-error"><%= message %></li>
+        <li class="nes-text is-error ml-4 p-1 text-sm"><%= message %></li>
       <% end %>
     </ul>
   </div>
