@@ -14,7 +14,9 @@ ja:
   look: 見る
   look_microposts: 記事を見る
   my_page: 自分のページ
+  new: 作成
   'no': 'いいえ'
+  preview: プレビュー
   post: 投稿
   remember_me: ログインを保存しますか？
   select_language: 言語を選択してください
@@ -94,3 +96,8 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d"
+  # paginate
+  will_paginate:
+    previous_label: ◀
+    next_label: ▶
+    page_gap: '...'

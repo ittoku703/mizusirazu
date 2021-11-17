@@ -14,7 +14,9 @@ en:
   look: Look
   look_microposts: Look microposts
   my_page: My page
+  new: New
   'no': 'No'
+  preview: Preview
   post: Post
   remember_me: Remember me?
   select_language: Select language
@@ -94,3 +96,8 @@ en:
   time:
     formats:
       default: "%Y/%m/%d"
+  # paginate
+  will_paginate:
+    previous_label: ◀
+    next_label: ▶
+    page_gap: '...'

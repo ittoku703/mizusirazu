@@ -1,37 +1,28 @@
-<div class="form-field">
-  <%= f.text_field :title,
-    class: 'form-input nes-input',
-    placeholder: t('title'),
-    autofocus: true,
-    autocomplete: 'title'
-  %>
-</div>
+<%= f.text_field :title,
+  class: 'nes-input',
+  placeholder: t('title'),
+  autofocus: true,
+  autocomplete: 'title'
+%>
 
-<div class="form-field">
-  <%= f.text_area :content,
-    class: 'form-area nes-input',
-    placeholder: t('content'),
-    autocomplete: 'content'
-  %>
-</div>
+<%= f.text_area :content,
+  class: 'nes-textarea h-48',
+  placeholder: t('content'),
+  autocomplete: 'content'
+%>
 
-<div class="form-field">
-  <% if action_name.match?(/new|create/) %>
-    <%= f.button t('post'), class: 'nes-btn is-primary' %>
-  <% elsif action_name.match?(/edit|update/) %>
-    <%= f.button t('edit'), class: 'nes-btn is-warning' %>
-  <% end %>
-</div>
+<% if action_name.match?(/new|create/) %>
+  <%= f.button t('post'), class: 'nes-btn is-primary' %>
+<% elsif action_name.match?(/edit|update/) %>
+  <%= f.button t('edit'), class: 'nes-btn is-warning' %>
+<% end %>
 
 <% if action_name.match?(/edit|update/) %>
-  <div class="form-field">
-    <%= content_tag(:h2, t('micropost_delete')) %>
-    <br />
-    <%= link_to t('delete'),
-      micropost_path(@micropost),
-      class: 'nes-btn is-error',
-      method: :delete,
-      data: { confirm: t('are_you_sure') }
-    %>
-  </div>
+  <%= content_tag(:h2, t('micropost_delete'), class: 'text-lg pt-4 border-t border-solid mt-4') %>
+  <%= link_to t('delete'),
+    micropost_path(@micropost),
+    class: 'nes-btn is-error',
+    method: :delete,
+    data: { confirm: t('are_you_sure') }
+  %>
 <% end %>

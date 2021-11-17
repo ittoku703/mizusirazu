@@ -1,26 +1,39 @@
 <body class="body--micropost"></body>
 
-<div class="micropost__show-wrap">
-  <div class="micropost__show">
-    <div class="nes-container is-rounded">
-      <div class="micropost__show-info">
-        <%= content_tag(:p, "#{t('author')}: #{@micropost.user.email}") %>
-        <%= content_tag(:p, "#{t('created_at')}: #{l(@micropost.created_at)}") %>
-        <%= content_tag(:p, "#{t('updated_at')}: #{l(@micropost.updated_at)}") %>
-      </div>
-
-      <div class="micropost__show-title">
-        <%= content_tag(:h1, @micropost.title) %>
-     </div>
-
-      <div class="micropost__show-content">
-        <%= simple_format(@micropost.content) %>
-      </div>
+<div class="p-4 text-base">
+  <div class="text-xs py-2">
+    <div class="nes-container with-title block max-w-sm">
+      <h1 class="title"><%= t('info') %></h1>
+      <ul class="nes-list is-disc">
+        <li>
+          <%= link_to @micropost.user.email + 'x' * 99,
+            user_profile_path(@micropost.user),
+            class: 'block truncate'
+          %>
+        </li>
+        <%= content_tag(:li, "#{t('created_at')}: #{l(@micropost.created_at)}") %>
+        <%= content_tag(:li, "#{t('updated_at')}: #{l(@micropost.updated_at)}") %>
+      </ul>
     </div>
-    <!-- links -->
-    <%= render 'links' %>
+  </div>
 
-    <!-- comment -->
+  <div class="text-lg py-2">
+    <div class="nes-container with-title">
+      <h1 class="title"><%= t('title') %></h1>
+      <h1 class="text-lg font-bold break-words"><%= @micropost.title %></h1>
+    </div>
+  </div>
+
+  <div class="text-base py-2">
+    <div class="nes-container with-title">
+      <h1 class="title"><%= t('content') %></h1>
+      <%= simple_format(@micropost.content, class: 'break-words') %>
+    </div>
+    <%= render 'links' %>
+  </div>
+
+  <div class="text-sm py-2">
+    <h1 class="text-center text-xl font-bold"><%= t('comments') %></h1>
     <%= render 'comments/comments' %> 
   </div>
 </div>

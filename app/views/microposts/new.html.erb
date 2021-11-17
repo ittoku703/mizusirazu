@@ -1,16 +1,31 @@
 <body class="body--micropost"></body>
 
-<div class="form">
-  <!-- form -->
-  <div class="nes-container is-rounded">
-    <%= content_tag(:h1, t('micropost_user')) %>
-    <%= form_with(model: @micropost) do |f| %>
-      <%= render 'shared/error_messages', object: @micropost %>
+<div class="p-4">
+  <%= content_tag(:h1, t('micropost_user'), class: 'text-center text-lg') %>
 
-      <%= render 'form', f: f %>
-    <% end %>
+  <div class="block pt-4 sm:flex">
+    <!-- new micropost toggle btn -->
+    <div class="text-center block sm:hidden">
+      <button id="new_micropost-btn" class="nes-btn is-warning" style="margin: 0;" disabled><%= t('new') %></button>
+      <button id="preview_micropost-btn" class="nes-btn is-primary" style="margin: 0;"><%= t('preview') %></button>
+    </div>
+
+    <!-- new micropost -->
+    <div id="new_micropost" class="block sm:flex-1 sm:px-2">
+      <div class="nes-container with-title is-rounded">
+        <%= content_tag(:h1, t('new'), class: 'title') %>
+
+        <%= form_with(model: @micropost, id: 'new_micropost-form') do |f| %>
+          <%= render 'shared/error_messages', object: @micropost %>
+
+          <%= render 'form', f: f %>
+        <% end %>
+      </div>
+
+      <%= render 'links' %>
+    </div>
+
+    <!-- preview -->
+    <%= render 'microposts/preview' %>
   </div>
-
-  <!-- links -->
-  <%= render 'links' %>
 </div>
