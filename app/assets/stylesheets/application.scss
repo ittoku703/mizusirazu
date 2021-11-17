@@ -39,3 +39,17 @@ header {
 .user-form > * {
   margin-top: 1rem;
 }
+
+/* flash msg */
+.flash {
+  animation: leftToRight 25s;
+
+  #notice {
+    color: $is-success;
+  }
+
+  #alert {
+    color: $is-error;
+  }
+}
+

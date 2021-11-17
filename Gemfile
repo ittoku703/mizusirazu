@@ -12,7 +12,7 @@ gem 'jbuilder'
 gem 'jquery-rails'
 gem 'puma'
 gem 'sass-rails'
-gem 'tailwindcss-rails'
+gem 'tailwindcss-rails', github: 'dorianmariefr/tailwindcss-rails', branch: 'minimal'
 gem 'turbolinks'
 gem 'will_paginate'
 
@@ -51,4 +51,3 @@ end
 group :production do
   gem 'pg'
 end
-
