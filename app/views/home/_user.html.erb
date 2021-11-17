@@ -40,7 +40,7 @@
           <% if current_user.microposts.any? %>
             <%= link_to t('micropost_list'), user_microposts_path(current_user), class: 'block text-center text-lg' %>
             <% current_user.microposts[0..3].each do |micropost| %>
-              <div class="nes-container with-title is-centered mt-4 max-w-xs">
+              <div class="nes-container with-title is-centered mt-4 sm:max-w-xs">
                 <%= content_tag(:h1, micropost.title, class: 'title') %>
                 <%= content_tag(:p, micropost.content, class: 'is-disabled truncate') %>
                 <%= content_tag(:p, "#{t('created_at')}: #{l(micropost.created_at)}") %>
