@@ -2,14 +2,16 @@
 
 class UnlocksController < Devise::UnlocksController
   # GET /unlock/new
-  # def new
-  #   super
-  # end
+  def new
+    params[:yield_to] = 'shared/devise_form'
+    super
+  end
 
   # POST /unlock
-  # def create
-  #   super
-  # end
+  def create
+    params[:yield_to] = 'shared/devise_form'
+    super
+  end
 
   # GET /unlock?unlock_token=abcdef
   # def show
