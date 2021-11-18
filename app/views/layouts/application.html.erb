@@ -59,7 +59,11 @@
     <% end %>
 
     <main>
-      <%= yield %>
+      <% if params[:yield_to] %>
+        <%= render params[:yield_to] %>
+      <% else %>
+        <%= yield %>
+      <% end %>
     </main>
 
     <footer class="pt-4 px-2 text-sm">

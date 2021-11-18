@@ -2,24 +2,28 @@
 
 class PasswordsController < Devise::PasswordsController
   # GET /password/new
-  # def new
-  #   super
-  # end
+  def new
+    params[:yield_to] = 'shared/devise_form'
+    super
+  end
 
   # POST /password
-  # def create
-  #   super
-  # end
+  def create
+    params[:yield_to] = 'shared/devise_form'
+    super
+  end
 
   # GET /password/edit?reset_password_token=abcdef
-  # def edit
-  #   super
-  # end
+  def edit
+    params[:yield_to] = 'shared/devise_form'
+    super
+  end
 
   # PUT /password
-  # def update
-  #   super
-  # end
+  def update
+    params[:yield_to] = 'shared/devise_form'
+    super
+  end
 
   # protected
 

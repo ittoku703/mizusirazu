@@ -3,13 +3,15 @@
 class ConfirmationsController < Devise::ConfirmationsController
   # GET /confirmation/new
   def new
+    params[:yield_to] = 'shared/devise_form'
     user_signed_in? ? redirect_to(root_path, alert: t('already_logged_in')) : super
   end
 
   # POST /confirmation
-  # def create
-  #   super
-  # end
+  def create
+    params[:yield_to] = 'shared/devise_form'
+    super
+  end
 
   # GET /confirmation?confirmation_token=abcdef
   # def show

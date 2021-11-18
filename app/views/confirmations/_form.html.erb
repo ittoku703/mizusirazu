@@ -1,9 +1,9 @@
 <%= f.email_field :email,
-  class: 'form-input nes-input mt-4',
+  class: 'nes-input',
   placeholder: t('email'),
   autofocus: true,
-  autocomplete: "email",
+  autocomplete: 'email',
   value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
 %>
 
-<%= f.button t('activate'), class: 'nes-btn is-primary mt-4' %>
+<%= f.button t('activate'), class: 'nes-btn is-primary' %>
