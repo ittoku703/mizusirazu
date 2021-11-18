@@ -1,17 +1,3 @@
-/* mixin */
-
-@mixin pc {
-  @media only screen and (min-width: $media-pc) {
-    @content;
-  }
-}
-
-@mixin sp {
-  @media only screen and (max-width: $media-sp) {
-    @content;
-  }
-}
-
 /* Global  */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
@@ -86,6 +72,36 @@ html, body, pre, code, kbd, samp {
   font-family: "nu-kinakomochi", "misaki_gothic";
 }
 
+/* NES.css my Settings */
+
+.is-primary {
+  color: $is-primary;
+}
+
+.is-success {
+  color: $is-success;
+}
+
+.is-warning {
+  color: $is-warning;
+}
+
+.is-error {
+  color: $is-error;
+}
+
+.is-disabled {
+  color: $is-disabled;
+}
+
+.is-light {
+  color: $is-light;
+}
+
+.is-dark {
+  color: $is-dark;
+}
+
 .nes-container {
   background: $container-background-color; // default: color is white
 }
@@ -116,6 +132,3 @@ html, body, pre, code, kbd, samp {
   color: white;
 }
 
-.is-disabled {
-  color: $is-disabled;
-}

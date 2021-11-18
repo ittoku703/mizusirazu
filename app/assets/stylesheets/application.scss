@@ -11,46 +11,6 @@
 /* base layout */
 @import 'scss/base';
 
-header {
-  background-color: $is-dark;
-  border-bottom: 1px solid $is-disabled;
-
-  a {
-    color: white;
-
-    &:hover {
-      color: $is-disabled;
-    }
-  }
-}
-
-#edit_comment-btn,
-#delete_comment-btn {
-  margin-top: 1rem;
-}
-
-.form-elem-mt-4 {
-  input, textarea, button, .nes-field {
-    margin-top: 1rem;
-  }
-}
-
-/* flash msg */
-.flash {
-  animation: leftToRight 25s;
-
-  #notice {
-    color: $is-success;
-  }
-
-  #alert {
-    color: $is-error;
-  }
-}
-
-.field_with_errors {
-  input, textarea {
-    background-color: $is-error;
-  }
-}
+/* my scss */
+@import 'scss/style';
 
