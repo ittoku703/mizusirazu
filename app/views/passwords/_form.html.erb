@@ -10,15 +10,15 @@
 <% if action_name.match?(/edit|update/) %>
   <%= f.hidden_field :reset_password_token %>
 
-  <% if @minimum_password_length %>
-    <em><%= t('minimum_password_length', length: @minimum_password_length) %></em>
-  <% end %>
-
   <%= f.password_field :password,
     class: 'nes-input',
     placeholder: t('password'),
     autocomplete: 'new-password'
   %>
+
+  <% if @minimum_password_length %>
+    <em><%= t('minimum_password_length', length: @minimum_password_length) %></em>
+  <% end %>
 
   <%= f.password_field :password_confirmation,
     class: 'nes-input',

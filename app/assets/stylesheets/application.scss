@@ -30,12 +30,8 @@ header {
 }
 
 .form-elem-mt-4 {
-  input, textarea, button {
+  input, textarea, button, .nes-field {
     margin-top: 1rem;
-  }
-
-  #user_password {
-    margin-top: 0;
   }
 }
 

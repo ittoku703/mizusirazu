@@ -1,13 +1,7 @@
 <body class="body--session"></body>
 
-<div class="form">
-  <!-- form -->
-  <div class="nes-container is-rounded">
-    <h1 class="title"><%= t('login_user') %></h1>
-    <%= form_with(scope: resource_name, url: user_session_path, method: :post) do |f| %>
-      <%= render 'form', f: f %>
-    <% end %>
-  </div>
-  <!-- links -->
-  <%= render "shared/devise_links" %>
-</div>
+<h1 class="text-xl font-bold"><%= t('login_user') %></h1>
+
+<%= form_with(scope: resource_name, url: user_session_path, class: 'form-elem-mt-4', method: :post) do |f| %>
+  <%= render 'form', f: f %>
+<% end %>

@@ -4,14 +4,16 @@ class SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /login
-  # def new
-  #   super
-  # end
+  def new
+    params[:yield_to] = 'shared/devise_form'
+    super
+  end
 
   # POST /login
-  # def create
-  #   super
-  # end
+  def create
+    params[:yield_to] = 'shared/devise_form'
+    super
+  end
 
   # DELETE /logout
   # def destroy
