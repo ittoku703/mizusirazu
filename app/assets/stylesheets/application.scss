@@ -2,15 +2,14 @@
  *= require_self
  */
 
-/* configuration */
+/* variable */
 @import 'scss/variables';
+
+/* animation */
 @import 'scss/animations';
 
-/* Layout & Components */
+/* base layout */
 @import 'scss/base';
-
-/* Devise registrations controller */
-@import 'scss/registration';
 
 header {
   background-color: $is-dark;

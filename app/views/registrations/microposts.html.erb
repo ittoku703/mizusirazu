@@ -1,11 +1,16 @@
 <body class="body--registration"></body>
 
-<div class="registration__microposts">
+<div class="p-4 text-sm">
   <% if @microposts.any? %>
-    <%= render @microposts %>
+    <h1 class="text-center text-xl"><%= t('micropost_list') %></h1>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2">
+      <%= render @microposts %>
+    </div>
+
     <%= will_paginate @microposts %>
   <% else %>
-    <div class="micropost__nothing">
+    <div class="">
       <div class="nes-container">
         <h1>Micropost nothing</h1>
         <% if current_user&.id == params[:id].to_i %>
@@ -15,3 +20,4 @@
     </div>
   <% end %>
 </div>
+

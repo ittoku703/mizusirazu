@@ -1,53 +1,41 @@
-<div class="form-field">
-  <%= f.email_field :email,
-    class: 'form-input nes-input',
-    placeholder: t('email'),
-    autofocus: true,
-    autocomplete: "email"
-  %>
-</div>
+<%= f.email_field :email,
+  class: 'nes-input',
+  placeholder: t('email'),
+  autofocus: true,
+  autocomplete: "email"
+%>
 
-<div class="form-field">
-  <% if action_name.match?(/edit|update/) && devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <% if @minimum_password_length %>
-    <em>(<%= t('minimum_password_length', length: @minimum_password_length) %>)</em>
-  <% end %>
-
-  <br />
-
-  <%= f.password_field :password,
-    class: 'form-input nes-input',
-    placeholder: t('password'),
-    autocomplete: "new-password"
-  %>
-</div>
-
-<div class="form-field">
-  <%= f.password_field :password_confirmation,
-    class: 'form-input nes-input',
-    placeholder: t('password_confirmation'),
-    autocomplete: "new-password"
-  %>
-</div>
-
-<% if action_name.match?(/edit|update/) %>
-  <div class="form-field">
-    <%= f.password_field :current_password,
-      class: 'form-input nes-input',
-      placeholder: t('current_password'),
-      autocomplete: "current-password"
-    %>
-  </div>
+<% if action_name.match?(/edit|update/) && devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
 <% end %>
 
-<div class="form-field">
-  <% if action_name.match?(/new|create/) %>
-    <%= f.button t('signup'), class: 'nes-btn is-primary' %>
-  <% elsif action_name.match?(/edit|update/) %>
-    <%= f.button t('edit'), class: 'nes-btn is-primary' %>
-  <% end %>
-</div>
+<% if @minimum_password_length %>
+  <em>(<%= t('minimum_password_length', length: @minimum_password_length) %>)</em>
+<% end %>
+
+<%= f.password_field :password,
+  class: 'nes-input',
+  placeholder: t('password'),
+  autocomplete: "new-password"
+%>
+
+<%= f.password_field :password_confirmation,
+  class: 'nes-input',
+  placeholder: t('password_confirmation'),
+  autocomplete: "new-password"
+%>
+
+<% if action_name.match?(/edit|update/) %>
+  <%= f.password_field :current_password,
+    class: 'nes-input',
+    placeholder: t('current_password'),
+    autocomplete: "current-password"
+  %>
+<% end %>
+
+<% if action_name.match?(/new|create/) %>
+  <%= f.button t('signup'), class: 'nes-btn is-primary' %>
+<% elsif action_name.match?(/edit|update/) %>
+  <%= f.button t('edit'), class: 'nes-btn is-primary' %>
+<% end %>
 

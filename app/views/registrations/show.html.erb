@@ -1,25 +1,23 @@
 <body class="body--registration"></body>
 
-<div class="registration-wrap">
-  <div class="registration">
-    <section class="nes-container member-card">
-      <div class="registration-avatar">
-        <i class="nes-bcrikko"></i>
-      </div>
-      <div class="registration-profile">
-        <p><strong>Email: </strong><%= @user.email %></p>
-        <p><strong>Created at: </strong><%= l(@user.created_at) %></p>
-        <p><strong>Updated at: </strong><%= l(@user.updated_at) %></p>
-      </div>
-    </section>
-
-    <div class="registration-links">
-      <ul class="nes-list is-circle">
-        <li><%= link_to t('look_microposts'), user_microposts_path(@user) %></li> 
-        <% if current_user&.id == params[:id].to_i %>
-          <li><%= link_to t('micropost_write'), new_micropost_path %></li>
-        <% end %>
-      </ul>
+<div class="w-full p-4">
+  <section class="nes-container member-card">
+    <div class="mt-4 mr-4">
+      <i class="nes-bcrikko"></i>
     </div>
+    <div class="">
+      <p><strong>Email: </strong><%= @user.email %></p>
+      <p><strong>Created at: </strong><%= l(@user.created_at) %></p>
+      <p><strong>Updated at: </strong><%= l(@user.updated_at) %></p>
+    </div>
+  </section>
+
+  <div class="ml-4 pt-4">
+    <ul class="nes-list is-circle">
+      <li><%= link_to t('look_microposts'), user_microposts_path(@user) %></li> 
+      <% if current_user&.id == params[:id].to_i %>
+        <li><%= link_to t('micropost_write'), new_micropost_path %></li>
+      <% end %>
+    </ul>
   </div>
 </div>

@@ -1,24 +1,16 @@
 <body class="body--registration"></body>
 
-<div class="form">
-  <!-- form -->
-  <div class="nes-container is-rounded">
-    <h1 class="title"><%= t('edit_user') %></h1>
-    <%= form_with(scope: resource_name, url: user_registration_path, method: :put) do |f| %>
-      <%= render 'shared/error_messages', object: resource %>
+<h1 class="text-lg font-bold"><%= t('edit_user') %></h1>
+<%= form_with(scope: resource_name, url: user_registration_path, class: 'form-elem-mt-4', method: :put) do |f| %>
+  <%= render 'shared/error_messages', object: resource %>
 
-      <%= render 'form', f: f %>
-    <% end %>
+  <%= render 'form', f: f %>
+<% end %>
 
-    <div class="form-field">
-      <h2><%= t('delete_user') %></h2>
-      <br />
-      <%= link_to t('delete'),
-        user_registration_path,
-        class: 'nes-btn is-error',
-        method: :delete,
-        data: { confirm: "Are you sure?" }
-      %>
-    </div>
-  </div>
-</div>
+<h2 class="text-base font-bold py-4 border-t border-solid mt-4"><%= t('delete_user') %></h2>
+<%= link_to t('delete'),
+  user_registration_path,
+  class: 'nes-btn is-error',
+  method: :delete,
+  data: { confirm: t('are_you_sure') }
+%>

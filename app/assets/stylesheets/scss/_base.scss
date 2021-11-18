@@ -97,7 +97,7 @@ html, body, pre, code, kbd, samp {
 .nes-container.member-card {
   display: flex;
   padding: 1rem 1.5rem;
-  width: 470px;
+  max-width: 470px;
   overflow: scroll;
 }
 

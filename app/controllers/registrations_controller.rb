@@ -5,14 +5,16 @@ class RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /signup
-  # def new
-  #   super
-  # end
+  def new
+    params[:yield_to] = 'shared/devise_form'
+    super
+  end
 
   # POST /users
-  # def create
-  #   super
-  # end
+  def create
+    params[:yield_to] = 'shared/devise_form'
+    super
+  end
 
   # GET users/:id
   def show
@@ -20,14 +22,16 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /settings
-  # def edit
-  #   super
-  # end
+  def edit
+    params[:yield_to] = 'shared/devise_form'
+    super
+  end
 
   # PUT /users
-  # def update
-  #   super
-  # end
+  def update
+    params[:yield_to] = 'shared/devise_form'
+    super
+  end
 
   # DELETE /users
   # def destroy
