@@ -5,6 +5,7 @@ RSpec.feature 'Comments', type: :feature do
   let(:micropost) { create(:micropost) }
 
   scenario 'comment', js: true do
+    I18n.default_locale = :ja # <-- nessally
     login_user
     visit micropost_path(micropost)
     # new comment
@@ -12,7 +13,7 @@ RSpec.feature 'Comments', type: :feature do
     click_button t('post')
     expect(page).to have_content 'first comment'
     # edit comment
-    visit micropost_path(micropost)
+    click_button t('edit_comment')
     fill_in 'comment[content]', with: 'edit comment', match: :first
     click_button t('edit')
     expect(page).to have_content 'edit comment'
@@ -27,10 +28,11 @@ RSpec.feature 'Comments', type: :feature do
     expect(page).not_to have_selector 'form#new_comment'
   end
 
-  scenario 'no push submit button if comment content is nil' do
+  scenario 'no send comment if comment content is nil' do
     login_user
     visit micropost_path(micropost)
     fill_in 'comment[content]', with: ''
-    expect(find('.nes-btn.is-primary')).to be_disabled
+    click_button t('post')
+    expect(Comment.count).to eq 0
   end
 end
