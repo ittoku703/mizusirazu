@@ -11,6 +11,14 @@
   autocomplete: 'content'
 %>
 
+<label class="nes-btn">
+  <span><%= t('select_file') %></span>
+  <%= f.file_field :images,
+    accept: 'image/jpeg,image/png,image/gif',
+    multiple: true
+  %>
+</label>
+
 <% if action_name.match?(/new|create/) %>
   <%= f.button t('post'), class: 'nes-btn is-primary' %>
 <% elsif action_name.match?(/edit|update/) %>

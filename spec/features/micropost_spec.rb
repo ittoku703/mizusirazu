@@ -15,8 +15,10 @@ RSpec.feature 'Microposts', type: :feature do
     # success
     fill_in 'micropost[title]', with: 'Title'
     fill_in 'micropost[content]', with: 'This is content.'
+    attach_file t('select_file'), 'spec/factories/images/test.gif'
     click_button t('post')
     expect(page).to have_selector('#notice', text: t('microposts.success'))
+    expect(page).to have_selector 'img[alt="micropost images"]'
   end
 
   scenario 'edit micropost' do

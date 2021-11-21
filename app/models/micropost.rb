@@ -9,4 +9,10 @@ class Micropost < ApplicationRecord
   validates :images, content_type: %i[png jpeg jpg gif],
                      size: { less_than: 5.megabytes },
                      limit: { max: 10 }
+
+  def display_images
+    images.collect do |image|
+      image.variant(resize: '250x250')
+    end
+  end
 end

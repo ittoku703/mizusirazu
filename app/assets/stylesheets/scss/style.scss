@@ -25,9 +25,9 @@ header {
   }
 }
 
-// devise form
+// form
 .form-elem-mt-4 {
-  input, textarea, button, .nes-field {
+  input, textarea, button, label, .nes-field {
     margin-top: 1rem;
   }
 }
@@ -44,3 +44,9 @@ header {
   margin-top: 1rem;
 }
 
+// micropost new form
+#new_micropost-form {
+  > .nes-btn {
+    display: table;
+  }
+}

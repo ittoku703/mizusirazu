@@ -15,7 +15,7 @@
       <div class="nes-container with-title is-rounded">
         <%= content_tag(:h1, t('new'), class: 'title') %>
 
-        <%= form_with(model: @micropost, id: 'new_micropost-form') do |f| %>
+        <%= form_with(model: @micropost, id: 'new_micropost-form', class: 'form-elem-mt-4') do |f| %>
           <%= render 'shared/error_messages', object: @micropost %>
 
           <%= render 'form', f: f %>
