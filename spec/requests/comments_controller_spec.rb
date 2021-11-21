@@ -6,8 +6,9 @@ RSpec.describe CommentsController, type: :request do
 
   describe 'POST /comments' do
     context 'when logged in user' do
+      before { login_user }
+
       it 'redirect to micropost path' do
-        login_user
         puts comment.micropost
         post comments_path, params: {
           comment: {
@@ -19,7 +20,6 @@ RSpec.describe CommentsController, type: :request do
       end
 
       it 'comment count +1' do
-        login_user
         post comments_path, params: {
           comment: {
             micropost_id: comment.micropost.id,
@@ -27,6 +27,17 @@ RSpec.describe CommentsController, type: :request do
           }
         }
         expect(Micropost.count).to eq 1
+      end
+
+      it 'images is attached' do
+        post comments_path, params: {
+          comment: {
+            micropost_id: comment.micropost.id,
+            content: 'content',
+            images: [fixture_file_upload('spec/factories/images/test.gif')]
+          }
+        }
+        expect(ActiveStorage::Attachment.count).to eq 1
       end
     end
 
@@ -53,6 +64,18 @@ RSpec.describe CommentsController, type: :request do
         }
       }
       expect(response).to redirect_to comment.micropost
+    end
+
+    it 'images is attached' do
+      login_user
+      patch comment_path(comment), params: {
+        comment: {
+          micropost_id: comment.micropost.id,
+          content: 'new comment',
+          images: [fixture_file_upload('spec/factories/images/test.png')]
+        }
+      }
+      expect(ActiveStorage::Attachment.count).to eq 1
     end
   end
 
