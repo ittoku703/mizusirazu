@@ -31,16 +31,27 @@ RSpec.describe MicropostsController, type: :request do
 
   describe 'POST /microposts' do
     context 'when valid params' do
+      before { login_user }
+
       it 'redirect to micropost page' do
-        login_user
         post microposts_path, params: { micropost: { title: 'Title', content: 'Content' } }
         expect(response).to redirect_to micropost_path(user.microposts[0])
       end
 
       it 'one more micropost' do
-        login_user
         post microposts_path, params: { micropost: { title: 'Title', content: 'Content' } }
         expect(Micropost.count).to eq 1
+      end
+
+      it 'images is attached' do
+        post microposts_path, params: {
+          micropost: {
+            title: 'Title',
+            content: 'Content',
+            images: [fixture_file_upload('spec/factories/images/test.gif')]
+          }
+        }
+        expect(ActiveStorage::Attachment.count).to eq 1
       end
     end
 
@@ -90,6 +101,18 @@ RSpec.describe MicropostsController, type: :request do
         login_user
         patch micropost_path(micropost), params: { micropost: { title: 'new title', content: 'new content' } }
         expect(response).to redirect_to micropost_path(micropost)
+      end
+
+      it 'images is attached' do
+        login_user
+        patch micropost_path(micropost), params: {
+          micropost: {
+            title: 'Title',
+            content: 'Content',
+            images: [fixture_file_upload('spec/factories/images/test.gif')]
+          }
+        }
+        expect(ActiveStorage::Attachment.count).to eq 1
       end
     end
 
