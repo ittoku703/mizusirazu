@@ -39,4 +39,34 @@ RSpec.describe Micropost, type: :model do
       expect { micropost.destroy }.to change(Comment, :count).by(-1)
     end
   end
+
+  describe 'images' do
+    it 'attached? is true' do
+      uploaded_files = [
+        fixture_file_upload('spec/factories/images/test.png'),
+        fixture_file_upload('spec/factories/images/test.gif')
+      ]
+      micropost.images = uploaded_files
+      expect(valid).to eq true
+    end
+
+    it 'is false if the file extension is not png, gif, jpg' do
+      micropost.images = [fixture_file_upload('spec/factories/images/test.dds')]
+      expect(valid).to eq false
+    end
+
+    it 'is false if the file size is 5 megabytes more' do
+      micropost.images = [fixture_file_upload('spec/factories/images/ten_megabytes.png')]
+      expect(valid).to eq false
+    end
+
+    it 'is false if the 11 files selcted' do
+      uploaded_files = []
+      11.times do
+        uploaded_files << fixture_file_upload('spec/factories/images/test.gif')
+      end
+      micropost.images = uploaded_files
+      expect(valid).to eq false
+    end
+  end
 end
