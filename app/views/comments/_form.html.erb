@@ -7,6 +7,18 @@
   required: true
 %>
 
+<div class="block">
+  <label class="nes-btn">
+    <span><%= t('select_file') %></span>
+    <%= f.file_field :images,
+      id: 'comment_file_field',
+      accept: 'image/jpeg,image/png,image/gif',
+      multiple: true
+    %>
+  </label>
+  <span id="file_size_params" class="ml-2">0KB/5MB</span>
+</div>
+
 <% if f.options[:method] == :post %>
   <%= f.button t('post'),
     class: 'nes-btn is-primary',

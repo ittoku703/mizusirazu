@@ -9,4 +9,10 @@ class Comment < ApplicationRecord
   validates :images, content_type: %i[png jpeg jpg gif],
                      size: { less_than: 5.megabytes },
                      limit: { max: 3 }
+
+  def display_images
+    images.collect do |image|
+      image.variant(resize: '500x500')
+    end
+  end
 end

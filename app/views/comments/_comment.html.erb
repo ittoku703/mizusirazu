@@ -8,6 +8,10 @@
       <%= simple_format(comment.content,  class: 'truncate') %>
     </div>
 
+    <% comment.display_images.each do |image| %>
+      <%= image_tag image.processed, alt: 'comment images' %>
+    <% end %>
+
     <ul class="nes-list is-circle">
       <%= content_tag :li, "#{t('created_at')}: #{l(comment.created_at)}" %>
       <%= content_tag :li, "#{t('updated_at')}: #{l(comment.updated_at)}", id: 'comment-updated_at' %>
