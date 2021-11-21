@@ -16,6 +16,11 @@ gem 'tailwindcss-rails', github: 'dorianmariefr/tailwindcss-rails', branch: 'min
 gem 'turbolinks'
 gem 'will_paginate'
 
+# active storage
+gem 'active_storage_validations'
+gem 'image_processing'
+gem 'mini_magick'
+
 group :development, :test do
   gem 'byebug'
   gem 'sqlite3'
