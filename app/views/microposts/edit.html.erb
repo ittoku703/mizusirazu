@@ -13,7 +13,7 @@
     <div id="edit_micropost" class="block sm:flex-1 sm:px-2">
       <div class="nes-container with-title is-rounded">
         <%= content_tag(:h1, t('edit'), class: 'title') %>
-        <%= form_with(model: @micropost, id: 'edit_micropost-form', method: :put) do |f| %>
+        <%= form_with(model: @micropost, id: 'edit_micropost-form', class: 'form-elem-mt-4', method: :put) do |f| %>
           <%= render 'shared/error_messages', object: @micropost %>
 
           <%= render 'form', f: f %>

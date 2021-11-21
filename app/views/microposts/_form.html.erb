@@ -11,13 +11,17 @@
   autocomplete: 'content'
 %>
 
-<label class="nes-btn">
-  <span><%= t('select_file') %></span>
-  <%= f.file_field :images,
-    accept: 'image/jpeg,image/png,image/gif',
-    multiple: true
-  %>
-</label>
+<div class="block">
+  <label class="nes-btn">
+    <span><%= t('select_file') %></span>
+    <%= f.file_field :images,
+      id: 'micropost_file_field',
+      accept: 'image/jpeg,image/png,image/gif',
+      multiple: true
+    %>
+  </label>
+  <span id="file_size_params" class="ml-2">0KB/5MB</span>
+</div>
 
 <% if action_name.match?(/new|create/) %>
   <%= f.button t('post'), class: 'nes-btn is-primary' %>

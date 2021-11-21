@@ -28,6 +28,7 @@
     <div class="nes-container with-title">
       <h1 class="title"><%= t('content') %></h1>
       <%= simple_format(@micropost.content, class: 'break-words') %>
+
       <% @micropost.display_images.each do |image| %>
         <%= image_tag image.processed, alt: 'micropost images' %>
       <% end %>
