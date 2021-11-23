@@ -33,7 +33,7 @@
       <!-- edit comment form -->
       <div id="edit_comment_form" class="nes-container with-title is-centered hidden mt-4 table">
         <h1 class="title"><%= t('edit_comment') %></h1>
-        <%= form_with(model: comment, method: :patch, local: false) do |f| %>
+        <%= form_with(model: comment, class: 'form-elem-mt-4', method: :patch, local: false) do |f| %>
           <%= render 'comments/form', f: f, object: comment %>
         <% end %>
       </div>

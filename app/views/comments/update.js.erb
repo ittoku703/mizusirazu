@@ -1,3 +1,11 @@
 comment_id = '#comment-<%= @comment.id %>'
-$(`${comment_id} #comment-content`).html("<%= j simple_format(@comment.content) %>")
-$(`${comment_id} #comment-updated_at`).html("<%= j "#{t('updated_at')}: #{l @comment.updated_at}" %>")
+
+$(comment_id).replaceWith("<%= j render(
+  'comments/comment',
+  comment: @comment,
+  comment_counter: -1)
+  %>")
+
+$(comment_id).find('#edit_comment_btn').on('click', () => {
+  $(comment_id).find('#edit_comment_form').toggleClass('hidden');
+});

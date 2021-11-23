@@ -1,4 +1,8 @@
-<%= f.hidden_field(:micropost_id, value: params[:id]) %>
+<% if controller_name == 'microposts' %>
+  <%= f.hidden_field(:micropost_id, value: params[:id]) %>
+<% elsif controller_name == 'comments' %>
+  <%= f.hidden_field(:micropost_id, value: @comment.micropost_id) %>
+<% end %>
 
 <%= f.text_area :content,
   class: 'nes-textarea',
