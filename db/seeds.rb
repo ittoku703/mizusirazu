@@ -1,13 +1,22 @@
-# User
 10.times do
-  email = Faker::Internet.email
-  User.create!(email: email, password: 'password', password_confirmation: 'password')
+  # User
+  user = User.create!(
+    email: Faker::Internet.email,
+    password: 'password'
+  )
+
+  # Profile
+  user.create_profile!(
+    name: Faker::Name.name,
+    bio: Faker::Lorem.paragraph,
+    location: Faker::Address.country
+  )
 end
 
 users = User.all
 
 # Micropost
-10.times do
+5.times do
   users.each do |user|
     user.microposts.create!(
       title: Faker::Lorem.sentence(word_count: 3),
@@ -24,10 +33,10 @@ microposts.each do |micropost|
 end
 
 # Comment
-10.times do
+5.times do
   users.each do |user|
     user.comments.create!(
-      micropost_id: rand(1..100),
+      micropost_id: rand(1..50),
       content:Faker::Lorem.sentence(word_count: 3)
     )
   end

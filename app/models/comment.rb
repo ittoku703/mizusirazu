@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :user
-  belongs_to :micropost, class_name: 'Micropost'
+  belongs_to :micropost
 
   has_many_attached :images
 
