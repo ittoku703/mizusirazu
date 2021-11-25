@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Micropost, type: :model do
   subject(:valid) { micropost.valid? }
 
-  let(:micropost) { build(:micropost) }
+  let(:user) { create(:user) }
+  let(:micropost) { build(:micropost, user: user) }
 
   it { is_expected.to eq true }
 

@@ -4,7 +4,7 @@ RSpec.describe Comment, type: :model do
   subject(:valid) { comment.valid? }
 
   let(:user) { create(:user) }
-  let(:micropost) { create(:micropost) }
+  let(:micropost) { create(:micropost, user: user) }
   let(:comment) { build(:comment, micropost: micropost, user: user) }
 
   it { is_expected.to eq true }

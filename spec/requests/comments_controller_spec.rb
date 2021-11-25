@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe CommentsController, type: :request do
   let(:user) { create(:user) }
-  let(:micropost) { create(:micropost) }
+  let(:micropost) { create(:micropost, user: user) }
   let(:comment) { create(:comment, micropost: micropost, user: user) }
 
   describe 'POST /microposts/:micropost_id/comments' do

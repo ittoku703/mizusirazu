@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Comments', type: :feature do
   let(:user) { create(:user) }
-  let(:micropost) { create(:micropost) }
+  let(:micropost) { create(:micropost, user: user) }
 
   scenario 'comment', js: true do
     I18n.default_locale = :ja # <-- nessally

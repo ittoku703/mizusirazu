@@ -39,6 +39,10 @@ RSpec/Capybara/FeatureMethods:
 RSpec/MultipleExpectations:
   Enabled: false
 
+# 1 example 1 subject
+RSpec/MultipleSubjects:
+  Enabled: false
+
 # Japanese comment is allow
 Style/AsciiComments:
  Enabled: false

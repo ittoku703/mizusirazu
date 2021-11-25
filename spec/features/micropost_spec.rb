@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Microposts', type: :feature do
   let(:user) { create(:user) }
-  let(:micropost) { user.microposts.create(attributes_for(:micropost)) }
+  let(:micropost) { create(:micropost, user: user) }
 
   scenario 'create micropost' do
     login_user
