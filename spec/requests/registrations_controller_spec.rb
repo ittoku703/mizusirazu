@@ -159,11 +159,4 @@ RSpec.describe RegistrationsController, type: :request do
 
   # describe 'GET /users/cancel' do
   # end
-
-  describe 'GET /users/:id/microposts' do
-    it 'is OK' do
-      get user_microposts_path(user)
-      expect(response.status).to eq 200
-    end
-  end
 end

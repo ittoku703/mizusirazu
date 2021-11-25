@@ -46,12 +46,6 @@ class RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
-
-  # GET /users/:id/microposts
-  def microposts
-    @microposts = User.find(params[:id]).microposts.paginate(page: params[:page], per_page: 10)
-  end
-
   protected
 
   # If you have extra params to permit, append them to the sanitizer.

@@ -156,4 +156,11 @@ RSpec.describe MicropostsController, type: :request do
       end
     end
   end
+
+  describe 'GET /users/:id/microposts' do
+    it 'is OK' do
+      get user_microposts_path(user)
+      expect(response.status).to eq 200
+    end
+  end
 end

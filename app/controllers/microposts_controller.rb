@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i[index show user_microposts]
   before_action :set_micropost, only: %i[edit update destroy]
 
   # GET /microposts
@@ -44,6 +44,11 @@ class MicropostsController < ApplicationController
   def destroy
     @micropost.destroy
     redirect_to(user_microposts_path(@micropost.user), notice: t('microposts.deleted'))
+  end
+
+  # GET /users/:id/microposts
+  def user_microposts
+    @microposts = User.find(params[:id]).microposts.paginate(page: params[:page], per_page: 10)
   end
 
   private

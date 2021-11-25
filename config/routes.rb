@@ -19,10 +19,10 @@ Rails.application.routes.draw do
     get '/signup', to: 'registrations#new'
     get '/settings', to: 'registrations#edit'
     get '/users/:id', to: 'registrations#show', as: 'user_profile'
-    get '/users/:id/microposts', to: 'registrations#microposts', as: 'user_microposts'
   end
 
   resources :microposts
+  get '/users/:id/microposts', to: 'microposts#user_microposts', as: 'user_microposts'
 
   resources :comments, only: %i[create update destroy]
 end
