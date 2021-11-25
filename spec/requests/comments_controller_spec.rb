@@ -6,38 +6,29 @@ RSpec.describe CommentsController, type: :request do
   let(:comment) { create(:comment, micropost: micropost, user: user) }
 
   describe 'POST /microposts/:micropost_id/comments' do
-    subject(:valid_params) {
-      post micropost_comments_path(micropost), params: {
-        comment: {
-          micropost_id: micropost.id,
-          content: 'content'
-        }
-      }
-    }
-
-    subject(:image_attach) {
+    subject(:valid_params) do
       post micropost_comments_path(micropost), params: {
         comment: {
           micropost_id: micropost.id,
           content: 'content',
-          images: [fixture_file_upload('spec/factories/images/test.gif')]
+          images: [fixture_file_upload('spec/factories/images/test.png')]
         }
       }
-    }
+    end
 
     context 'when logged in user' do
       before { login_user }
 
       it 'redirect to micropost path' do
-       expect(valid_params).to redirect_to micropost
+        expect(valid_params).to redirect_to micropost
       end
 
       it 'comment count +1' do
-        expect{ valid_params }.to change(Comment, :count).by(1)
+        expect { valid_params }.to change(Comment, :count).by(1)
       end
 
       it 'images is attached' do
-        expect{ image_attach }.to change(ActiveStorage::Attachment, :count).by(1)
+        expect { valid_params }.to change(ActiveStorage::Attachment, :count).by(1)
       end
     end
 
@@ -49,16 +40,7 @@ RSpec.describe CommentsController, type: :request do
   end
 
   describe 'PATCH /micropost/:micropost_id/comment/:id' do
-    subject(:valid_params) {
-      patch micropost_comment_path(micropost, comment), params: {
-        comment: {
-          micropost_id: micropost.id,
-          content: 'content'
-        }
-      }
-    }
-
-    subject(:image_attach) {
+    subject(:valid_params) do
       patch micropost_comment_path(micropost, comment), params: {
         comment: {
           micropost_id: micropost.id,
@@ -66,7 +48,7 @@ RSpec.describe CommentsController, type: :request do
           images: [fixture_file_upload('spec/factories/images/test.png')]
         }
       }
-    }
+    end
 
     it 'redirect to micropost page' do
       login_user
@@ -75,14 +57,14 @@ RSpec.describe CommentsController, type: :request do
 
     it 'images is attached' do
       login_user
-      expect{ image_attach }.to change(ActiveStorage::Attachment, :count).by(1)
+      expect { valid_params }.to change(ActiveStorage::Attachment, :count).by(1)
     end
   end
 
   describe 'DELETE /microposts/:micropost_id/comment/:id' do
-    subject(:valid_params) {
+    subject(:valid_params) do
       delete micropost_comment_path(micropost, comment)
-    }
+    end
 
     it 'redirect to micropost page' do
       login_user
