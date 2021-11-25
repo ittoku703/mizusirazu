@@ -21,8 +21,9 @@ Rails.application.routes.draw do
     get '/users/:id', to: 'registrations#show', as: 'user_profile'
   end
 
-  resources :microposts
   get '/users/:id/microposts', to: 'microposts#user_microposts', as: 'user_microposts'
 
-  resources :comments, only: %i[create update destroy]
+  resources :microposts do
+    resources :comments, only: %i[create update destroy]
+  end
 end

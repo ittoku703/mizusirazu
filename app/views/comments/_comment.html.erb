@@ -22,7 +22,7 @@
       <div class="inline-block">
         <button id="edit_comment_btn" class="nes-btn is-warning"><%= t('edit_comment') %></button>
         <%= link_to t('delete_comment'),
-          comment_path(comment),
+          micropost_comment_path(comment.micropost, comment),
           class: 'nes-btn is-error',
           remote: true,
           method: :delete,
@@ -33,7 +33,11 @@
       <!-- edit comment form -->
       <div id="edit_comment_form" class="nes-container with-title is-centered hidden mt-4 table">
         <h1 class="title"><%= t('edit_comment') %></h1>
-        <%= form_with(model: comment, class: 'form-elem-mt-4', method: :patch, local: false) do |f| %>
+        <%= form_with(
+          model: [comment.micropost, comment],
+          class: 'form-elem-mt-4',
+          method: :patch,
+          local: false) do |f| %>
           <%= render 'comments/form', f: f, object: comment %>
         <% end %>
       </div>

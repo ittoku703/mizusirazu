@@ -3,7 +3,9 @@ require 'rails_helper'
 RSpec.describe Comment, type: :model do
   subject(:valid) { comment.valid? }
 
-  let(:comment) { build(:comment) }
+  let(:user) { create(:user) }
+  let(:micropost) { create(:micropost) }
+  let(:comment) { build(:comment, micropost: micropost, user: user) }
 
   it { is_expected.to eq true }
 

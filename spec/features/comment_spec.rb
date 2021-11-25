@@ -32,12 +32,4 @@ RSpec.feature 'Comments', type: :feature do
     visit micropost_path(micropost)
     expect(page).not_to have_selector 'form#new_comment'
   end
-
-  scenario 'no send comment if comment content is nil' do
-    login_user
-    visit micropost_path(micropost)
-    fill_in 'comment[content]', with: ''
-    click_button t('post')
-    expect(Comment.count).to eq 0
-  end
 end

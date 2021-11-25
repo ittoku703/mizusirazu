@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
 
-  # POST /comments
+  # POST /microposts/:micropost_id/comments
   def create
     @comment = current_user.comments.build(comment_params)
 
@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     respond_to_ajax
   end
 
-  # PATCH /comment/:id
+  # PATCH /micropost/:micropost_id/comment/:id
   def update
     @comment = Comment.find(params[:id])
 
@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     respond_to_ajax
   end
 
-  # DELETE /comment/:id
+  # DELETE /micropost/:micropost_id/comment/:id
   def destroy
     @comment = Comment.find(params[:id])
 

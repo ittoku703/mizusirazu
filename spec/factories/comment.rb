@@ -1,13 +1,13 @@
 FactoryBot.define do
   factory :comment do
+    micropost
     content { Faker::Lorem.sentence(word_count: 3) }
-    micropost_id { create(:other_micropost).id }
-    user_id { create(:user).id }
+    user
   end
 
   factory :other_comment do
+    other_micropost
     content { Faker::Lorem.sentence(word_count: 3) }
-    micropost_id { create(:micropost).id }
-    user_id { create(:other).id }
+    other
   end
 end
