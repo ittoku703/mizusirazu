@@ -37,11 +37,11 @@
         <div class="text-sm sm:flex-grow is-primary">
           <% if user_signed_in? %>
             <%= header_link_to t('my_page'), user_profile_path(current_user) %>
-            <%= header_link_to t('edit'), settings_path %>
-            <%= header_link_to t('micropost_list'), microposts_path %>
+            <%= header_link_to t('edit'), user_settings_path %>
+            <%= header_link_to t('my_microposts'), user_microposts_path(current_user) %>
             <%= header_link_to t('logout'), destroy_user_session_path, method: :delete %>
           <% else %>
-            <%= header_link_to t('signup'), signup_path %>
+            <%= header_link_to t('signup'), user_signup_path %>
             <%= header_link_to t('login'), new_user_session_path %>
             <%= header_link_to t('look_microposts'), microposts_path %>
           <% end %>

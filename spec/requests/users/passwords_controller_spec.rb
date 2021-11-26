@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe PasswordsController, type: :request do
+RSpec.describe Users::PasswordsController, type: :request do
   let(:user) { create(:user, confirmed_at: Time.zone.now) }
 
   describe 'GET /password/new' do

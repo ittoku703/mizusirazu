@@ -2,14 +2,14 @@
 
 <div class="w-full p-4">
   <section class="nes-container member-card">
-    <div class="mt-4 mr-4">
+    <div class="mr-8">
       <i class="nes-bcrikko"></i>
     </div>
-    <div class="">
-      <p><strong>Email: </strong><%= @user.email %></p>
-      <p><strong>Created at: </strong><%= l(@user.created_at) %></p>
-      <p><strong>Updated at: </strong><%= l(@user.updated_at) %></p>
-    </div>
+    <ul class="nes-list is-circle">
+      <li class="py-1 whitespace-nowrap">Email <%= @user.email %></li>
+      <li class="py-1 whitespace-nowrap">Created at <%= l(@user.created_at) %></li>
+      <li class="py-1 whitespace-nowrap">Updated at <%= l(@user.updated_at) %></li>
+    </ul>
   </section>
 
   <div class="ml-4 pt-4">

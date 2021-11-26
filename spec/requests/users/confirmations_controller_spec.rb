@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ConfirmationsController, type: :request do
+RSpec.describe Users::ConfirmationsController, type: :request do
   let(:user) { create(:user) }
 
   describe 'GET /confirmation/new' do

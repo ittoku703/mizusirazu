@@ -49,7 +49,7 @@ RSpec.feature 'SiteLinks', type: :feature do
   end
 
   scenario 'signup links' do
-    visit signup_path
+    visit user_signup_path
     expect(page).to have_link t('login_user')
     expect(page).to have_link t('activate_user')
     expect(page).to have_link t('unlock_user')
@@ -65,7 +65,7 @@ RSpec.feature 'SiteLinks', type: :feature do
 
   scenario 'settings page links' do
     login_user
-    visit settings_path
+    visit user_settings_path
     expect(page).to have_link t('delete')
   end
 

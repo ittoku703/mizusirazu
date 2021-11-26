@@ -24,12 +24,14 @@
               <li><%= content_tag(:p, "#{t('sign_in_count')}: #{current_user.sign_in_count}") %></li>
               <li><%= content_tag(:p, "#{t('created_at')}: #{l(current_user.created_at)}") %></li>
               <li><%= content_tag(:p, "#{t('updated_at')}: #{l(current_user.updated_at)}") %></li>
+              <li><%= link_to t('edit_user'), user_settings_path %></li>
             </ul>
           </div>
 
           <div class="nes-container with-title mt-4">
             <h2 class="title">Micropost</h2>
             <ul class="nes-list is-disc">
+              <li><%= link_to t('look_microposts'), microposts_path %></li>
               <li><%= link_to t('micropost_write'), new_micropost_path %></li>
             </ul>
           </div>
@@ -38,7 +40,7 @@
         <!-- right sidebar -->
         <aside class="mt-4 lg:mt-0">
           <% if current_user.microposts.any? %>
-            <%= link_to t('micropost_list'), user_microposts_path(current_user), class: 'block text-center text-lg' %>
+            <%= link_to t('my_microposts'), user_microposts_path(current_user), class: 'block text-center text-lg' %>
             <% current_user.microposts[0..3].each do |micropost| %>
               <div class="nes-container with-title is-centered mt-4 sm:max-w-xs">
                 <%= content_tag(:h1, micropost.title, class: 'title') %>

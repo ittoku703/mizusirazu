@@ -1,20 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe RegistrationsController, type: :request do
+RSpec.describe Users::RegistrationsController, type: :request do
   let(:user) { create(:user) }
 
   describe 'GET /signup' do
     context 'when logged in user' do
       it 'is redirect to root' do
         login_user
-        get signup_path
+        get user_signup_path
         expect(response).to redirect_to root_path
       end
     end
 
     context 'when non logged in user' do
       it 'is OK' do
-        get signup_path
+        get user_signup_path
         expect(response.status).to eq 200
       end
     end
@@ -90,14 +90,14 @@ RSpec.describe RegistrationsController, type: :request do
     context 'when logged in user' do
       it 'is OK' do
         login_user
-        get settings_path
+        get user_settings_path
         expect(response.status).to eq 200
       end
     end
 
     context 'when non logged in user' do
       it 'is redirect to login page' do
-        get settings_path
+        get user_settings_path
         expect(response).to redirect_to new_user_session_path
       end
     end
@@ -116,7 +116,7 @@ RSpec.describe RegistrationsController, type: :request do
             current_password: 'password'
           }
         }
-        expect(response).to redirect_to settings_path
+        expect(response).to redirect_to user_settings_path
       end
     end
 

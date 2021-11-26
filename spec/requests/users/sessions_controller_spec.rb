@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SessionsController, type: :request do
+RSpec.describe Users::SessionsController, type: :request do
   let(:user) { create(:user, confirmed_at: Time.zone.now) }
 
   describe 'GET /login' do
