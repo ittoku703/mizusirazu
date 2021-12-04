@@ -13,7 +13,7 @@ module ApplicationHelper
       lists << header_link_to(t('look_microposts'), microposts_path)
     end
 
-    return lists.html_safe
+    safe_join(lists)
   end
 
   def header_link_to(name, path, **options)
@@ -32,7 +32,7 @@ module ApplicationHelper
     lists << footer_technology_link('PixcelGaro (icon)', 'https://hpgpixer.jp/')
     lists << footer_technology_link('Wallhaven (background)', 'https://wallhaven.cc/')
 
-    return lists.html_safe
+    safe_join(lists)
   end
 
   def footer_technology_link(name, path, **options)

@@ -60,7 +60,7 @@ Style/ParallelAssignment:
   Enabled: false
 
 Metrics/AbcSize:
-  Max: 20
+  Max: 35
 
 Metrics/BlockLength:
   CountComments: false
@@ -68,6 +68,9 @@ Metrics/BlockLength:
     - 'config/environments/*'
     - 'spec/**/*'
     - 'Guardfile'
+
+Metrics/MethodLength:
+  Max: 15
 
 Layout/LineLength:
   Exclude:
@@ -77,3 +80,5 @@ Lint/UnusedMethodArgument:
   Exclude: 
     - 'app/controllers/*'
 
+Lint/UselessMethodDefinition:
+  Enabled: false

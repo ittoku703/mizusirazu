@@ -28,9 +28,10 @@ module Users
 
     # protected
 
+    # if user.confirmed? is true, redirect_to root_path(logged in user). but
+    # user.confirmed? is false, redirect_to new_user_session_path
     def after_resetting_password_path_for(resource)
-      super(resource) # <-- if user.confirmed? is true, redirect_to root_path(logged in user). but
-                      # user.confirmed? is false, redirect_to new_user_session_path
+      super(resource)
     end
 
     # The path used after sending reset password instructions
