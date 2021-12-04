@@ -35,16 +35,7 @@
       <!-- Links -->
       <div id="header_links" class="w-full hidden sm:block sm:items-center sm:w-auto">
         <div class="text-sm sm:flex-grow is-primary">
-          <% if user_signed_in? %>
-            <%= header_link_to t('my_page'), user_profile_path(current_user) %>
-            <%= header_link_to t('edit'), user_settings_path %>
-            <%= header_link_to t('my_microposts'), user_microposts_path(current_user) %>
-            <%= header_link_to t('logout'), destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= header_link_to t('signup'), user_signup_path %>
-            <%= header_link_to t('login'), new_user_session_path %>
-            <%= header_link_to t('look_microposts'), microposts_path %>
-          <% end %>
+          <%= header_links %>
         </div>
       </div>
     </header>
@@ -74,13 +65,7 @@
             <div class="nes-container is-dark with-title">
               <p class="title"><%= t('technology') %></p>
               <ul class="nes-list is-circle is-dark">
-                <li class="py-1"><%= link_to t('source_code'), 'https://github.com/shinzanmono/mizusirazu.net' %></li>
-                <li class="py-1"><%= link_to t('contact'), 'mailto:shinzanmono@example.com' %></li>
-                <li class="py-1"><%= link_to 'NES.css', 'https://nostalgic-css.github.io/NES.css/' %></li>
-                <li class="py-1"><%= link_to 'Nu きなこもち', 'http://kokagem.sakura.ne.jp/font/mochi/' %></li>
-                <li class="py-1"><%= link_to '美咲フォント', 'https://littlelimit.net/misaki.htm' %></li>
-                <li class="py-1"><%= link_to 'PixcelGaro (icon)', 'https://hpgpixer.jp/' %></li>
-                <li class="py-1"><%= link_to 'Wallhaven (background)', 'https://wallhaven.cc/' %></li>
+                <%= footer_technology_links %>
               </ul>
             </div>
           </div>
