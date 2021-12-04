@@ -1,7 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery prepend: true
   before_action :set_locale
-  # before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
@@ -14,17 +12,11 @@ class ApplicationController < ActionController::Base
     I18n.locale = I18n.default_locale
   end
 
-  # if resource is not found, render 404 page
+  # render 404 page if resource is not found
   def render_not_found(error = nil)
     logger.info "Rendering 404 with exception: #{error.message}" if error
     render file: Rails.root.join('public', '404.html'), status: :not_found, layout: false
   end
-
-  # protected
-
-  # def configure_permitted_parameters
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-  # end
 
   private
 
@@ -32,6 +24,7 @@ class ApplicationController < ActionController::Base
     params[:locale] || session[:locale] || http_head_locale || I18n.default_locale
   end
 
+  # Automatically determine the language of the user
   def http_head_locale
     http_accept_language.language_region_compatible_from(I18n.available_locales)
   end
