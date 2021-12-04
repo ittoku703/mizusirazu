@@ -1,3 +1,3 @@
-$('#header-togglebtn').on('click', () => {
-  $('#header-links').toggleClass('hidden');
+$('#header_togglebtn').on('click', () => {
+  $('#header_links').toggleClass('hidden');
 });

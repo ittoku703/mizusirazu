@@ -5,15 +5,15 @@
   <div class="block pt-4 sm:flex">
     <!-- edit micropost toggle btn -->
     <div class="text-center block sm:hidden">
-      <button id="edit_micropost-btn" class="nes-btn is-warning" style="margin: 0;" disabled><%= t('edit') %></button>
-      <button id="preview_micropost-btn" class="nes-btn is-primary" style="margin: 0;"><%= t('preview') %></button>
+      <button id="edit_micropost_btn" class="nes-btn is-warning" style="margin: 0;" disabled><%= t('edit') %></button>
+      <button id="preview_micropost_btn" class="nes-btn is-primary" style="margin: 0;"><%= t('preview') %></button>
     </div>
 
     <!-- micropost edit -->
     <div id="edit_micropost" class="block sm:flex-1 sm:px-2">
       <div class="nes-container with-title is-rounded">
         <%= content_tag(:h1, t('edit'), class: 'title') %>
-        <%= form_with(model: @micropost, id: 'edit_micropost-form', class: 'form-elem-mt-4', method: :put) do |f| %>
+        <%= form_with(model: @micropost, id: 'edit_micropost_form', class: 'form-elem-mt-4', method: :put) do |f| %>
           <%= render 'shared/error_messages', object: @micropost %>
 
           <%= render 'form', f: f %>

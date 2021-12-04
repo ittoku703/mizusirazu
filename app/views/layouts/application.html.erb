@@ -29,11 +29,11 @@
 
       <!-- toggle btn -->
       <div class="block sm:hidden">
-        <button id="header-togglebtn" class="nes-btn is-warning">*</button>
+        <button id="header_togglebtn" class="nes-btn is-warning">*</button>
       </div>
 
       <!-- Links -->
-      <div id="header-links" class="w-full hidden sm:block sm:items-center sm:w-auto">
+      <div id="header_links" class="w-full hidden sm:block sm:items-center sm:w-auto">
         <div class="text-sm sm:flex-grow is-primary">
           <% if user_signed_in? %>
             <%= header_link_to t('my_page'), user_profile_path(current_user) %>

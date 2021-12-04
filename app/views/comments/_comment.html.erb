@@ -1,10 +1,10 @@
-<div id="comment-<%= comment.id %>" class="text-sm pt-4">
+<div id="comment_<%= comment.id %>" class="text-sm pt-4">
   <div class="nes-container with-title">
     <h1 class="title"><%= comment_counter + 1 %></h1>
 
     <%= link_to "#{t('author')}: #{comment.user.email}", user_profile_path(comment.user) %>
 
-    <div id="comment-content">
+    <div id="comment_content">
       <%= simple_format(comment.content,  class: 'truncate') %>
     </div>
 

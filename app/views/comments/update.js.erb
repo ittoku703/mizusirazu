@@ -1,11 +1,11 @@
-comment_id = '#comment-<%= @comment.id %>'
+var comment = $('#comment_<%= @comment.id %>');
 
-$(comment_id).replaceWith("<%= j render(
+comment.replaceWith("<%= j render(
   'comments/comment',
   comment: @comment,
   comment_counter: -1)
   %>")
 
-$(comment_id).find('#edit_comment_btn').on('click', () => {
-  $(comment_id).find('#edit_comment_form').toggleClass('hidden');
+comment.find('#edit_comment_btn').on('click', () => {
+  comment.find('#edit_comment_form').toggleClass('hidden');
 });
