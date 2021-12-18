@@ -1,107 +1,16 @@
 <!DOCTYPE html>
-<html lang="<%= I18n.locale %>">
+<html>
   <head>
     <title>MizusirazuNet</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= favicon_link_tag '/favicon.ico' %>
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
 
-    <!-- Tailwindcss -->
-    <%= stylesheet_link_tag "inter-font", "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
-
-    <!-- NES.css -->
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
-
-    <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <header class="flex items-center justify-between flex-wrap px-4">
-      <!-- My Homepage logo -->
-        <%= link_to root_path, class: 'mr-6', title: "MizusirazuNet" do %>
-          <%= image_tag '/images/logo.svg', size: '64x64' %>
-        <% end %>
-
-      <!-- toggle btn -->
-      <div class="block sm:hidden">
-        <button id="header_togglebtn" class="nes-btn is-warning">*</button>
-      </div>
-
-      <!-- Links -->
-      <div id="header_links" class="w-full hidden sm:block sm:items-center sm:w-auto">
-        <div class="text-sm sm:flex-grow is-primary">
-          <%= header_links %>
-        </div>
-      </div>
-    </header>
-
-    <% flash.each do |name, msg| %>
-      <%= next if name == 'timedout' %>
-      <div class="flash">
-        <%= content_tag 'div', id: name do %>
-          <span><%= msg %></span>
-        <% end %>
-      </div>
-    <% end %>
-
-    <main>
-      <% if params[:yield_to] %>
-        <%= render params[:yield_to] %>
-      <% else %>
-        <%= yield %>
-      <% end %>
-    </main>
-
-    <footer class="pt-4 px-2 text-sm">
-      <div class="nes-container is-rounded is-dark">
-        <div class="block justify-center sm:flex">
-          <!-- My site Links -->
-          <div class="pt-4 sm:mr-4">
-            <div class="nes-container is-dark with-title">
-              <p class="title"><%= t('technology') %></p>
-              <ul class="nes-list is-circle is-dark">
-                <%= footer_technology_links %>
-              </ul>
-            </div>
-          </div>
-
-          <!-- My site About -->
-          <div class="pt-4">
-            <div class="nes-container is-dark with-title">
-              <h1 class="title"><%= t('about') %></h1>
-              <p>Mizurazu.netはいいサイトです。</p>
-              <p>なぜなら、いいサイトはいいサイトだからです。</p>
-              <p>ということは、このサイトもいいサイトということになるでしょう。</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- language selector -->
-        <div class="text-center pt-4">
-          <div class="nes-container is-dark with-title is-centered">
-            <h1 class="title"><%= t('select_language') %></h2>
-            <div class="flex justify-center">
-              <% I18n.available_locales.each do |language| %>
-                <%= link_to t(language), url_for(locale: language), class: 'mr-4' %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-        <!-- copyright -->
-        <div class="text-center pt-4">
-          <i class="nes-kirby"></i>
-          <p>copyright (c) shinzanmono. All right received</p>
-        </div>
-    </footer> 
-
-    <%= debug(params) if Rails.env.development? %> 
-
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield %>
   </body>
 </html>

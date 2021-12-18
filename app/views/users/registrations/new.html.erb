@@ -1,9 +1,0 @@
-<body class="body--registration"></body>
-
-<h1 class="text-xl font-bold"><%= t('new_user') %></h1>
-
-<%= form_with(scope: resource_name, url: user_registration_path, class: 'form-elem-mt-4') do |f| %>
-  <%= render 'shared/error_messages', object: resource %>
-
-  <%= render 'form', f: f %>
-<% end %>

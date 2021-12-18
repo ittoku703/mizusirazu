@@ -1,9 +1,0 @@
-<body class="body--unlock"></body>
-
-<h1 class="text-xl font-bold"><%= t('unlock_user') %></h1>
-
-<%= form_with(scope: resource_name, url: user_unlock_path, class: 'form-elem-mt-4', method: :post) do |f| %>
-  <%= render "shared/error_messages", object: resource %>
-
-  <%= render 'form', f: f %>
-<% end %>

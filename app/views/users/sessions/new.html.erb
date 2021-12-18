@@ -1,7 +1,0 @@
-<body class="body--session"></body>
-
-<h1 class="text-xl font-bold"><%= t('login_user') %></h1>
-
-<%= form_with(scope: resource_name, url: user_session_path, class: 'form-elem-mt-4', method: :post) do |f| %>
-  <%= render 'form', f: f %>
-<% end %>

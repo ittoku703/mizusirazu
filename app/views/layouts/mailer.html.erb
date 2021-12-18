@@ -1,112 +1,13 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html" charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-table {
-  width: 100%;
-  border: none;
-  border-collapse: collapse;
-}
-
-table tr, table td {
-  padding: 0;
-}
-
-.mail {
-  max-width: 640px;
-  background-color: #dddddd;
-}
-
-.frame {
-  max-width: 420px;
-  border-radius: 1rem;
-  padding: 1rem;
-  background-color: #ffffff;
-}
+      /* Email styles need to be inline */
     </style>
   </head>
 
   <body>
-    <table class="mail">
-      <!-- header -->
-      <tr>
-        <td style="height: 15px;">
-          <tr>
-            <td style="width: 15px;"></td>
-            <td style="text-align: center;">
-              <table>
-                <tr>
-                  <td style="text-align: center;">
-                    <%= link_to root_url do %>
-                      <%= image_tag '/images/logo.png', size: "64x64" %>
-                    <% end %>
-                  </td>
-                </tr>
-              </table>
-            </td>
-            <td style="width: 15px;"></td>
-          </tr>
-        </td>
-      </tr>
-
-      <!-- spacer -->
-      <tr>
-        <td style="height: 15px;">
-      </tr>
-
-      <!-- main -->
-      <tr>
-        <td style="width: 15px;"></td>
-        <td>
-          <table class="frame">
-            <tr>
-              <td style="height: 15px;"></td>
-            </tr>
-            <tr>
-              <td style="width: 15px;"></td>
-              <td>
-                <%= yield %>
-              </td>
-              <td style="width: 15px;"></td>
-            </tr>
-            <tr>
-              <td style="height: 15px;"></td>
-            </tr>
-          </table>
-        </td>
-        <td style="width: 15px;"></td>
-      </tr>
-
-      <!-- spacer -->
-      <tr>
-        <td style="height: 15px;"></td>
-      </tr>
-
-      <!-- footer -->
-      <tr>
-        <td style="height: 15px;">
-          <tr>
-            <td style="width: 15px;"></td>
-            <td style="text-align: center;">
-              <table>
-                <tr>
-                  <td style="text-align: center;">
-                    <%= link_to 'Mizusirazu.net', root_url %>
-                  </td>
-                </tr>
-              </table>
-            </td>
-            <td style="width: 15px;"></td>
-          </tr>
-        </td>
-      </tr>
-
-      <!-- spacer -->
-      <tr>
-        <td style="height: 15px;"></td>
-      </tr>
-
-    </table>
+    <%= yield %>
   </body>
 </html>

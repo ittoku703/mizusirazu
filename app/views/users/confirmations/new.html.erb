@@ -1,9 +1,0 @@
-<body class="body--confirmation"></body>
-
-<h1 class="text-xl font-bold"><%= t('activate_user') %></h1>
-
-<%= form_with(scope: resource, url: user_confirmation_path, class: 'form-elem-mt-4', method: :post) do |f| %>
-  <%= render 'shared/error_messages', object: resource %>
-
-  <%= render 'form', f: f %>
-<% end %>
