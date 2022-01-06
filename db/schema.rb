@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_05_165935) do
+ActiveRecord::Schema.define(version: 2022_01_06_153319) do
 
-  create_table "accounts", force: :cascade do |t|
-    t.string "username", null: false
+  create_table "users", force: :cascade do |t|
+    t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_accounts_on_email", unique: true
-    t.index ["username"], name: "index_accounts_on_username", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
 end
