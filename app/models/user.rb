@@ -20,6 +20,11 @@ class User < ApplicationRecord
     presence: true,
     length: { in: 4..256 }
 
+  # OVERRIDE: changed params id to params name
+  def to_param
+    name
+  end
+
   private
 
     # make the email all downcase before saving account

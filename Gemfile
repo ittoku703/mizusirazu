@@ -68,6 +68,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+
+  # using assert_template method in test
+  gem 'rails-controller-testing'
 end
 
 group :production do

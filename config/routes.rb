@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'articles#index'
+  get  '/signup', to: 'users#new', as: 'new_user'
+
+  resources :users, except: %i[new], param: :name
 end
