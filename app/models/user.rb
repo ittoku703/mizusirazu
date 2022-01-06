@@ -1,7 +1,7 @@
-class Account < ApplicationRecord
+class User < ApplicationRecord
   before_save :downcase_email
 
-  validates :username,
+  validates :name,
     presence: true,
     format: { with: /\A[a-z0-9_]+\z/, message: 'only alphabets, digits and underscore' },
     length: { in: 4..128 },
