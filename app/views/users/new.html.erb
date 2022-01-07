@@ -1,18 +1,6 @@
-<p>users#new</p>
+<% provide(:title, 'Sign up') %>
+<% provide(:submit_text, 'Create User') %>
 
-<%= form_with model: @user do |f| %>
-  <div class="form-field">
-    <%= f.text_field :name, placeholder: 'name' %>
-  </div>
-  <div class="form-field">
-    <%= f.email_field :email, placeholder: 'email' %>
-  </div>
-  <div class="form-field">
-    <%= f.password_field :password, placeholder: 'password' %>
-  </div>
-  <div class="form-field">
-    <%= f.password_field :password_confirmation, placeholder: 'password_confirmation' %>
-  </div>
+<h1>Sign up</h1>
 
-  <%= f.button 'Create User' %>
-<% end %>
+<%= render 'form' %>

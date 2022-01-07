@@ -1,7 +1,11 @@
-<p>users#show</p>
-<ul>
-  <li><%= @user.name %></li>
-  <li><%= @user.email %></li>
-  <li><%= @user.created_at %></li>
-  <li><%= @user.updated_at %></li>
-</ul>
+<% provide(:title, 'User Page') %>
+
+<h1>User Page</h1>
+
+<p><%= @user.name %></p>
+<p><%= @user.email %></p>
+<p><%= @user.password_digest %></p>
+<p><%= @user.created_at %></p>
+<p><%= @user.updated_at %></p>
+
+<%= render 'links' %>
