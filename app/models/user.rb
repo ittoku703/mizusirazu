@@ -1,24 +1,27 @@
 class User < ApplicationRecord
   before_save :downcase_email
 
+  validates :name, presence: true
+  # why separate it? for reduce the number of error messages
   validates :name,
-    presence: true,
     format: { with: /\A[a-z0-9_]+\z/, message: 'only alphabets, digits and underscore' },
     length: { in: 4..128 },
     uniqueness: true,
-    allow_nil: true
+    allow_blank: true
 
+  validates :email, presence: true
   validates :email,
-    presence: true,
     format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i },
     length: { in: 12..256 },
-    uniqueness: true
+    uniqueness: true,
+    allow_blank: true
 
   has_secure_password
 
+  validates :password, presence: true, on: :create
   validates :password,
-    presence: true,
-    length: { in: 4..256 }
+    length: { in: 4..256 },
+    allow_blank: true
 
   # OVERRIDE: changed params id to params name
   def to_param
