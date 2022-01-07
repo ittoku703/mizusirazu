@@ -12,11 +12,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
-      flash[:success] = 'User Created'
-      redirect_to @user
-    else
-      render :new
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to @user, notice: 'User was successfully created' }
+      else
+        # nessally status: :unprocessable_entity
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -27,26 +29,28 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to @user
-    else
-      render :edit
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'User was successfully updated' }
+      else
+        format.html { render :edit, status: :unprocessable_entity, location: @user.reload }
+      end
     end
   end
 
   def destroy
     @user.destroy
-    flash[:success] = 'User Deleted'
-    redirect_to root_path
+    redirect_to root_path, status: :see_other
   end
 
   private
 
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
 
-    def set_user
-      @user = User.find_by(name: params[:name]);
-    end
+  # if not found. exception is raised
+  def set_user
+    @user = User.find_by!(name: params[:id])
+  end
 end

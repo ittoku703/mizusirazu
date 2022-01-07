@@ -34,7 +34,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should rollback if create parameter is invalid' do
-    post users_path, params: { user: { name: '', email: '', password: '', password_confirmation: '' } }
+    post users_path, params: { user: {
+      name: '',
+      email: '',
+      password: '',
+      password_confirmation: ''
+    } }
     assert_template :new
   end
 
@@ -56,11 +61,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update if name and password is nil' do
     patch user_path @user, params: { user: { 
-      username: '',
+      name: '',
       email: 'shinzanmono1192@gmail.com',
       password: ''
     } }
-    assert_response :success
+    assert_response :redirect
   end
 
   test 'should rollback if update parameter is invalid' do
