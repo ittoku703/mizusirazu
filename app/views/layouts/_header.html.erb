@@ -1,0 +1,11 @@
+<div class="bg-gray-800 text-white md:flex items-center jusify-between py-2 px-8 md:px-12">
+  <div class="flex justify-between items-center">
+    <div class="text-xl font-bold md:text-2xl">
+      <%= link_to 'Mizusirazu.net', root_path %>
+    </div>
+  </div>
+  <div class="flex flex-col md:flex-row block mx-2">
+    <%= link_to 'User list', users_path, class: 'rounded hover:text-gray-400 py-2 px-2 md:mx-2' %>
+    <%= link_to 'Sign up', new_user_path, class: 'rounded hover:text-gray-400 py-2 px-2 md:mx-2' %>
+  </div>
+</div>
