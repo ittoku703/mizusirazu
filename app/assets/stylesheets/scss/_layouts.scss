@@ -1,0 +1,15 @@
+/* debug */
+.debug_dump {
+  position: fixed;
+  bottom: 128px;
+  display: block;
+  margin-top: 32px;
+  width: 100%;
+  background-color: #eeeeee;
+  padding: 8px;
+  @include box_sizing;
+}
+
+#console {
+  height: 128px;
+}
