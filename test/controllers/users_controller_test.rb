@@ -59,9 +59,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to user_path(find_user)
   end
 
-  test 'should update if name and password is nil' do
+  test 'should update if password is nil' do
     patch user_path @user, params: { user: { 
-      name: '',
+      name: 'update_user',
       email: 'shinzanmono1192@gmail.com',
       password: ''
     } }
