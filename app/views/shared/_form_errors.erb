@@ -1,16 +1,16 @@
 <% if object.errors.any? %>
-    <div id="error_explanation" class="bg-red-100 border-l-4 border-red-900 py-2 overflow-scroll whitespace-nowrap">
-      <div class="flex items-center">
-        <svg class="h-8 w-8 text-red-700 mr-2 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-        </svg>
-        <%= content_tag(:h2, "#{object.model_name} form contains #{object.errors.count} errors", class: 'text-red-900 font-semibold text-md mt-1') %>
-      </div>
-
-      <div class="pl-4">
-        <% object.errors.full_messages.each do |message| %>
-          <%= content_tag(:li, message, class: 'text-md font-bold text-red-500 text-sm mt-1') %>
-        <% end %>
-      </div>
+  <div id="error_explanation" class="bg-red-100 border-l-4 border-red-900 py-2 overflow-scroll whitespace-nowrap">
+    <div class="flex items-center">
+      <svg class="h-8 w-8 text-red-700 mr-2 cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <%= content_tag(:h2, "#{object.model_name} form contains #{object.errors.count} errors", class: 'text-red-900 font-semibold text-md mt-1') %>
     </div>
+
+    <div class="pl-4">
+      <% object.errors.full_messages.each do |message| %>
+        <%= content_tag(:li, message, class: 'text-md font-bold text-red-500 text-sm mt-1') %>
+      <% end %>
+    </div>
+  </div>
 <% end %>
