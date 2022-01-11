@@ -1,5 +1,5 @@
 <div class="font-mono w-full md:max-w-lg px-2 md:mx-auto mt-4">
-  <div class="w-full shadow-2xl subpixel-antialiased rounded h-64 bg-black border-black mx-auto">
+  <div class="w-full shadow-2xl subpixel-antialiased rounded bg-black border-black">
     <div class="flex items-center h-6 rounded-t bg-gray-100 border-b border-gray-500 text-center text-black" id="headerTerminal">
       <div class="flex ml-2 items-center text-center border-red-900 bg-red-500 shadow-inner rounded-full w-3 h-3" id="closebtn"></div>
 
@@ -12,7 +12,7 @@
         <%= content_tag(:p, yield(:title), class: 'text-center text-sm') %>
       </div>
     </div>
-    <div class="pl-1 pt-1 pb-4 h-auto text-green-200 text-xs bg-black" id="console">
+    <div class="h-96 overflow-scroll rounded-b pl-1 pt-1 text-green-200 text-sm" id="console">
       <%= yield %>
     </div>
   </div>

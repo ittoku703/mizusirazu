@@ -1,27 +1,11 @@
-<div class="table-row">
-  <div class="table-cell align-middle border-b border-gray-100 dark:border-gray-700 p-4 pl-8 text-gray-500 dark:text-gray-400">
-    <%= link_to user_path(user) do %>
-      <%= image_tag 'image-not-found.png', size: '64x64' %>
-    <% end %>
-  </div>
+<%= link_to user_path(user) do %>
+  <%= image_tag 'image-not-found.png', size: '64x64', class: 'inline-block' %>
+  <span>👈 Click</span>
+<% end %>
 
-  <div class="table-cell align-middle border-b border-gray-100 dark:border-gray-700 p-4 pl-8 text-gray-500 dark:text-gray-400">
-    <p>
-      <strong class="text-black">Name:</strong>
-      <%= link_to user.name, user_path(user), class: 'duration-300 hover:text-indigo-200' %>
-    </p>
-    <p class="text-xs pl-2 text-gray-400">
-      <strong class="text-black">Created at:</strong>
-      <%= content_tag(:span, user.created_at) %>
-    </p>
-    <p class="text-xs pl-2 text-gray-400">
-      <strong class="text-black">Updated at:</strong>
-      <%= content_tag(:span, user.updated_at) %>
-    </p>
-  </div>
+<%= user_terminal_field(user, :name) %>
+<%= user_terminal_field(user, :email) %>
+<%= user_terminal_field(user, :created_at) %>
+<%= user_terminal_field(user, :updated_at) %>
 
-  <div class="table-cell align-middle border-b border-gray-100 dark:border-gray-700 p-4 pl-8 text-gray-500 dark:text-gray-400">
-    <%= link_to 'Edit', edit_user_path(user) %> |
-    <%= user_destroy_link(user) %>
-  </div>
-</div>
+<br>

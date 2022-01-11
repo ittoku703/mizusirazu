@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_yield_params, only: %i[index new create show edit update]
 
   def index
     @users = User.all
@@ -23,7 +24,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    params[:yield] = 'shared/terminal'
   end
 
   def edit
@@ -53,5 +53,10 @@ class UsersController < ApplicationController
   # if not found. exception is raised
   def set_user
     @user = User.find_by!(name: params[:id])
+  end
+
+  # render 'shared/terminal' before application.html.erb
+  def set_yield_params
+    params[:yield] = 'shared/terminal'
   end
 end

@@ -1,9 +1,9 @@
 <% provide(:title, 'User Page') %>
 
 <%= image_tag 'image-not-found.png', size: '64x64', class: 'mb-2' %>
-<%= user_profile_field(@user, :name) %>
-<%= user_profile_field(@user, :email) %>
-<%= user_profile_field(@user, :created_at) %>
-<%= user_profile_field(@user, :updated_at) %>
+<%= user_terminal_field(@user, :name) %>
+<%= user_terminal_field(@user, :email) %>
+<%= user_terminal_field(@user, :created_at) %>
+<%= user_terminal_field(@user, :updated_at) %>
 <br>
 <%= link_to 'Edit-user', edit_user_path(@user), class: 'text-blue-500' %>

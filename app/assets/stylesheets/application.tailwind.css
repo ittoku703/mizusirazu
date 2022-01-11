@@ -11,3 +11,8 @@ a {
     @apply py-2 px-4 bg-blue-200;
   }
 }
+
+/* user error form */
+.field_with_errors {
+  @apply inline-block border-b border-red-500;
+}
