@@ -1,21 +1,10 @@
-<body class="bg-gray-200"></body>
+<%= form_with model: @user do |f| %>
+  <%= render 'shared/form_errors', object: f.object %>
 
-<div class="flex justify-center items-center w-full mt-4 px-4 md:px-0">
-  <%= form_with model: @user, class: 'overflow-hidden' do |f| %>
-    <div class="bg-gray-100 px-5 md:px-10 py-4 md:py-8 rounded-xl max-w-md space-y-4">
-      <h1 class="text-center text-2xl font-semibold"><%= yield(:title) %></h1>
-
-      <%= render 'shared/form_errors', object: f.object %>
-
-      <%= user_form_field f, :name %>
-
-      <%= user_form_field f, :email %>
-
-      <%= user_form_field f, :password %>
-
-      <%= user_form_field f, :password_confirmation %>
-
-      <%= user_form_submit f, yield(:submit_text) %>
-    </div>
-  <% end %>
-</div>
+  <%= user_terminal_form_field f, :name %>
+  <%= user_terminal_form_field f, :email %>
+  <%= user_terminal_form_field f, :password %>
+  <%= user_terminal_form_field f, :password_confirmation %>
+  <br>
+  <%= f.submit yield(:submit_text), class: 'border-b border-gray-500 hover:text-violet-400' %>
+<% end %>
