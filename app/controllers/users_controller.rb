@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    params[:yield] = 'shared/terminal'
   end
 
   def new
