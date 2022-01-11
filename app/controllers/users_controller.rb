@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    params[:yield] = 'shared/terminal'
   end
 
   def edit

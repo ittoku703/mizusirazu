@@ -22,7 +22,11 @@
       <%= render 'layouts/flash_messages' %>
 
       <main class="grow">
-        <%= yield %>
+        <% if params[:yield]  %>
+          <%= render params[:yield] %>
+        <% else %>
+          <%= yield %>
+        <% end %>
       </main>
 
       <%= render 'layouts/footer' %>
