@@ -13,4 +13,11 @@ module UsersHelper
   def user_form_submit(form, text)
     form.submit text, class: 'mt-4 w-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-indigo-100 py-2 rounded-md text-lg tracking-wide'
   end
+
+  def user_profile_field(user, attribute_name)
+    content_tag(:p, class: 'mb-1') do
+      content_tag(:strong, "#{attribute_name.capitalize}: ") +
+      content_tag(:span, user.send(attribute_name))
+    end
+  end
 end
