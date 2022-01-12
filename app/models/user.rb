@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_one :profile, dependent: :destroy
+
   before_save :downcase_email
 
   validates :name, presence: true

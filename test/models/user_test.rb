@@ -9,13 +9,7 @@ class UserTest < ActiveSupport::TestCase
     });
   end
 
-  def check_error
-    @user.valid?
-    puts @user.errors.full_messages
-  end
-
   test 'should be valid' do
-    check_error
     assert @user.valid?
   end
 
@@ -108,7 +102,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'email length should be 12 more' do
-    @user.email = 'h@b.com' 
+    @user.email = 'h@b.com'
     assert_not @user.valid?
   end
 
@@ -136,5 +130,14 @@ class UserTest < ActiveSupport::TestCase
   test 'password length should be 256 less' do
     @user.password = 'a' * 257
     assert_not @user.valid?
+  end
+
+  test 'profile should be destroyed when user destroyed' do
+    user = users(:one)
+    profile = profiles(:one)
+
+    assert_difference('Profile.count', -1) do
+      user.destroy
+    end
   end
 end
