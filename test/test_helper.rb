@@ -10,4 +10,9 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def check_model_error_messages(model)
+    model.valid?
+    puts model.errors.full_messages
+  end
 end
