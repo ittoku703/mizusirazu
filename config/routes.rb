@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get  '/signup', to: 'users#new', as: 'new_user'
 
   resources :users, except: %i[new], param: :name do
-    resources :profiles, only: %i[index create]
+    resources :profiles, only: %i[index update]
   end
 end

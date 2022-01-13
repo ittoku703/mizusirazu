@@ -6,11 +6,9 @@ class ProfilesController < ApplicationController
   end
 
   # POST /users/:user_id/profiles
-  def create
-    @user.build_profile(profile_params)
-
+  def update
     respond_to do |format|
-      if @user.profile.save
+      if @user.profile.update(profile_params)
         format.html { redirect_to @user, notice: 'Profile was successfully updated' }
       else
         format.html { render :index, status: :unprocessable_entity, location: @user.reload }

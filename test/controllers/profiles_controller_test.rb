@@ -16,13 +16,13 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should be redirect to user page' do
-    post user_profiles_path @user, params: @profile_params
+    patch user_profile_path(@user, @user.profile), params: @profile_params
     assert_redirected_to user_path(@user)
   end
 
   test 'should be update' do
     @profile_params[:profile][:name] = 'successfully, updated!!!'
-    post user_profiles_path @user, params: @profile_params
+    patch user_profile_path(@user, @user.profile), params: @profile_params
     assert_equal @profile_params[:profile][:name], @user.reload.profile.name
   end
 
@@ -32,7 +32,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
       bio: 'invalid' * 200,
       location: 'unknown'
     } }
-    post user_profiles_path @user, params: invalid_profile_params
+    patch user_profile_path(@user, @user.profile), params: invalid_profile_params
     assert_template :index
   end
 end
