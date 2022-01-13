@@ -4,7 +4,7 @@ class CreateProfiles < ActiveRecord::Migration[7.0]
       t.string :name
       t.text :bio
       t.string :location
-      t.references :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true, index: { unique: true }
 
       t.timestamps
     end

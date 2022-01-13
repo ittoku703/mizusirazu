@@ -1,15 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
   name: Example User profile
   bio: hello, world!!!
   location: US
-  user_id: 1
+  user: one
 
 two:
-  id: 2
   name: Other User profile
   bio: ''
   location: JA
-  user_id: 2
+  user: two
