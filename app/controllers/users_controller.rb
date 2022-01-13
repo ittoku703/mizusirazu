@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 
   # if not found. exception is raised
   def set_user
-    @user = User.find_by!(name: params[:id])
+    @user = User.find_by!(name: params[:name])
   end
 
   # render 'shared/terminal' before application.html.erb
