@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   root 'articles#index'
   get  '/signup', to: 'users#new', as: 'new_user'
 
-  resources :users, except: %i[new], param: :name
+  resources :users, except: %i[new], param: :name do
+    resources :profiles, only: %i[index create]
+  end
 end
