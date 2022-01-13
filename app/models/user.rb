@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
 
   before_save :downcase_email
+  after_create :create_profile_model
 
   validates :name, presence: true
   # why separate it? for reduce the number of error messages
@@ -35,5 +36,10 @@ class User < ApplicationRecord
     # make the email all downcase before saving account
     def downcase_email
       email.downcase!
+    end
+
+    # create profile after creating user
+    def create_profile_model
+      create_profile
     end
 end

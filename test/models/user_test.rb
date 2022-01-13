@@ -140,4 +140,16 @@ class UserTest < ActiveSupport::TestCase
       user.destroy
     end
   end
+
+  test 'email should be saved in dawncase' do
+    email_address = @user.email = 'EMAIL@DAWNCASE.COM'
+    @user.save
+    assert_not_equal email_address, @user.reload.email
+  end
+
+  test 'create profile after creating user' do
+    assert_difference('Profile.count', 1) do
+      @user.save
+    end
+  end
 end

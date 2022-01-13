@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+User.create!(name: 'asdf', email: 'asdf@asdf.com', password: 'password')
+User.first.profile.update!(name: 'Mr. asdf', bio: 'hello I\'m asdf', location: 'JP');
+
 20.times do |i|
   name = "seed_user_#{i}"
   email = Faker::Internet.email
@@ -14,11 +17,11 @@ end
 
 puts 'Done! user seed'
 
-User.all.each do |user|
+User.all[1..11].each do |user|
   name = Faker::Name.name
   bio = Faker::Lorem.paragraphs
   location = ISO3166::Country.all.map(&:alpha2)[rand(249)]
-  user.create_profile!(name: name, bio: bio, location: location)
+  user.profile.update!(name: name, bio: bio, location: location)
 end
 
 puts 'Done! profile seed'

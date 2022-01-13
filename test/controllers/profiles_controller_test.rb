@@ -20,19 +20,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to user_path(@user)
   end
 
-  test "user profile should be created" do
-    @new_user = User.new({
-      name: 'new_user',
-      email: 'newuser@valid.com',
-      password: 'password'
-    })
-    @new_user.save
-    assert_difference('Profile.count', 1) do
-      post user_profiles_path @new_user, params: @profile_params
-    end
-  end
-
-  test 'if user profile exist, should be update' do
+  test 'should be update' do
     @profile_params[:profile][:name] = 'successfully, updated!!!'
     post user_profiles_path @user, params: @profile_params
     assert_equal @profile_params[:profile][:name], @user.reload.profile.name
