@@ -11,3 +11,14 @@
   email = Faker::Internet.email
   User.create!(name: name, email: email, password: 'password');
 end
+
+puts 'Done! user seed'
+
+User.all.each do |user|
+  name = Faker::Name.name
+  bio = Faker::Lorem.paragraphs
+  location = ISO3166::Country.all.map(&:alpha2)[rand(249)]
+  user.create_profile!(name: name, bio: bio, location: location)
+end
+
+puts 'Done! profile seed'
