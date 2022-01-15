@@ -1,10 +1,10 @@
 <%= form_with model: @user do |f| %>
   <%= render 'shared/form_errors', object: f.object %>
 
-  <%= user_terminal_form_field f, :name %>
-  <%= user_terminal_form_field f, :email %>
-  <%= user_terminal_form_field f, :password %>
-  <%= user_terminal_form_field f, :password_confirmation %>
+  <%= user_form_field(f, :name) %>
+  <%= user_form_field(f, :email) %>
+  <%= user_form_field(f, :password) %>
+  <%= user_form_field(f, :password_confirmation) %>
   <br>
   <%= f.submit yield(:submit_text), class: 'border-b border-gray-500 hover:text-violet-400' %>
 <% end %>
