@@ -1,4 +1,4 @@
-<div>
-  <h1 class="font-bold text-4xl">Profiles#profile</h1>
-  <p>Find me in app/views/profiles/profile.html.erb</p>
-</div>
+<% provide(:title, 'User profile') %>
+<% provide(:submit_text, 'Update profile') %>
+
+<%= render 'form' %>

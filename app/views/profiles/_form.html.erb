@@ -1,0 +1,11 @@
+<%= form_with model: [@user, @user.profile], method: :patch do |f| %>
+  <div class="div space-y-4">
+    <%= render 'shared/form_errors', object: f.object %>
+
+    <%= profile_form_field(f, :name, "Enter your name. This name will be public. You can delete it at any time.") %>
+    <%= profile_text_area_field(f, :bio, "Enter your self-introduction. This introduction will be public. You can delete it at any time.") %>
+    <%= profile_form_field(f, :location, "Enter your country. This country will be public. You can delete it at any time.") %>
+
+    <%= f.submit yield(:submit_text), class: 'p-2 border rounded border-black shadow bg-white hover:bg-gray-100 text-gray-600' %>
+  </div>
+<% end %>

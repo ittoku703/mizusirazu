@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_user
+  before_action :set_yield_params
 
   # GET /users/:user_id/profiles
   def index
@@ -11,7 +12,7 @@ class ProfilesController < ApplicationController
       if @user.profile.update(profile_params)
         format.html { redirect_to @user, notice: 'Profile was successfully updated' }
       else
-        format.html { render :index, status: :unprocessable_entity, location: @user.reload }
+        format.html { render :index, status: :unprocessable_entity, location: @user }
       end
     end
   end
@@ -23,5 +24,9 @@ class ProfilesController < ApplicationController
 
     def set_user
       @user = User.find_by!(name: params[:user_name])
+    end
+
+    def set_yield_params
+      params[:yield] = 'shared/profile_form'
     end
 end
