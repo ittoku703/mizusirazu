@@ -19,8 +19,8 @@ puts 'Done! user seed'
 
 User.all[1..11].each do |user|
   name = Faker::Name.name
-  bio = Faker::Lorem.paragraphs
-  location = ISO3166::Country.all.map(&:alpha2)[rand(249)]
+  bio = Faker::Lorem.paragraphs.join
+  location = ISO3166::Country.all[rand(249)].to_s
   user.profile.update!(name: name, bio: bio, location: location)
 end
 

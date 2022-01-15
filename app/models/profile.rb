@@ -3,8 +3,5 @@ class Profile < ApplicationRecord
 
   validates :name, length: { maximum: 128 }
   validates :bio, length: { maximum: 1024 }
-  validates :location,
-    # Country code represented by two letters
-    inclusion: { in: ISO3166::Country.all.map(&:alpha2) },
-    allow_nil: true
+  validates :location, length: { maximum: 128 }
 end

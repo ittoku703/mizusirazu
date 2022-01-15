@@ -26,8 +26,8 @@ class ProfileTest < ActiveSupport::TestCase
     assert_not @profile.valid?
   end
 
-  test 'location should only accept contury-code' do
-    @profile.location = 'XX'
+  test 'location should be 128 less' do
+    @profile.location = 'X' * 129
     assert_not @profile.valid?
   end
 end
