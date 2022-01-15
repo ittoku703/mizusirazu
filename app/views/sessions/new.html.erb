@@ -1,0 +1,15 @@
+<% provide(:title, 'Log in') %>
+
+<%= form_with url: sessions_path, scope: :session do |f| %>
+  <div>
+    <%= f.label :name_or_email %>
+    <%= f.text_field :name_or_email, placeholder: 'name_or_email' %>
+  </div>
+
+  <div>
+    <%= f.label :password %>
+    <%= f.password_field :password, placeholder: 'password' %>
+  </div>
+
+  <%= f.submit yield(:title) %>
+<% end %>
