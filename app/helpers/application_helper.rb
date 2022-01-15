@@ -10,6 +10,13 @@ module ApplicationHelper
     end
   end
 
+  def header_logo
+    link_to root_path do
+      content_tag(:span, 'Mizusirazu.net', class: 'sr-only') +
+      image_tag('logo.png', alt: 'site logo', size: '64x64')
+    end
+  end
+
   private
     def set_form_field_name(field_name)
       case(field_name)

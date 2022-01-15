@@ -1,11 +1,26 @@
-<div class="bg-gray-800 text-white md:flex items-center jusify-between py-2 px-8 md:px-12">
-  <div class="flex justify-between items-center">
-    <div class="text-xl font-bold md:text-2xl">
-      <%= link_to 'Mizusirazu.net', root_path %>
+<div class="relative bg-violet-100 text-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex justify-between items-center border-b-2 border-gray-100 md:space-x-10">
+      <%= header_logo %>
+
+      <div class="relative inline-block text-left">
+        <div>
+          <button type="button" class="inline-flex justify-center w-full px-4 py-2 text-gray-700" aria-expanded="false" data-action="click->application#headerUserToggle" data-application-target="userBtn">
+            <span>User</span>
+            <!-- ↓ bottom allow -->
+            <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="hidden">
+              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded shadow bg-gray-100 ring-1 ring-black ring-opacity-5" data-application-target="userList" tabindex="-1">
+          <div class="py-1" role="none">
+            <%= link_to 'User list', users_path, class: 'text-gray-700 block px-4 py-2', role: 'menuitem', tabindex: '-1' %>
+            <%= link_to 'Sign up', new_user_path, class: 'text-gray-700 block px-4 py-2', role: 'menuitem', tabindex: '-1' %>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="flex flex-col md:flex-row block mx-2">
-    <%= link_to 'User list', users_path, class: 'rounded hover:text-gray-400 py-2 px-2 md:mx-2' %>
-    <%= link_to 'Sign up', new_user_path, class: 'rounded hover:text-gray-400 py-2 px-2 md:mx-2' %>
   </div>
 </div>
