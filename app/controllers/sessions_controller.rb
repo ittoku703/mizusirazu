@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
-  before_action :set_yield_params
+  before_action -> { set_yield_params('shared/login_form') }
 
+  # GET /signup
   def new
   end
 
+  # POST /sessions
   def create
     @user = User.where(name: params[:session][:name_or_email]).or(User.where(email: params[:session][:name_or_email])).take
     respond_to do |format|
@@ -17,6 +19,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # DELETE /logout
   def destroy
     log_out if logged_in?
     redirect_to root_url, notice: 'successfully user was logged out'
@@ -25,9 +28,5 @@ class SessionsController < ApplicationController
   private
     def session_params
       params.require(:session).permit(:name_or_email, :password)
-    end
-
-    def set_yield_params
-      params[:yield] = 'shared/login_form'
     end
 end

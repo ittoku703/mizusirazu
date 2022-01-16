@@ -17,4 +17,15 @@ class ApplicationController < ActionController::Base
         redirect_to new_session_path, alert: 'Please log in'
       end
     end
+
+    # set @user to actions of controller
+    # and render 404 page if user not found
+    def set_user(user_hash)
+      @user = User.find_by!(user_hash)
+    end
+
+    # set the view after through application.html.erb
+    def set_yield_params(yield_name)
+      params[:yield] = yield_name
+    end
 end

@@ -3,8 +3,8 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[edit update destroy]
   before_action -> { correct_user(params[:name]) }, only: %i[edit update destroy]
   # set parameters
-  before_action :set_user, only: %i[show edit update destroy]
-  before_action :set_yield_params, only: %i[index new create show edit update]
+  before_action -> { set_user(name: params[:name]) }, only: %i[show edit update destroy]
+  before_action -> { set_yield_params('shared/terminal') }, only: %i[index new create show edit update]
 
   # GET /users
   def index
@@ -60,15 +60,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
-  # if not found. exception is raised
-  def set_user
-    @user = User.find_by!(name: params[:name])
-  end
-
-  # render 'shared/terminal' before application.html.erb
-  def set_yield_params
-    params[:yield] = 'shared/terminal'
   end
 end

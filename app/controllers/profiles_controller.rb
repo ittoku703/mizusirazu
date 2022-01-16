@@ -3,8 +3,8 @@ class ProfilesController < ApplicationController
   before_action :logged_in_user
   before_action -> { correct_user(params[:user_name]) }
   # set parameters
-  before_action :set_user
-  before_action :set_yield_params
+  before_action -> { set_user(name: params[:user_name]) }
+  before_action -> { set_yield_params('shared/profile_form') }
 
   # GET /users/:user_id/profiles
   def index
@@ -24,13 +24,5 @@ class ProfilesController < ApplicationController
   private
     def profile_params
       params.require(:profile).permit(:name, :bio, :location)
-    end
-
-    def set_user
-      @user = User.find_by!(name: params[:user_name])
-    end
-
-    def set_yield_params
-      params[:yield] = 'shared/profile_form'
     end
 end
