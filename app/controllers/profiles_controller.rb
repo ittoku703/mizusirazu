@@ -1,4 +1,8 @@
 class ProfilesController < ApplicationController
+  # authentication
+  before_action :logged_in_user
+  before_action -> { correct_user(params[:user_name]) }
+  # set parameters
   before_action :set_user
   before_action :set_yield_params
 
