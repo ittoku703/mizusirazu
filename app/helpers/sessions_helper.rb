@@ -1,9 +1,11 @@
 module SessionsHelper
-  def session_form_field(form, field_name)
+  def session_form_field(form, field_name, options = {})
     send_name = set_form_field_name(field_name)
+    options[:placeholder] = field_name
+    options[:class] = 'w-sm mx-auto block text-sm bg-white rounded border-gray-300 shadow-sm'
 
     content_tag(:div) do
-      form.send(send_name, field_name, placeholder: field_name, class: 'w-sm mx-auto block text-sm bg-white rounded border-gray-300 shadow-sm')
+      form.send(send_name, field_name, options)
     end
   end
 

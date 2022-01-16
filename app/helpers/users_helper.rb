@@ -1,6 +1,11 @@
 module UsersHelper
-  def user_destroy_link(user)
-    link_to 'Delete', user, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
+  def user_destroy_link(user, options = {})
+    options[:data] = {
+      turbo_method: :delete,
+      turbo_confirm: 'Are you sure?'
+    }
+
+    link_to('Delete', user, options)
   end
 
   def user_form_field(form, field_name)

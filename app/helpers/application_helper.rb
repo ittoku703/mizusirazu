@@ -10,10 +10,12 @@ module ApplicationHelper
     end
   end
 
-  def header_logo
+  def site_logo(options = { size: '64x64' })
+    options[:alt] = 'site logo'
+
     link_to root_path do
       content_tag(:span, 'Mizusirazu.net', class: 'sr-only') +
-      image_tag('logo.png', alt: 'site logo', size: '64x64')
+      image_tag('logo.png', options)
     end
   end
 
