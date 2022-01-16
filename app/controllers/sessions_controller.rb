@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  before_action -> { set_yield_params('shared/login_form') }
-
   # GET /signup
   def new
   end
