@@ -17,6 +17,14 @@ module ApplicationHelper
     end
   end
 
+  def header_link_to(text, link, options = {})
+    options[:class] = 'text-gray-700 block pl-4 py-2'
+    options[:role] = 'menuitem'
+    options[:tabindex] = '-1'
+
+    link_to(text, link, options)
+  end
+
   private
     def set_form_field_name(field_name)
       case(field_name)

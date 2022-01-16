@@ -16,3 +16,23 @@ a {
 .field_with_errors input {
   @apply border border-red-500;
 }
+
+
+
+.arrow-top::before {
+  content: "";
+  clip-path: polygon(0% 100%, 50% 0, 100% 100%);
+  width: 24px;
+  height: 12px;
+  transform: translate(0, -100%);
+  @apply absolute top-0 left-3/4 bg-violet-200;
+}
+
+.arrow-top::after {
+  content: "";
+  clip-path: polygon(0% 100%, 50% 0, 100% 100%);
+  width: 24px;
+  height: 12px;
+  transform: translate(0, -100%);
+  @apply absolute top-0 left-3/4 bg-violet-200;
+}
