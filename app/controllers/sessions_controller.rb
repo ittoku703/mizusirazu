@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :set_yield_params
+
   def new
   end
 
@@ -23,5 +25,9 @@ class SessionsController < ApplicationController
   private
     def session_params
       params.require(:session).permit(:name_or_email, :password)
+    end
+
+    def set_yield_params
+      params[:yield] = 'shared/login_form'
     end
 end

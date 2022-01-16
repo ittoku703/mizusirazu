@@ -1,4 +1,12 @@
 module SessionsHelper
+  def session_form_field(form, field_name)
+    send_name = set_form_field_name(field_name)
+
+    content_tag(:div) do
+      form.send(send_name, field_name, placeholder: field_name, class: 'w-sm mx-auto block text-sm bg-white rounded border-gray-300 shadow-sm')
+    end
+  end
+
   # return true if user is logged in, false otherwise
   def logged_in?
     !current_user.nil?

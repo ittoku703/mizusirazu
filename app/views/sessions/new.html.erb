@@ -1,15 +1,9 @@
 <% provide(:title, 'Log in') %>
 
 <%= form_with url: sessions_path, scope: :session do |f| %>
-  <div>
-    <%= f.label :name_or_email %>
-    <%= f.text_field :name_or_email, placeholder: 'name_or_email' %>
+  <div class="space-y-6">
+    <%= session_form_field(f, :name_or_email) %>
+    <%= session_form_field(f, :password) %>
+    <%= f.submit yield(:title), class: 'block mx-auto py-2 px-4 border border-violet-400 rounded bg-violet-300 hover:bg-violet-200 shadow' %>
   </div>
-
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password, placeholder: 'password' %>
-  </div>
-
-  <%= f.submit yield(:title) %>
 <% end %>

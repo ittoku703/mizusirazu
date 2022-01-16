@@ -36,6 +36,8 @@ module ApplicationHelper
       # profile
       when :bio then 'text' + '_area'
       when :location then 'text' + '_field'
+      # session
+      when :name_or_email then 'text' + '_field'
       end
     end
 end
