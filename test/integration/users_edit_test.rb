@@ -5,7 +5,22 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     @user = users(:one)
   end
 
+  test 'valid user edit' do
+    log_in_as(@user)
+    get edit_user_path(@user)
+    patch user_path(@user), params: { user: {
+      name: 'update_user',
+      email: 'user@valid.com',
+      password: 'password',
+      password_confirmation: 'password'
+    } }
+    follow_redirect!
+    assert_template 'users/show'
+    assert_select 'div#notice'
+  end
+
   test 'invalid user edit' do
+    log_in_as(@user)
     get edit_user_path(@user)
     patch user_path(@user), params: { user: {
       name: '',
@@ -14,19 +29,13 @@ class UsersEditTest < ActionDispatch::IntegrationTest
       password_confirmation: 'bar'
     } }
     assert_template 'users/edit'
-    assert_select 'div#error_explanation h2', text: 'User form contains 4 errors'
+    assert_select 'div#error_explanation'
   end
 
-  test 'valid user edit' do
+  test 'redirect to login page if user is not logged in' do
     get edit_user_path(@user)
-    patch user_path(@user), params: { user: {
-      name: 'new_user',
-      email: 'user@valid.com',
-      password: 'password',
-      password_confirmation: 'password'
-    } }
     follow_redirect!
-    assert_template 'users/show'
-    assert_select 'div#notice span', text: 'User was successfully updated'
+    assert_template 'sessions/new'
+    assert_select 'div#alert'
   end
 end
