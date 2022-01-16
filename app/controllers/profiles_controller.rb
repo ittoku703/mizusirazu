@@ -4,7 +4,6 @@ class ProfilesController < ApplicationController
   before_action -> { correct_user(params[:user_name]) }
   # set parameters
   before_action -> { set_user(name: params[:user_name]) }
-  before_action -> { set_yield_params('shared/profile_form') }
 
   # GET /users/:user_id/profiles
   def index
