@@ -1,0 +1,10 @@
+<div class="max-w-lg ml-auto mt-4 px-4">
+  <div class="p-4 bg-gray-100 rounded shadow">
+    <div class="text-left pl-4 pb-2 border-b border-gray-300 mb-4">
+      <%= content_tag(:h1, yield(:title), class: 'text-xl text-gray-900') %>
+    </div>
+    <div class="text-sm">
+      <%= yield %>
+    </div>
+  </div>
+</div>

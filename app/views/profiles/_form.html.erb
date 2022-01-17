@@ -1,18 +1,9 @@
-<div class="max-w-lg ml-auto mt-4 px-4">
-  <div class="p-4 bg-gray-100 rounded shadow">
-    <div class="text-left pl-4 pb-2 border-b border-gray-300 mb-4">
-      <%= content_tag(:h1, yield(:title), class: 'text-xl text-gray-900') %>
-    </div>
-    <div class="text-sm">
-      <%= form_with model: [@user, @user.profile], method: :patch do |f| %>
-        <div class="div space-y-4">
-          <%= render 'shared/form_errors', object: f.object %>
-          <%= profile_form_field(f, :name, "Enter your name. This name will be public. You can delete it at any time.") %>
-          <%= profile_text_area_field(f, :bio, "Enter your self-introduction. This introduction will be public. You can delete it at any time.") %>
-          <%= profile_form_field(f, :location, "Enter your country. This country will be public. You can delete it at any time.") %>
-          <%= f.submit yield(:submit_text), class: 'p-2 border rounded border-black shadow bg-green-500 hover:bg-green-400 text-white' %>
-        </div>
-      <% end %>
-    </div>
+<%= form_with model: [@user, @user.profile], method: :patch do |f| %>
+  <div class="space-y-4">
+    <%= render 'shared/form_errors', object: f.object %>
+    <%= settings_form_field(f, :name, 'Enter your name. This name will be public. You can delete it at any time.') %>
+    <%= settings_form_field(f, :bio, 'Enter your self-introduction. This introduction will be public. You can delete it at any time.', class: 'h-32') %>
+    <%= settings_form_field(f, :location, 'Enter your country. This country will be public. You can delete it at any time.') %>
+    <%= f.submit yield(:submit_text), class: 'p-2 border rounded border-black shadow bg-green-500 hover:bg-green-400 text-white' %>
   </div>
-</div>
+<% end %>

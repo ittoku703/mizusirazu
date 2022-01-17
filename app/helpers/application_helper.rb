@@ -20,11 +20,23 @@ module ApplicationHelper
   end
 
   def header_link_to(text, link, options = {})
-    options[:class] = 'text-gray-700 block pl-4 py-2'
+    options[:class] = "#{options[:class]} text-gray-700 block pl-4 py-2"
     options[:role] = 'menuitem'
     options[:tabindex] = '-1'
 
     link_to(text, link, options)
+  end
+
+  def settings_form_field(form, field_name, span_text = '', options = {})
+    send_name = set_form_field_name(field_name)
+    options[:placeholder] = field_name
+    options[:class] = "#{options[:class]} w-full md:w-64 block text-sm border border-gray-300 shadow rounded"
+
+    content_tag(:div) do
+      form.label("#{field_name}", class: 'block text-gray-600 pl-2') +
+      form.send(send_name, field_name, options) +
+      content_tag(:span, span_text, class: 'text-xs text-gray-500 italic tracking-tight')
+    end
   end
 
   private
