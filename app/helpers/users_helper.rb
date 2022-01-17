@@ -26,17 +26,17 @@ module UsersHelper
   end
 
   def user_index_tag(user, attribute_name, options = {})
-    options[:class].to_s << ' truncate'
+    options[:class] = "#{options[:class]} truncate"
     content_tag(:div, user.send(attribute_name), options)
   end
 
   def user_index_profile_tag(user_profile, attribute_name, options = {})
-    options[:class].to_s << ' max-w-lg truncate'
-    content_tag(:div, user_profile.send(attribute_name), options)
+    options[:class] = "#{options[:class]} max-w-lg truncate"
+    content_tag(:div, user_profile.send(attribute_name) || "No #{attribute_name}", options)
   end
 
   def user_index_control_tag(user, options = {})
-    options[:class] = 'block'
+    options[:class] = "#{options[:class]} block"
     if current_user?(user)
       link_to('Edit', edit_user_path(user), options) +
       user_destroy_link(user, options)
