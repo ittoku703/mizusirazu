@@ -8,14 +8,14 @@ class User < ApplicationRecord
   # why separate it? for reduce the number of error messages
   validates :name,
     format: { with: /\A[a-z0-9_]+\z/, message: 'only alphabets, digits and underscore' },
-    length: { in: 4..128 },
+    length: { maximum: 128 },
     uniqueness: true,
     allow_blank: true
 
   validates :email, presence: true
   validates :email,
     format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i },
-    length: { in: 12..256 },
+    length: { maximum: 256 },
     uniqueness: true,
     allow_blank: true
 
