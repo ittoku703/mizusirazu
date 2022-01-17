@@ -10,10 +10,11 @@ Rails.application.routes.draw do
 
   scope :settings do
     get '/user', to: 'users#edit', as: 'edit_user'
+    get '/profile', to: 'profiles#edit', as: 'edit_user_profile'
   end
 
-  resources :users, except: %i[new edit], param: :name do
-    resources :profiles, only: %i[index update]
+  resources :users, except: %i[new], param: :name do
+    resources :profiles, only: %i[update]
   end
 
   resources :sessions, only: %i[create]

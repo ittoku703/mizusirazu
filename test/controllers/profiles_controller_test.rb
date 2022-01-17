@@ -12,7 +12,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index when logged in user" do
     log_in_as(@user)
-    get user_profiles_path(@user)
+    get edit_user_profile_path
     assert_response :success
   end
 
@@ -40,7 +40,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to @user
   end
 
-  test 'if profile params is invalid, should render index' do
+  test 'if profile params is invalid, should render edit' do
     log_in_as(@user)
     invalid_profile_params = { profile: {
       name: 'x' * 1234,
@@ -48,7 +48,7 @@ class ProfilesControllerTest < ActionDispatch::IntegrationTest
       location: 'unknown'
     } }
     patch user_profile_path(@user, @user.profile), params: invalid_profile_params
-    assert_template :index
+    assert_template :edit
   end
 
   test 'should redirect to login page when non logged in user' do

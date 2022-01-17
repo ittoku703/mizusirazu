@@ -19,8 +19,8 @@
           <%= header_link_to('User list', users_path) %>
             <% if logged_in? %>
               <%= header_link_to(current_user.name, user_path(current_user)) %>
-              <%= header_link_to('Settings', edit_user_path(current_user)) %>
-              <%= header_link_to('Profiles', user_profiles_path(current_user)) %>
+              <%= header_link_to('Settings', edit_user_path) %>
+              <%= header_link_to('Profiles', edit_user_profile_path) %>
               <%= header_link_to('Log out', session_path, data: { turbo_method: :delete }) %>
             <% else %>
               <%= header_link_to('Sign up', new_user_path) %>

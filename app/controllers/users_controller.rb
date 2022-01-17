@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   def show
   end
 
-  # GET /users/:name/edit
+  # GET /settings/user
   def edit
     @user = current_user
   end
