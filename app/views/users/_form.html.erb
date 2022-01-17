@@ -1,10 +1,11 @@
 <%= form_with model: @user do |f| %>
-  <%= render 'shared/form_errors', object: f.object %>
+  <div class="space-y-6">
+    <%= render 'shared/form_errors', object: f.object %>
 
-  <%= user_form_field(f, :name) %>
-  <%= user_form_field(f, :email) %>
-  <%= user_form_field(f, :password) %>
-  <%= user_form_field(f, :password_confirmation) %>
-  <br>
-  <%= f.submit yield(:submit_text), class: 'border-b border-gray-500 hover:text-violet-400' %>
+    <%= user_form_field(f, :name, 'Only "Lower alphabets", "Digit" and "Under score" can be entered') %>
+    <%= user_form_field(f, :email) %>
+    <%= user_form_field(f, :password) %>
+    <%= user_form_field(f, :password_confirmation, 'Please enter password again') %>
+    <%= f.submit yield(:submit_text), class: 'border-b-4 border-double border-black hover:border-emerald-500' %>
+  </div>
 <% end %>

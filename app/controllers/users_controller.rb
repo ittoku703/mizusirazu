@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action -> { correct_user(params[:name]) }, only: %i[edit update destroy]
   # set parameters
   before_action -> { set_user(name: params[:name]) }, only: %i[show edit update destroy]
-  before_action -> { set_yield_params('shared/terminal') }, only: %i[new create show edit update]
+  before_action -> { set_yield_params('shared/terminal') }, only: %i[show edit update]
 
   # GET /users
   def index
