@@ -1,3 +1,18 @@
 <% provide(:title, 'User List') %>
 
-<%= render @users %>
+<div class="relative mt-4 px-4">
+  <div class="overflow-scroll p-4 bg-gray-800 text-white rounded shadow">
+    <table class="whitespace-nowrap divide-y divide-yellow-500 border-2 border-violet-500">
+      <thead class="text-md text-emerald-500">
+        <tr class="divide-x divide-orange-500">
+          <th scope="col" class="p-1">User</th>
+          <th scope="col" class="p-1">Profile</th>
+          <th scope="col" class="p-1">Control</th>
+        </tr>
+      </thead>
+      <tbody class="text-xs divide-y divide-sky-500">
+        <%= render @users %>
+      </tbody>
+    </table>
+  </div>
+</div>
