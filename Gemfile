@@ -61,6 +61,8 @@ group :development, :test do
   gem "sqlite3", "~> 1.4"
   # Use rspec about test framework
   gem 'rspec-rails', '~> 5.0.0'
+  # Use test data creator
+  gem 'factory_bot_rails'
 end
 
 group :development do
