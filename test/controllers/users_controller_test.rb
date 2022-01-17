@@ -55,12 +55,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get edit when logged in user' do
     log_in_as(@user)
-    get edit_user_path(@user)
+    get edit_user_path
     assert_response :success
   end
 
   test 'should redirect to login when non logged in user edit' do
-    get edit_user_path(@user)
+    get edit_user_path
     assert_redirected_to new_session_path
   end
 

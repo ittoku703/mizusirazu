@@ -7,7 +7,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 
   test 'valid user edit' do
     log_in_as(@user)
-    get edit_user_path(@user)
+    get edit_user_path
     patch user_path(@user), params: { user: {
       name: 'update_user',
       email: 'user@valid.com',
@@ -21,7 +21,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 
   test 'invalid user edit' do
     log_in_as(@user)
-    get edit_user_path(@user)
+    get edit_user_path
     patch user_path(@user), params: { user: {
       name: '',
       email: 'user@invalid',
@@ -33,7 +33,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
   test 'redirect to login page if user is not logged in' do
-    get edit_user_path(@user)
+    get edit_user_path
     follow_redirect!
     assert_template 'sessions/new'
     assert_select 'div#alert'

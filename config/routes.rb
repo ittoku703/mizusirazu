@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   get    '/login', to: 'sessions#new', as: 'new_session'
   delete '/logout', to: 'sessions#destroy', as: 'session'
 
-  resources :users, except: %i[new], param: :name do
+  scope :settings do
+    get '/user', to: 'users#edit', as: 'edit_user'
+  end
+
+  resources :users, except: %i[new edit], param: :name do
     resources :profiles, only: %i[index update]
   end
 

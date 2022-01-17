@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   # authenticate
   before_action :logged_in_user, only: %i[edit update destroy]
-  before_action -> { correct_user(params[:name]) }, only: %i[edit update destroy]
+  before_action -> { correct_user(params[:name]) }, only: %i[update destroy]
   # set parameters
-  before_action -> { set_user(name: params[:name]) }, only: %i[show edit update destroy]
+  before_action -> { set_user(name: params[:name]) }, only: %i[show update destroy]
   before_action -> { set_yield_params('shared/settings') }, only: %i[edit update]
 
   # GET /users
@@ -37,6 +37,7 @@ class UsersController < ApplicationController
 
   # GET /users/:name/edit
   def edit
+    @user = current_user
   end
 
   # GET /users/:name
