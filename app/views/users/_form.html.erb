@@ -1,20 +1,25 @@
-<%= form_with model: @user do |f| %>
-  <div class="space-y-6">
-    <% if action_name == 'new' || action_name == 'create' %>
+<% if action_name == 'new' || action_name == 'create' %>
+  <%= form_with model: @user, method: :post do |f| %>
+    <div class="space-y-6">
       <%= render 'shared/form_errors', object: f.object %>
       <%= user_form_field(f, :name, 'Only "Lower alphabets", "Digit" and "Under score" can be entered') %>
       <%= user_form_field(f, :email) %>
       <%= user_form_field(f, :password) %>
       <%= user_form_field(f, :password_confirmation, 'Please enter password again') %>
       <%= f.submit yield(:title), class: 'border-b-4 border-double border-black hover:border-emerald-500' %>
-
-    <% elsif action_name == 'edit' || action_name == 'update' %>
+    </div>
+  <% end %>
+<% elsif action_name == 'edit' || action_name == 'update' %>
+  <%= form_with model: @user, method: :patch do |f| %>
+    <div class="space-y-6">
       <%= render 'shared/form_errors', object: f.object %>
       <%= settings_form_field(f, :name, 'Only "Lower alphabets", "Digit" and "Under score" can be entered') %>
       <%= settings_form_field(f, :email) %>
       <%= settings_form_field(f, :password) %>
       <%= settings_form_field(f, :password_confirmation, 'Please enter password again') %>
       <%= f.submit yield(:submit_text), class: 'p-2 border rounded border-black shadow bg-green-500 hover:bg-green-400 text-white' %>
-    <% end %>
-  </div>
+
+      <%= user_form_destroy_field(f) %>
+    </div>
+  <% end %>
 <% end %>

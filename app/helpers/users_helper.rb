@@ -18,6 +18,14 @@ module UsersHelper
     end
   end
 
+  def user_form_destroy_field(form)
+    content_tag(:div) do
+      content_tag(:h1, 'Delete user', class: 'text-xl text-rose-500 border-b border-gray-300 mb-4') +
+      user_destroy_link(@user, class: 'inline-block bg-rose-400 hover:bg-rose-500 text-black hover:text-white px-2 py-1 rounded border border-black') +
+      content_tag(:span, 'Once you delete it, you can\'t get it back.', class: 'block text-xs text-gray-500 md:mt-1')
+    end
+  end
+
   def user_field(user, attribute_name)
     content_tag(:p) do
       content_tag(:strong, "#{attribute_name.capitalize}: ") +

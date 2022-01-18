@@ -55,6 +55,7 @@ class UsersController < ApplicationController
   # DELETE /users/:name
   def destroy
     @user.destroy
+    flash[:notice] = 'Successfully user was delete'
     redirect_to root_path, status: :see_other
   end
 
