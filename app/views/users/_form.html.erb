@@ -6,7 +6,7 @@
       <%= user_form_field(f, :email) %>
       <%= user_form_field(f, :password) %>
       <%= user_form_field(f, :password_confirmation, 'Please enter password again') %>
-      <%= f.submit yield(:submit_text), class: 'border-b-4 border-double border-black hover:border-emerald-500' %>
+      <%= f.submit yield(:title), class: 'border-b-4 border-double border-black hover:border-emerald-500' %>
 
     <% elsif action_name == 'edit' || action_name == 'update' %>
       <%= render 'shared/form_errors', object: f.object %>

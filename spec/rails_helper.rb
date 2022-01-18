@@ -66,5 +66,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   # Use controller helper
-  config.include ControllerSupport
+  config.include ControllerSupport, type: :request
+  # Use Feature helper
+  config.include FeatureSupport, type: :feature
 end
