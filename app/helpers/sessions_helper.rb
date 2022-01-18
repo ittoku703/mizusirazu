@@ -38,6 +38,11 @@ module SessionsHelper
       redirect_to root_url unless current_user?(@user)
     end
 
+    # redirect to user page if user already logged in
+    def already_logged_in
+      redirect_to root_path() if logged_in?
+    end
+
     # log out the current user
     def log_out
       session.delete(:user_id)
