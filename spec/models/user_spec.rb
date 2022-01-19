@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let!(:user) { build(:user) }
+  let(:user) { build(:user) }
 
   it { user_valid?(user) }
 
