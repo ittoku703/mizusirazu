@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :already_logged_in, only: %i[new create]
+
   # GET /signup
   def new
   end
