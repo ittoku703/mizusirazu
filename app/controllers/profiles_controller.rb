@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @user.profile.update(profile_params)
-        format.html { redirect_to @user, notice: 'Profile was successfully updated' }
+        format.html { redirect_to edit_user_profile_path, notice: 'Profile was successfully updated' }
       else
         format.html { render :edit, status: :unprocessable_entity, location: @user }
       end

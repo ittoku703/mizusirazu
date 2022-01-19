@@ -3,6 +3,7 @@ FactoryBot.define do
     name { 'Super man' }
     bio { 'Hi! Im test user...' }
     location { 'America' }
-    user { create(:user) }
+
+    user
   end
 end
