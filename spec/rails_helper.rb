@@ -69,4 +69,6 @@ RSpec.configure do |config|
   config.include ControllerSupport, type: :request
   # Use Feature helper
   config.include FeatureSupport, type: :feature
+  # Use Helper helper
+  config.include HelperSupport, type: :helper
 end
