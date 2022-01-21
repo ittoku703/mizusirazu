@@ -1,3 +1,17 @@
 <% provide(:title, 'Log in') %>
 
-<%= render 'form' %>
+<div class="max-w-md mx-auto mt-4 px-4">
+  <div class="p-4 bg-gray-200 rounded-xl shadow">
+    <div class="text-center">
+      <div class="inline-block bg-sky-600 border border-gray-300 rounded-full p-2">
+        <%= site_logo(size: '100x100') %>
+      </div>
+      <div class="text-xl pb-2 border-b border-gray-300 mb-4">
+        <%= yield(:title) %>
+      </div>
+    </div>
+    <div class="text-sm">
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>

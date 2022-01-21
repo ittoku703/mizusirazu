@@ -1,21 +1,7 @@
-<div class="max-w-md mx-auto mt-4 px-4">
-  <div class="p-4 bg-gray-200 rounded-xl shadow">
-    <div class="text-center">
-      <div class="inline-block bg-sky-600 border border-gray-300 rounded-full p-2">
-        <%= site_logo(size: '100x100') %>
-      </div>
-      <div class="text-xl pb-2 border-b border-gray-300 mb-4">
-        <%= yield(:title) %>
-      </div>
-    </div>
-    <div class="text-sm">
-      <%= form_with url: sessions_path, scope: :session do |f| %>
-        <div class="space-y-6">
-          <%= session_form_field(f, :name_or_email) %>
-          <%= session_form_field(f, :password) %>
-          <%= f.submit yield(:title), class: 'block mx-auto py-2 px-4 text-white border border-sky-600 rounded bg-sky-500 hover:bg-sky-400 shadow' %>
-        </div>
-      <% end %>
-    </div>
+<%= form_with url: sessions_path, scope: :session do |f| %>
+  <div class="space-y-6">
+    <%= session_form_field(f, :name_or_email) %>
+    <%= session_form_field(f, :password) %>
+    <%= f.submit yield(:title), class: 'block mx-auto py-2 px-4 text-white border border-sky-600 rounded bg-sky-500 hover:bg-sky-400 shadow' %>
   </div>
-</div>
+<% end %>

@@ -32,7 +32,6 @@ class User < ApplicationRecord
   end
 
   private
-
     # make the email all downcase before saving account
     def downcase_email
       email.downcase!
