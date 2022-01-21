@@ -27,6 +27,16 @@ RSpec.describe SessionsHelper, type: :helper do
     end
   end
 
+  describe 'remember(user)' do
+    it 'make the user\'s session permanent' do
+      expect { helper.send(:remember, user) }.to(
+        change { user.remember_digest.is_a?(String) }.from(false).to(true) &&
+        change { cookies.permanent.signed[:user_id] }.from(nil).to(user.id) &&
+        change { cookies.permanent[:remember_token].is_a?(String) }.from(false).to(true)
+      )
+    end
+  end
+
   describe 'current_user' do
     context 'logged in user' do
       before { log_in_as_user }
@@ -64,6 +74,17 @@ RSpec.describe SessionsHelper, type: :helper do
   # passing test
   # describe 'already_logged_in' do
   # end
+
+  describe 'forget(user)' do
+    before { helper.send(:remember, user) }
+    it 'destroy permanent session' do
+      expect { helper.send(:forget, user) }.to(
+        change { user.remember_digest.is_a?(String) }.from(true).to(false) &&
+        change { cookies.permanent.signed[:user_id] }.from(user.id).to(nil) &&
+        change { cookies.permanent[:remember_token] }.from(user.remember_token).to(nil)
+      )
+    end
+  end
 
   describe 'log_out' do
     before { log_in_as_user }

@@ -20,6 +20,13 @@ module SessionsHelper
       session[:user_id] = user.id
     end
 
+    # make the user's session permanent
+    def remember(user)
+      user.remember
+      cookies.signed[:user_id] = { value: user.id, expires: 1.month.from_now }
+      cookies[:remember_token] = { value: user.remember_token, expires: 1.month.from_now }
+    end
+
     # return current user logged in
     def current_user
       if (user_id = session[:user_id])
@@ -41,6 +48,13 @@ module SessionsHelper
     # redirect to user page if user already logged in
     def already_logged_in
       redirect_to root_path(), notice: 'You are already logged in' if logged_in?
+    end
+
+    # destroy permanent session
+    def forget(user)
+      user.forget
+      cookies.delete(:user_id)
+      cookies.delete(:remember_token)
     end
 
     # log out the current user

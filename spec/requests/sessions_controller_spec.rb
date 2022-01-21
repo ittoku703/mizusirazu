@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe SessionsController, type: :request do
   let(:user) { create(:user) }
-  let(:valid_params) { { name_or_email: user.name, password: 'password' } }
+  let(:valid_params) { { name_or_email: user.name, password: 'password', remember_me: '1' } }
   let(:invalid_params) { { name_or_email: 'invalid', password: 'foobar' } }
 
   describe 'GET /login' do
@@ -33,6 +33,11 @@ RSpec.describe SessionsController, type: :request do
       it 'should logged in' do
         post sessions_path, params: { session: valid_params }
         expect(is_logged_in?).to eq true
+      end
+
+      it 'should be remember' do
+        post sessions_path, params: { session: valid_params }
+        expect(cookies[:user_id].is_a?(String)).to eq true
       end
     end
 
