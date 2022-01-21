@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_one :profile, dependent: :destroy
 
+  attr_accessor :remember_token
+
   before_save :downcase_email
   after_create :create_profile_model
 
@@ -25,6 +27,37 @@ class User < ApplicationRecord
   validates :password,
     length: { in: 4..256 },
     allow_blank: true
+
+  # return Hash values of the passed string
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ?
+      BCrypt::Engine::MIN_COST :
+      BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  # return the random token
+  def User.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  # remember user in database for permanent sessions
+  def remember
+    self.remember_token = User.new_token
+    update(remember_digest: User.digest(remember_token))
+  end
+
+  # return true if the token passed matched digest
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  # destroy the user's login information
+  def forget
+    update(remember_digest: nil)
+  end
 
   # OVERRIDE: changed params id to params name
   def to_param

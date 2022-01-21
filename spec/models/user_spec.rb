@@ -133,4 +133,51 @@ RSpec.describe User, type: :model do
   def user_invalid?(user)
     expect(user).not_to be_valid
   end
+
+  ##### User methods test
+
+  describe 'User.digest(string)' do
+    it 'return Hash values of the passed string' do
+      digest = User.digest('password')
+      expect(digest.is_password?('password')).to eq true
+    end
+  end
+
+  describe 'User.new_token()' do
+    it 'return the random token' do
+      expect(User.new_token.class).to eq String
+    end
+  end
+
+  describe 'remember()' do
+    before { user.save }
+
+    it 'remember user in database for permanent sessions' do
+      expect { user.remember }.to change { user.reload.remember_digest.class }.from(NilClass).to(String)
+    end
+  end
+
+  describe 'authenticated?(attribute, token)' do
+    before { user.save; user.remember; }
+
+    context 'token passed matched digest' do
+      it 'return true' do
+        expect(user.authenticated?(:remember, user.remember_token)).to eq true
+      end
+    end
+
+    context 'token passed no matched digest' do
+      it 'return false' do
+        expect(user.authenticated?(:remember, 'hogehoge')).to eq false
+      end
+    end
+  end
+
+  describe 'forget()' do
+    before { user.save; user.remember; }
+
+    it 'user remember_digest is nil' do
+      expect { user.forget }.to change { user.remember_digest.class }.from(String).to(NilClass)
+    end
+  end
 end
