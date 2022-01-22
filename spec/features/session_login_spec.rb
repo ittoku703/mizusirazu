@@ -7,6 +7,7 @@ RSpec.feature "SessionLogins", type: :feature do
     visit new_session_path
     fill_in 'Name or email', with: user.name
     fill_in 'Password', with: 'password'
+    check 'Save the login?'
     click_button 'Log in'
     expect(page).to have_selector 'div#notice'
   end
@@ -15,6 +16,7 @@ RSpec.feature "SessionLogins", type: :feature do
     visit new_session_path
     fill_in 'Name or email', with: 'hoge'
     fill_in 'Password', with: 'bar'
+    check 'Save the login?'
     click_button 'Log in'
     expect(page).to have_selector 'div#alert'
   end
