@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "misaki_gothic";
+  src: url("/fonts/misaki_gothic.woff") format("woff"), url("/fonts/misaki_gothic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "nu-kinakomochi";
+  src: url("/fonts/NuKinakoMochi-Reg.otf")
+}
+
+html, body, pre, code, kbd, samp {
+  font-family: "nu-kinakomochi", "misaki_gothic";
+}
+
+.is-light {
+  background-color: white;
+}
+
+.page_wrapper {
+  background-color: #f5f5f4;
+  margin-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.notfound__talking {
+  display: flex;
+  align-items: center;
+}
+
+.nes-balloon.from-left {
+  margin-left: 16px;
+}
+
+.notfound__lists {
+  margin-top: 16px;
+}
+
+.notfound__spacer {
+  margin: 2rem 0;
+}
