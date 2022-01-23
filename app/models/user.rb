@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   has_one :profile, dependent: :destroy
 
-  attr_accessor :remember_token
+  attr_accessor :remember_token, :activation_token
 
   before_save :downcase_email
+  before_create :create_activation_digest_before_create
   after_create :create_profile_model
 
   validates :name, presence: true
@@ -59,6 +60,17 @@ class User < ApplicationRecord
     update(remember_digest: nil)
   end
 
+  # activate your account
+  def activate
+    update(activated: true, activated_at: Time.zone.now)
+  end
+
+  # activate digest in database for email confirm
+  def create_activation_digest
+    self.activation_token = User.new_token
+    update(activation_digest: User.digest(activation_token))
+  end
+
   # OVERRIDE: changed params id to params name
   def to_param
     name
@@ -73,5 +85,11 @@ class User < ApplicationRecord
     # create profile after creating user
     def create_profile_model
       create_profile
+    end
+
+    # activate digest in database for email confirm
+    def create_activation_digest_before_create
+      self.activation_token = User.new_token
+      self.activation_digest = User.digest(activation_token)
     end
 end

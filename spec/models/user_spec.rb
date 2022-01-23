@@ -97,7 +97,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'password' do
+  describe '.password' do
     it 'should be present' do
       user.password = ' '
       user_invalid?(user)
@@ -114,10 +114,19 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '.activation_digest' do
+    it 'should create activation_digest and token when user created' do
+      expect { user.save }.to(
+        change { user.activation_digest.is_a?(String) }.from(false).to(true) &&
+        change { user.activation_token.is_a?(String) }.from(false).to(true)
+      )
+    end
+  end
+
   describe '.profile' do
+    before { user.save; user.profile.save; }
+
     it 'should be delete when user destroyed' do
-      user.save
-      user.profile.save
       expect { user.destroy }.to change(Profile, :count).by(-1)
     end
 
@@ -153,7 +162,7 @@ RSpec.describe User, type: :model do
     before { user.save }
 
     it 'remember user in database for permanent sessions' do
-      expect { user.remember }.to change { user.reload.remember_digest.class }.from(NilClass).to(String)
+      expect { user.remember }.to change { user.reload.remember_digest.is_a?(String) }.from(false).to(true)
     end
   end
 
@@ -177,7 +186,23 @@ RSpec.describe User, type: :model do
     before { user.save; user.remember; }
 
     it 'user remember_digest is nil' do
-      expect { user.forget }.to change { user.remember_digest.class }.from(String).to(NilClass)
+      expect { user.forget }.to change { user.remember_digest.is_a?(NilClass) }.from(false).to(true)
+    end
+  end
+
+  describe 'activate()' do
+    before { user.save }
+
+    it 'activation your account' do
+      expect { user.activate }.to change { user.activated? }.from(false).to(true)
+    end
+  end
+
+  describe 'create_activation_digest' do
+    before { create(:user) }
+
+    it 'activate digest in database for email confirm' do
+      expect { user.create_activation_digest }.to change { user.activation_digest.is_a?(String) }.from(false).to(true)
     end
   end
 end
