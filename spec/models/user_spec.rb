@@ -124,9 +124,8 @@ RSpec.describe User, type: :model do
   end
 
   describe '.profile' do
-    before { user.save; user.profile.save; }
-
     it 'should be delete when user destroyed' do
+      user.save
       expect { user.destroy }.to change(Profile, :count).by(-1)
     end
 
