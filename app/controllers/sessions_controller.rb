@@ -23,6 +23,6 @@ class SessionsController < ApplicationController
   # DELETE /logout
   def destroy
     log_out if logged_in?
-    redirect_to root_url, notice: 'successfully user was logged out'
+    redirect_to(root_url, notice: 'successfully user was logged out', status: :see_other)
   end
 end
