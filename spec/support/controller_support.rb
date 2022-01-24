@@ -11,4 +11,14 @@ module ControllerSupport
       password: password
     } }
   end
+
+  # log out as test user
+  def log_out_as(user)
+    delete session_path(user)
+  end
+
+  # activation as test user
+  def activate_as(user)
+    get edit_account_activation_path(user.activation_token), params: { email: user.email }
+  end
 end

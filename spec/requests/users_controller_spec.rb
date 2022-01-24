@@ -7,8 +7,11 @@ RSpec.describe UsersController, type: :request do
 
   describe "GET /users" do
     context 'all users' do
-      it 'should be success' do
+      before do
         get users_path
+      end
+
+      it 'should be success' do
         expect(response).to have_http_status 200
       end
     end
@@ -16,17 +19,23 @@ RSpec.describe UsersController, type: :request do
 
   describe 'GET /signup' do
     context 'logged in user' do
-      before { log_in_as(user) }
+      before do
+        log_in_as(user)
+        get new_user_path
+      end
 
       it 'redirect to root' do
-        get new_user_path
         expect(response).to redirect_to root_path
       end
     end
 
     context 'non logged in user' do
-      it 'should be success' do
+      before do
+        # log_in_as(user)
         get new_user_path
+      end
+
+      it 'should be success' do
         expect(response).to have_http_status 200
       end
     end
@@ -34,62 +43,89 @@ RSpec.describe UsersController, type: :request do
 
   describe 'POST /users' do
     context 'valid params' do
-      it 'redirect to user page' do
+      before do
+        # log_in_as(user)
         post users_path, params: { user: valid_params }
+      end
+
+      it 'redirect to user page' do
         expect(response).to have_http_status 302
       end
 
       it 'user count +1' do
-        expect {
-          post users_path, params: { user: valid_params }
-        }.to change(User, :count).by(1)
+        expect(User.count).to eq 1
       end
     end
 
     context 'invalid params' do
-      it 'status is 422' do
+      before do
+        # log_in_as(user)
         post users_path, params: { user: invalid_params }
+      end
+
+      it 'status is 422' do
         expect(response).to have_http_status 422
       end
 
       it 'render :new' do
-        post users_path, params: { user: invalid_params }
         expect(response).to render_template :new
       end
     end
 
     context 'logged in user' do
-      it 'redirect to root' do
+      before do
         log_in_as(user)
         post users_path, params: { user: valid_params }
+      end
+
+      it 'redirect to root' do
         expect(response).to redirect_to root_path
       end
     end
   end
 
   describe 'GET /users/:name' do
-    context 'all users' do
-      it 'should be success' do
-        get user_path(user)
-        expect(response).to have_http_status 200
-      end
+    before do
+      get user_path(user)
+    end
+
+    it 'should be success' do
+      expect(response).to have_http_status 200
     end
   end
 
   describe 'GET /settings/user' do
     context 'logged in user' do
-      before { log_in_as(user) }
+      before do
+        activate_as(user)
+        get edit_user_path()
+      end
 
       it 'should be success' do
-        get edit_user_path()
         expect(response).to have_http_status 200
       end
     end
 
     context 'non logged in user' do
-      it 'should redirect user page' do
+      before do
+        activate_as(user)
+        log_out_as(user)
         get edit_user_path()
+      end
+
+      it 'should redirect user page' do
         expect(response).to redirect_to new_session_path
+      end
+    end
+
+    context 'non activate user' do
+      before do
+        log_in_as(user)
+        get edit_user_path()
+      end
+
+      it 'should redirect activation form' do
+        expect(response).to redirect_to new_account_activation_path
       end
     end
   end
@@ -97,23 +133,18 @@ RSpec.describe UsersController, type: :request do
   describe 'PATCH /users/:name' do
     context 'valid params' do
       before do
-        log_in_as(user)
-        valid_params[:name] = 'update_user'
+        activate_as(user)
         patch user_path(user), params: { user: valid_params }
       end
 
       it 'should redirect to user page' do
         expect(response).to redirect_to user.reload
       end
-
-      it 'should update user' do
-        expect(user.reload.name).to eq valid_params[:name]
-      end
     end
 
     context 'invalid params' do
       before do
-        log_in_as(user)
+        activate_as(user)
         patch user_path(user), params: { user: invalid_params }
       end
 
@@ -123,25 +154,48 @@ RSpec.describe UsersController, type: :request do
     end
 
     context 'non logged in user' do
-      it 'redirect to login page' do
+      before do
+        activate_as(user)
+        log_out_as(user)
         patch user_path(user), params: { user: valid_params }
+      end
+
+      it 'redirect to login page' do
         expect(response).to redirect_to new_session_path
+      end
+    end
+
+    context 'non activate user' do
+      before do
+        log_in_as(user)
+        patch user_path(user), params: { user: valid_params }
+      end
+
+      it 'should redirect activation form' do
+        expect(response).to redirect_to new_account_activation_path
       end
     end
   end
 
   describe 'DELETE /users/:name' do
     context 'logged in user' do
-      before { log_in_as(user) }
+      before do
+        log_in_as(user)
+        delete user_path(user)
+      end
 
       it 'should delete user' do
-        expect { delete user_path(user) }.to change(User, :count).by(-1)
+        expect(User.count).to eq 0
       end
     end
 
     context 'non logged in user' do
-      it 'should redirect to root' do
+      before do
+        # log_in_as(user)
         delete user_path(user)
+      end
+
+      it 'should redirect to root' do
         expect(response).to redirect_to new_session_path
       end
     end

@@ -18,6 +18,19 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    # check if you are activate user
+    def activate_user
+      unless account_activated?
+        store_location
+        redirect_to(new_account_activation_path, alert: 'Please account activate')
+      end
+    end
+
+    # return true if you are activated
+    def account_activated?
+      current_user&.activated?
+    end
+
     # set @user to actions of controller
     # and render 404 page if user not found
     def set_user(user_hash)

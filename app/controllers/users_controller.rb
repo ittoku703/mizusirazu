@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # authenticate
   before_action :logged_in_user, only: %i[edit update destroy]
+  before_action :activate_user, only: %i[edit update]
   before_action -> { correct_user(params[:name]) }, only: %i[update destroy]
   before_action :already_logged_in, only: %i[new create]
   # set parameters
