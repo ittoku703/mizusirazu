@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   end
 
   resources :sessions, only: %i[create]
+  resources :account_activations, only: %i[new create edit], path: :confirms
 end
