@@ -6,6 +6,7 @@ class User < ApplicationRecord
   before_save :downcase_email
   before_create :create_activation_digest_before_create
   after_create :create_profile_model
+  after_create :send_activation_email
 
   validates :name, presence: true
   # why separate it? for reduce the number of error messages
@@ -63,6 +64,11 @@ class User < ApplicationRecord
   # activate your account
   def activate
     update(activated: true, activated_at: Time.zone.now)
+  end
+
+  # send email for account activation
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
   end
 
   # activate digest in database for email confirm

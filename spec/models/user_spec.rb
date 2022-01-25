@@ -197,6 +197,14 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'send_activation_email()' do
+    before { user.save }
+
+    it 'should send email' do
+      expect {  user.send_activation_email }.to change(ActionMailer::Base.deliveries, :count).by(1)
+    end
+  end
+
   describe 'create_activation_digest' do
     before { create(:user) }
 
