@@ -8,7 +8,7 @@ RSpec.describe ProfilesController, type: :request do
   describe "GET /settings/profile" do
     context 'logged in user' do
       before do
-        activate_as(user)
+        log_in_as(user)
         get edit_user_profile_path
       end
 
@@ -19,8 +19,6 @@ RSpec.describe ProfilesController, type: :request do
 
     context 'non logged in user' do
       before do
-        activate_as(user)
-        log_out_as(user)
         get edit_user_profile_path
       end
 
@@ -28,23 +26,12 @@ RSpec.describe ProfilesController, type: :request do
         expect(response).to redirect_to new_session_path
       end
     end
-
-    context 'non activate user' do
-      before do
-        log_in_as(user)
-        get edit_user_profile_path
-      end
-
-      it 'should redirect activation form' do
-        expect(response).to redirect_to new_account_activation_path
-      end
-    end
   end
 
   describe "PATCH /users/:user_name/profiles/:id" do
     context 'valid params' do
       before do
-        activate_as(user)
+        log_in_as(user)
         patch user_profile_path(user, user.profile), params: { profile: valid_params }
       end
 
@@ -55,7 +42,7 @@ RSpec.describe ProfilesController, type: :request do
 
     context 'invalid params' do
       before do
-        activate_as(user)
+        log_in_as(user)
         patch user_profile_path(user, user.profile), params: { profile: invalid_params }
       end
 
@@ -67,23 +54,11 @@ RSpec.describe ProfilesController, type: :request do
     context 'non logged in user' do
       before do
         activate_as(user)
-        log_out_as(user)
         patch user_profile_path(user, user.profile), params: { profile: valid_params }
       end
 
       it 'should redirect to login page' do
         expect(response).to redirect_to new_session_path
-      end
-    end
-
-    context 'non activate user' do
-      before do
-        log_in_as(user)
-        patch user_profile_path(user, user.profile), params: { profile: valid_params }
-      end
-
-      it 'should redirect activation form' do
-        expect(response).to redirect_to new_account_activation_path
       end
     end
   end

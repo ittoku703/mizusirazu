@@ -14,7 +14,9 @@ RSpec.describe SessionsController, type: :request do
     end
 
     context 'logged in user' do
-      before { log_in_as(user) }
+      before do
+        log_in_as(user)
+      end
 
       it 'should redirect to root' do
         get new_session_path
@@ -25,25 +27,30 @@ RSpec.describe SessionsController, type: :request do
 
   describe 'POST /sessions' do
     context 'valid params' do
-      it 'should redirect to user page' do
+      before do
+        activate_as(user)
         post sessions_path, params: { session: valid_params }
+      end
+
+      it 'should redirect to user page' do
         expect(response).to redirect_to user_path(user)
       end
 
       it 'should logged in' do
-        post sessions_path, params: { session: valid_params }
         expect(is_logged_in?).to eq true
       end
 
       it 'should be remember' do
-        post sessions_path, params: { session: valid_params }
         expect(cookies[:user_id].is_a?(String)).to eq true
       end
     end
 
     context 'invalid params' do
-      it 'render :new' do
+      before do
         post sessions_path, params: { session: invalid_params }
+      end
+
+      it 'render :new' do
         expect(response).to render_template :new
       end
     end

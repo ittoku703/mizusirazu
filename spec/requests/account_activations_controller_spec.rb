@@ -5,17 +5,22 @@ RSpec.describe AccountActivationsController, type: :request do
 
   describe 'GET /confirms/new' do
     context 'non confirmed user' do
-      it 'should be success' do
+      before do
         get new_account_activation_path
+      end
+
+      it 'should be success' do
         expect(response).to have_http_status 200
       end
     end
 
     context 'confirmed user' do
-      before { log_in_as(user); user.activate; }
+      before do
+        log_in_as(user)
+        get new_account_activation_path
+      end
 
       it 'redirect to root' do
-        get new_account_activation_path
         expect(response).to redirect_to root_path
       end
     end
@@ -23,8 +28,11 @@ RSpec.describe AccountActivationsController, type: :request do
 
   describe 'POST /confirms' do
     context 'valid params' do
-      it 'redirect to root' do
+      before do
         post account_activations_path, params: { account_activation: { email: user.email } }
+      end
+
+      it 'redirect to root' do
         expect(response).to redirect_to root_path
       end
 
@@ -36,54 +44,63 @@ RSpec.describe AccountActivationsController, type: :request do
     end
 
     context 'invalid params' do
-      it 'render :new' do
+      before do
         post account_activations_path, params: { account_activation: { email: 'hogehoge' } }
+      end
+
+      it 'render :new' do
         expect(response).to render_template :new
       end
     end
 
     context 'confirmed user' do
-      before { log_in_as(user); user.activate; }
+      before do
+        activate_as(user)
+        post account_activations_path, params: { account_activation: { email: user.email } }
+      end
 
       it 'redirect to root' do
-        post account_activations_path, params: { account_activation: { email: 'hogehoge' } }
         expect(response).to redirect_to root_path
       end
     end
   end
 
   describe 'GET /confirms/:id/edit' do
-    before { user.create_activation_digest }
-
     context 'valid params' do
-      it 'redirect to root' do
+      before do
         get edit_account_activation_path(user.activation_token), params: { email: user.email }
+      end
+
+      it 'redirect to root' do
         expect(response).to redirect_to root_path
       end
 
       it 'should be user activated' do
-        get edit_account_activation_path(user.activation_token), params: { email: user.email }
         expect(user.reload.activated?).to eq true
       end
 
       it 'should be user logged in' do
-        get edit_account_activation_path(user.activation_token), params: { email: user.email }
         expect(is_logged_in?).to eq true
       end
     end
 
     context 'invalid params' do
-      it 'redirect to confirm new' do
+      before do
         get edit_account_activation_path('hogehoge'), params: { email: user.email }
+      end
+
+      it 'redirect to confirm new' do
         expect(response).to redirect_to new_account_activation_path
       end
     end
 
     context 'confirmed user' do
-      before { log_in_as(user); user.activate; }
+      before do
+        activate_as(user)
+        get edit_account_activation_path(user.activation_token), params: { email: user.email }
+      end
 
       it 'redirect to root' do
-        get edit_account_activation_path(user.activation_token), params: { email: user.email }
         expect(response).to redirect_to root_path
       end
     end

@@ -31,10 +31,4 @@ RSpec.feature "ProfileEdits", type: :feature do
     visit edit_user_profile_path
     expect(page).to have_selector 'div#alert'
   end
-
-  scenario 'non activate user profile' do
-    log_in_as(user)
-    visit edit_user_profile_path
-    expect(page).to have_selector 'div#alert'
-  end
 end

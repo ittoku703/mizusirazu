@@ -30,11 +30,4 @@ RSpec.feature 'UserEdit', type: :feature do
     visit edit_user_path
     expect(page).to have_selector 'div#alert'
   end
-
-  scenario 'non activate user settings' do
-    log_in_as(user)
-    # user.activate
-    visit edit_user_path
-    expect(page).to have_selector 'div#alert'
-  end
 end

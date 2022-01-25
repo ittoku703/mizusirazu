@@ -10,9 +10,12 @@ class AccountActivationsController < ApplicationController
   def create
     respond_to do |format|
       if @user = User.find_by(email: params[:account_activation][:email])
-        redirect_to(root_path, notice: 'User already activated') if @user.activated?
-        # @user.send_activation_email
-        format.html { redirect_to(root_path, notice: 'Send account activation email, Please check email and activate your account') }
+        unless @user.activated?
+          # @user.send_activation_email
+          format.html { redirect_to(root_path, notice: 'Send account activation email, Please check email and activate your account') }
+        else
+          format.html { redirect_to(root_path, notice: 'User already activated') }
+        end
       else
         flash.now[:alert] = 'Email is invalid, Please try again'
         format.html { render :new, status: :unprocessable_entity }
@@ -24,9 +27,12 @@ class AccountActivationsController < ApplicationController
   def edit
     respond_to do |format|
       if @user&.authenticated?(:activation, params[:id])
-        redirect_to(root_path, notice: 'User already activated') if @user.activated?
-        @user.activate; log_in(@user);
-        format.html { redirect_to(root_path, notice: 'Successfully user was activated') }
+        unless @user.activated?
+          @user.activate; log_in(@user);
+          format.html { redirect_to(root_path, notice: 'Successfully user was activated') }
+        else
+          format.html { redirect_to(root_path, notice: 'User already activated') }
+        end
       else
         format.html { redirect_to(new_account_activation_path, alert: 'User activation is failed') }
       end

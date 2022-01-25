@@ -1,5 +1,6 @@
 module FeatureSupport
   def log_in_as(user)
+    user.activate # for now
     visit new_session_path()
     fill_in 'Name or email', with: user.name
     fill_in 'Password', with: 'password'

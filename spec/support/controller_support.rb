@@ -6,6 +6,7 @@ module ControllerSupport
 
   # log in as test user
   def log_in_as(user, password: 'password')
+    activate_as(user)
     post sessions_path, params: { session: {
       name_or_email: user.email,
       password: password
@@ -19,6 +20,7 @@ module ControllerSupport
 
   # activation as test user
   def activate_as(user)
-    get edit_account_activation_path(user.activation_token), params: { email: user.email }
+    get edit_account_activation_path(user.activation_token, email: user.email)
+    log_out_as(user) # to log in when user account activation
   end
 end
