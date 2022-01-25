@@ -11,7 +11,7 @@ class AccountActivationsController < ApplicationController
     respond_to do |format|
       if @user = User.find_by(email: params[:account_activation][:email])
         unless @user.activated?
-          # @user.send_activation_email
+          @user.create_activation_digest; @user.send_activation_email;
           format.html { redirect_to(root_path, notice: 'Send account activation email, Please check email and activate your account') }
         else
           format.html { redirect_to(root_path, notice: 'User already activated') }

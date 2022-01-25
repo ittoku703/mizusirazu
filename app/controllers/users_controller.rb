@@ -24,8 +24,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        log_in @user
-        format.html { redirect_to @user, notice: 'User was successfully created' }
+        format.html { redirect_to root_path, notice: 'Please check email and activate your account' }
       else
         # nessally status: :unprocessable_entity
         format.html { render :new, status: :unprocessable_entity }

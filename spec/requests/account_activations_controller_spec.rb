@@ -36,11 +36,11 @@ RSpec.describe AccountActivationsController, type: :request do
         expect(response).to redirect_to root_path
       end
 
-      # it 'should send account activation mail' do
-      #   expect {
-      #     post account_activations_path, params: { account_activation: { email: user.email} }
-      #   }.to change(ActionMailer::Base.deliveries, :count).by(1)
-      # end
+      it 'should send account activation mail' do
+        expect {
+          post account_activations_path, params: { account_activation: { email: user.email } }
+        }.to change(ActionMailer::Base.deliveries, :count).by(1)
+      end
     end
 
     context 'invalid params' do

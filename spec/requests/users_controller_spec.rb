@@ -44,12 +44,16 @@ RSpec.describe UsersController, type: :request do
         post users_path, params: { user: valid_params }
       end
 
-      it 'redirect to user page' do
-        expect(response).to have_http_status 302
+      it 'redirect to root' do
+        expect(response).to redirect_to root_path
       end
 
       it 'user count +1' do
         expect(User.count).to eq 1
+      end
+
+      it 'send account activation email' do
+        expect(ActionMailer::Base.deliveries.count).to eq 1
       end
     end
 
