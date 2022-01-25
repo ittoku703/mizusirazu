@@ -34,6 +34,9 @@ module UsersHelper
   end
 
   def user_index_tag(user, attribute_name, options = {})
+    if attribute_name == :activated
+      options[:class] = user.activated ? 'text-yellow-500' : 'text-violet-500'
+    end
     options[:class] = "#{options[:class]} truncate"
     content_tag(:div, user.send(attribute_name), options)
   end

@@ -1,1 +1,16 @@
-<h1>AccountActivationsController#new</h1>
+<% provide(:title, 'Account activation') %>
+<div class="mt-4 px-4 text-sm">
+  <div class="bg-gray-200 p-4 rounded">
+    <div class="text-center text-xl pb-4 border-b border-gray-400 mb-4"><%= yield(:title) %></div>
+    <div class="block md:flex md:divide-x divide-gray-400">
+      <div class="basis-1/4 p-4 text-gray-600">
+        <p>Verify your email address and activate your account!</p>
+      </div>
+      <div class="basis-3/4 p-4">
+        <div class="p-4 bg-violet-50 border border-gray-400 rounded">
+          <%= render 'form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

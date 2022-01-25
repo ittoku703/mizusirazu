@@ -5,8 +5,7 @@ RSpec.feature "ProfileEdits", type: :feature do
   let(:profile_params) { attributes_for(:profile) }
 
   scenario 'valid profile' do
-    user.activate # <- for now
-    log_in_as(user)
+    activate_as(user)
     visit edit_user_profile_path
     fill_in 'Name', with: profile_params[:name]
     fill_in 'Bio', with: profile_params[:bio]
@@ -16,8 +15,7 @@ RSpec.feature "ProfileEdits", type: :feature do
   end
 
   scenario 'invalid profile' do
-    user.activate # <- for now
-    log_in_as(user)
+    activate_as(user)
     visit edit_user_profile_path
     fill_in 'Name', with: 'invalid' * 100
     fill_in 'Bio', with: 'invalid' * 200
@@ -27,7 +25,6 @@ RSpec.feature "ProfileEdits", type: :feature do
   end
 
   scenario 'non logged in user profile' do
-    user.activate # <- for now
     visit edit_user_profile_path
     expect(page).to have_selector 'div#alert'
   end

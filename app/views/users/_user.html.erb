@@ -15,6 +15,9 @@
     <%= user_index_profile_tag(user.profile, :bio, class: 'text-lime-500') %>
     <%= user_index_profile_tag(user.profile, :location, class: 'text-cyan-500') %>
   </td>
+  <td class="p-2">
+    <%= user_index_tag(user, :activated) %>
+  </td>
   <td class="p-2 text-rose-500">
     <%= user_index_control_tag(user, class: 'block') %>
   </td>

@@ -11,6 +11,8 @@ RSpec.feature 'UserSignup', type: :feature do
     fill_in 'Password confirmation', with: user_params[:password]
     click_button 'Sign up'
     expect(page).to have_selector 'div#notice'
+    visit activation_email_link
+    expect(page).to have_selector 'div#notice'
   end
 
   scenario 'invalid sign up' do
