@@ -23,10 +23,15 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to root_path, notice: 'Please check email and activate your account' }
+      if verify_recaptcha(model: @user, action: 'signup', minimum_score: 0.5)
+        if @user.save
+          format.html { redirect_to root_path, notice: 'Please check email and activate your account' }
+        else
+          # nessally status: :unprocessable_entity
+          format.html { render :new, status: :unprocessable_entity }
+        end
       else
-        # nessally status: :unprocessable_entity
+        # Score is below threshold, so user may be a bot. Show a challenge, require multi-factor
         format.html { render :new, status: :unprocessable_entity }
       end
     end

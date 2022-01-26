@@ -9,15 +9,20 @@ class AccountActivationsController < ApplicationController
   # POST /confirms
   def create
     respond_to do |format|
-      if @user = User.find_by(email: params[:account_activation][:email])
-        unless @user.activated?
-          @user.create_activation_digest; @user.send_activation_email;
-          format.html { redirect_to(root_path, notice: 'Send account activation email, Please check email and activate your account') }
+      if verify_recaptcha(action: 'account_activation', minimum_score: 0.5)
+        if @user = User.find_by(email: params[:account_activation][:email])
+          unless @user.activated?
+            @user.create_activation_digest; @user.send_activation_email;
+            format.html { redirect_to(root_path, notice: 'Send account activation email, Please check email and activate your account') }
+          else
+            format.html { redirect_to(root_path, notice: 'User already activated') }
+          end
         else
-          format.html { redirect_to(root_path, notice: 'User already activated') }
+          flash.now[:alert] = 'Email is invalid, Please try again'
+          format.html { render :new, status: :unprocessable_entity }
         end
       else
-        flash.now[:alert] = 'Email is invalid, Please try again'
+        flash.now[:alert] = 'Score is below threshold, so user may be a bot'
         format.html { render :new, status: :unprocessable_entity }
       end
     end

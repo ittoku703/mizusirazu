@@ -63,6 +63,17 @@ RSpec.describe SessionsController, type: :request do
         expect(response).to redirect_to root_path
       end
     end
+
+    context 'reCAPTCHA' do
+      before do
+        allow_any_instance_of(Recaptcha::Adapters::ControllerMethods).to receive(:verify_recaptcha).and_return(false)
+        post sessions_path, params: { session: valid_params }
+      end
+
+      it 'render :new' do
+        expect(response).to render_template :new
+      end
+    end
   end
 
   describe 'DELETE /logout' do

@@ -63,6 +63,17 @@ RSpec.describe AccountActivationsController, type: :request do
         expect(response).to redirect_to root_path
       end
     end
+
+    context 'reCAPTCHA' do
+      before do
+        allow_any_instance_of(Recaptcha::Adapters::ControllerMethods).to receive(:verify_recaptcha).and_return(false)
+        post account_activations_path, params: { account_activation: { email: user.email } }
+      end
+
+      it 'render :new' do
+        expect(response).to render_template :new
+      end
+    end
   end
 
   describe 'GET /confirms/:id/edit' do
