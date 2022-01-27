@@ -86,6 +86,11 @@ group :test do
 
   # using assert_template method in test
   gem 'rails-controller-testing'
+  # automate my test
+  gem 'guard-rspec', require: false
+  # desktop notification when test is changed
+  gem 'terminal-notifier'
+	gem 'terminal-notifier-guard'
 end
 
 group :production do
