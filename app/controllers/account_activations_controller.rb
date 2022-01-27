@@ -45,11 +45,6 @@ class AccountActivationsController < ApplicationController
   end
 
   private
-    # return true if user is activated
-    def account_activated?
-      current_user&.activated?
-    end
-
     # redirect to root if user activated
     def already_activated
       redirect_to(root_path, notice: 'User already activated') if account_activated?
