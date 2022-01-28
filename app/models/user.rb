@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_one :profile, dependent: :destroy
 
-  attr_accessor :remember_token, :activation_token
+  attr_accessor :remember_token, :activation_token, :reset_token
 
   before_save :downcase_email
   before_create :create_activation_digest_before_create
@@ -71,10 +71,21 @@ class User < ApplicationRecord
     UserMailer.account_activation(self).deliver_now
   end
 
-  # activate digest in database for email confirm
+  # save activate digest in database for email confirm
   def create_activation_digest
     self.activation_token = User.new_token
     update(activation_digest: User.digest(activation_token))
+  end
+
+  # send email for reset password
+  def send_reset_email
+    UserMailer.reset_password(self).deliver_now
+  end
+
+  # save reset digest in database for email confirm
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update(reset_digest: User.digest(reset_token))
   end
 
   # OVERRIDE: changed params id to params name

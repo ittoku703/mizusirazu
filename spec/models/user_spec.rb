@@ -153,7 +153,7 @@ RSpec.describe User, type: :model do
 
   describe 'User.new_token()' do
     it 'return the random token' do
-      expect(User.new_token.class).to eq String
+      expect(User.new_token.is_a?(String)).to eq true
     end
   end
 
@@ -208,8 +208,24 @@ RSpec.describe User, type: :model do
   describe 'create_activation_digest' do
     before { create(:user) }
 
-    it 'activate digest in database for email confirm' do
+    it 'save activate digest in database for email confirm' do
       expect { user.create_activation_digest }.to change { user.activation_digest.is_a?(String) }.from(false).to(true)
+    end
+  end
+
+  describe 'send_reset_email()' do
+    before { user.save }
+
+    it 'should send email' do
+      expect { user.send_reset_email }.to change(ActionMailer::Base.deliveries, :count).by(1)
+    end
+  end
+
+  describe 'create_reset_digest' do
+    before { create(:user) }
+
+    it 'save reset digest in database for email confirm' do
+      expect { user.create_reset_digest }.to change { user.reset_digest.is_a?(String) }.from(false).to(true)
     end
   end
 end
