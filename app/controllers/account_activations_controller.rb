@@ -12,7 +12,8 @@ class AccountActivationsController < ApplicationController
       if verify_recaptcha(action: 'account_activation', minimum_score: 0.5)
         if @user = User.find_by(email: params[:account_activation][:email])
           unless @user.activated?
-            @user.create_activation_digest; @user.send_activation_email;
+            @user.create_digest(:activation)
+            @user.send_email(:account_activation)
             format.html { redirect_to(root_path, notice: 'Send account activation email, Please check email and activate your account') }
           else
             format.html { redirect_to(root_path, notice: 'User already activated') }

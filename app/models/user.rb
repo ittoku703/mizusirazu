@@ -6,7 +6,7 @@ class User < ApplicationRecord
   before_save :downcase_email
   before_create :create_activation_digest_before_create
   after_create :create_profile_model
-  after_create :send_activation_email
+  after_create -> { send_email(:account_activation) }
 
   validates :name, presence: true
   # why separate it? for reduce the number of error messages
@@ -66,26 +66,17 @@ class User < ApplicationRecord
     update(activated: true, activated_at: Time.zone.now)
   end
 
-  # send email for account activation
-  def send_activation_email
-    UserMailer.account_activation(self).deliver_now
+  # send email for user control
+  def send_email(action_name)
+    UserMailer.send(action_name, self).deliver_now
   end
 
-  # save activate digest in database for email confirm
-  def create_activation_digest
-    self.activation_token = User.new_token
-    update(activation_digest: User.digest(activation_token))
-  end
-
-  # send email for reset password
-  def send_reset_email
-    UserMailer.reset_password(self).deliver_now
-  end
-
-  # save reset digest in database for email confirm
-  def create_reset_digest
-    self.reset_token = User.new_token
-    update(reset_digest: User.digest(reset_token))
+  # save digest in database for user control
+  def create_digest(attribute)
+    attribute_digest = "#{attribute}_digest".to_sym
+    attribute_token  = "#{attribute}_token".to_sym
+    self.send("#{attribute_token}=", User.new_token)
+    update({ attribute_digest => User.digest(self.send(attribute_token)) })
   end
 
   # OVERRIDE: changed params id to params name

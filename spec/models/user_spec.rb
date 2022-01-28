@@ -197,35 +197,35 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'send_activation_email()' do
+  describe 'send_email(action_name)' do
     before { user.save }
 
-    it 'should send email' do
-      expect {  user.send_activation_email }.to change(ActionMailer::Base.deliveries, :count).by(1)
+    context 'account activation email' do
+      it 'should send email' do
+        expect { user.send_email(:account_activation) }.to change(ActionMailer::Base.deliveries, :count).by(1)
+      end
+    end
+
+    context 'reset password email' do
+      it 'should send email' do
+        expect { user.send_email(:reset_password) }.to change(ActionMailer::Base.deliveries, :count).by(1)
+      end
     end
   end
 
-  describe 'create_activation_digest' do
+  describe 'create_digest(attribute)' do
     before { create(:user) }
 
-    it 'save activate digest in database for email confirm' do
-      expect { user.create_activation_digest }.to change { user.activation_digest.is_a?(String) }.from(false).to(true)
+    context 'activation_token' do
+      it 'save activation digest in database for email confirm' do
+        expect { user.create_digest(:activation) }.to change { user.activation_digest.is_a?(String) }.from(false).to(true)
+      end
     end
-  end
 
-  describe 'send_reset_email()' do
-    before { user.save }
-
-    it 'should send email' do
-      expect { user.send_reset_email }.to change(ActionMailer::Base.deliveries, :count).by(1)
-    end
-  end
-
-  describe 'create_reset_digest' do
-    before { create(:user) }
-
-    it 'save reset digest in database for email confirm' do
-      expect { user.create_reset_digest }.to change { user.reset_digest.is_a?(String) }.from(false).to(true)
+    context 'reset_token' do
+      it 'save reset digest in database for password reset' do
+        expect { user.create_digest(:reset) }.to change { user.reset_digest.is_a?(String) }.from(false).to(true)
+      end
     end
   end
 end
