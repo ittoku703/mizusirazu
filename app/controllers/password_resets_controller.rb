@@ -14,7 +14,7 @@ class PasswordResetsController < ApplicationController
       if @user = User.find_by(email: params[:password_reset][:email])
         if @user.activated?
           @user.create_digest(:reset)
-          @user.send_email(:reset_password)
+          @user.send_email(:password_reset)
           format.html { redirect_to(root_path, notice: 'Send password reset email, Please check email and reset your password') }
         else
           flash[:alert] = 'This user has not activated yet. Please user activate'

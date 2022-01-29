@@ -208,7 +208,7 @@ RSpec.describe User, type: :model do
 
     context 'reset password email' do
       it 'should send email' do
-        expect { user.send_email(:reset_password) }.to change(ActionMailer::Base.deliveries, :count).by(1)
+        expect { user.send_email(:password_reset) }.to change(ActionMailer::Base.deliveries, :count).by(1)
       end
     end
   end
