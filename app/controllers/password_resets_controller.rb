@@ -1,6 +1,6 @@
 class PasswordResetsController < ApplicationController
   before_action :already_logged_in
-  before_action :valid_recaptcha, only: %i[create]
+  before_action -> { valid_recaptcha('password_reset') }, only: %i[create]
   before_action :get_user, only: %i[edit update]
   before_action :valid_user, only: %i[edit update]
 
@@ -50,14 +50,6 @@ class PasswordResetsController < ApplicationController
       params.require(:user).permit(:password, :password_confirmation)
     end
 
-    # check if it's a bot
-    def valid_recaptcha
-      unless verify_recaptcha(action: 'reset_password', minimum_score: 0.5)
-        flash.now[:alert] = 'Score is below threshold, so user may be a bot'
-        render(:new, status: :unprocessable_entity) && return
-      end
-    end
-
     # get user object from parameter email
     def get_user
       @user = User.find_by(email: params[:email])
@@ -66,7 +58,7 @@ class PasswordResetsController < ApplicationController
     # check the get_user can be the resets password
     def valid_user
       unless @user
-        flash[:alert] = 'User email is not fount'
+        flash[:alert] = 'User email is not found'
         redirect_to(root_path) && return
       end
 
