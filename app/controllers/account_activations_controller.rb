@@ -1,7 +1,7 @@
 class AccountActivationsController < ApplicationController
   before_action :already_activated
   before_action -> { set_user(email: params[:email]) }, only: %i[edit]
-  before_action :valid_recaptcha, only: %i[create]
+  before_action -> { valid_recaptcha('account_activation') }, only: %i[create]
 
   # GET /confirms/new
   def new
@@ -46,19 +46,4 @@ class AccountActivationsController < ApplicationController
       end
     end
   end
-
-  private
-    # redirect to root if user activated
-    def already_activated
-      redirect_to(root_path, notice: 'User already activated') if account_activated?
-    end
-
-    # check if it's a bot
-    def valid_recaptcha
-      unless verify_recaptcha(action: 'account_activation', minimum_score: 0.5)
-        flash.now[:alert] = 'Score is below threshold, so user may be a bot'
-        render(:new, status: :unprocessable_entity) && return
-      end
-    end
-
 end
