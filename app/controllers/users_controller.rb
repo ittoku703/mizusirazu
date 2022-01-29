@@ -25,7 +25,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if verify_recaptcha(model: @user, action: 'signup', minimum_score: 0.5)
         if @user.save
-          format.html { redirect_to root_path, notice: 'Please check email and activate your account' }
+          flash[:notice] = 'Please check email and activate your account'
+          format.html { redirect_to root_path }
         else
           # nessally status: :unprocessable_entity
           format.html { render :new, status: :unprocessable_entity }
@@ -50,7 +51,8 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated' }
+        flash[:notice] = 'Successfully user was update'
+        format.html { redirect_to @user }
       else
         format.html { render :edit, status: :unprocessable_entity, location: @user.reload }
       end

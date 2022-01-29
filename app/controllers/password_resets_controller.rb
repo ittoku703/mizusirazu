@@ -13,12 +13,13 @@ class PasswordResetsController < ApplicationController
     respond_to do |format|
       if @user = User.find_by(email: params[:password_reset][:email])
         if @user.activated?
+          flash[:notice] = 'Send password reset email, Please check email and reset your password'
           @user.create_digest(:reset)
           @user.send_email(:password_reset)
-          format.html { redirect_to(root_path, notice: 'Send password reset email, Please check email and reset your password') }
+          format.html { redirect_to root_path }
         else
           flash[:alert] = 'This user has not activated yet. Please user activate'
-          format.html { redirect_to(new_account_activation_path, notice: 'User is not activated') }
+          format.html { redirect_to new_account_activation_path }
         end
       else
         flash.now[:alert] = 'Email is invalid, Please try again'
@@ -35,7 +36,8 @@ class PasswordResetsController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to(new_session_path, notice: 'Successfully User was password reset. Please try to login with a new password') }
+        flash[:notice] = 'Successfully User was password reset. Please try to login with a new password'
+        format.html { redirect_to new_session_path }
       else
         flash[:alert] = 'User password is invalid'
         format.html { render :new, status: :unprocessable_entity }
@@ -48,9 +50,9 @@ class PasswordResetsController < ApplicationController
       params.require(:user).permit(:password, :password_confirmation)
     end
 
-    # redirect to top page if reCAPTCHA score is higher
+    # check if it's a bot
     def valid_recaptcha
-      unless verify_recaptcha(action: 'password_reset', minimum_score: 0.5)
+      unless verify_recaptcha(action: 'reset_password', minimum_score: 0.5)
         flash.now[:alert] = 'Score is below threshold, so user may be a bot'
         render(:new, status: :unprocessable_entity) && return
       end
@@ -61,7 +63,7 @@ class PasswordResetsController < ApplicationController
       @user = User.find_by(email: params[:email])
     end
 
-    # check the user can be the resets password
+    # check the get_user can be the resets password
     def valid_user
       unless @user
         flash[:alert] = 'User email is not fount'
