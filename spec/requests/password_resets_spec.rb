@@ -86,7 +86,7 @@ RSpec.describe PasswordResetsController, type: :request do
     context 'valid params' do
       before do
         activate_as(user)
-          user.create_digest(:reset)
+        user.create_digest(:reset)
         get edit_password_reset_path(user.reset_token), params: { email: user.email }
       end
       it 'returns http success' do
@@ -97,7 +97,7 @@ RSpec.describe PasswordResetsController, type: :request do
     context 'invalid params' do
       before do
         activate_as(user)
-          user.create_digest(:reset)
+        user.create_digest(:reset)
         get edit_password_reset_path(user.reset_token), params: { email: 'hogehoge' }
       end
       it 'redirect to root' do
@@ -108,7 +108,7 @@ RSpec.describe PasswordResetsController, type: :request do
     context 'logged in user' do
       before do
         log_in_as(user)
-          user.create_digest(:reset)
+        user.create_digest(:reset)
         get edit_password_reset_path(user.reset_token), params: { email: user.email }
       end
       it 'redirect to root' do
@@ -118,7 +118,7 @@ RSpec.describe PasswordResetsController, type: :request do
 
     context 'non activate user' do
       before do
-          user.create_digest(:reset)
+        user.create_digest(:reset)
         get edit_password_reset_path(user.reset_token), params: { email: user.email }
       end
       it 'redirect to confirms form' do
@@ -133,8 +133,8 @@ RSpec.describe PasswordResetsController, type: :request do
 
     context 'valid params' do
       before do
-          user.create_digest(:reset)
         activate_as(user)
+        user.create_digest(:reset)
         patch password_reset_path(user.reset_token), params: { user: valid_params, email: user.email }
       end
       it 'redirect to login page' do
@@ -144,8 +144,8 @@ RSpec.describe PasswordResetsController, type: :request do
 
     context 'invalid params' do
       before do
-          user.create_digest(:reset)
         activate_as(user)
+        user.create_digest(:reset)
         patch password_reset_path(user.reset_token), params: { user: invalid_params, email: user.email }
       end
       it 'render :new' do
@@ -155,8 +155,8 @@ RSpec.describe PasswordResetsController, type: :request do
 
     context 'logged in user' do
       before do
-          user.create_digest(:reset)
         log_in_as(user)
+        user.create_digest(:reset)
         patch password_reset_path(user.reset_token), params: { user: valid_params, email: user.email }
       end
       it 'redirect to root' do
@@ -166,7 +166,7 @@ RSpec.describe PasswordResetsController, type: :request do
 
     context 'non activate user' do
       before do
-          user.create_digest(:reset)
+        user.create_digest(:reset)
         patch password_reset_path(user.reset_token), params: { user: valid_params, email: user.email }
       end
       it 'redirect to confirms form' do

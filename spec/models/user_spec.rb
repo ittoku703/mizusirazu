@@ -208,6 +208,7 @@ RSpec.describe User, type: :model do
 
     context 'reset password email' do
       it 'should send email' do
+        user.create_digest(:reset)
         expect { user.send_email(:password_reset) }.to change(ActionMailer::Base.deliveries, :count).by(1)
       end
     end

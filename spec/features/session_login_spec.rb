@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature "SessionLogins", type: :feature do
-  let(:user) { create(:user) }
+  let(:user) { create(:user, activated: true) }
 
   scenario 'valid login' do
-    user.activate
     visit new_session_path
     fill_in 'Name or email', with: user.name
     fill_in 'Password', with: 'password'
@@ -14,7 +13,6 @@ RSpec.feature "SessionLogins", type: :feature do
   end
 
   scenario 'invalid login' do
-    user.activate
     visit new_session_path
     fill_in 'Name or email', with: 'hoge'
     fill_in 'Password', with: 'bar'
