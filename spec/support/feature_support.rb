@@ -22,4 +22,11 @@ module FeatureSupport
     reg_url = %r{http://localhost:3000/confirms/[\w=%.?/-]*}
     email_body.match(reg_url).to_s
   end
+
+  def password_reset_email_link
+    activation_email = ActionMailer::Base.deliveries.last
+    email_body = activation_email.body.encoded
+    reg_url = %r{http://localhost:3000/passwords/[\w=%.?/-]*}
+    email_body.match(reg_url).to_s
+  end
 end
