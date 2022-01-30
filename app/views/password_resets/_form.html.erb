@@ -1,31 +1,15 @@
 <% if action_name == 'new' || action_name == 'create' %>
   <%= form_with url: password_resets_path, scope: :password_reset, method: :post do |f| %>
-    <%= f.label :email, class: 'block mt-4' do %>
-      <%= content_tag(:span, 'Email', class: 'block ml-2 text-gray-600') %>
-      <%= f.email_field :email, placeholder: 'Email', class: 'w-full md:w-auto block text-sm rounded border-violet-400 focus:ring-0 shadow' %>
-    <% end %>
-
     <%= recaptcha_v3 action: 'password_reset', turbolinks: true %>
-
-    <%= f.submit yield(:title), class: 'ml-2 mt-4 p-2 bg-orange-300 hover:bg-orange-500 hover:text-white border border-emerald-500 rounded' %>
+    <%= send_email_form_field(f, :email) %>
+    <%= send_email_form_submit(f, yield(:title)) %>
   <% end %>
-
 <% elsif action_name == 'edit' || action_name == 'update' %>
   <%= form_with model: @user, url: password_reset_path(params[:id]), method: :patch do |f| %>
     <%= render 'shared/form_errors', object: f.object %>
-
     <%= hidden_field_tag :email, @user.email %>
-
-    <%= f.label :password, class: 'block mt-4' do %>
-      <%= content_tag(:span, 'Password', class: 'block ml-2 text-gray-600') %>
-      <%= f.password_field :password, placeholder: 'Password', class: 'w-full md:w-auto block text-sm rounded border-violet-400 focus:ring-0 shadow' %>
-    <% end %>
-
-    <%= f.label :password_confirmation, class: 'block mt-4' do %>
-      <%= content_tag(:span, 'Password confirmation', class: 'block ml-2 text-gray-600') %>
-      <%= f.password_field :password_confirmation, placeholder: 'Please enter password again', class: 'w-full md:w-auto block text-sm rounded border-violet-400 focus:ring-0 shadow' %>
-    <% end %>
-
-    <%= f.submit yield(:title), class: 'ml-2 mt-4 p-2 bg-orange-300 hover:bg-orange-500 hover:text-white border border-emerald-500 rounded' %>
+    <%= send_email_form_field(f, :password) %>
+    <%= send_email_form_field(f, :password_confirmation) %>
+    <%= send_email_form_submit(f, yield(:title)) %>
   <% end %>
 <% end %>

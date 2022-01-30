@@ -3,6 +3,7 @@ class PasswordResetsController < ApplicationController
   before_action -> { valid_recaptcha('password_reset') }, only: %i[create]
   before_action :get_user, only: %i[edit update]
   before_action :valid_user, only: %i[edit update]
+  before_action -> { set_yield_params('shared/send_email_form') }
 
   # GET /passwords/new
   def new
