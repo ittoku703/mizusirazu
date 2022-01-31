@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action -> { correct_user(params[:name]) }, only: %i[update destroy]
   before_action :already_logged_in, only: %i[new create]
   # set parameters
-  before_action -> { set_user(name: params[:name]) }, only: %i[show update destroy]
+  before_action -> { set_user!(name: params[:name]) }, only: %i[show update destroy]
   before_action -> { set_yield_params('shared/settings') }, only: %i[edit update]
 
   # GET /users

@@ -1,6 +1,6 @@
 class AccountActivationsController < ApplicationController
   before_action :already_activated
-  before_action -> { set_user(email: params[:email]) },            only: %i[edit]
+  before_action -> { set_user!(email: params[:email]) },            only: %i[edit]
   before_action -> { valid_recaptcha('account_activation') },      only: %i[create]
   before_action -> { set_yield_params('shared/send_email_form') }, only: %i[new create]
 

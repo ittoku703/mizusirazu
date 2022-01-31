@@ -96,7 +96,7 @@ module ApplicationControllerConcern
 
   # set @user to actions of controller
   # and render 404 page if user not found
-  def set_user(user_hash)
+  def set_user!(user_hash)
     @user = User.find_by!(user_hash)
   end
 

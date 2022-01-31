@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
   before_action :activate_user
   before_action -> { correct_user(params[:user_name]) }, only: %i[update]
   # set parameters
-  before_action -> { set_user(name: params[:user_name]) }, only: %i[update]
+  before_action -> { set_user!(name: params[:user_name]) }, only: %i[update]
   before_action -> { set_yield_params('shared/settings') }
 
   # GET /settings/profile
