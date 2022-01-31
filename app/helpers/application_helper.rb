@@ -26,6 +26,12 @@ module ApplicationHelper
     link_to(text, link, options)
   end
 
+  def footer_technology_link_to(text, link, options = {})
+    options[:class] = "#{options[:class]} inline-block text-sky-500 pr-2 border-r border-gray-800 mr-2"
+
+    link_to(text, link, options)
+  end
+
   def settings_form_field(form, field_name, span_text = '', options = {})
     send_name = set_form_field_name(field_name)
     options[:placeholder] = field_name
