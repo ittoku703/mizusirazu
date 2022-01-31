@@ -20,8 +20,7 @@ module ApplicationHelper
   end
 
   def header_link_to(text, link, options = {})
-    options[:class] = "#{options[:class]} text-gray-700 block pl-4 py-2"
-    options[:role] = 'menuitem'
+    options[:class] = "#{options[:class]} block px-4 my-4 hover:underline"
     options[:tabindex] = '-1'
 
     link_to(text, link, options)

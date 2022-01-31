@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 a {
-  @apply duration-300 hover:text-indigo-200;
+  @apply duration-300 hover:text-gray-200;
 }
 
 /* Disable the background color when input auto complate */
@@ -46,7 +46,7 @@ input:-webkit-autofill {
   width: 24px;
   height: 12px;
   transform: translate(0, -100%);
-  @apply absolute top-0 left-3/4 bg-violet-200;
+  @apply absolute top-0 left-3/4 bg-gray-400;
 }
 
 .arrow-top::after {
@@ -55,5 +55,5 @@ input:-webkit-autofill {
   width: 24px;
   height: 12px;
   transform: translate(0, -100%);
-  @apply absolute top-0 left-3/4 bg-violet-200;
+  @apply absolute top-0 left-3/4 bg-gray-400;
 }
