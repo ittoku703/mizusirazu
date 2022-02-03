@@ -1,13 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style>
-      /* Email styles need to be inline */
-    </style>
-  </head>
+<head>
+  <meta name="format-detection" content="telephone=no,address=no,email=no,date=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="copyright" content="Mizusirazu.net">
+  <style>
+    .headline {
+      font-family: monospace;
+    }
 
-  <body>
-    <%= yield %>
-  </body>
+    .spacer {
+      border-top: 2px solid #aaa;
+    }
+
+    .copyright {
+      color: #777
+    }
+  </style>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" bgcolor="#eeeeee">
+  <table width="100%">
+    <tr>
+      <td>
+        <table align="center">
+          <tr>
+            <td>
+              <h1 class="headline">Mizusirazu.net</h1>
+            </td>
+          </tr>
+        </table>
+        <table align="center">
+          <tr>
+            <td>
+              <%= link_to root_url do %>
+                <img src="https://mizusirazu.net/images/logo.svg" width="64px" height="64px">
+              <% end %>
+            </td>
+          </tr>
+        </table>
+        <table width="100%">
+          <tr>
+            <td width="16px"></td>
+            <td class="spacer"></td>
+            <td width="16px"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table>
+          <tr>
+            <td width="16px"></td>
+            <td>
+              <%= yield %>
+            </td>
+            <td width="16px"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table align="center">
+          <tr>
+            <br />
+            <td class="copyright">copyright 2022 shinzanmono.</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
 </html>
