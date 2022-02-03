@@ -2,11 +2,11 @@
   <%= form_with model: @user, method: :post do |f| %>
     <div class="space-y-6">
       <%= render 'shared/form_errors', object: f.object %>
+      <%= recaptcha_v3 action: 'signup', turbolinks: true %>
       <%= user_form_field(f, :name, 'Only "Lower alphabets", "Digit" and "Under score" can be entered') %>
       <%= user_form_field(f, :email) %>
       <%= user_form_field(f, :password) %>
       <%= user_form_field(f, :password_confirmation, 'Please enter password again') %>
-      <%= recaptcha_v3 action: 'signup', turbolinks: true %>
       <%= f.submit yield(:title), class: 'border-b-4 border-double border-black hover:border-emerald-500' %>
     </div>
   <% end %>

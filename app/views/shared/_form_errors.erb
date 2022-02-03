@@ -1,9 +1,13 @@
+<%# required
+  object: model
+%>
+
 <% if object.errors.any? %>
-  <div id="error_explanation" class="text-red-500">
+  <div id="error_explanation" class="text-rose-700">
     <%= content_tag(:h2, "#{object.model_name} form contains #{object.errors.count} errors", class: 'font-semibold') %>
 
     <% object.errors.full_messages.each do |message| %>
-      <%= content_tag(:p, "-- #{message}") %>
+      <%= content_tag(:p, "-> #{message}") %>
     <% end %>
 
     <br>
