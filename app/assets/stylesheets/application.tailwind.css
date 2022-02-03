@@ -19,19 +19,19 @@ input:-webkit-autofill {
 
 /* flash messages */
 #notice {
-  @apply text-green-400 text-sm bg-green-100;
+  @apply text-emerald-300 text-sm bg-emerald-700;
 }
 
 #notice > button {
-  @apply text-green-500 hover:text-green-400;
+  @apply text-emerald-400 hover:text-emerald-500;
 }
 
 #alert {
-  @apply text-red-400 text-sm bg-red-100;
+  @apply text-rose-300 text-sm bg-rose-700;
 }
 
 #alert > button {
-  @apply text-red-500 hover:text-red-400;
+  @apply text-rose-400 hover:text-rose-500;
 }
 
 /* user error form */
