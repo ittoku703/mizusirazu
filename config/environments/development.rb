@@ -44,6 +44,19 @@ Rails.application.configure do
   # Set the host and port for the link to be placed in the email
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  # Set mailer method
+  config.action_mailer.delivery_method = :smtp
+
+  # Use gmail
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    domain: 'gmail.com',
+    port: 587,
+    user_name: Rails.application.credentials.gmail[:username],
+    password: Rails.application.credentials.gmail[:password],
+    authentication: :login
+  }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
