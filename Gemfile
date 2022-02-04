@@ -54,6 +54,10 @@ gem 'faker'
 # Use reCAPTCHA
 gem 'recaptcha'
 
+# font-awesome-rails provides the Font-Awesome web fonts and stylesheets as a Rails engine for use with the asset pipeline.
+# See https://github.com/bokmann/font-awesome-rails
+gem 'font-awesome-rails'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
