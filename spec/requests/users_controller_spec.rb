@@ -134,8 +134,8 @@ RSpec.describe UsersController, type: :request do
         patch user_path(user), params: { user: valid_params }
       end
 
-      it 'should redirect to user page' do
-        expect(response).to redirect_to user.reload
+      it 'should redirect to user edit page' do
+        expect(response).to redirect_to edit_user_path()
       end
     end
 

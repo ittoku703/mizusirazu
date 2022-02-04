@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         flash[:notice] = 'Successfully user was update'
-        format.html { redirect_to @user }
+        format.html { redirect_to edit_user_path() }
       else
         format.html { render :edit, status: :unprocessable_entity, location: @user.reload }
       end
