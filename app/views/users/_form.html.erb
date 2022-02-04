@@ -18,7 +18,7 @@
       <%= settings_form_field(f, :email) %>
       <%= settings_form_field(f, :password) %>
       <%= settings_form_field(f, :password_confirmation, 'Please enter password again') %>
-      <%= f.submit yield(:submit_text), class: 'p-2 border rounded border-black shadow bg-green-500 hover:bg-green-400 text-white' %>
+      <%= settings_form_submit(f, yield(:submit_text)) %>
 
       <%= user_form_destroy_field(f) %>
     </div>
