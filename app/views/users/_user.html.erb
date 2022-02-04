@@ -2,21 +2,21 @@
   <td class="p-2">
     <div class="flex items-center">
       <div class="w-1/5">
-        <%= user_index_image_tag(user) %>
+        <%= user_index_field(user, :avatar) %>
       </div>
       <div class="w-4/5">
-        <%= user_index_tag(user, :name, class: 'text-sky-500') %>
-        <%= user_index_tag(user, :email, class: 'text-gray-300') %>
+        <%= user_index_field(user, :name, class: 'text-sky-500') %>
+        <%= user_index_field(user, :email, class: 'text-gray-300') %>
       </div>
     </div>
   </td>
   <td class="p-2">
-    <%= user_index_profile_tag(user.profile, :name, class: 'text-orange-500') %>
-    <%= user_index_profile_tag(user.profile, :bio, class: 'text-lime-500') %>
-    <%= user_index_profile_tag(user.profile, :location, class: 'text-cyan-500') %>
+    <%= user_index_field(user.profile, :name, class: 'max-w-lg text-orange-500') %>
+    <%= user_index_field(user.profile, :bio, class: 'max-w-lg text-lime-500') %>
+    <%= user_index_field(user.profile, :location, class: 'max-w-lg text-cyan-500') %>
   </td>
   <td class="p-2">
-    <%= user_index_tag(user, :activated) %>
+    <%= user_index_field(user, :activated) %>
   </td>
   <td class="p-2 text-rose-500">
     <%= user_index_control_tag(user, class: 'block') %>

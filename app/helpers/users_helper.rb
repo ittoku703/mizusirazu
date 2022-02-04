@@ -1,9 +1,6 @@
 module UsersHelper
   def user_destroy_link(user, options = {})
-    options[:data] = {
-      turbo_method: :delete,
-      turbo_confirm: 'Are you sure?'
-    }
+    options[:data] = { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
 
     link_to('Delete', user, options)
   end
@@ -26,24 +23,21 @@ module UsersHelper
     end
   end
 
-  def user_field(user, attribute_name)
-    content_tag(:p) do
-      content_tag(:strong, "#{attribute_name.capitalize}: ") +
-      content_tag(:span, user.send(attribute_name))
-    end
-  end
-
-  def user_index_tag(user, attribute_name, options = {})
-    if attribute_name == :activated
-      options[:class] = user.activated ? 'text-yellow-500' : 'text-violet-500'
-    end
+  def user_index_field(object, attribute_name, options = {})
     options[:class] = "#{options[:class]} truncate"
-    content_tag(:div, user.send(attribute_name), options)
-  end
+    if attribute_name == :activated
+      options[:class] = object.activated ? 'text-yellow-500' : 'text-violet-500'
+    end
 
-  def user_index_profile_tag(user_profile, attribute_name, options = {})
-    options[:class] = "#{options[:class]} max-w-lg truncate"
-    content_tag(:div, user_profile.send(attribute_name) || "No #{attribute_name}", options)
+    if attribute_name == :avatar
+      link_to(user_path(object)) do
+        image_tag('image-not-found.png', class: 'w-12 h-12 bg-white rounded-full')
+      end
+    elsif object.class == User
+      content_tag(:div, object.send(attribute_name), options)
+    elsif object.class == Profile
+      content_tag(:div, object.send(attribute_name) || "No #{attribute_name}", options)
+    end
   end
 
   def user_index_control_tag(user, options = {})
@@ -56,9 +50,32 @@ module UsersHelper
     end
   end
 
-  def user_index_image_tag(user)
-    link_to(user_path(user)) do
-      image_tag('image-not-found.png', class: 'w-12 h-12 bg-white rounded-full')
+  def user_show_field(object, attribute_name, options = { wrapper: {}, attribute: {} })
+    options[:wrapper][:class] = "#{options[:wrapper][:class]} flex items-center pb-2 border-b"
+    options[:attribute][:class] = "#{options[:attribute][:class]} text-gray-800 truncate"
+    options[:attribute][:size] = '64x64' if attribute_name == :avatar
+
+    attribute = attribute_name == :avatar ?
+      image_tag('image-not-found.png', options[:attribute]) :
+      content_tag(:p, object.send(attribute_name), options[:attribute])
+
+    content_tag(:div, options[:wrapper]) do
+      attribute_icon(object, attribute_name) +
+      attribute
     end
   end
+
+  private
+    def attribute_icon(object, attribute_name)
+      return fa_icon('id-card') if object.class == User && attribute_name == :name
+
+      case attribute_name
+      # user
+      when :avatar then fa_icon('camera-retro')
+      # profile
+      when :name then fa_icon('pencil')
+      when :bio  then fa_icon('pencil-square-o')
+      when :location then fa_icon('location-arrow')
+      end
+    end
 end
