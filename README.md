@@ -7,8 +7,15 @@
 > - user create, update, delete
 > - user profile edit
 > - user login, logout
+> - user activation
+> - user reset password
 >
 > The website is published at this URL: https://mizusirazu.net
+
+- Usage:
+  1. `git clone https://github.com/ittoku777/mizusirazu.net.git`
+  2. `docker-compose build`
+  3. `docker-compose up`
 
 * Ruby version:
   *  `ruby 3.0.2p107`
@@ -16,15 +23,16 @@
   *  `Rails 7.0.0`
 * System dependencies
   * `Ruby on rails`
+  * `postgresql`
 * Configuration
 * Database creation:
   * users
   * profiles
 * Database initialization
-  * development: `rails db:migrate:reset`
+  * development: `docker-compose run web bin/rails db:migrate:reset`
   * production: `heroku pg:reset --confirm mizusirazu && heroku run rails db:migrate:reset`
 * How to run the test suite
-  * `bundle exec rspec`
+  * `docker-compose run web bin/bundle exec guard`
 * Services (job queues, cache servers, search engines, etc.)
 * Deployment instructions
   * `git push heroku`
