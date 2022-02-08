@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature "UserActivates", type: :feature do
-  let(:user) { create(:user) }
+  let!(:user) { create(:user) }
+
+  background do
+    sleep 1 # because can not send an email twice in one second.
+  end
 
   scenario 'valid activate' do
     visit new_account_activation_path

@@ -30,6 +30,7 @@ RSpec.describe AccountActivationsController, type: :request do
     context 'valid params' do
       before do
         post account_activations_path, params: { account_activation: { email: user.email } }
+        sleep 1 # because can not send an email twice in one second.
       end
 
       it 'redirect to root' do

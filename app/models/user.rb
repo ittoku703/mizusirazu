@@ -66,9 +66,15 @@ class User < ApplicationRecord
     update(activated: true, activated_at: Time.zone.now)
   end
 
-  # send email for user control
+  # send email for UserMailer methods
+  #
+  # example: user.send_email(:account_activation)
   def send_email(action_name)
+    email_sent_at = get_sent_at(action_name)
+    # return if email sent twice a second
+    return if self.send(email_sent_at) && self.send(email_sent_at) > 1.second.before
     UserMailer.send(action_name, self).deliver_now
+    update({ email_sent_at => Time.zone.now })
   end
 
   # save digest in database for user control
@@ -99,5 +105,13 @@ class User < ApplicationRecord
     def create_activation_digest_before_create
       self.activation_token = User.new_token
       self.activation_digest = User.digest(activation_token)
+    end
+
+    # find attribute from action_name
+    def get_sent_at(action_name)
+      case action_name
+      when :account_activation then :activation_sent_at
+      when :password_reset then :reset_sent_at
+      end
     end
 end

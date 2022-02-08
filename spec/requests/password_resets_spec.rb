@@ -30,6 +30,7 @@ RSpec.describe PasswordResetsController, type: :request do
       before do
         activate_as(user)
         post password_resets_path, params: { password_reset: { email: user.email } }
+        sleep 1 # because can not send an email twice in one second.
       end
       it 'redirect to root' do
         expect(response).to redirect_to root_path
