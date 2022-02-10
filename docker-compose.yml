@@ -1,16 +1,18 @@
 version: "3.9"
 services:
   db:
-    image: postgres
+    image: mariadb
+    ports:
+      - 3306:3306
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - ./tmp/db/:/var/lib/mysql/
     environment:
-      POSTGRES_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails server -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/mizusirazunet
+      - .:/mizusirazu
     ports:
       - "3000:3000"
     depends_on:

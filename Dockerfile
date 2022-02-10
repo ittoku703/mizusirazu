@@ -1,8 +1,8 @@
 FROM ruby:3.0.2
-RUN apt-get update -qq && apt-get install -y postgresql-client
-WORKDIR /mizusirazunet
-COPY Gemfile /mizusirazunet/Gemfile
-COPY Gemfile.lock /mizusirazunet/Gemfile.lock
+RUN apt-get update -qq && apt-get install -y default-libmysqlclient-dev
+WORKDIR /mizusirazu
+COPY Gemfile /mizusirazu/Gemfile
+COPY Gemfile.lock /mizusirazu/Gemfile.lock
 RUN bundle install
 
 # Add a script to be executed every time the container starts

@@ -12,10 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2022_02_07_150147) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "profiles", force: :cascade do |t|
+  create_table "profiles", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.text "bio"
     t.string "location"
@@ -25,7 +22,7 @@ ActiveRecord::Schema.define(version: 2022_02_07_150147) do
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
