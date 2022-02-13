@@ -1,6 +1,6 @@
 module SharedHelper
   def settings_link_to(link, text, options = {})
-    options[:class] = "#{options[:class]} block p-2 border-b border-gray-800 hover:text-sky-500"
+    options[:class] = "#{options[:class]} block p-2 border-b border-amber-500 hover:text-sky-500"
 
     link_to(link, options) do
       link_icon(text) +
@@ -14,14 +14,14 @@ module SharedHelper
     options[:class] = "#{options[:class]} w-full md:w-64 block text-sm border border-gray-300 shadow rounded"
 
     content_tag(:div) do
-      form.label("#{field_name}", class: 'block text-gray-800 pl-2') +
+      form.label("#{field_name}", class: 'block pl-2') +
       form.send(send_name, field_name, options) +
-      content_tag(:span, span_text, class: 'text-xs text-gray-800 italic tracking-tight')
+      content_tag(:span, span_text, class: 'text-xs text-gray-500 italic tracking-tight')
     end
   end
 
   def settings_form_submit(form, text, options = {})
-    options[:class] = "#{options[:class]} p-2 border rounded border-black shadow bg-green-500 hover:bg-green-400 text-white"
+    options[:class] = "#{options[:class]} p-2 border rounded border-black shadow bg-emerald-500 hover:bg-green-500 text-white"
     form.submit(text, options)
   end
 

@@ -1,19 +1,19 @@
-<tr class="divide-x divide-rose-500">
+<tr class="divide-x divide-fuchsia-500">
   <td class="p-2">
-    <div class="flex items-center">
-      <div class="w-1/5">
+    <div class="flex flex-row items-center min-w-max">
+      <div class="basis-1/4">
         <%= user_index_field(user, :avatar) %>
       </div>
-      <div class="w-4/5 ml-4">
-        <%= user_index_field(user, :name, class: 'text-sky-500') %>
-        <%= user_index_field(user, :email, class: 'text-gray-300') %>
+      <div class="basis-3/4 ml-4">
+        <%= user_index_field(user, :name) %>
+        <%= user_index_field(user, :email, class: 'text-gray-500') %>
       </div>
     </div>
   </td>
   <td class="p-2">
-    <%= user_index_field(user.profile, :name, class: 'max-w-lg text-orange-500') %>
+    <%= user_index_field(user.profile, :name, class: 'max-w-lg text-indigo-500') %>
     <%= user_index_field(user.profile, :bio, class: 'max-w-lg text-lime-500') %>
-    <%= user_index_field(user.profile, :location, class: 'max-w-lg text-cyan-500') %>
+    <%= user_index_field(user.profile, :location, class: 'max-w-lg text-teal-500') %>
   </td>
   <td class="p-2">
     <%= user_index_field(user, :activated) %>

@@ -1,13 +1,13 @@
 <% provide(:title, 'User Page') %>
 
 <div class="block md:grid md:grid-cols-4 p-4 space-y-2 md:space-y-0 md:space-x-2">
-  <div class="col-span-1 text-sm p-2 border bg-gray-500 border-amber-500 space-y-2">
-    <%= user_show_field(@user,         :avatar,   { wrapper: { class: 'border-yellow-500 '}, attribute: { class: 'block mx-auto' } }) %>
-    <%= user_show_field(@user.profile, :name,     { wrapper: { class: 'border-lime-500 space-x-4' }, attribute: {} }) %>
-    <%= user_show_field(@user,         :name,     { wrapper: { class: 'border-rose-500 space-x-4' }, attribute: {} }) %>
-    <%= user_show_field(@user.profile, :bio,      { wrapper: { class: 'border-sky-500 space-x-4' }, attribute: {} }) %>
+  <div class="col-span-1 text-sm p-2 border bg-gray-200 border-amber-500 space-y-2">
+    <%= user_show_field(@user,         :avatar,   { wrapper: { class: 'border-yellow-500'}, attribute: { class: 'block mx-auto bg-white border border-gray-500 rounded' } }) %>
+    <%= user_show_field(@user.profile, :name,     { wrapper: { class: 'border-lime-500 space-x-4 truncate' }, attribute: {} }) %>
+    <%= user_show_field(@user,         :name,     { wrapper: { class: 'border-rose-500 space-x-4 truncate' }, attribute: {} }) %>
+    <%= user_show_field(@user.profile, :bio,      { wrapper: { class: 'border-sky-500 space-x-4 break-all' }, attribute: {} }) %>
     <%= user_show_field(@user.profile, :location, { wrapper: { class: 'border-fuchsia-500 space-x-4' }, attribute: {} }) %>
   </div>
 
-  <div class="col-span-3 p-2 border bg-gray-600 border-orange-500">bar</div>
+  <div class="col-span-3 p-2 border bg-amber-500 border-gray-500">bar</div>
 </div>
