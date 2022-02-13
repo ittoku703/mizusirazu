@@ -20,14 +20,14 @@ module ApplicationHelper
   end
 
   def header_link_to(text, link, options = {})
-    options[:class] = "#{options[:class]} block px-4 my-4 hover:underline"
+    options[:class] = "#{options[:class]} block px-4 my-4"
     options[:tabindex] = '-1'
 
     link_to(text, link, options)
   end
 
   def footer_technology_link_to(text, link, options = {})
-    options[:class] = "#{options[:class]} inline-block text-sky-500 pr-2 border-r border-gray-800 mr-2"
+    options[:class] = "#{options[:class]} inline-block pr-2 border-r border-gray-800 mr-2"
 
     link_to(text, link, options)
   end

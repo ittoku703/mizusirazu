@@ -1,15 +1,19 @@
-<div class="w-full bg-gray-600 px-4 border-y border-gray-400">
+<div class="w-full bg-amber-300 px-4 border-b border-orange-500">
   <div class="my-1 flex justify-between items-center">
     <%= site_logo %>
 
+    <div>
+      <h1>Mizusirazu.net</h1>
+    </div>
+
     <div class="relative inline-block">
       <div>
-        <button type="button" class="inline-flex justify-center w-full px-4 py-2 text-gray-400" data-action="click->application#headerUserToggle" data-application-target="userBtn">
+        <button type="button" class="inline-flex justify-center w-full px-4 py-2 text-gray-500" data-action="click->application#headerUserToggle" data-application-target="userBtn">
           <span><%= logged_in? ? 'User' : 'Welcome' %></span>
           <%= render 'modules/bottom_allow' %>
         </button>
       </div>
-      <div class="hidden arrow-top z-10 absolute right-0 mt-2 w-48 rounded shadow bg-gray-400 text-gray-800" data-application-target="userList" tabindex="-1">
+      <div class="hidden arrow-top z-10 absolute right-0 mt-2 w-48 rounded shadow bg-lime-500" data-application-target="userList" tabindex="-1">
         <div class="py-1 text-sm">
         <%= header_link_to('User list', users_path) %>
           <% if logged_in? %>
