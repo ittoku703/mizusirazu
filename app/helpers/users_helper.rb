@@ -8,7 +8,7 @@ module UsersHelper
   def user_form_field(form, field_name, span_text = '')
     send = set_form_field_name(field_name)
 
-    content_tag(:div, class: 'p-4 border border-black') do
+    content_tag(:div, class: 'p-4 bg-gray-200 border border-black') do
       form.label("#{field_name}", class: 'w-full block') +
       form.send(send, field_name, class: 'w-full pt-4 pb-0 border-0 border-b border-gray-800 bg-inherit text-sm focus:ring-0 focus:border-yellow-500 ') +
       content_tag(:span, span_text, class: 'text-xs text-gray-500')
