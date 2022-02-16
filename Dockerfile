@@ -3,7 +3,7 @@ RUN apt-get update -qq && apt-get install -y default-libmysqlclient-dev
 WORKDIR /mizusirazu
 COPY Gemfile /mizusirazu/Gemfile
 COPY Gemfile.lock /mizusirazu/Gemfile.lock
-RUN bundle install
+RUN gem update bundler && bundle install
 
 # Add a script to be executed every time the container starts
 COPY entrypoint.sh /usr/bin
