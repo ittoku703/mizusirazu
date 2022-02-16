@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_07_150147) do
+ActiveRecord::Schema.define(version: 2022_02_16_154554) do
 
   create_table "profiles", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 2022_02_07_150147) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true
+  end
+
+  create_table "providers", charset: "utf8mb4", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.string "user_name"
+    t.string "screen_name"
+    t.string "image_url"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_providers_on_user_id", unique: true
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
@@ -40,4 +52,5 @@ ActiveRecord::Schema.define(version: 2022_02_07_150147) do
   end
 
   add_foreign_key "profiles", "users"
+  add_foreign_key "providers", "users"
 end
