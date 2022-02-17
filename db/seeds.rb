@@ -6,22 +6,43 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.create!(name: 'asdf', email: 'asdf@asdf.com', password: 'password')
-User.first.profile.update!(name: 'Mr. asdf', bio: 'hello I\'m asdf', location: 'JP');
+puts 'Database seed start!'
 
-20.times do |i|
-  name = "seed_user_#{i}"
-  email = Faker::Internet.email
-  User.create!(name: name, email: email, password: 'password');
+User.create!(name: 'asdf', email: 'asdf@asdf.com', password: 'password', activated: true)
+User.first.profile.update!(name: 'Mr. asdf', bio: 'hello I\'m asdf', location: 'japan')
+
+50.times do
+  User.create!({
+    name: "#{Faker::Name.first_name.downcase}_#{Faker::Number.number(digits: 5)}",
+    email: Faker::Internet.email,
+    password: 'password'
+  })
 end
 
-puts 'Done! user seed'
+puts 'user seed is done!'
 
 User.all[1..11].each do |user|
-  name = Faker::Name.name
-  bio = Faker::Lorem.paragraphs.join
-  location = Faker::Address.country
-  user.profile.update!(name: name, bio: bio, location: location)
+  user.profile.update!({
+    name: Faker::Name.name,
+    bio: Faker::Lorem.paragraphs.join,
+    location: Faker::Address.country
+  })
 end
 
-puts 'Done! profile seed'
+puts 'profile seed is done!'
+
+Provider.find_or_create_from_auth({
+  :provider => "twitter",
+  :uid => "123456",
+  :info => {
+    :name => "John Q Public",
+    :image => "http://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png",
+  },
+  :extra => {
+    :raw_info => {
+      :screen_name => "",
+    }
+  }
+})
+
+puts 'provider seed is done!'

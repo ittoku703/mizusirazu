@@ -14,32 +14,27 @@
 
 - Server start up:
   1. `docker-compose build`
-
   2. `docker-compose up`
-
-  3. `docker-compose run web bin/rake db:create`
-
-  4. `docker-compose run web bin/rails db:migrate`
-
-  5. frontend development:
+  3. `make db_init`
+  -  frontend development:
       `docker-compose run web bin/rails tailwindcss:watch`
-
+  
 - Ruby version:
   -  `ruby 3.0.2p107`
-
+  
 - Rails version:
   -  `Rails 7.0.0`
-
+  
 - System dependencies
   - `Ruby on rails`
-  - `postgresql`
-
+  - `mariaDB`
+  
 - Configuration
 
 - Database creation:
   - users
   - profiles
-
+  
 - Database initialization
   - development: `docker-compose run web bin/rails db:migrate:reset`
 
@@ -47,7 +42,7 @@
   
 - How to run the test suite
   - `docker-compose run web bin/bundle exec guard`
-
+  
 - Services (job queues, cache servers, search engines, etc.)
 
 - Deployment instructions
