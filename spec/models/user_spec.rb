@@ -134,6 +134,17 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe '.provider' do
+    before do
+      user.save
+      user.create_provider
+    end
+
+    it 'should be delete when user destroyed' do
+      expect { user.destroy }.to change(Provider, :count).by(-1)
+    end
+  end
+
   def user_valid?(user)
     expect(user).to be_valid
   end
