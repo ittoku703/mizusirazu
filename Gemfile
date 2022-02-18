@@ -51,6 +51,7 @@ gem 'mysql2'
 
 # Standardized Multi-Provider Authentication
 gem 'omniauth-twitter'
+gem 'omniauth-rails_csrf_protection'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

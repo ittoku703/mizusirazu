@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get    '/login', to: 'sessions#new', as: 'new_session'
   delete '/logout', to: 'sessions#destroy', as: 'session'
 
+  get '/auth/:provider/callback', to: 'providers#create', as: 'providers'
+  get '/auth/failure', to: 'providers#failure', as: 'provider_failure'
+
   scope :settings do
     get '/user', to: 'users#edit', as: 'edit_user'
     get '/profile', to: 'profiles#edit', as: 'edit_user_profile'

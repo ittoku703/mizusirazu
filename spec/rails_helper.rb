@@ -72,5 +72,5 @@ RSpec.configure do |config|
   # Use Helper helper
   config.include HelperSupport, type: :helper
   # add omniauth mocks helper
-  config.include OmniauthMocks, type: :model
+  config.include OmniauthMocks
 end
