@@ -33,6 +33,7 @@
 - Database creation:
   - users
   - profiles
+  - providers
 
 - Database initialization
   - development: `make db_reset`
