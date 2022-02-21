@@ -9,13 +9,20 @@ class Provider < ApplicationRecord
     uid = auth[:uid]
     user_name = auth[:info][:name]
     image_url = auth[:info][:image]
+    # for the User model
+    email = auth[:info][:email] || screen_name + '@twitter.com'
+    # for the Profile model
+    description = auth[:info][:description]
+    location = auth[:info][:location]
 
     if find_provider = Provider.find_by(provider: provider, uid: uid)
       return find_provider.user
     else
-      user = User.create(name: uid, email: "#{uid}@twitter.com", password: User.new_token, activated: true)
-      user.create_provider(provider: provider, uid: uid, user_name: user_name, image_url: image_url, screen_name: screen_name)
-      return user
+      User.create_from_omniauth({
+        user: { name: screen_name, email: email, password: User.new_token, activated: true },
+        profile: { name: user_name, bio: description, location: location },
+        provider: { provider: provider, uid: uid, user_name: user_name, image_url: image_url, screen_name: screen_name }
+      });
     end
   end
 end

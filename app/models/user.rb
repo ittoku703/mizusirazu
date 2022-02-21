@@ -2,11 +2,11 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_one :provider, dependent: :destroy
 
-  attr_accessor :remember_token, :activation_token, :reset_token
+  attr_accessor :remember_token, :activation_token, :reset_token, :skip_create_profile_model
 
   before_save :downcase_email
   before_create :create_activation_digest_before_create
-  after_create :create_profile_model
+  after_create -> { create_profile_model() unless skip_create_profile_model }
   after_create -> { send_email(:account_activation) }
 
   validates :name, presence: true
@@ -42,6 +42,21 @@ class User < ApplicationRecord
   # return the random token
   def User.new_token
     SecureRandom.urlsafe_base64
+  end
+
+  # create user, profile, provider models with omniauth
+  def User.create_from_omniauth(models)
+    # Do not create a default profile
+    models[:user][:skip_create_profile_model] = true
+
+    user_model = models[:user]
+    profile_model = models[:profile]
+    provider_model = models[:provider]
+
+    user = create(user_model)
+    user.create_profile(profile_model)
+    user.create_provider(provider_model)
+    return user
   end
 
   # remember user in database for permanent sessions
