@@ -51,4 +51,4 @@
 
 **Model structure**
 
-![Mizusirazu model](https://raw.githubusercontent.com/shinzanmono/mizusirazu.net/f7c21e15e0caaa0f371413dc1c84b73604f92006/doc/images/model-structure.drawio.svg)
+![Mizusirazu model](https://raw.githubusercontent.com/ittoku777/mizusirazu/6c8125db34795b3cf17bbb10e8ec54a7d1435802/doc/images/model-structure.drawio.svg)
