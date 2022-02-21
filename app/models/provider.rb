@@ -8,7 +8,7 @@ class Provider < ApplicationRecord
     screen_name = auth[:extra][:raw_info][:screen_name]
     uid = auth[:uid]
     user_name = auth[:info][:name]
-    image_url = auth[:info][:image].gsub(/_normal.jpg/, '.jpeg')
+    image_url = auth[:info][:image]
 
     if find_provider = Provider.find_by(provider: provider, uid: uid)
       return find_provider.user
