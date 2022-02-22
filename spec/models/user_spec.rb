@@ -49,13 +49,6 @@ RSpec.describe User, type: :model do
   end
 
   describe '.email' do
-    it 'should be downcase before saving user' do
-      upper_case_email = 'HOGE@BAR.COM'
-      user.email = upper_case_email
-      user.save
-      expect(user.reload.email.downcase).to eq upper_case_email.downcase
-    end
-
     it 'should be present' do
       user.email = ''
       user_invalid?(user)
@@ -124,13 +117,12 @@ RSpec.describe User, type: :model do
   end
 
   describe '.profile' do
-    it 'should be delete when user destroyed' do
+    before do
       user.save
-      expect { user.destroy }.to change(Profile, :count).by(-1)
     end
 
-    it 'should create after user created' do
-      expect { user.save }.to change(Profile, :count).by(1)
+    it 'should be delete when user destroyed' do
+      expect { user.destroy }.to change(Profile, :count).by(-1)
     end
   end
 
@@ -263,6 +255,64 @@ RSpec.describe User, type: :model do
     context 'reset_token' do
       it 'save reset digest in database for password reset' do
         expect { user.create_digest(:reset) }.to change { user.reset_digest.is_a?(String) }.from(false).to(true)
+      end
+    end
+  end
+
+  describe 'before_save downcase_email()' do
+    before do
+      user.email.upcase!
+    end
+
+    it 'should be downcase before saving user' do
+      expect { user.save }.to change(user, :email).to(user.email.downcase)
+    end
+  end
+
+  describe 'before_create create_activation_digest_before_create()' do
+    it 'shoud create activation_digest' do
+      expect { user.save! }.to change(user, :activation_digest)
+    end
+
+    context 'user activated is true' do
+      before do
+        user.activated = true
+      end
+
+      it 'no create activation_digest' do
+        expect { user.save! }.not_to change(user, :activation_digest)
+      end
+    end
+  end
+
+  describe 'after_create create_profile_model()' do
+    it 'should create profile model' do
+      expect { user.save }.to change(Profile, :count).by(1)
+    end
+
+    context 'skip_create_profile_model is true' do
+      before do
+        user.skip_create_profile_model = true
+      end
+
+      it 'not create profile model' do
+        expect { user.save }.not_to change(Profile, :count)
+      end
+    end
+  end
+
+  describe 'after_create send_email(:activation_email)' do
+    it 'should send activation email' do
+      expect { user.save }.to change(ActionMailer::Base.deliveries, :count).by(1)
+    end
+
+    context 'user activated is true' do
+      before do
+        user.activated = true
+      end
+
+      it 'no send activation email' do
+        expect { user.save }.not_to change(ActionMailer::Base.deliveries, :count)
       end
     end
   end

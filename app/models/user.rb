@@ -5,9 +5,9 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token, :skip_create_profile_model
 
   before_save :downcase_email
-  before_create :create_activation_digest_before_create
+  before_create -> { create_activation_digest_before_create() unless activated? }
   after_create -> { create_profile_model() unless skip_create_profile_model }
-  after_create -> { send_email(:account_activation) }
+  after_create -> { send_email(:account_activation) unless activated? }
 
   validates :name, presence: true
   # why separate it? for reduce the number of error messages
