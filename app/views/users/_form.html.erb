@@ -1,13 +1,13 @@
 <% if action_name == 'new' || action_name == 'create' %>
   <%= form_with model: @user, method: :post do |f| %>
-    <div class="space-y-6">
+    <div class="space-y-4">
       <%= render 'shared/form_errors', object: f.object %>
       <%= recaptcha_v3 action: 'signup', turbolinks: true %>
       <%= user_form_field(f, :name, 'Only "Lower alphabets", "Digit" and "Under score" can be entered') %>
       <%= user_form_field(f, :email) %>
       <%= user_form_field(f, :password) %>
       <%= user_form_field(f, :password_confirmation, 'Please enter password again') %>
-      <%= f.submit yield(:title), class: 'border-b-4 border-double border-black hover:border-emerald-500' %>
+      <%= user_form_submit(f, yield(:title)) %>
     </div>
   <% end %>
 <% elsif action_name == 'edit' || action_name == 'update' %>

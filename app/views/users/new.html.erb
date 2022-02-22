@@ -1,9 +1,19 @@
 <% provide(:title, 'Sign up') %>
 
-<div class="w-full p-4">
-  <div class="bg-emerald-500 rounded p-2">
-    <div class="p-4 bg-amber-500 border border-black rounded">
+<div class="block lg:flex lg:signup-bg-img">
+  <div class="lg:hidden">
+    <%= image_tag 'signup.png' %>
+  </div>
+  <div class="w-full lg:max-w-lg text-sm">
+    <div class="flex flex-col p-4 bg-gray-200 lg:bg-white lg:bg-opacity-50 space-y-4">
+      <div class="inline-block mx-auto bg-emerald-500 border border-gray-500 rounded-full p-2">
+        <%= site_logo(size: '64x64') %>
+      </div>
+      <div class="text-center text-xl pb-2 border-b border-gray-500 mb-4">
+        <%= yield(:title) %>
+      </div>
       <%= render 'form' %>
+      <%= render 'providers/links' %>
     </div>
   </div>
-</div>
+<div>

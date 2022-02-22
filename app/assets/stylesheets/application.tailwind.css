@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-a, button {
-  @apply duration-300 hover:no-underline hover:text-sky-500;
+a, button, input[type="submit"] {
+  @apply duration-300 hover:no-underline;
 }
 
 /* Disable the background color when input auto complate */
@@ -56,4 +56,12 @@ input:-webkit-autofill {
   height: 12px;
   transform: translate(0, -100%);
   @apply absolute top-0 left-3/4 bg-lime-500;
+}
+
+@media (min-width: 1024px) {
+  .lg\:signup-bg-img {
+    background-image: url('signup.png');
+    background-position: left;
+    background-repeat: no-repeat;
+  }
 }

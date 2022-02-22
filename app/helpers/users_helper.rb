@@ -8,11 +8,17 @@ module UsersHelper
   def user_form_field(form, field_name, span_text = '')
     send = set_form_field_name(field_name)
 
-    content_tag(:div, class: 'p-4 bg-white border border-black') do
+    content_tag(:div, class: 'w-full') do
       form.label("#{field_name}", class: 'w-full block') +
-      form.send(send, field_name, class: 'w-full pt-4 pb-0 border-0 border-b border-gray-800 bg-inherit text-sm focus:ring-0 focus:border-yellow-500 ') +
+      form.send(send, field_name, class: 'w-full text-sm border border-gray-400 rounded shadow focus:ring-emerald-500 ') +
       content_tag(:span, span_text, class: 'text-xs text-gray-500')
     end
+  end
+
+  def user_form_submit(form, text, options = {})
+    options[:class] = 'w-full py-2 bg-emerald-400 border border-gray-400 rounded shadow hover:bg-emerald-500 hover:text-white'
+
+    form.submit(text, options)
   end
 
   def user_form_destroy_field(form)

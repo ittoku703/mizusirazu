@@ -1,1 +1,7 @@
-<%= button_to 'sign in with twitter', '/auth/twitter', data: { turbo: false } %>
+
+<div class="p-2 text-center bg-gray-200 rounded space-y-4">
+  <p class="pb-2 border-b border-indigo-500 mb-2">Sign in with</p>
+  <div class="space-x-2">
+    <%= twitter_omniauth_button_to() %>
+  </div>
+</div>
