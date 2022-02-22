@@ -1,5 +1,7 @@
 module OmniauthMocks
   def twitter_mock
+    OmniAuth.config.test_mode = true
+
     OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
       provider: 'twitter',
       uid: '123456',
