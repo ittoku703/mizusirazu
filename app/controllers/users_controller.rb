@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # authenticate
   before_action :logged_in_user, only: %i[edit update destroy]
-  before_action :activate_user, only: %i[edit update]
+  before_action :activate_user,  only: %i[edit update]
   before_action -> { correct_user(params[:name]) }, only: %i[update destroy]
   before_action :already_logged_in, only: %i[new create]
   # set parameters
@@ -26,13 +26,13 @@ class UsersController < ApplicationController
       if verify_recaptcha(model: @user, action: 'signup', minimum_score: 0.5)
         if @user.save
           flash[:notice] = 'Please check email and activate your account'
-          format.html { redirect_to root_path }
+          format.html { redirect_to root_path() }
         else
           # nessally status: :unprocessable_entity
           format.html { render :new, status: :unprocessable_entity }
         end
       else
-        # Score is below threshold, so user may be a bot. Show a challenge, require multi-factor
+        # Score is below threshold, so user may be a bot
         format.html { render :new, status: :unprocessable_entity }
       end
     end
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     flash[:notice] = 'Successfully user was delete'
-    redirect_to root_path, status: :see_other
+    redirect_to root_path()
   end
 
   private

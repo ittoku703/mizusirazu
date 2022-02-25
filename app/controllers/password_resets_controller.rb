@@ -1,7 +1,7 @@
 class PasswordResetsController < ApplicationController
   before_action :already_logged_in
   before_action -> { valid_recaptcha('password_reset') }, only: %i[create]
-  before_action :get_user, only: %i[edit update]
+  before_action :set_user, only: %i[edit update]
   before_action :valid_user, only: %i[edit update]
   before_action -> { set_yield_params('shared/send_email_form') }
 
@@ -16,10 +16,10 @@ class PasswordResetsController < ApplicationController
         if @user.activated?
           flash[:notice] = 'Send password reset email, Please check email and reset your password'
           @user.send_password_reset_email()
-          format.html { redirect_to root_path }
+          format.html { redirect_to root_path() }
         else
           flash[:alert] = 'This user has not activated yet. Please user activate'
-          format.html { redirect_to new_account_activation_path }
+          format.html { redirect_to new_account_activation_path() }
         end
       else
         flash.now[:alert] = 'Email is invalid, Please try again'
@@ -50,12 +50,8 @@ class PasswordResetsController < ApplicationController
       params.require(:user).permit(:password, :password_confirmation)
     end
 
-    # get user object from parameter email
-    def get_user
-      @user = User.find_by(email: params[:email])
-    end
-
-    # check the get_user can be the resets password
+    # check the set_user can be the resets password.
+    # 1. exists set_user, 2. user.reset_digest is authentication, 3. user non activated
     def valid_user
       unless @user
         flash[:alert] = 'User email is not found'

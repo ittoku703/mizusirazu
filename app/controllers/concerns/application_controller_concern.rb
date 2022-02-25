@@ -100,6 +100,11 @@ module ApplicationControllerConcern
     @user = User.find_by!(user_hash)
   end
 
+  # set user object from parameter email
+  def set_user
+    @user = User.find_by(email: params[:email])
+  end
+
   # set the view after through application.html.erb
   def set_yield_params(yield_name)
     params[:yield] = yield_name
