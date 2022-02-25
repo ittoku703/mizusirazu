@@ -1,6 +1,6 @@
 class AccountActivationsController < ApplicationController
   before_action :already_activated
-  before_action -> { set_user!(email: params[:email]) },            only: %i[edit]
+  before_action -> { set_user!(email: params[:email]) },           only: %i[edit]
   before_action -> { valid_recaptcha('account_activation') },      only: %i[create]
   before_action -> { set_yield_params('shared/send_email_form') }, only: %i[new create]
 
@@ -14,8 +14,7 @@ class AccountActivationsController < ApplicationController
       if @user = User.find_by(email: params[:account_activation][:email])
         unless @user.activated?
           flash[:notice] = 'Send account activation email, Please check email and activate your account'
-          @user.create_digest(:activation)
-          @user.send_email(:account_activation)
+          @user.send_account_activation_email()
           format.html { redirect_to root_path }
         else
           flash[:notice] = 'User already activated'

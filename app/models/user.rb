@@ -2,15 +2,15 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_one :provider, dependent: :destroy
 
-  attr_accessor :remember_token, :activation_token, :reset_token, :skip_create_profile_model
+  attr_accessor :remember_token, :activation_token, :reset_token,
+                :skip_create_profile_model
 
   before_save :downcase_email
   before_create -> { create_activation_digest_before_create() unless activated? }
-  after_create -> { create_profile_model() unless skip_create_profile_model }
-  after_create -> { send_email(:account_activation) unless activated? }
+  after_create ->  { create_profile_model() unless skip_create_profile_model }
+  after_create ->  { send_account_activation_email() unless activated? }
 
   validates :name, presence: true
-  # why separate it? for reduce the number of error messages
   validates :name,
     format: { with: /\A[a-z0-9_]+\z/, message: 'only alphabets, digits and underscore' },
     length: { maximum: 128 },
@@ -45,13 +45,13 @@ class User < ApplicationRecord
   end
 
   # create user, profile, provider models with omniauth
-  def User.create_from_omniauth(models)
+  def User.create_from_omniauth(models_hash)
     # Do not create a default profile
-    models[:user][:skip_create_profile_model] = true
+    models_hash[:user][:skip_create_profile_model] = true
 
-    user_model = models[:user]
-    profile_model = models[:profile]
-    provider_model = models[:provider]
+    user_model = models_hash[:user]
+    profile_model = models_hash[:profile]
+    provider_model = models_hash[:provider]
 
     user = create(user_model)
     user.create_profile(profile_model)
@@ -79,18 +79,23 @@ class User < ApplicationRecord
 
   # activate your account
   def activate
-    update(activated: true, activated_at: Time.zone.now)
+    update(activated: true, activated_at: Time.zone.now, activation_sent_at: nil)
   end
 
-  # send email for UserMailer methods
-  #
-  # example: user.send_email(:account_activation)
-  def send_email(action_name)
-    email_sent_at = get_sent_at(action_name)
-    # return if email sent twice a second
-    return if self.send(email_sent_at) && self.send(email_sent_at) > 1.second.before
-    UserMailer.send(action_name, self).deliver_now
-    update({ email_sent_at => Time.zone.now })
+  # send user mailer account activation email
+  def send_account_activation_email
+    return if hammaring_protection(:activation_sent_at)
+    create_digest(:activation)
+    UserMailer.account_activation(self).deliver_now
+    update(activation_sent_at: Time.zone.now)
+  end
+
+  # send user password reset email
+  def send_password_reset_email
+    return if hammaring_protection(:reset_sent_at)
+    create_digest(:reset)
+    UserMailer.password_reset(self).deliver_now
+    update(reset_sent_at: Time.zone.now)
   end
 
   # save digest in database for user control
@@ -123,11 +128,8 @@ class User < ApplicationRecord
       self.activation_digest = User.digest(activation_token)
     end
 
-    # find attribute from action_name
-    def get_sent_at(action_name)
-      case action_name
-      when :account_activation then :activation_sent_at
-      when :password_reset then :reset_sent_at
-      end
+    # return if email sent twice a second
+    def hammaring_protection(email_sent_at)
+      self.send(email_sent_at) && self.send(email_sent_at) > 1.second.before
     end
 end

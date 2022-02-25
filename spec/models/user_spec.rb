@@ -200,46 +200,43 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'send_email(action_name)' do
-    before { user.save }
-
-    context 'account activation email' do
-      before do
-        user.activation_sent_at = nil
-      end
-
-      it 'should send email' do
-        expect { user.send_email(:account_activation) }.to change(ActionMailer::Base.deliveries, :count).by(1)
-      end
-
-      it 'should activation_sent_at is not empty' do
-        expect { user.send_email(:account_activation) }.to change { user.activation_sent_at.nil? }.from(true).to(false)
-      end
-
-      it 'should send email for 1 second after' do
-        user.send_email(:account_activation)
-        expect { user.send_email(:account_activation) }.to change(ActionMailer::Base.deliveries, :count).by(0)
-      end
+  describe 'send_account_activation_email()' do
+    before do
+      user.save
+      user.activation_sent_at = nil
     end
 
-    context 'reset password email' do
-      before do
-        user.create_digest(:reset)
-        user.reset_sent_at = nil
-      end
+    it 'should send email' do
+      expect { user.send_account_activation_email() }.to change(ActionMailer::Base.deliveries, :count).by(1)
+    end
 
-      it 'should send email' do
-        expect { user.send_email(:password_reset) }.to change(ActionMailer::Base.deliveries, :count).by(1)
-      end
+    it 'should activation_sent_at is not empty' do
+      expect { user.send_account_activation_email() }.to change { user.activation_sent_at.nil? }.from(true).to(false)
+    end
 
-      it 'should reset_sent_at is not empty' do
-        expect { user.send_email(:password_reset) }.to change { user.reset_sent_at.nil? }.from(true).to(false)
-      end
+    it 'should send email for 1 second after' do
+      user.send_account_activation_email()
+      expect { user.send_account_activation_email() }.to change(ActionMailer::Base.deliveries, :count).by(0)
+    end
+  end
 
-      it 'should send email for 1 second after' do
-        user.send_email(:password_reset)
-        expect { user.send_email(:password_reset) }.to change(ActionMailer::Base.deliveries, :count).by(0)
-      end
+  describe 'send_password_reset_email()' do
+    before do
+      user.save
+      user.reset_sent_at = nil
+    end
+
+    it 'should send email' do
+      expect { user.send_password_reset_email() }.to change(ActionMailer::Base.deliveries, :count).by(1)
+    end
+
+    it 'should reset_sent_at is not empty' do
+      expect { user.send_password_reset_email() }.to change { user.reset_sent_at.nil? }.from(true).to(false)
+    end
+
+    it 'should send email for 1 second after' do
+      user.send_password_reset_email()
+      expect { user.send_password_reset_email() }.to change(ActionMailer::Base.deliveries, :count).by(0)
     end
   end
 
@@ -301,7 +298,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'after_create send_email(:activation_email)' do
+  describe 'after_create send_account_activation_email()' do
     it 'should send activation email' do
       expect { user.save }.to change(ActionMailer::Base.deliveries, :count).by(1)
     end
