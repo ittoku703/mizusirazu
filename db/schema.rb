@@ -10,15 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_16_154554) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_02_16_154554) do
   create_table "profiles", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.text "bio"
     t.string "location"
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true
   end
 
@@ -29,8 +28,8 @@ ActiveRecord::Schema.define(version: 2022_02_16_154554) do
     t.string "screen_name"
     t.string "image_url"
     t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_providers_on_user_id", unique: true
   end
 
@@ -38,15 +37,15 @@ ActiveRecord::Schema.define(version: 2022_02_16_154554) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "remember_digest"
     t.string "activation_digest"
     t.boolean "activated", default: false
-    t.datetime "activated_at", precision: 6
+    t.datetime "activated_at"
     t.string "reset_digest"
-    t.datetime "reset_sent_at", precision: 6
-    t.datetime "activation_sent_at", precision: 6
+    t.datetime "reset_sent_at"
+    t.datetime "activation_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
   end
