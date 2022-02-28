@@ -19,7 +19,7 @@ RSpec.describe ProvidersController, type: :request do
 
     context 'invalid params' do
       before do
-        OmniAuth.config.mock_auth[:twitter] = :invalid_credentials
+        twitter_invalid_credentials()
         get providers_path(provider: :twitter)
       end
 
