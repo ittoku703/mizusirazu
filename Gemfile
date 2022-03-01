@@ -42,16 +42,17 @@ gem 'faker'
 # Use reCAPTCHA
 gem 'recaptcha'
 
-# font-awesome-rails provides the Font-Awesome web fonts and stylesheets as a Rails engine for use with the asset pipeline.
-# See https://github.com/bokmann/font-awesome-rails
+# font-awesome-rails provides the Font-Awesome web fonts and stylesheets as a Rails engine for use with the asset pipeline [https://github.com/bokmann/font-awesome-rails]
 gem 'font-awesome-rails'
 
 # use mariadb
 gem 'mysql2'
 
+# Rails CSRF Protection
+gem 'omniauth-rails_csrf_protection'
+
 # Standardized Multi-Provider Authentication
 gem 'omniauth-twitter'
-gem 'omniauth-rails_csrf_protection'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -93,15 +94,16 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 
-  # using assert_template method in test
-  gem 'rails-controller-testing'
-  # automate my test
+  # automatically & intelligently launch specs when files are modified
   gem 'guard-rspec', require: false
-  # desktop notification when test is changed
-  gem 'terminal-notifier'
-	gem 'terminal-notifier-guard'
+
+  # # using assert_template method in test
+  # gem 'rails-controller-testing'
+  # # desktop notification when test is changed
+  # gem 'terminal-notifier'
+  # gem 'terminal-notifier-guard'
 end
 
-group :production do
-  gem 'unicorn', '6.1.0'
-end
+# group :production do
+#   gem 'unicorn', '6.1.0'
+# end
