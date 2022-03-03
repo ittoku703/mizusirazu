@@ -1,6 +1,6 @@
 <%= form_with url: sessions_path, scope: :session do |f| %>
   <div class="space-y-6 w-64 mx-auto">
-    <%= session_form_field(f, :name_or_email) %>
+    <%= session_form_field(f, :name_or_email, value: yield(:name_or_email)) %>
     <%= session_form_field(f, :password) %>
     <%= session_form_remember_me(f) %>
     <%= recaptcha_v3 action: 'login', turbolinks: true %>

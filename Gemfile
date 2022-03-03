@@ -97,8 +97,9 @@ group :test do
   # automatically & intelligently launch specs when files are modified
   gem 'guard-rspec', require: false
 
-  # # using assert_template method in test
-  # gem 'rails-controller-testing'
+  # using assert_template method in test
+  gem 'rails-controller-testing'
+
   # # desktop notification when test is changed
   # gem 'terminal-notifier'
   # gem 'terminal-notifier-guard'

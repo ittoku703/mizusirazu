@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   before_action :already_logged_in, only: %i[new create]
   before_action -> { valid_recaptcha('login') }, only: %i[create]
+  before_action :set_log_in_user, only: %i[create]
 
   # GET /signup
   def new
@@ -8,7 +9,6 @@ class SessionsController < ApplicationController
 
   # POST /sessions
   def create
-    @user = User.where(name: params[:session][:name_or_email]).or(User.where(email: params[:session][:name_or_email])).take
     respond_to do |format|
       if @user&.authenticate(params[:session][:password])
         if @user.activated?
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
         end
       else
         flash.now[:alert] = 'Could not login. Please try again'
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity, locals: { name_or_email: params[:session][:name_or_email] } }
       end
     end
   end
@@ -35,6 +35,12 @@ class SessionsController < ApplicationController
   end
 
   private
+    # find log in user and set user
+    def set_log_in_user
+      name_or_email = params[:session][:name_or_email]
+      @user = User.where(name: name_or_email).or(User.where(email: name_or_email)).take
+    end
+
     # make the user's session permanent
     def remember(user)
       user.remember

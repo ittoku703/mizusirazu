@@ -19,6 +19,7 @@ RSpec.feature "SessionLogins", type: :feature do
     check 'Save the login?'
     click_button 'Log in'
     expect(page).to have_selector 'div#alert'
+    expect(page).to have_field 'session[name_or_email]', with: 'hoge'
   end
 
   scenario 'logged in user login' do
