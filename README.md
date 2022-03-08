@@ -16,14 +16,15 @@
 - Server start up:
   1. `docker-compose build`
   2. `docker-compose up`
+  - or debug: `make debug`
   3. `make db_init`
   -  frontend development: `make frontend`
 
 - Ruby version:
-  -  `ruby 3.0.2p107`
+  -  `ruby 3.1.1`
 
 - Rails version:
-  -  `Rails 7.0.0`
+  -  `Rails 7.0.2`
 
 - System dependencies
   - `Ruby on rails`
