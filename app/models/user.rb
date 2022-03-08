@@ -87,7 +87,7 @@ class User < ApplicationRecord
     return if hammaring_protection(:activation_sent_at)
     create_digest(:activation)
     UserMailer.account_activation(self).deliver_now
-    update(activation_sent_at: Time.zone.now)
+    update(activated: false, activation_sent_at: Time.zone.now)
   end
 
   # send user password reset email

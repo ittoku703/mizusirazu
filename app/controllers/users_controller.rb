@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   # set parameters
   before_action -> { set_user!(name: params[:name]) }, only: %i[show update destroy]
   before_action -> { set_yield_params('shared/settings') }, only: %i[edit update]
+  before_action :set_prev_email, only: %i[update]
 
   # GET /users
   def index
@@ -52,6 +53,11 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         flash[:notice] = 'Successfully user was update'
+        if @prev_email != @user.email
+          flash[:notice] = '. ' + 'email changed. Please user activated'
+          @user.send_account_activation_email()
+          format.html { redirect_to root_path() }
+        end
         format.html { redirect_to edit_user_path() }
       else
         format.html { render :edit, status: :unprocessable_entity, location: @user.reload }
@@ -69,5 +75,10 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+
+    # set prev_email to check if email was changed during update
+    def set_prev_email
+      @prev_email = @user.email
     end
 end

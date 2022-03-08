@@ -130,6 +130,7 @@ RSpec.describe UsersController, type: :request do
   describe 'PATCH /users/:name' do
     context 'valid params' do
       before do
+        valid_params[:email] = user.email
         log_in_as(user)
         patch user_path(user), params: { user: valid_params }
       end
@@ -159,6 +160,27 @@ RSpec.describe UsersController, type: :request do
         expect(response).to redirect_to new_session_path
       end
     end
+
+    context 'email changed' do
+      before do
+        valid_params[:email] = 'email@changed.com'
+        log_in_as(user)
+        ActionMailer::Base.deliveries.clear
+        patch user_path(user), params: { user: valid_params }
+      end
+
+      it 'user activated is false' do
+        expect(user.activated?).to eq false
+      end
+
+      it 'send account activation email' do
+        expect(ActionMailer::Base.deliveries.count).to eq 1
+      end
+
+      it 'redirect to root' do
+        expect(response).to redirect_to root_path()
+      end
+    end
   end
 
   describe 'DELETE /users/:name' do
@@ -178,8 +200,8 @@ RSpec.describe UsersController, type: :request do
         delete user_path(user)
       end
 
-      it 'should redirect to root' do
-        expect(response).to redirect_to new_session_path
+      it 'should redirect to login page' do
+        expect(response).to redirect_to new_session_path()
       end
     end
   end
