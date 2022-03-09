@@ -1,5 +1,5 @@
 class ProvidersController < ApplicationController
-  def create
+  def twitter
     user = Provider.find_or_create_from_auth(request.env['omniauth.auth'])
     log_in user
     flash[:notice] = "Successfully, User was authentication from #{user.provider.provider}"

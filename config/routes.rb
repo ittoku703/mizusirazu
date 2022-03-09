@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get    '/login', to: 'sessions#new', as: 'new_session'
   delete '/logout', to: 'sessions#destroy', as: 'session'
 
-  get '/auth/:provider/callback', to: 'providers#create', as: 'providers'
+  get '/auth/twitter/callback', to: 'providers#twitter', as: 'twitter_callback'
   get '/auth/failure', to: 'providers#failure', as: 'provider_failure'
 
   scope :settings do
