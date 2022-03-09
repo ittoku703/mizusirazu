@@ -53,6 +53,7 @@ gem 'omniauth-rails_csrf_protection'
 
 # Standardized Multi-Provider Authentication
 gem 'omniauth-twitter'
+gem 'omniauth-github'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
