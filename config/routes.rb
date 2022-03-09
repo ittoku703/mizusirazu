@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy', as: 'session'
 
   get '/auth/twitter/callback', to: 'providers#twitter', as: 'twitter_callback'
+  get '/auth/github/callback', to: 'providers#github', as: 'github_callback'
   get '/auth/failure', to: 'providers#failure', as: 'provider_failure'
 
   scope :settings do

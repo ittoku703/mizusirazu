@@ -4,20 +4,33 @@ module OmniauthMocks
     OmniAuth.config.test_mode = true
 
     OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
-      provider: 'twitter',
-      uid: '123456',
-      info: {
-        nickname: 'johnqpublic',
-        name: 'John Q Public',
-        email: 'johnqpublic@omniauth.com',
-        location: 'Anytown, USA',
-        image: 'http://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png',
-        description: 'a very normal guy.',
-      },
-      extra: {
-        raw_info: {
-          name: 'John Q Public',
-          screen_name: 'johnqpublic',
+      :provider => 'twitter',
+      :uid      => '123456',
+      :extra    => {
+        :raw_info => {
+          :name              => 'mizusirazu ittoku',
+          :screen_name       => 'ittoku703',
+          :location          => 'japan',
+          :description       => 'hello i\'m ittoku !!!',
+          :profile_image_url => 'http://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png',
+        }
+      }
+    })
+  end
+
+  def github_mock
+    OmniAuth.config.test_mode = true
+
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+      :provider => 'github',
+      :uid      => '123456',
+      :extra    => {
+        :raw_info => {
+          :name       => 'mizusirazu ittoku',
+          :login      => 'ittoku703',
+          :avatar_url => 'https://avatars.githubusercontent.com/u/123456',
+          :bio        => 'hello i\'m ittoku !!!',
+          :location   => 'Japan',
         }
       }
     })
@@ -25,5 +38,9 @@ module OmniauthMocks
 
   def twitter_invalid_credentials
     OmniAuth.config.mock_auth[:twitter] = :invalid_credentials
+  end
+
+  def github_invalid_credentials
+    OmniAuth.config.mock_auth[:github] = :invalid_credentials
   end
 end

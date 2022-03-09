@@ -32,18 +32,16 @@ end
 puts 'profile seed is done!'
 
 Provider.find_or_create_from_auth({
-  :provider => "twitter",
-  :uid => "123456",
-  :info => {
-    :name => "John Q Public",
-    :email => "john@example.com",
-    :image => "http://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png",
-    :description => "Hello I\'m Jogn !",
-    :location => 'US'
-  },
-  :extra => {
-    :raw_info => {
-      :screen_name => "john_q_public_12345",
+  provider: 'twitter',
+  uid: '123456',
+  extra: {
+    raw_info: {
+      name: 'John Q Public',
+      screen_name: 'johnqpublic',
+      location: 'Anytown, USA',
+      description: 'a very normal guy.',
+      profile_image_url: 'http://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png',
+      email: 'johnqpublic@omniauth.com',
     }
   }
 })
