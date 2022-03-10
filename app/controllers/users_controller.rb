@@ -54,7 +54,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         flash[:notice] = 'Successfully user was update'
         if @prev_email != @user.email
-          flash[:notice] = '. ' + 'email changed. Please user activated'
+          flash[:notice] += '. ' + 'email changed. Please user activated'
           @user.send_account_activation_email()
           format.html { redirect_to root_path() }
         end
