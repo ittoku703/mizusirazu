@@ -5,7 +5,7 @@ RSpec.describe ProvidersController, type: :request do
     context 'valid params' do
       before do
         twitter_mock()
-        get twitter_callback_path()
+        get provider_callback_path(provider: 'twitter')
       end
 
       it 'redirect to root' do
@@ -20,7 +20,7 @@ RSpec.describe ProvidersController, type: :request do
     context 'invalid params' do
       before do
         twitter_invalid_credentials()
-        get twitter_callback_path()
+        get provider_callback_path(provider: 'twitter')
       end
 
       it 'no logged in user' do
@@ -33,7 +33,7 @@ RSpec.describe ProvidersController, type: :request do
     context 'valid params' do
       before do
         github_mock()
-        get github_callback_path()
+        get provider_callback_path(provider: 'github')
       end
 
       it 'redirect to root' do
@@ -48,7 +48,7 @@ RSpec.describe ProvidersController, type: :request do
     context 'invalid params' do
       before do
         github_invalid_credentials()
-        get github_callback_path()
+        get provider_callback_path(provider: 'github')
       end
 
       it 'no logged in user' do
