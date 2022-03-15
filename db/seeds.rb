@@ -18,8 +18,7 @@ User.first.profile.update!(name: 'Mr. asdf', bio: 'hello I\'m asdf', location: '
   User.create!({
     name: "#{Faker::Name.first_name.downcase}_#{Faker::Number.number(digits: 5)}",
     email: Faker::Internet.email,
-    password: 'password',
-    skip_create_profile_model: true
+    password: 'password'
   })
 end
 
