@@ -21,9 +21,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_095110) do
   end
 
   create_table "profiles", charset: "utf8mb4", force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string "name"
     t.text "bio"
-    t.string "location", limit: 255
+    t.string "location"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -31,11 +31,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_095110) do
   end
 
   create_table "providers", charset: "utf8mb4", force: :cascade do |t|
-    t.string "provider", limit: 255
-    t.string "uid", limit: 255
-    t.string "user_name", limit: 255
-    t.string "screen_name", limit: 255
-    t.string "image_url", limit: 255
+    t.string "provider"
+    t.string "uid"
+    t.string "user_name"
+    t.string "screen_name"
+    t.string "image_url"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,16 +43,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_095110) do
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
-    t.string "name", limit: 255, null: false
-    t.string "email", limit: 255, null: false
-    t.string "password_digest", limit: 255, null: false
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "remember_digest", limit: 255
-    t.string "activation_digest", limit: 255
+    t.string "remember_digest"
+    t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
-    t.string "reset_digest", limit: 255
+    t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.datetime "activation_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true

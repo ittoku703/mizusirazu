@@ -8,64 +8,69 @@
 
 puts 'Database seed start!'
 
-User.create!(name: 'asdf', email: 'asdf@asdf.com', password: 'password', activated: true)
-User.first.profile.update!(name: 'Mr. asdf', bio: 'hello I\'m asdf', location: 'japan')
+# asdf creation
+user = User.create!(name: 'asdf', email: 'asdf@asdf.com', password: 'password', activated: true)
+user.profile.update!(name: 'Mr. asdf', bio: 'hello I\'m asdf', location: 'japan')
+user.microposts.create!(title: 'asdf introduction', content: 'hi i am asdf !!!')
 
-# #############
 # User creation
-#
-50.times do
-  User.create!({
+20.times do
+  user = User.create!({
     name: "#{Faker::Name.first_name.downcase}_#{Faker::Number.number(digits: 5)}",
     email: Faker::Internet.email,
     password: 'password'
   })
+  puts "user_creation: #{user}"
 end
 
-puts 'user seed is done!'
+users = User.all
 
-# ################
 # Profile creation
-#
-User.all[1..11].each do |user|
+users[1..11].each do |user|
   user.profile.update!({
-    name: Faker::Name.name,
-    bio: Faker::Lorem.paragraphs.join,
+    name:     Faker::Name.name,
+    bio:      Faker::Lorem.paragraphs.join,
     location: Faker::Address.country
   })
+  puts "profile_creation: #{user.profile}"
 end
 
-puts 'profile seed is done!'
-
-# ##################
 # Micropost creation
-#
-User.all[1..5] do |user|
+users[1..5].each do |user|
   user.microposts.create!({
-    title: Faker::Lorem.sentence(word_count: 3)
+    title:   Faker::Lorem.sentence(word_count: 3),
     content: Faker::Lorem.paragraph(sentence_count: 2)
-  end
+  })
+  puts "micropost_creation: #{user.microposts.first}"
 end
 
-puts 'micropost seed is done!'
-
-# #################
-# provider creation
-#
+# twitter provider creation
 Provider.find_or_create_from_auth({
-  provider: 'twitter',
-  uid: '123456',
-  extra: {
-    raw_info: {
-      name: 'John Q Public',
-      screen_name: 'johnqpublic',
-      location: 'Anytown, USA',
-      description: 'a very normal guy.',
-      profile_image_url: 'http://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png',
-      email: 'johnqpublic@omniauth.com',
+  :provider => 'twitter',
+  :uid      => '123456',
+  :extra    => {
+    :raw_info => {
+      :name              => 'mizusirazu ittoku',
+      :screen_name       => 'ittoku703',
+      :location          => 'japan',
+      :description       => 'hello i\'m ittoku !!!',
+      :profile_image_url => 'http://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png',
     }
   }
 })
 
-puts 'provider seed is done!'
+# github provider creation
+Provider.find_or_create_from_auth({
+  :provider => 'github',
+  :uid      => '123456',
+  :extra    => {
+    :raw_info => {
+      :name       => 'mizusirazu ittoku',
+      :login      => 'ittoku703',
+      :avatar_url => 'https://avatars.githubusercontent.com/u/123456',
+      :bio        => 'hello i\'m ittoku !!!',
+      :location   => 'Japan',
+    }
+  }
+})
 
