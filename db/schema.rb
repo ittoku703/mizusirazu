@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_16_154554) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_15_095110) do
+  create_table "microposts", charset: "utf8mb4", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
   create_table "profiles", charset: "utf8mb4", force: :cascade do |t|
-    t.string "name"
+    t.string "name", limit: 255
     t.text "bio"
-    t.string "location"
+    t.string "location", limit: 255
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -22,11 +31,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_16_154554) do
   end
 
   create_table "providers", charset: "utf8mb4", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.string "user_name"
-    t.string "screen_name"
-    t.string "image_url"
+    t.string "provider", limit: 255
+    t.string "uid", limit: 255
+    t.string "user_name", limit: 255
+    t.string "screen_name", limit: 255
+    t.string "image_url", limit: 255
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -34,22 +43,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_16_154554) do
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", null: false
-    t.string "password_digest", null: false
+    t.string "name", limit: 255, null: false
+    t.string "email", limit: 255, null: false
+    t.string "password_digest", limit: 255, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "remember_digest"
-    t.string "activation_digest"
+    t.string "remember_digest", limit: 255
+    t.string "activation_digest", limit: 255
     t.boolean "activated", default: false
     t.datetime "activated_at"
-    t.string "reset_digest"
+    t.string "reset_digest", limit: 255
     t.datetime "reset_sent_at"
     t.datetime "activation_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
+  add_foreign_key "microposts", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "providers", "users"
 end

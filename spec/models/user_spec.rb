@@ -137,6 +137,17 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'microposts' do
+    before do
+      user.save
+      user.microposts.create!(title: 'test', content: 'content')
+    end
+
+    it 'should be delete when user destroyed' do
+      expect { user.destroy }.to change(Micropost, :count).by(-1)
+    end
+  end
+
   def user_valid?(user)
     expect(user).to be_valid
   end
@@ -314,3 +325,4 @@ RSpec.describe User, type: :model do
     end
   end
 end
+

@@ -18,3 +18,7 @@ guard:
 
 db_reset:
 	docker-compose run web bin/rails db:migrate:reset
+
+rails_c:
+	docker-compose run web bin/rails console
+
