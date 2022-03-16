@@ -1,4 +1,7 @@
 module ControllerSupport
+  # # # # # # # # # # # # # # # # # #
+  # rspec user authentication methods
+
   # return true if test user logged in
   def is_logged_in?
     !session[:user_id].nil?
@@ -22,5 +25,20 @@ module ControllerSupport
   def activate_as(user)
     get edit_account_activation_path(user.activation_token, email: user.email)
     log_out_as(user) # to log in when user account activation
+  end
+
+  # # # # # # # # # # # # # # # # # #
+  # rspec test methods
+
+  def it_should_be_success()
+    expect(response).to(have_http_status(200))
+  end
+
+  def it_redirect_to(path)
+    expect(response).to(redirect_to(path))
+  end
+
+  def it_render(action)
+    expect(response).to(render_template(action))
   end
 end

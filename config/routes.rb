@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   resources :sessions, only: %i[create]
   resources :account_activations, only: %i[new create edit], path: :confirms
   resources :password_resets, only: %i[new create edit update], path: :passwords
+  resources :microposts
 end
