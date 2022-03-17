@@ -13,12 +13,12 @@ class MicropostsController < ApplicationController
   end
 
   def create
-    micropost = current_user.microposts.new(micropost_params)
+    @micropost = current_user.microposts.new(micropost_params)
 
     respond_to do |format|
-      if micropost.save
+      if @micropost.save
         flash[:notice] = 'Successfully, Micropost was created'
-        format.html { redirect_to micropost_path(micropost) }
+        format.html { redirect_to micropost_path(@micropost) }
       else
         format.html { render(:new, status: :unprocessable_entity) }
       end
@@ -34,12 +34,12 @@ class MicropostsController < ApplicationController
   end
 
   def update
-    micropost = Micropost.find(params[:id])
+    @micropost = Micropost.find(params[:id])
 
     respond_to do |format|
-      if micropost.update(micropost_params)
+      if @micropost.update(micropost_params)
         flash[:notice] = 'Successfully, Micropost was updated'
-        format.html { redirect_to micropost_path(micropost) }
+        format.html { redirect_to micropost_path(@micropost) }
       else
         format.html { render(:edit, status: :unprocessable_entity) }
       end
@@ -52,10 +52,10 @@ class MicropostsController < ApplicationController
     respond_to do |format|
       if micropost.destroy
         flash[:notice] = 'Successfully, Micropost was deleted'
-        format.html { redirect_to root_path() }
+        format.html { redirect_to root_path(), status: :see_other }
       else
         flash[:flert] = 'Micropost delete is failed'
-        format.html { redirect_to root_path() }
+        format.html { redirect_to root_path(), status: :see_other }
       end
     end
   end
@@ -67,6 +67,7 @@ class MicropostsController < ApplicationController
 
     def correct_micropost_user(id)
       micropost = Micropost.find(id)
-      redirect_to root_url unless current_user?(micropost.user)
+      flash[:alert] = 'this user is not current user'
+      redirect_to(root_url(), status: :see_other) unless current_user?(micropost.user)
     end
 end

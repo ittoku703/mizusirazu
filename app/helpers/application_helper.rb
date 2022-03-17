@@ -45,6 +45,9 @@ module ApplicationHelper
       when :location then 'text' + '_field'
       # session
       when :name_or_email then 'text' + '_field'
+      # micropost
+      when :title then 'text' + '_field'
+      when :content then 'text' + '_area'
       end
     end
 end
