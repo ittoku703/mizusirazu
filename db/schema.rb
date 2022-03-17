@@ -13,7 +13,7 @@
 ActiveRecord::Schema[7.0].define(version: 2022_03_15_095110) do
   create_table "microposts", charset: "utf8mb4", force: :cascade do |t|
     t.string "title"
-    t.string "content"
+    t.text "content"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
