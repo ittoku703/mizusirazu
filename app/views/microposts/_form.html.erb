@@ -1,0 +1,14 @@
+<% if action_name == 'new' || action_name == 'create' %>
+  <%= form_with model: @micropost, method: :post do |f| %>
+    <%= render 'shared/form_errors', object: f.object %>
+    <%= micropost_form_field(f, :title) %>
+    <%= micropost_form_field(f, :content) %>
+    <%= micropost_form_submit(f, 'Create Micropost') %>
+  <% end %>
+<% elsif action_name == 'edit' || action_name == 'update' %>
+  <%= form_with model: @micropost, method: :patch do |f| %>
+    <%= micropost_form_field(f, :title) %>
+    <%= micropost_form_field(f, :content) %>
+    <%= micropost_form_submit(f, 'Edit Micropost') %>
+  <% end %>
+<% end %>
