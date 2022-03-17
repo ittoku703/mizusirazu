@@ -2,7 +2,7 @@ module UsersHelper
   def user_destroy_link(user, options = {})
     options[:data] = { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
 
-    link_to('Delete', user, options)
+    link_to('Delete User', user, options)
   end
 
   def user_form_field(form, field_name, span_text = '')
@@ -29,28 +29,35 @@ module UsersHelper
     end
   end
 
-  def user_index_field(object, attribute_name, options = {})
+  def user_index_field(user, attribute_name, options = {})
+    text = user.send(attribute_name)
     options[:class] = "#{options[:class]} truncate"
-    if attribute_name == :activated
-      options[:class] = object.activated ? 'text-white' : 'text-black'
+
+    if text.nil?
+      text = 'is empty'
+      options[:class] += ' text-gray-400'
     end
 
-    if attribute_name == :avatar
-      link_to(user_path(object)) do
-        image_tag('image-not-found.png', class: 'w-12 h-12 bg-white rounded-full border border-gray-500')
-      end
-    elsif object.class == User
-      content_tag(:div, object.send(attribute_name), options)
-    elsif object.class == Profile
-      content_tag(:div, object.send(attribute_name) || "No #{attribute_name}", options)
+    content_tag(:div) do
+      content_tag(:span, "#{attribute_name}", class: 'text-amber-500') +
+      content_tag(:div, text, options)
     end
   end
 
+  def user_index_avatar(user, options = {})
+    options[:class] = "#{options[:class]} w-12 h-12 bg-white rounded-full border border-gray-500"
+
+    image_tag('image-not-found.png', options)
+  end
+
   def user_index_control_tag(user, options = {})
-    options[:class] = "#{options[:class]} block"
+    options[:class] = "#{options[:class]} text-sky-500 hover:text-rose-500"
+
     if current_user?(user)
-      link_to('Edit', edit_user_path(user), options) +
-      user_destroy_link(user, options)
+      content_tag(:div, class: 'flex items-center space-x-2') do
+        link_to('Edit User', edit_user_path(user), options) +
+        user_destroy_link(user, options)
+      end
     else
       content_tag(:div, 'Access denied')
     end

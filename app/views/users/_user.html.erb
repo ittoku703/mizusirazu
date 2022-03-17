@@ -1,24 +1,26 @@
-<tr class="divide-x divide-fuchsia-500">
-  <td class="p-2">
-    <div class="flex flex-row items-center min-w-max">
-      <div class="basis-1/4">
-        <%= user_index_field(user, :avatar) %>
-      </div>
-      <div class="basis-3/4 ml-4">
+<div class="w-full p-4">
+  <div class="p-4 border border-gray-200 rounded">
+    <div class="flex items-center space-x-2">
+      <%= user_index_avatar(user) %>
+      <div class="text-xs truncate">
         <%= user_index_field(user, :name) %>
-        <%= user_index_field(user, :email, class: 'text-gray-500') %>
+        <%= user_index_field(user, :email) %>
+
+        <%= user_index_field(user, :activated) %>
+        <%= user_index_field(user, :activated_at) %>
+
+        <%= user_index_field(user, :password_digest) %>
+        <%= user_index_field(user, :activation_digest) %>
+        <%= user_index_field(user, :reset_digest) %>
+
+        <%= user_index_field(user, :activation_sent_at) %>
+        <%= user_index_field(user, :reset_sent_at) %>
+
+        <%= user_index_field(user, :created_at) %>
+        <%= user_index_field(user, :updated_at) %>
+
+        <%= user_index_control_tag(user, class: 'block') %>
       </div>
     </div>
-  </td>
-  <td class="p-2">
-    <%= user_index_field(user.profile, :name, class: 'max-w-lg text-indigo-500') %>
-    <%= user_index_field(user.profile, :bio, class: 'max-w-lg text-lime-500') %>
-    <%= user_index_field(user.profile, :location, class: 'max-w-lg text-teal-500') %>
-  </td>
-  <td class="p-2">
-    <%= user_index_field(user, :activated) %>
-  </td>
-  <td class="p-2 text-rose-500">
-    <%= user_index_control_tag(user, class: 'block') %>
-  </td>
-</tr>
+  </div>
+</div>
