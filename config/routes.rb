@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :users, except: %i[new], param: :name do
     resources :profiles, only: %i[update]
+    get       '/microposts', to: 'users#microposts'
   end
 
   resources :sessions, only: %i[create]

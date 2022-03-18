@@ -27,6 +27,10 @@ module ControllerSupport
     log_out_as(user) # to log in when user account activation
   end
 
+  def allow_recaptcha
+    allow_any_instance_of(Recaptcha::Adapters::ControllerMethods).to receive(:verify_recaptcha).and_return(false)
+  end
+
   # # # # # # # # # # # # # # # # # #
   # rspec test methods
 
@@ -40,5 +44,25 @@ module ControllerSupport
 
   def it_render(action)
     expect(response).to(render_template(action))
+  end
+
+  def it_status_code_is(code)
+    expect(response).to(have_http_status(code))
+  end
+
+  def it_send_email()
+    expect(ActionMailer::Base.deliveries.count).to(eq(1))
+  end
+
+  def it_no_send_email()
+    expect(ActionMailer::Base.deliveries.count).to(eq(1))
+  end
+
+  def it_create_object(object)
+    expect(object.count).to(eq(1))
+  end
+
+  def it_delete_object(object)
+    expect(object.count).to(eq(0))
   end
 end

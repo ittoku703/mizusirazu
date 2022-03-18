@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action -> { correct_user(params[:name]) }, only: %i[update destroy]
   before_action :already_logged_in, only: %i[new create]
   # set parameters
-  before_action -> { set_user!(name: params[:name]) }, only: %i[show update destroy]
+  before_action -> { set_user!(name: params[:name]) }, only: %i[update destroy]
   before_action -> { set_yield_params('shared/settings') }, only: %i[edit update]
   before_action :set_prev_email, only: %i[update]
 
@@ -41,6 +41,7 @@ class UsersController < ApplicationController
 
   # GET /users/:name
   def show
+    @user = User.eager_load(:profile).find_by!(name: params[:name])
   end
 
   # GET /settings/user
@@ -70,6 +71,11 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:notice] = 'Successfully user was delete'
     redirect_to root_path()
+  end
+
+  # GET /users/:name/microposts
+  def microposts
+    @user = User.eager_load(:microposts).find_by!(name: params[:user_name])
   end
 
   private
