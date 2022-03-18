@@ -19,7 +19,7 @@ RSpec.feature 'MicropostEdits', type: :feature do
     fill_in 'Title', with: ''
     fill_in 'Content', with: ''
     click_button 'Edit Micropost'
-    expect(page).to have_selector('div#alert')
+    expect(page).to have_selector('div#error_explanation')
   end
 
   scenario 'non logged in user edit micropost' do

@@ -1,4 +1,32 @@
-<p><%=@micropost.title %></p>
-<p><%=@micropost.content %></p>
-
-<%= micropost_destroy_link(@micropost) %>
+<div class="w-full p-4 bg-gray-200">
+  <div class="bg-white rounded p-4 divide-y">
+    <div class="py-2">
+      <%= content_tag(:h1, @micropost.title, class: 'text-2xl font-bold text-left break-words') %>
+      <div class="text-xs">
+        <span>Post by: </span>
+        <%= link_to(@micropost.user.name, user_path(@micropost.user), class: 'truncate text-sky-500 hover:text-violet-500') %>
+      </div>
+      <div class="block md:flex md:flex-row md:items-center text-xs md:space-x-2">
+        <div class="text-xs">
+          <span>Created at: </span>
+          <%= content_tag(:div, @micropost.created_at, class: 'truncate inline text-gray-400') %>
+        </div>
+        <div class="text-xs">
+          <span>Updated at: </span>
+          <%= content_tag(:div, @micropost.updated_at, class: 'truncate inline text-gray-400') %>
+        </div>
+      </div>
+    </div>
+    <div class="py-2">
+      <%= simple_format(@micropost.content) %>
+    </div>
+  </div>
+  <% if current_user?(@micropost.user) %>
+    <div class="pt-4">
+      <div class="flex flex-col bg-gray-800 rounded p-4">
+        <%= link_to('Edit Micropost', edit_micropost_path(@micropost), class: 'text-sky-500 hover:text-violet-500') %>
+        <%= micropost_destroy_link(@micropost, class: 'text-sky-500 hover:text-rose-500') %>
+      </div>
+    </div>
+  <% end %>
+</div>

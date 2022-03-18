@@ -5,7 +5,7 @@ class MicropostsController < ApplicationController
   before_action -> { correct_micropost_user(params[:id]) }, only: %i[edit update destroy]
 
   def index
-    @microposts = Micropost.all
+    @microposts = Micropost.eager_load(:user).all
   end
 
   def new
@@ -26,7 +26,7 @@ class MicropostsController < ApplicationController
   end
 
   def show
-    @micropost = Micropost.find(params[:id])
+    @micropost = Micropost.eager_load(:user).find(params[:id])
   end
 
   def edit
@@ -67,7 +67,10 @@ class MicropostsController < ApplicationController
 
     def correct_micropost_user(id)
       micropost = Micropost.find(id)
-      flash[:alert] = 'this user is not current user'
-      redirect_to(root_url(), status: :see_other) unless current_user?(micropost.user)
+
+      unless current_user?(micropost.user)
+        flash[:alert] = 'this user is not current user'
+        redirect_to(root_url(), status: :see_other)
+      end
     end
 end
