@@ -10,6 +10,7 @@
 > - user activation
 > - user reset password
 > - user multi-provider authentication
+> - user micropost create edit
 >
 > The website is published at this URL: https://mizusirazu.net
 
@@ -36,11 +37,12 @@
   - users
   - profiles
   - providers
+  - microposts
 
 - Database initialization
   - development: `make db_reset`
 
-  - production: `comming soon ...`
+  - production: `not yet ...`
 
 - How to run the test suite
   - `make rspec`
