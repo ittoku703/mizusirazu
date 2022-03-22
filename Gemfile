@@ -55,6 +55,12 @@ gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
 
+# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+gem "image_processing", "~> 1.2"
+
+# Use Active Storage validations [https://github.com/igorkasyanchuk/active_storage_validations]
+gem 'active_storage_validations'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -63,9 +69,6 @@ gem 'omniauth-github'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
-
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -90,6 +90,13 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'avatar' do
+    it 'should be attached' do
+      user.avatar.attach(io: File.open('spec/fixtures/images/test.png'), filename: 'test.png', content_type: 'image/png')
+      expect(user.avatar.attached?).to eq true
+    end
+  end
+
   describe '.password' do
     it 'should be present' do
       user.password = ' '
@@ -325,4 +332,3 @@ RSpec.describe User, type: :model do
     end
   end
 end
-
