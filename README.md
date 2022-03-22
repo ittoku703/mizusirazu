@@ -55,7 +55,7 @@
 
 **Model structure**
 
-![Mizusirazu model](https://raw.githubusercontent.com/ittoku703/mizusirazu/8bc9628b7a3e9bef24e147a310d59f976ab1b0df/doc/images/model-structure.drawio.svg)
+![Mizusirazu model](https://raw.githubusercontent.com/ittoku703/mizusirazu/ee5aa55b9ee1fc76b1936135698460885883aca8/doc/images/model-structure.drawio.svg)
 
 **Routing**
 
