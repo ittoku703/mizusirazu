@@ -10,6 +10,7 @@ puts 'Database seed start!'
 
 # asdf creation
 user = User.create!(name: 'asdf', email: 'asdf@asdf.com', password: 'password', activated: true)
+user.avatar.attach(io: File.open('app/assets/images/logo.png'), filename: 'asdf.png', content_type: 'image/png')
 user.profile.update!(name: 'Mr. asdf', bio: 'hello I\'m asdf', location: 'japan')
 user.microposts.create!(title: 'asdf introduction', content: 'hi i am asdf !!!')
 
@@ -73,4 +74,3 @@ Provider.find_or_create_from_auth({
     }
   }
 })
-
