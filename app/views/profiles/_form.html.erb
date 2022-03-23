@@ -1,9 +1,9 @@
 <%= form_with model: [@user, @user.profile], method: :patch do |f| %>
   <div class="space-y-4">
     <%= render 'shared/form_errors', object: f.object %>
-    <%= settings_form_field(f, :name, 'Enter your name. This name will be public. You can delete it at any time.') %>
-    <%= settings_form_field(f, :bio, 'Enter your self-introduction. This introduction will be public. You can delete it at any time.', class: 'h-32') %>
-    <%= settings_form_field(f, :location, 'Enter your country. This country will be public. You can delete it at any time.') %>
+    <%= settings_form_tag(f, :name, 'Enter your name. This name will be public. You can delete it at any time.') %>
+    <%= settings_form_tag(f, :bio, 'Enter your self-introduction. This introduction will be public. You can delete it at any time.', class: 'h-32') %>
+    <%= settings_form_tag(f, :location, 'Enter your country. This country will be public. You can delete it at any time.') %>
     <%= settings_form_submit(f, yield(:submit_text)) %>
   </div>
 <% end %>

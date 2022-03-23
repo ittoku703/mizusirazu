@@ -1,6 +1,6 @@
 module UsersHelper
-  def user_form_field(form, field_name, span_text = '')
-    send = set_form_field_name(field_name)
+  def user_form_field(form, field_name, span_text = '', options = {})
+    send = get_user_form_field_name(field_name)
 
     content_tag(:div, class: 'w-full') do
       form.label("#{field_name}", class: 'w-full block') +
@@ -50,20 +50,20 @@ module UsersHelper
     end
   end
 
-  def user_show_field(object, attribute_name, options = { wrapper: {}, attribute: {} })
-    options[:wrapper][:class] = "#{options[:wrapper][:class]} flex items-center pb-2 border-b"
-    options[:attribute][:class] = "#{options[:attribute][:class]} text-gray-800"
-    options[:attribute][:size] = '64x64' if attribute_name == :avatar
+  def user_show_tag(object, attribute_name, options = {})
+    options[:class] = "#{options[:class]} flex items-center pb-2 border-b space-x-4"
 
     if attribute_name == :avatar
+      attribute_options = { class: 'w-12 h-12 rounded-full bg-white border border-gray-500'}
       attribute = object.send(attribute_name).attached? ?
-        image_tag(object.avatar, options[:attribute]) :
-        image_tag('image-not-found.png', options[:attribute])
+        image_tag(object.avatar, attribute_options) :
+        image_tag('image-not-found.png', attribute_options)
     else
-      content_tag(:p, object.send(attribute_name), options[:attribute])
+      attribute_options = { class: 'text-gray-600'}
+      attribute = content_tag(:p, object.send(attribute_name), attribute_options)
     end
 
-    content_tag(:div, options[:wrapper]) do
+    content_tag(:div, options) do
       attribute_icon(object, attribute_name) +
       attribute
     end
@@ -86,6 +86,16 @@ module UsersHelper
       when :name then fa_icon('pencil')
       when :bio  then fa_icon('pencil-square-o')
       when :location then fa_icon('location-arrow')
+      end
+    end
+
+    def get_user_form_field_name(name)
+      case name
+      when :name                  then 'text_field'
+      when :email                 then 'email_field'
+      when :password              then 'password_field'
+      when :password_confirmation then 'password_field'
+      when :avatar                then 'file_field'
       end
     end
 end

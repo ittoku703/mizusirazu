@@ -14,10 +14,11 @@
   <%= form_with model: @user, method: :patch do |f| %>
     <div class="space-y-6">
       <%= render 'shared/form_errors', object: f.object %>
-      <%= settings_form_field(f, :name, 'Only "Lower alphabets", "Digit" and "Under score" can be entered') %>
-      <%= settings_form_field(f, :email) %>
-      <%= settings_form_field(f, :password) %>
-      <%= settings_form_field(f, :password_confirmation, 'Please enter password again') %>
+      <%= settings_form_tag(f, :avatar) %>
+      <%= settings_form_tag(f, :name, 'Only "Lower alphabets", "Digit" and "Under score" can be entered') %>
+      <%= settings_form_tag(f, :email) %>
+      <%= settings_form_tag(f, :password) %>
+      <%= settings_form_tag(f, :password_confirmation, 'Please enter password again') %>
       <%= settings_form_submit(f, yield(:submit_text)) %>
 
       <%= user_form_destroy_field(f) %>

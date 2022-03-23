@@ -8,10 +8,10 @@ module SharedHelper
     end
   end
 
-  def settings_form_field(form, field_name, span_text = '', options = {})
+  def settings_form_tag(form, field_name, span_text = '', options = {})
     send_name = set_form_field_name(field_name)
     options[:placeholder] = field_name
-    options[:class] = "#{options[:class]} w-full md:w-64 block text-sm border border-gray-300 shadow rounded"
+    options[:class] = "#{options[:class]} w-full md:w-64 block text-sm bg-white border border-gray-300 shadow rounded"
 
     content_tag(:div) do
       form.label("#{field_name}", class: 'block pl-2') +
