@@ -61,6 +61,9 @@ gem "image_processing", "~> 1.2"
 # Use Active Storage validations [https://github.com/igorkasyanchuk/active_storage_validations]
 gem 'active_storage_validations'
 
+# Use AWS S3 bucket for production [https://github.com/aws/aws-sdk-ruby]
+gem 'aws-sdk-s3', require: false
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
