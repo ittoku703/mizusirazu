@@ -40,6 +40,7 @@ module ApplicationHelper
       when :email then 'email' + '_field'
       when :password then 'password' + '_field'
       when :password_confirmation then 'password' + '_field'
+      when :avatar then 'file' + '_field'
       # profile
       when :bio then 'text' + '_area'
       when :location then 'text' + '_field'

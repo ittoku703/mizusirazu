@@ -92,7 +92,7 @@ RSpec.describe User, type: :model do
 
   describe 'avatar' do
     it 'should be attached' do
-      user.avatar.attach(io: File.open('spec/fixtures/images/test.png'), filename: 'test.png', content_type: 'image/png')
+      user.avatar.attach(io: File.open('spec/fixtures/files/test.png'), filename: 'test.png', content_type: 'image/png')
       expect(user.avatar.attached?).to eq true
     end
   end

@@ -1,10 +1,4 @@
 module UsersHelper
-  def user_destroy_link(user, options = {})
-    options[:data] = { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
-
-    link_to('Delete User', user, options)
-  end
-
   def user_form_field(form, field_name, span_text = '')
     send = set_form_field_name(field_name)
 
@@ -47,7 +41,9 @@ module UsersHelper
   def user_index_avatar(user, options = {})
     options[:class] = "#{options[:class]} w-12 h-12 bg-white rounded-full border border-gray-500"
 
-    image_tag('image-not-found.png', options)
+    user.avatar.attached? ?
+      image_tag(user.avatar, options) :
+      image_tag('image-not-found.png', options)
   end
 
   def user_index_control_tag(user, options = {})
@@ -68,14 +64,24 @@ module UsersHelper
     options[:attribute][:class] = "#{options[:attribute][:class]} text-gray-800"
     options[:attribute][:size] = '64x64' if attribute_name == :avatar
 
-    attribute = attribute_name == :avatar ?
-      image_tag('image-not-found.png', options[:attribute]) :
+    if attribute_name == :avatar
+      attribute = object.send(attribute_name).attached? ?
+        image_tag(object.display_avatar, options[:attribute]) :
+        image_tag('image-not-found.png', options[:attribute])
+    else
       content_tag(:p, object.send(attribute_name), options[:attribute])
+    end
 
     content_tag(:div, options[:wrapper]) do
       attribute_icon(object, attribute_name) +
       attribute
     end
+  end
+
+  def user_destroy_link(user, options = {})
+    options[:data] = { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
+
+    link_to('Delete User', user, options)
   end
 
   private

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = User.all
+    @users = User.with_attached_avatar.all
   end
 
   # GET /signup
@@ -80,7 +80,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
     end
 
     # set prev_email to check if email was changed during update
