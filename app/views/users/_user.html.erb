@@ -1,26 +1,24 @@
 <div class="w-full p-4">
-  <div class="p-4 border border-gray-200 rounded">
-    <div class="flex items-center space-x-2">
-      <%= user_index_avatar(user) %>
-      <div class="text-xs truncate">
-        <%= user_index_field(user, :name) %>
-        <%= user_index_field(user, :email) %>
-
-        <%= user_index_field(user, :activated) %>
-        <%= user_index_field(user, :activated_at) %>
-
-        <%= user_index_field(user, :password_digest) %>
-        <%= user_index_field(user, :activation_digest) %>
-        <%= user_index_field(user, :reset_digest) %>
-
-        <%= user_index_field(user, :activation_sent_at) %>
-        <%= user_index_field(user, :reset_sent_at) %>
-
-        <%= user_index_field(user, :created_at) %>
-        <%= user_index_field(user, :updated_at) %>
-
-        <%= user_index_control_tag(user, class: 'block') %>
+  <div class="p-4 border border-gray-200 rounded shadow space-y-4">
+    <div class="flex items-center overflow-scroll text-xs divide-x-2 bg-gray-100 rounded">
+      <div class="p-4">
+      <%= user_index_tag(user, :avatar) %>
       </div>
+      <%= user_index_tag(user, :name) %>
+      <%= user_index_tag(user, :email) %>
+
+      <%= user_index_tag(user, :activated) %>
+      <%= user_index_tag(user, :activated_at) %>
+
+      <%= user_index_tag(user, :password_digest) %>
+      <%= user_index_tag(user, :activation_digest) %>
+      <%= user_index_tag(user, :reset_digest) %>
+
+      <%= user_index_tag(user, :activation_sent_at) %>
+      <%= user_index_tag(user, :reset_sent_at) %>
+
+      <%= user_index_tag(user, :created_at) %>
+      <%= user_index_tag(user, :updated_at) %>
     </div>
-  </div>
+</div>
 </div>

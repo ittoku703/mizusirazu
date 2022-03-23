@@ -23,39 +23,30 @@ module UsersHelper
     end
   end
 
-  def user_index_field(user, attribute_name, options = {})
-    text = user.send(attribute_name)
-    options[:class] = "#{options[:class]} truncate"
+  def user_index_tag(user, attribute_name, options = {})
+    if (attribute_name == :avatar)
+      options[:class] = "#{options[:class]} w-12 h-12 max-w-none bg-white rounded-full border border-gray-500"
+    else
+      text = user.send(attribute_name)
+      options[:class] = "#{options[:class]} truncate"
+    end
 
     if text.nil?
       text = 'is empty'
       options[:class] += ' text-gray-400'
     end
 
-    content_tag(:div) do
-      content_tag(:span, "#{attribute_name}", class: 'text-amber-500') +
-      content_tag(:div, text, options)
-    end
-  end
-
-  def user_index_avatar(user, options = {})
-    options[:class] = "#{options[:class]} w-12 h-12 bg-white rounded-full border border-gray-500"
-
-    user.avatar.attached? ?
-      image_tag(user.avatar, options) :
-      image_tag('image-not-found.png', options)
-  end
-
-  def user_index_control_tag(user, options = {})
-    options[:class] = "#{options[:class]} text-sky-500 hover:text-rose-500"
-
-    if current_user?(user)
-      content_tag(:div, class: 'flex items-center space-x-2') do
-        link_to('Edit User', edit_user_path(user), options) +
-        user_destroy_link(user, options)
+    if (attribute_name == :avatar)
+      link_to(user) do
+        user.avatar.attached? ?
+          image_tag(user.avatar, options) :
+          image_tag('image-not-found.png', options)
       end
     else
-      content_tag(:div, 'Access denied')
+      content_tag(:div, class: 'p-4') do
+        content_tag(:span, "#{attribute_name}", class: 'text-amber-500') +
+        content_tag(:div, text, options)
+      end
     end
   end
 
@@ -66,7 +57,7 @@ module UsersHelper
 
     if attribute_name == :avatar
       attribute = object.send(attribute_name).attached? ?
-        image_tag(object.display_avatar, options[:attribute]) :
+        image_tag(object.avatar, options[:attribute]) :
         image_tag('image-not-found.png', options[:attribute])
     else
       content_tag(:p, object.send(attribute_name), options[:attribute])
