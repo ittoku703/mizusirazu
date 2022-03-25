@@ -26,7 +26,14 @@ RSpec.describe Micropost, type: :model do
     it 'length should be 10000 less' do
       micropost.content = 'a' * 10001
       micropost_invalid?()
-    end  
+    end
+  end
+
+  describe 'images' do
+    it 'should be attached' do
+      micropost.images.attach(io: File.open('spec/fixtures/files/test.png'), filename: 'test.png', content_type: 'image/png')
+      expect(micropost.images.attached?).to eq true
+    end
   end
 
   def micropost_valid?
@@ -37,4 +44,3 @@ RSpec.describe Micropost, type: :model do
     expect(micropost).not_to be_valid
   end
 end
-
