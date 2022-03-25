@@ -2,26 +2,21 @@ class UsersController < ApplicationController
   # authenticate
   before_action :logged_in_user, only: %i[edit update destroy]
   before_action :activate_user,  only: %i[edit update]
-  before_action -> { correct_user(params[:name]) }, only: %i[update destroy]
   before_action :already_logged_in, only: %i[new create]
   # set parameters
-  before_action -> { set_user!(name: params[:name]) }, only: %i[update destroy]
-  before_action :set_prev_email, only: %i[update]
+  before_action :set_user
+  before_action -> { correct_user(@user) }, only: %i[update destroy]
 
   # GET /users
   def index
-    @users = User.with_attached_avatar.all
   end
 
   # GET /signup
   def new
-    @user = User.new
   end
 
   # POST /users
   def create
-    @user = User.new(user_params)
-
     respond_to do |format|
       if verify_recaptcha(model: @user, action: 'signup', minimum_score: 0.5)
         if @user.save
@@ -40,20 +35,20 @@ class UsersController < ApplicationController
 
   # GET /users/:name
   def show
-    @user = User.eager_load(:profile).find_by!(name: params[:name])
   end
 
   # GET /settings/user
   def edit
-    @user = current_user
   end
 
   # GET /users/:name
   def update
+    prev_email = @user.email
+
     respond_to do |format|
       if @user.update(user_params)
         flash[:notice] = 'Successfully user was update'
-        if @prev_email != @user.email
+        if prev_email != @user.email
           flash[:notice] += '. ' + 'email changed. Please user activated'
           @user.send_account_activation_email()
           format.html { redirect_to root_path() }
@@ -67,23 +62,34 @@ class UsersController < ApplicationController
 
   # DELETE /users/:name
   def destroy
-    @user.destroy
-    flash[:notice] = 'Successfully user was delete'
-    redirect_to root_path()
+    if @user.destroy
+      flash[:notice] = 'Successfully user was delete'
+      redirect_to(root_path(), status: :see_other)
+    else
+      flash[:alert] = 'user delete was failed'
+      redirect_to(root_path(), status: :see_other)
+    end
   end
 
   # GET /users/:name/microposts
   def microposts
-    @user = User.eager_load(:microposts).find_by!(name: params[:user_name])
   end
 
   private
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
-    end
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
+  end
 
-    # set prev_email to check if email was changed during update
-    def set_prev_email
-      @prev_email = @user.email
+  def set_user
+    case action_name
+    when 'index'      then @users = User.with_attached_avatar.all
+    when 'new'        then @user  = User.new
+    when 'create'     then @user  = User.new(user_params)
+    when 'show'       then @user  = User.eager_load(:profile).find_by_name!(params[:name])
+    when 'edit'       then @user  = current_user
+    when 'update'     then @user  = User.find_by_name!(params[:name])
+    when 'destroy'    then @user  = User.find_by_name!(params[:name])
+    when 'microposts' then @user  = User.eager_load(:microposts).find_by_name!(params[:user_name])
     end
+  end
 end

@@ -2,13 +2,11 @@ class ProfilesController < ApplicationController
   # authentication
   before_action :logged_in_user
   before_action :activate_user
-  before_action -> { correct_user(params[:user_name]) }, only: %i[update]
-  # set parameters
-  before_action -> { set_user!(name: params[:user_name]) }, only: %i[update]
+  before_action :set_user
+  before_action -> { correct_user(@user) }, only: %i[update]
 
   # GET /settings/profile
   def edit
-    @user = current_user
   end
 
   # POST /users/:user_id/profiles
@@ -24,7 +22,14 @@ class ProfilesController < ApplicationController
   end
 
   private
-    def profile_params
-      params.require(:profile).permit(:name, :bio, :location)
+  def profile_params
+    params.require(:profile).permit(:name, :bio, :location)
+  end
+
+  def set_user
+    case action_name
+    when 'edit'   then @user = current_user
+    when 'update' then @user = User.eager_load(:profile).find_by_name(params[:user_name])
     end
+  end
 end

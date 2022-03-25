@@ -1,7 +1,6 @@
 class PasswordResetsController < ApplicationController
   before_action :already_logged_in
   before_action -> { valid_recaptcha('password_reset') }, only: %i[create]
-  before_action :set_user, only: %i[edit update]
   before_action :valid_user, only: %i[edit update]
 
   # GET /passwords/new
@@ -11,7 +10,7 @@ class PasswordResetsController < ApplicationController
   # POST /passwords
   def create
     respond_to do |format|
-      if @user = User.find_by(email: params[:password_reset][:email])
+      if @user = User.find_by(email: params[:password_reset][:email].downcase)
         if @user.activated?
           flash[:notice] = 'Send password reset email, Please check email and reset your password'
           @user.send_password_reset_email()
@@ -49,19 +48,23 @@ class PasswordResetsController < ApplicationController
       params.require(:user).permit(:password, :password_confirmation)
     end
 
-    # check the set_user can be the resets password.
-    # 1. exists set_user, 2. user.reset_digest is authentication, 3. user non activated
+    # check user can be the resets password.
     def valid_user
+      @user = User.find_by_email(params[:email])
+
+      # user exists?
       unless @user
         flash[:alert] = 'User email is not found'
         redirect_to(root_path) && return
       end
 
+      # reset_digest authentication is true?
       unless @user&.authenticated?(:reset, params[:id])
         flash[:alert] = 'User reset authentication failed'
         redirect_to(root_path) && return
       end
 
+      # activated?
       unless @user&.activated?
         flash[:alert] = 'This user has not activated yet. Please user activate'
         redirect_to(new_account_activation_path) && return

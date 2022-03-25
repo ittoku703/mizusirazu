@@ -4,7 +4,7 @@ class Provider < ApplicationRecord
   # if provider is found: return provider user
   # if provider is not found: create provider and user, and return user
   def Provider.find_or_create_from_auth(auth)
-    if find_provider = Provider.find_by(provider: auth[:provider], uid: auth[:uid])
+    if find_provider = Provider.eager_load(:user).find_by(provider: auth[:provider], uid: auth[:uid])
       return find_provider.user
     else
       User.create_from_omniauth(Provider.get_provider_hash(auth))

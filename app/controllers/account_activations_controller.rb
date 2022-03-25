@@ -1,6 +1,5 @@
 class AccountActivationsController < ApplicationController
   before_action :already_activated
-  before_action -> { set_user!(email: params[:email]) },           only: %i[edit]
   before_action -> { valid_recaptcha('account_activation') },      only: %i[create]
 
   # GET /confirms/new
@@ -28,6 +27,8 @@ class AccountActivationsController < ApplicationController
 
   # GET /confirms/:id/edit
   def edit
+    @user = User.find_by_email(params[:email].downcase)
+
     respond_to do |format|
       if @user&.authenticated?(:activation, params[:id])
         unless @user.activated?

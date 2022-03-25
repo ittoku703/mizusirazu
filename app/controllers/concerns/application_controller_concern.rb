@@ -22,9 +22,8 @@ module ApplicationControllerConcern
   end
 
   # check if you are correct user
-  def correct_user(name)
-    @user = User.find_by!(name: name)
-    redirect_to root_url unless current_user?(@user)
+  def correct_user(user)
+    redirect_to(root_url(), alert: 'you are not this user') unless current_user?(user)
   end
 
   ########## sessions #########
@@ -93,17 +92,6 @@ module ApplicationControllerConcern
   end
 
   ########## Controller methods #########
-
-  # set @user to actions of controller
-  # and render 404 page if user not found
-  def set_user!(user_hash)
-    @user = User.find_by!(user_hash)
-  end
-
-  # set user object from parameter email
-  def set_user
-    @user = User.find_by(email: params[:email])
-  end
 
   # check if it's a bot
   def valid_recaptcha(action)
