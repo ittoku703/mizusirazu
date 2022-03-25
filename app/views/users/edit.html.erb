@@ -1,4 +1,18 @@
 <% provide(:title, 'Edit user') %>
 <% provide(:submit_text, 'Update user') %>
 
-<%= render 'form' %>
+<div class="mt-4 px-4 text-sm">
+  <div class="bg-gray-400 p-4 rounded">
+    <div class="text-center text-xl pb-4 border-b border-gray-600 mb-4"><%= yield(:title) %></div>
+    <div class="block md:flex md:divide-x divide-gray-600">
+      <div class="basis-1/4 p-4 text-gray-600">
+        <p><%= yield(:description) %></p>
+      </div>
+      <div class="basis-3/4 p-4">
+        <div class="p-4 bg-gray-300 border border-gray-600 rounded shadow">
+          <%= render 'form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

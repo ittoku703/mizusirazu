@@ -105,11 +105,6 @@ module ApplicationControllerConcern
     @user = User.find_by(email: params[:email])
   end
 
-  # set the view after through application.html.erb
-  def set_yield_params(yield_name)
-    params[:yield] = yield_name
-  end
-
   # check if it's a bot
   def valid_recaptcha(action)
     unless verify_recaptcha(action: action, minimum_score: 0.5)
