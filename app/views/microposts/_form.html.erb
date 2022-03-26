@@ -4,6 +4,7 @@
       <%= render 'shared/form_errors', object: f.object %>
       <%= micropost_form_field(f, :title) %>
       <%= micropost_form_field(f, :content, class: 'h-64') %>
+      <%= micropost_form_field(f, :images) %>
       <%= micropost_form_submit(f, 'Create Micropost') %>
     </div>
   <% end %>
@@ -13,6 +14,7 @@
       <%= render 'shared/form_errors', object: f.object %>
       <%= micropost_form_field(f, :title) %>
       <%= micropost_form_field(f, :content, class: 'h-64') %>
+      <%= micropost_form_field(f, :images) %>
       <%= micropost_form_submit(f, 'Edit Micropost') %>
     <div>
   <% end %>

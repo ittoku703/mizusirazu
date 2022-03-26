@@ -6,10 +6,12 @@ RSpec.feature 'MicropostCreates', type: :feature do
   scenario 'create micropost' do
     log_in_as(user)
     visit new_micropost_path()
+    attach_file 'Images', 'spec/fixtures/files/test.png'
     fill_in 'Title', with: 'This is Title'
     fill_in 'Content', with: 'This is Content'
     click_button 'Create Micropost'
     expect(page).to have_selector('div#notice')
+    expect(page).to have_selector('img[alt="micropost_image"]')
   end
 
   scenario 'invalid create micropost' do

@@ -19,6 +19,10 @@
     </div>
     <div class="py-2">
       <%= simple_format(@micropost.content) %>
+      <br>
+      <% @micropost.images.each do |image| %>
+        <%= image_tag(image, alt: 'micropost_image') %>
+      <% end %>
     </div>
   </div>
   <% if current_user?(@micropost.user) %>

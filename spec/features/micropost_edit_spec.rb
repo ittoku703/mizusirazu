@@ -7,10 +7,12 @@ RSpec.feature 'MicropostEdits', type: :feature do
   scenario 'edit micropost' do
     log_in_as(micropost.user)
     visit edit_micropost_path(micropost)
+    attach_file 'Images', 'spec/fixtures/files/test.png'
     fill_in 'Title', with: 'Edit micropost title'
     fill_in 'Content', with: 'Edit micropost content'
     click_button 'Edit Micropost'
     expect(page).to have_selector('div#notice')
+    expect(page).to have_selector('img[alt="micropost_image"]')
   end
 
   scenario 'invalid edit micropost' do
