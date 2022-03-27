@@ -64,6 +64,9 @@ gem 'active_storage_validations'
 # Use AWS S3 bucket for production [https://github.com/aws/aws-sdk-ruby]
 gem 'aws-sdk-s3', require: false
 
+# Rails Locale Data Repository [https://github.com/svenfuchs/rails-i18n]
+gem 'rails-i18n'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
