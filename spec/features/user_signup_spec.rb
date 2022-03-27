@@ -5,10 +5,10 @@ RSpec.feature 'UserSignup', type: :feature do
 
   scenario 'valid sign up' do
     visit new_user_path()
-    fill_in 'Name', with: user_params[:name]
-    fill_in 'Email', with: user_params[:email]
-    fill_in 'Password', with: user_params[:password]
-    fill_in 'Password confirmation', with: user_params[:password]
+    fill_in I18n.t('activerecord.attributes.user.name'),                  with: user_params[:name]
+    fill_in I18n.t('activerecord.attributes.user.email'),                 with: user_params[:email]
+    fill_in I18n.t('activerecord.attributes.user.password'),              with: user_params[:password]
+    fill_in I18n.t('activerecord.attributes.user.password_confirmation'), with: user_params[:password]
     click_button 'Sign up'
     expect(page).to have_selector 'div#notice'
     visit activation_email_link
@@ -17,10 +17,10 @@ RSpec.feature 'UserSignup', type: :feature do
 
   scenario 'invalid sign up' do
     visit new_user_path()
-    fill_in 'Name', with: 'hogebar'
-    fill_in 'Email', with: 'hoge@bar'
-    fill_in 'Password', with: 'hoge'
-    fill_in 'Password confirmation', with: 'bar'
+    fill_in I18n.t('activerecord.attributes.user.name'),                  with: 'hogebar'
+    fill_in I18n.t('activerecord.attributes.user.email'),                 with: 'hoge@bar.com'
+    fill_in I18n.t('activerecord.attributes.user.password'),              with: 'hoge'
+    fill_in I18n.t('activerecord.attributes.user.password_confirmation'), with: 'bar'
     click_button 'Sign up'
     expect(page).to have_selector 'div#error_explanation'
   end

@@ -1,0 +1,37 @@
+en:
+  activerecord:
+    # Model name
+    models:
+      user: 'User'
+      profile: 'Profile'
+      provider: 'Provider'
+      micropost: 'Micropost'
+    # Model Attribute name
+    attributes:
+      id: 'ID'
+      created_at: 'Created At'
+      updated_at: 'Updated At'
+    attributes:
+      user:
+        email: 'Email'
+        name: 'Name'
+        password: 'Password'
+        password_confirmation: 'Confirmation Password'
+      profile:
+        avatar: 'Avatar'
+        bio: 'Biography'
+        content: 'Content'
+        location: 'Location'
+      provider:
+        provider: 'Provider'
+        uid: 'UID'
+        user_name: 'User name'
+        screen_name: 'User ID'
+      micropost:
+        title: 'Title'
+        content: 'Content'
+  # Recaptcha error messages
+  recaptcha:
+    errors:
+      verification_failed: 'reCAPTCHA verification failed, please try again.'
+      recaptcha_unreachable: 'reCAPTCHA verification server error, please try again.'
