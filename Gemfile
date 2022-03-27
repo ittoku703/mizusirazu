@@ -67,6 +67,9 @@ gem 'aws-sdk-s3', require: false
 # Rails Locale Data Repository [https://github.com/svenfuchs/rails-i18n]
 gem 'rails-i18n'
 
+# get user locale from HTTP HEADER [https://github.com/iain/http_accept_language]
+gem 'http_accept_language'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

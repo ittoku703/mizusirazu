@@ -1,7 +1,9 @@
 module ApplicationControllerConcern
   extend ActiveSupport::Concern
 
-  ########## current user ##########
+  # # # # # # # # # # # # # # # #
+  # current user
+  # # # # # # # # # # # # # # # #
 
   # return current user logged in
   def current_user
@@ -26,7 +28,9 @@ module ApplicationControllerConcern
     redirect_to(root_url(), alert: 'you are not this user') unless current_user?(user)
   end
 
-  ########## sessions #########
+  # # # # # # # # # # # # # # #
+  # sessions
+  # # # # # # # # # # # # # # #
 
   # return true if user is logged in, false otherwise
   def logged_in?
@@ -58,7 +62,9 @@ module ApplicationControllerConcern
     @current_user = nil
   end
 
-  ########## account activations #########
+  # # # # # # # # # # # # # # #
+  # account activations
+  # # # # # # # # # # # # # # #
 
   # check if you are activate user
   def activate_user
@@ -78,7 +84,9 @@ module ApplicationControllerConcern
     current_user&.activated?
   end
 
-  ########### General #########
+  # # # # # # # # # # # # # # #
+  # General
+  # # # # # # # # # # # # # # #
 
   # redirect to the memorized URL (or default value)
   def redirect_back_or(default, options = {})
@@ -86,12 +94,9 @@ module ApplicationControllerConcern
     session.delete(:forwarding_url)
   end
 
-  # remember URL you were trying to access
-  def store_location
-    session[:forwarding_url] = request.original_url if request.get?
-  end
-
-  ########## Controller methods #########
+  # # # # # # # # # # # # # # #
+  # Controller methods
+  # # # # # # # # # # # # # # #
 
   # check if it's a bot
   def valid_recaptcha(action)
@@ -99,5 +104,32 @@ module ApplicationControllerConcern
       flash.now[:alert] = 'Score is below threshold, so user may be a bot'
       render(:new, status: :unprocessable_entity) && return
     end
+  end
+
+  # set your location
+  def set_locale
+    I18n.locale = user_locale
+
+    # after store current locale
+    session[:locale] = params[:locale] if params[:locale]
+  rescue I18n::InvalidLocale
+    I18n.locale = I18n.default_locale
+  end
+
+  private
+
+  # remember URL you were trying to access
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
+  end
+
+  # finding your locale from top level domain
+  def user_locale
+    params[:locale] || session[:locale] || http_head_locale || I18n.default_locale
+  end
+
+  # get your locale from HTTP HEADER
+  def http_head_locale
+    http_accept_language.language_region_compatible_from(I18n.available_locales)
   end
 end
