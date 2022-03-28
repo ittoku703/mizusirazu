@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if verify_recaptcha(model: @user, action: 'signup', minimum_score: 0.5)
         if @user.save
-          flash[:notice] = 'Please check email and activate your account'
+          flash[:notice] = I18n.t('.user_was_created')
           format.html { redirect_to root_path() }
         else
           # nessally status: :unprocessable_entity
@@ -47,9 +47,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(user_params)
-        flash[:notice] = 'Successfully user was update'
+        flash[:notice] = I18n.t('.user_was_updated')
         if prev_email != @user.email
-          flash[:notice] += '. ' + 'email changed. Please user activated'
+          flash[:notice] += '. ' + I18n.t('.email_changed')
           @user.send_account_activation_email()
           format.html { redirect_to root_path() }
         end
@@ -62,13 +62,9 @@ class UsersController < ApplicationController
 
   # DELETE /users/:name
   def destroy
-    if @user.destroy
-      flash[:notice] = 'Successfully user was delete'
-      redirect_to(root_path(), status: :see_other)
-    else
-      flash[:alert] = 'user delete was failed'
-      redirect_to(root_path(), status: :see_other)
-    end
+    @user.destroy
+    flash[:notice] = I18n.t('.user_was_deleted')
+    redirect_to(root_path(), status: :see_other)
   end
 
   # GET /users/:name/microposts

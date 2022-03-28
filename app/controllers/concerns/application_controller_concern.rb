@@ -25,7 +25,7 @@ module ApplicationControllerConcern
 
   # check if you are correct user
   def correct_user(user)
-    redirect_to(root_url(), alert: 'you are not this user') unless current_user?(user)
+    redirect_to(root_url(), alert: I18n.t('you_are_not_current_user')) unless current_user?(user)
   end
 
   # # # # # # # # # # # # # # #
@@ -41,13 +41,13 @@ module ApplicationControllerConcern
   def logged_in_user
     if current_user.nil?
       store_location
-      redirect_to new_session_path, alert: 'Please log in'
+      redirect_to new_session_path, alert: I18n.t('please_log_in')
     end
   end
 
   # redirect to user page if user already logged in
   def already_logged_in
-    redirect_to root_path(), notice: 'You are already logged in' unless current_user.nil?
+    redirect_to root_path(), notice: I18n.t('you_are_already_logged_in') unless current_user.nil?
   end
 
   # login user you were givend
@@ -70,13 +70,13 @@ module ApplicationControllerConcern
   def activate_user
     unless account_activated?
       store_location
-      redirect_to(new_account_activation_path, alert: 'Please account activate')
+      redirect_to(new_account_activation_path, alert: I18n.t('please_account_activate'))
     end
   end
 
   # redirect to root if user activated
   def already_activated
-    redirect_to(root_path, notice: 'User already activated') if account_activated?
+    redirect_to(root_path, notice: I18n.t('you_are_already_activated')) if account_activated?
   end
 
   # return true if you are activated
@@ -101,7 +101,7 @@ module ApplicationControllerConcern
   # check if it's a bot
   def valid_recaptcha(action)
     unless verify_recaptcha(action: action, minimum_score: 0.5)
-      flash.now[:alert] = 'Score is below threshold, so user may be a bot'
+      flash.now[:alert] = I18n.t('recaptcha.errors.verification_failed')
       render(:new, status: :unprocessable_entity) && return
     end
   end

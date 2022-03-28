@@ -1,0 +1,45 @@
+ja:
+  you_are_not_current_user: 'あなたはこのユーザではありません'
+  please_log_in: 'ログインしてください'
+  you_are_already_logged_in: 'すでにログインしています'
+  please_account_activate: 'アカウントを有効化してください'
+  you_are_already_activated: 'すでにアカウントが有効化されています'
+  email_is_invalid: 'メールアドレスが無効です, もう一度お試しください'
+  password_is_invalid: 'Password is invalid, Please try again'
+  user_authentication_is_failed: 'ユーザ認証に失敗しました。もう一度お試しください'
+  account_activations:
+    create:
+      send_account_activation_email: 'アカウント有効化のメールを送信しました。メールをチェックしてアカウントを有効化してください'
+    edit:
+      user_was_activated: 'アカウント有効化に成功しました'
+  microposts:
+    create:
+      micropost_was_created: 'マイクロポストの作成に成功しました'
+    update:
+      micropost_was_updated: 'マイクロポストの更新に成功しました'
+    destroy:
+      micropost_was_deleted: 'マイクロポストの削除に成功しました'
+  password_resets:
+    create:
+      send_password_resets_email: 'パスワード再設定のメールを送信しました。メールをチェックしてパスワードを再設定してください'
+    update:
+      user_was_password_reset: 'パスワードの再設定に成功しました。もう一度新しいパスワードでログインしてください'
+  profiles:
+    update:
+      profile_was_updated: 'プロフィールの更新に成功しました'
+  providers:
+    create:
+      user_was_authenticated: "%{provider}を使ったユーザ認証に成功しました"
+  sessions:
+    create:
+      user_was_logged_in: 'ユーザのログインに成功しました'
+    destroy:
+      user_was_logged_out: 'ユーザのログアウトに成功しました'
+  users:
+    create:
+      user_was_created: 'ユーザの作成に成功しました。メールをチェックしてアカウントを有効化してください'
+    update:
+      user_was_updated: 'ユーザの更新に成功しました'
+      email_changed: 'メールアドレスが変更されました。もう一度アカウントを有効化してください'
+    destroy:
+      user_was_deleted: 'ユーザの削除に成功しました'

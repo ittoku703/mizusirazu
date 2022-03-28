@@ -1,0 +1,45 @@
+en:
+  you_are_not_current_user:
+  please_log_in:
+  you_are_already_logged_in:
+  please_account_activate:
+  you_are_already_activated:
+  email_is_invalid: 'Email is invalid, Please try again'
+  password_is_invalid: 'Password is invalid, Please try again'
+  user_authentication_is_failed: 'User authentication is failed, Please try again'
+  account_activations:
+    create:
+      send_account_activation_email: 'Send account activation email, Please check email and activate your account'
+    edit:
+      user_was_activated: 'Successfully, User was activated'
+  microposts:
+    create:
+      micropost_was_created: 'Successfully, Micropost was created'
+    update:
+      micropost_was_updated: 'Successfully, Micropost was updated'
+    destroy:
+      micropost_was_deleted: 'Successfully, Micropost was deleted'
+  password_resets:
+    create:
+      send_password_resets_email: 'Send password reset email, Please check email and reset your password'
+    update:
+      user_was_password_reset: 'Successfully, User was password reset. Please try to login with a new password'
+  profiles:
+    update:
+      profile_was_updated: 'Successfully, Profile was updated'
+  providers:
+    create:
+      user_was_authenticated:
+  sessions:
+    create:
+      user_was_logged_in: 'Successfully, User was logged in'
+    destroy:
+      user_was_logged_out: 'Successfully, User was logged out'
+  users:
+    create:
+      user_was_created: 'Successfully, User was created. Please check email and activate your account'
+    update:
+      user_was_updated: 'Successfully User was update'
+      email_changed: 'Email changed. Please try again User activated'
+    destroy:
+      user_was_deleted: 'Successfully, User was delete'
