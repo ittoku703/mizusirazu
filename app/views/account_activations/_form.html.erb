@@ -1,5 +1,5 @@
 <%= form_with url: account_activations_path, scope: :account_activation, method: :post do |f| %>
   <%= recaptcha_v3 action: 'account_activation', turbolinks: true %>
-  <%= send_email_form_field(f, :email) %>
-  <%= send_email_form_submit(f, 'Activate') %>
+  <%= account_activation_form_field(f, :email) %>
+  <%= account_activation_form_submit(f, 'Activate') %>
 <% end %>

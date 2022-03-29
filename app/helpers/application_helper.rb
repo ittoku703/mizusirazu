@@ -32,23 +32,50 @@ module ApplicationHelper
     link_to(text, link, options)
   end
 
-  private
-    def set_form_field_name(field_name)
-      case(field_name)
-      # user
-      when :name then 'text' + '_field'
-      when :email then 'email' + '_field'
-      when :password then 'password' + '_field'
-      when :password_confirmation then 'password' + '_field'
-      when :avatar then 'file' + '_field'
-      # profile
-      when :bio then 'text' + '_area'
-      when :location then 'text' + '_field'
-      # session
-      when :name_or_email then 'text' + '_field'
-      # micropost
-      when :title then 'text' + '_field'
-      when :content then 'text' + '_area'
-      end
+  def settings_link_to(link, text, options = {})
+    options[:class] = "#{options[:class]} block p-2 border-b border-amber-500 hover:text-sky-500"
+
+    link_to(link, options) do
+      link_icon(text) +
+      content_tag(:span, text, class: 'ml-2')
     end
+  end
+
+  def settings_form_tag(form, field, span_text = '', options = {})
+    send_name = get_settings_form_field_name(field)
+    options[:placeholder] = field
+    options[:class] = "#{options[:class]} w-full md:w-64 block text-sm bg-white border border-gray-300 shadow rounded"
+
+    content_tag(:div) do
+      form.label("#{field}", class: 'block pl-2') +
+      form.send(send_name, field, options) +
+      content_tag(:span, span_text, class: 'text-xs text-gray-500 italic tracking-tight')
+    end
+  end
+
+  def settings_form_submit(form, text, options = {})
+    options[:class] = "#{options[:class]} p-2 border rounded border-black shadow bg-emerald-500 hover:bg-green-500 text-white"
+    form.submit(text, options)
+  end
+
+  private
+
+  def link_icon(text)
+    case text
+    when 'Account' then fa_stacked_icon('user', base: 'circle-thin')
+    when 'Profile' then fa_stacked_icon('pencil', base: 'circle-thin')
+    end
+  end
+
+  def get_settings_form_field_name(field)
+    case field
+    when :name                  then 'text_field'
+    when :email                 then 'email_field'
+    when :password              then 'password_field'
+    when :password_confirmation then 'password_field'
+    when :avatar                then 'file_field'
+    when :bio                   then 'text_area'
+    when :location              then 'text_field'
+    end
+  end
 end

@@ -43,6 +43,7 @@ gem 'faker'
 gem 'recaptcha'
 
 # font-awesome-rails provides the Font-Awesome web fonts and stylesheets as a Rails engine for use with the asset pipeline [https://github.com/bokmann/font-awesome-rails]
+# icon list [https://fontawesome.com/v4/icons/]
 gem 'font-awesome-rails'
 
 # use mariadb
