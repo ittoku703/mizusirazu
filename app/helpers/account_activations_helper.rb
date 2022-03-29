@@ -1,12 +1,10 @@
 module AccountActivationsHelper
-  def account_activation_form_field(form, field, options = {})
+  def account_activation_form_field(form, field, text, options = {})
     send_name = get_account_activation_form_field_name(field)
-    options[:placeholder] = field
-    options[:class] = "#{options[:class]} w-full md:w-auto block text-sm rounded border-violet-400 focus:ring-0 shadow"
-    span_text = field.to_s.capitalize.gsub(/_/, ' ')
+    options[:class] = "w-full md:w-auto block text-sm rounded border-violet-400 focus:ring-0 shadow #{options[:class]}"
 
     form.label(field, class: 'block mt-4') do
-      content_tag(:span, span_text, class: 'block ml-2 text-gray-600') +
+      content_tag(:span, text, class: 'block ml-2 text-gray-600') +
       form.send(send_name, field, options)
     end
   end

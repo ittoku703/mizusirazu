@@ -18,6 +18,7 @@ ja:
         password: 'パスワード'
         password_confirmation: '確認用パスワード'
       profile:
+        name: '名前'
         avatar: 'アバター'
         bio: '紹介文'
         content: '内容'

@@ -18,6 +18,7 @@ en:
         password: 'Password'
         password_confirmation: 'Confirmation Password'
       profile:
+        name: 'Name'
         avatar: 'Avatar'
         bio: 'Biography'
         content: 'Content'

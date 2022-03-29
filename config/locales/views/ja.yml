@@ -1,0 +1,8 @@
+ja:
+  account_activations:
+    form:
+      email: 'メールアドレス'
+      send_email: 'メールをおくる'
+    new:
+      account_activation: 'アカウント有効化'
+      description: 'メールアドレスを確認して、アカウントを有効化しましょう！'

@@ -1,0 +1,8 @@
+en:
+  account_activations:
+    form:
+      email: 'Email'
+      send_email: 'Send Email'
+    new:
+      account_activation: 'Account Activation'
+      description: 'verify your email, and account activation!'
