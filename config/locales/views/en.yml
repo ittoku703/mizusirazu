@@ -21,3 +21,20 @@ en:
       forget_password: 'Password Reset'
       sign_up: 'Sign up'
       log_in: 'Log in'
+  microposts:
+    form:
+      title: 'Title'
+      content: 'Content'
+      images: 'Images'
+      create_micropost: 'Create Micropost'
+      update_micropost: 'Update Micropost'
+    micropost:
+      contributor: 'Contributor'
+      created_at: 'Created at'
+      updated_at: 'Updated at'
+    show:
+      contributor: 'Contributor'
+      created_at: 'Created at'
+      updated_at: 'Updated at'
+      edit_micropost: 'Edit Micropost'
+      delete_micropost: 'Delete Micropost'

@@ -2,7 +2,7 @@
   <div class="p-4 border border-gray-200">
     <div class="flex flex-col overflow-hidden">
       <div class="text-xs">
-        <span>Post by </span>
+        <%= content_tag(:span, "#{t('.contributor')}: ") %>
         <%= link_to(micropost.user.name, user_path(micropost.user), class: 'truncate text-sky-500 hover:text-violet-500') %>
       </div>
       <div class="text-xl">
@@ -13,11 +13,11 @@
       </div>
       <div class="block md:flex md:flex-row md:items-center text-xs md:space-x-2">
         <div class="text-xs">
-          <span>Created at: </span>
+          <%= content_tag(:span, "#{t('.created_at')}: ") %>
           <%= content_tag(:div, micropost.created_at, class: 'truncate inline text-gray-400') %>
         </div>
         <div class="text-xs">
-          <span>Updated at: </span>
+          <%= content_tag(:span, "#{t('.updated_at')}: ") %>
           <%= content_tag(:div, micropost.updated_at, class: 'truncate inline text-gray-400') %>
         </div>
       </div>
