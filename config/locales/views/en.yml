@@ -6,3 +6,18 @@ en:
     new:
       account_activation: 'Account Activation'
       description: 'verify your email, and account activation!'
+  layouts:
+    footer:
+      technologys: 'technologys'
+      source_code: 'Source Code'
+    header:
+      user_list: 'User List'
+      micropost_list: 'Micropost List'
+      your_page: 'Your Page'
+      create_micropost: 'Create Micropost'
+      settings: 'Settings'
+      log_out: 'Log out'
+      confirms: 'Account Activation'
+      forget_password: 'Password Reset'
+      sign_up: 'Sign up'
+      log_in: 'Log in'

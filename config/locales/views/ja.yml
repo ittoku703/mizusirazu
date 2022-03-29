@@ -6,3 +6,18 @@ ja:
     new:
       account_activation: 'アカウント有効化'
       description: 'メールアドレスを確認して、アカウントを有効化しましょう！'
+  layouts:
+    footer:
+      technologys: 'テクノロジー'
+      source_code: 'ソースコード'
+    header:
+      user_list: 'ユーザーリスト'
+      micropost_list: 'マイクロポストリスト'
+      your_page: 'あなたのページ'
+      create_micropost: 'マイクロポストを作成'
+      settings: '設定'
+      log_out: 'ログアウト'
+      confirms: 'アカウント有効化'
+      forget_password: 'パスワード再設定'
+      sign_up: 'ユーザー作成'
+      log_in: 'ログイン'

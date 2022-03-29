@@ -24,7 +24,7 @@
         <table align="center">
           <tr>
             <td>
-              <h1 class="headline">Mizusirazu.net</h1>
+              <%= content_tag(:h1, t('my_site'), class: 'headline') %>
             </td>
           </tr>
         </table>
@@ -64,7 +64,7 @@
         <table align="center">
           <tr>
             <br />
-            <td class="copyright">copyright 2022 shinzanmono.</td>
+            <%= content_tag(:td, t('copy_right'), class: 'copyright') %>
           </tr>
         </table>
       </td>

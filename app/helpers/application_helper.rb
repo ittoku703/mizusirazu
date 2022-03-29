@@ -1,7 +1,7 @@
 module ApplicationHelper
   # returns full title for each page
   def full_title(page_title = '')
-    base_title = 'Mizusirazu'
+    base_title = I18n.t('my_site')
 
     if page_title.empty?
       base_title
@@ -14,26 +14,26 @@ module ApplicationHelper
     options[:alt] = 'site logo'
 
     link_to root_path do
-      content_tag(:span, 'Mizusirazu.net', class: 'sr-only') +
+      content_tag(:span, t('my_site'), class: 'sr-only') +
       image_tag('logo.png', options)
     end
   end
 
   def header_link_to(text, link, options = {})
-    options[:class] = "#{options[:class]} block px-4 my-4"
+    options[:class] = "block px-4 my-4 #{options[:class]}"
     options[:tabindex] = '-1'
 
     link_to(text, link, options)
   end
 
   def footer_technology_link_to(text, link, options = {})
-    options[:class] = "#{options[:class]} inline-block pr-2 border-r border-gray-800 mr-2"
+    options[:class] = "inline-block pr-2 border-r border-gray-800 mr-2 #{options[:class]}"
 
     link_to(text, link, options)
   end
 
   def settings_link_to(link, text, options = {})
-    options[:class] = "#{options[:class]} block p-2 border-b border-amber-500 hover:text-sky-500"
+    options[:class] = "block p-2 border-b border-amber-500 hover:text-sky-500 #{options[:class]}"
 
     link_to(link, options) do
       link_icon(text) +
@@ -44,7 +44,7 @@ module ApplicationHelper
   def settings_form_tag(form, field, span_text = '', options = {})
     send_name = get_settings_form_field_name(field)
     options[:placeholder] = field
-    options[:class] = "#{options[:class]} w-full md:w-64 block text-sm bg-white border border-gray-300 shadow rounded"
+    options[:class] = "w-full md:w-64 block text-sm bg-white border border-gray-300 shadow rounded #{options[:class]}"
 
     content_tag(:div) do
       form.label("#{field}", class: 'block pl-2') +
@@ -54,7 +54,7 @@ module ApplicationHelper
   end
 
   def settings_form_submit(form, text, options = {})
-    options[:class] = "#{options[:class]} p-2 border rounded border-black shadow bg-emerald-500 hover:bg-green-500 text-white"
+    options[:class] = "p-2 border rounded border-black shadow bg-emerald-500 hover:bg-green-500 text-white #{options[:class]}"
     form.submit(text, options)
   end
 
