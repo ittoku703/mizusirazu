@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @user.profile.update(profile_params)
-        flash[:notice] = I18n.t('.profile_was_updated')
+        flash[:notice] = t('.profile_was_updated')
         format.html { redirect_to edit_user_profile_path() }
       else
         format.html { render :edit, status: :unprocessable_entity, location: @user }

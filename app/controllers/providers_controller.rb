@@ -4,14 +4,14 @@ class ProvidersController < ApplicationController
   def create
     respond_to do |format|
       log_in @user
-      flash[:notice] = I18n.t('.user_was_authentecated', provider: @user.provider.provider)
+      flash[:notice] = t('.user_was_authenticated', provider: @user.provider.provider)
       format.html { redirect_to root_path() }
     end
   end
 
   def failure
     respond_to do |format|
-      flash[:alert] = I18n.t('user_authentication_is_failed')
+      flash[:alert] = t('user_authentication_is_failed')
       format.html { redirect_to root_path() }
     end
   end

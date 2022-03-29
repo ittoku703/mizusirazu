@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if verify_recaptcha(model: @user, action: 'signup', minimum_score: 0.5)
         if @user.save
-          flash[:notice] = I18n.t('.user_was_created')
+          flash[:notice] = t('.user_was_created')
           format.html { redirect_to root_path() }
         else
           # nessally status: :unprocessable_entity
@@ -47,9 +47,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update(user_params)
-        flash[:notice] = I18n.t('.user_was_updated')
+        flash[:notice] = t('.user_was_updated')
         if prev_email != @user.email
-          flash[:notice] += '. ' + I18n.t('.email_changed')
+          flash[:notice] += '. ' + t('.email_changed')
           @user.send_account_activation_email()
           format.html { redirect_to root_path() }
         end
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   # DELETE /users/:name
   def destroy
     @user.destroy
-    flash[:notice] = I18n.t('.user_was_deleted')
+    flash[:notice] = t('.user_was_deleted')
     redirect_to(root_path(), status: :see_other)
   end
 

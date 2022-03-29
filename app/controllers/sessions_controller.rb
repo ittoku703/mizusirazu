@@ -12,16 +12,16 @@ class SessionsController < ApplicationController
     respond_to do |format|
       if @user&.authenticate(params[:session][:password])
         if @user.activated?
-          flash[:notice] = I18n.t('.user_was_logged_in')
+          flash[:notice] = t('.user_was_logged_in')
           log_in @user
           params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
           format.html { redirect_back_or @user }
         else
-          flash[:alert] = I18n.t('please_account_activate')
+          flash[:alert] = t('please_account_activate')
           format.html { redirect_to new_account_activation_path }
         end
       else
-        flash.now[:alert] = I18n.t('user_authentication_is_failed')
+        flash.now[:alert] = t('user_authentication_is_failed')
         format.html { render :new, status: :unprocessable_entity, locals: { name_or_email: params[:session][:name_or_email] } }
       end
     end
@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
   # DELETE /logout
   def destroy
     log_out if logged_in?
-    flash[:notice] = I18n.t('.user_was_logged_out')
+    flash[:notice] = t('.user_was_logged_out')
     redirect_to(root_path(), status: :see_other)
   end
 

@@ -13,15 +13,15 @@ class PasswordResetsController < ApplicationController
     respond_to do |format|
       if @user
         if @user.activated?
-          flash[:notice] = I18n.t('send_password_resets_email')
+          flash[:notice] = t('send_password_resets_email')
           @user.send_password_reset_email()
           format.html { redirect_to root_path() }
         else
-          flash[:alert] = I18n.t('please_account_activate')
+          flash[:alert] = t('please_account_activate')
           format.html { redirect_to new_account_activation_path() }
         end
       else
-        flash.now[:alert] = I18n.t('email_is_invalid')
+        flash.now[:alert] = t('email_is_invalid')
         format.html { render :new, status: :unprocessable_entity }
       end
     end
@@ -35,10 +35,10 @@ class PasswordResetsController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        flash[:notice] = I18n.t('.user_was_password_reset')
+        flash[:notice] = t('.user_was_password_reset')
         format.html { redirect_to new_session_path }
       else
-        flash[:alert] = I18n.t('password_is_invalid')
+        flash[:alert] = t('password_is_invalid')
         format.html { render :new, status: :unprocessable_entity }
       end
     end
@@ -61,19 +61,19 @@ class PasswordResetsController < ApplicationController
     def valid_user
       # user exists?
       unless @user
-        flash[:alert] = I18n.t('email_is_invalid')
+        flash[:alert] = t('email_is_invalid')
         redirect_to(root_path) && return
       end
 
       # reset_digest authentication is true?
       unless @user&.authenticated?(:reset, params[:id])
-        flash[:alert] = I18n.t('user_authentication_is_failed')
+        flash[:alert] = t('user_authentication_is_failed')
         redirect_to(root_path) && return
       end
 
       # activated?
       unless @user&.activated?
-        flash[:alert] = I18n.t('please_account_activate')
+        flash[:alert] = t('please_account_activate')
         redirect_to(new_account_activation_path) && return
       end
     end

@@ -14,7 +14,7 @@ class MicropostsController < ApplicationController
   def create
     respond_to do |format|
       if @micropost.save
-        flash[:notice] = I18n.t('.micropost_was_created')
+        flash[:notice] = t('.micropost_was_created')
         format.html { redirect_to micropost_path(@micropost) }
       else
         format.html { render(:new, status: :unprocessable_entity) }
@@ -31,7 +31,7 @@ class MicropostsController < ApplicationController
   def update
     respond_to do |format|
       if @micropost.update(micropost_params)
-        flash[:notice] = I18n.t('.micropost_was_updated')
+        flash[:notice] = t('.micropost_was_updated')
         format.html { redirect_to micropost_path(@micropost) }
       else
         format.html { render(:edit, status: :unprocessable_entity) }
@@ -41,7 +41,7 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    flash[:notice] = I18n.t('.micropost_was_deleted')
+    flash[:notice] = t('.micropost_was_deleted')
     redirect_to root_path(), status: :see_other
   end
 
@@ -65,7 +65,7 @@ class MicropostsController < ApplicationController
 
   def correct_micropost_user(micropost)
     unless current_user?(micropost.user)
-      flash[:alert] = I18n.t('you_are_not_current_user')
+      flash[:alert] = t('you_are_not_current_user')
       redirect_to(root_url(), status: :see_other)
     end
   end
