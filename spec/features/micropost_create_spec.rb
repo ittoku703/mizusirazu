@@ -6,10 +6,10 @@ RSpec.feature 'MicropostCreates', type: :feature do
   scenario 'create micropost' do
     log_in_as(user)
     visit new_micropost_path()
-    attach_file 'Images', 'spec/fixtures/files/test.png'
-    fill_in 'Title', with: 'This is Title'
-    fill_in 'Content', with: 'This is Content'
-    click_button 'Create Micropost'
+    attach_file 'micropost[images]', 'spec/fixtures/files/test.png'
+    fill_in 'micropost[title]', with: 'This is Title'
+    fill_in 'micropost[content]', with: 'This is Content'
+    click_button I18n.t('microposts.form.create_micropost')
     expect(page).to have_selector('div#notice')
     expect(page).to have_selector('img[alt="micropost_image"]')
   end
@@ -17,9 +17,9 @@ RSpec.feature 'MicropostCreates', type: :feature do
   scenario 'invalid create micropost' do
     log_in_as(user)
     visit new_micropost_path()
-    fill_in 'Title', with: ''
-    fill_in 'Content', with: ''
-    click_button 'Create Micropost'
+    fill_in 'micropost[title]', with: ''
+    fill_in 'micropost[content]', with: ''
+    click_button I18n.t('microposts.form.create_micropost')
     expect(page).to have_selector('div#error_explanation')
   end
 

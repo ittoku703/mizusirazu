@@ -7,9 +7,10 @@ RSpec.feature "ProfileEdits", type: :feature do
   scenario 'valid profile' do
     activate_as(user)
     visit edit_user_profile_path
-    fill_in 'Name', with: profile_params[:name]
-    fill_in 'Bio', with: profile_params[:bio]
-    fill_in 'Location', with: profile_params[:location]
+    fill_in 'profile[name]', with: profile_params[:name]
+    fill_in 'profile[bio]', with: profile_params[:bio]
+    fill_in 'profile[location]', with: profile_params[:location]
+    # click_button I18n.t('profiles.form.update_profile')
     click_button 'Update profile'
     expect(page).to have_selector 'div#notice'
   end
@@ -17,9 +18,10 @@ RSpec.feature "ProfileEdits", type: :feature do
   scenario 'invalid profile' do
     activate_as(user)
     visit edit_user_profile_path
-    fill_in 'Name', with: 'invalid' * 100
-    fill_in 'Bio', with: 'invalid' * 200
-    fill_in 'Location', with: 'unknown' * 100
+    fill_in 'profile[name]', with: 'invalid' * 100
+    fill_in 'profile[bio]', with: 'invalid' * 200
+    fill_in 'profile[location]', with: 'unknown' * 100
+    # click_button I18n.t('profiles.form.update_profile')
     click_button 'Update profile'
     expect(page).to have_selector 'div#error_explanation'
   end

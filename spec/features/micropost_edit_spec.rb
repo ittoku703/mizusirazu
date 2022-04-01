@@ -7,10 +7,10 @@ RSpec.feature 'MicropostEdits', type: :feature do
   scenario 'edit micropost' do
     log_in_as(micropost.user)
     visit edit_micropost_path(micropost)
-    attach_file 'Images', 'spec/fixtures/files/test.png'
-    fill_in 'Title', with: 'Edit micropost title'
-    fill_in 'Content', with: 'Edit micropost content'
-    click_button 'Edit Micropost'
+    attach_file 'micropost[images]', 'spec/fixtures/files/test.png'
+    fill_in 'micropost[title]', with: 'Edit micropost title'
+    fill_in 'micropost[content]', with: 'Edit micropost content'
+    click_button I18n.t('microposts.form.update_micropost')
     expect(page).to have_selector('div#notice')
     expect(page).to have_selector('img[alt="micropost_image"]')
   end
@@ -18,9 +18,9 @@ RSpec.feature 'MicropostEdits', type: :feature do
   scenario 'invalid edit micropost' do
     log_in_as(micropost.user)
     visit edit_micropost_path(micropost)
-    fill_in 'Title', with: ''
-    fill_in 'Content', with: ''
-    click_button 'Edit Micropost'
+    fill_in 'micropost[title]', with: ''
+    fill_in 'micropost[content]', with: ''
+    click_button I18n.t('microposts.form.update_micropost')
     expect(page).to have_selector('div#error_explanation')
   end
 
