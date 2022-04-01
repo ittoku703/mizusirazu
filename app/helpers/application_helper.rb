@@ -62,8 +62,8 @@ module ApplicationHelper
 
   def link_icon(text)
     case text
-    when 'Account' then fa_stacked_icon('user', base: 'circle-thin')
-    when 'Profile' then fa_stacked_icon('pencil', base: 'circle-thin')
+    when I18n.t('shared.settings_sidebar.account') then fa_stacked_icon('user', base: 'circle-thin')
+    when I18n.t('shared.settings_sidebar.profile') then fa_stacked_icon('pencil', base: 'circle-thin')
     end
   end
 
