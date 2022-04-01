@@ -5,19 +5,19 @@ RSpec.feature "SessionLogins", type: :feature do
 
   scenario 'valid login' do
     visit new_session_path
-    fill_in 'Name or email', with: user.name
-    fill_in 'Password', with: 'password'
-    check 'Save the login?'
-    click_button 'Log in'
+    fill_in 'session[name_or_email]', with: user.name
+    fill_in 'session[password]', with: 'password'
+    check I18n.t('sessions.form.save_the_login')
+    click_button I18n.t('sessions.new.title')
     expect(page).to have_selector 'div#notice'
   end
 
   scenario 'invalid login' do
     visit new_session_path
-    fill_in 'Name or email', with: 'hoge'
-    fill_in 'Password', with: 'bar'
-    check 'Save the login?'
-    click_button 'Log in'
+    fill_in 'session[name_or_email]', with: 'hoge'
+    fill_in 'session[password]', with: 'bar'
+    check I18n.t('sessions.form.save_the_login')
+    click_button I18n.t('sessions.new.title')
     expect(page).to have_selector 'div#alert'
     expect(page).to have_field 'session[name_or_email]', with: 'hoge'
   end

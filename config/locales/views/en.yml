@@ -62,6 +62,13 @@ en:
       update_profile: 'Update Profile'
     edit:
       title: 'Profile'
+  sessions:
+    form:
+      name_or_email: 'Name or Email'
+      password: 'Password'
+      save_the_login: 'Save the login？'
+    new:
+      title: 'Log in'
   shared:
     settings_sidebar:
       account: 'Account'

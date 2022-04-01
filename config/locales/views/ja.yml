@@ -62,6 +62,13 @@ ja:
       update_profile: 'プロファイルを更新'
     edit:
       title: 'プロファイル'
+  sessions:
+    form:
+      name_or_email: 'Name or Email'
+      password: 'Password'
+      save_the_login: 'ログインを保存しますか？'
+    new:
+      title: 'ログイン'
   shared:
     settings_sidebar:
       account: 'アカウント'

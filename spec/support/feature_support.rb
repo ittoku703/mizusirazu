@@ -2,9 +2,9 @@ module FeatureSupport
   def log_in_as(user)
     user.activate
     visit new_session_path()
-    fill_in 'Name or email', with: user.name
-    fill_in 'Password', with: 'password'
-    click_button 'Log in'
+    fill_in 'session[name_or_email]', with: user.name
+    fill_in 'session[password]', with: 'password'
+    click_button I18n.t('sessions.new.title')
   end
 
   def activate_as(user)
