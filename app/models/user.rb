@@ -28,8 +28,8 @@ class User < ApplicationRecord
     allow_blank: true
 
   validates :avatar,
-    content_type: { in: %w[image/jpeg image/gif image/png image/jpg], message: 'must be a valid image format' },
-    size: { less_than: 5.megabytes, message: 'should be less than 5MB' }
+    content_type: { in: %w[image/jpeg image/gif image/png image/jpg] },
+    size: { less_than: 5.megabytes }
 
   has_secure_password
 
