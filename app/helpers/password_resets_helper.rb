@@ -1,13 +1,11 @@
 module PasswordResetsHelper
-  def password_reset_form_field(form, field, options = {})
-    send_name = get_password_reset_form_field_name(field)
-    options[:placeholder] = field
+  def password_reset_form_field(form, field, text, options = {})
+    send = get_password_reset_form_field_name(field)
     options[:class] = "#{options[:class]} w-full md:w-auto block text-sm rounded border-violet-400 focus:ring-0 shadow"
-    span_text = field.to_s.capitalize.gsub(/_/, ' ')
 
     form.label(field, class: 'block mt-4') do
-      content_tag(:span, span_text, class: 'block ml-2 text-gray-600') +
-      form.send(send_name, field, options)
+      content_tag(:span, text, class: 'block ml-2 text-gray-600') +
+      form.send(send, field, options)
     end
   end
 

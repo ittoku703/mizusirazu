@@ -38,3 +38,16 @@ en:
       updated_at: 'Updated at'
       edit_micropost: 'Edit Micropost'
       delete_micropost: 'Delete Micropost'
+  password_resets:
+    form:
+      email: 'Email'
+      password: 'Passowrd'
+      password_confirmation: 'Password Confirmation'
+      send_email: 'Send Email'
+      password_reset: 'Reset Password'
+    new:
+      password_reset: 'Password Reset'
+      description: 'Forgot your password? Enter your email address and check your email to reset your password!'
+    edit:
+      password_reset: 'Passowrd Reset'
+      description: 'Enter your password and reset your password!'
