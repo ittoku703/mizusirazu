@@ -6,19 +6,19 @@ RSpec.feature 'UserEdit', type: :feature do
   scenario 'valid user settings' do
     activate_as(user)
     visit edit_user_path()
-    attach_file 'Avatar', 'spec/fixtures/files/test.png'
-    fill_in 'Name', with: 'update_user'
-    fill_in 'Email', with: user.email
-    click_button 'Update user'
+    attach_file 'user[avatar]', 'spec/fixtures/files/test.png'
+    fill_in 'user[name]',       with: 'update_user'
+    fill_in 'user[email]',      with: user.email
+    click_button I18n.t('users.form.update_user')
     expect(page).to have_selector 'div#notice'
   end
 
   scenario 'invalid user settings' do
     activate_as(user)
     visit edit_user_path()
-    fill_in 'Name', with: 'hoge'
-    fill_in 'Email', with: 'bar'
-    click_button 'Update user'
+    fill_in 'user[name]',  with: 'hoge'
+    fill_in 'user[email]', with: 'bar'
+    click_button I18n.t('users.form.update_user')
     expect(page).to have_selector 'div#error_explanation'
   end
 
@@ -30,9 +30,9 @@ RSpec.feature 'UserEdit', type: :feature do
   scenario 'user email changed' do
     activate_as(user)
     visit edit_user_path()
-    fill_in 'Name', with: 'update_user'
-    fill_in 'Email', with: 'email@changed.com'
-    click_button 'Update user'
+    fill_in 'user[name]',  with: 'update_user'
+    fill_in 'user[email]', with: 'email@changed.com'
+    click_button I18n.t('users.form.update_user')
     expect(page).to have_selector 'div#notice'
     visit activation_email_link()
     expect(page).to have_selector 'div#notice'

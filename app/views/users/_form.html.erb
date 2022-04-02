@@ -3,11 +3,11 @@
     <div class="space-y-4">
       <%= render 'shared/form_errors', object: f.object %>
       <%= recaptcha_v3 action: 'signup', turbolinks: true %>
-      <%= user_form_field(f, :name, 'Only "Lower alphabets", "Digit" and "Under score" can be entered') %>
+      <%= user_form_field(f, :name, t('.name_description')) %>
       <%= user_form_field(f, :email) %>
       <%= user_form_field(f, :password) %>
-      <%= user_form_field(f, :password_confirmation, 'Please enter password again') %>
-      <%= user_form_submit(f, yield(:title)) %>
+      <%= user_form_field(f, :password_confirmation, t('.password_confirmation_description')) %>
+      <%= user_form_submit(f, t('.sign_up')) %>
     </div>
   <% end %>
 <% elsif action_name == 'edit' || action_name == 'update' %>
@@ -15,13 +15,13 @@
     <div class="space-y-6">
       <%= render 'shared/form_errors', object: f.object %>
       <%= settings_form_tag(f, :avatar) %>
-      <%= settings_form_tag(f, :name, 'Only "Lower alphabets", "Digit" and "Under score" can be entered') %>
+      <%= settings_form_tag(f, :name, t('.name_description')) %>
       <%= settings_form_tag(f, :email) %>
       <%= settings_form_tag(f, :password) %>
-      <%= settings_form_tag(f, :password_confirmation, 'Please enter password again') %>
-      <%= settings_form_submit(f, yield(:submit_text)) %>
+      <%= settings_form_tag(f, :password_confirmation, t('.password_confirmation_description')) %>
+      <%= settings_form_submit(f, t('.update_user')) %>
 
-      <%= user_form_destroy_field(f) %>
+      <%= user_form_destroy_field(f, t('.delete_user'), t('.delete_user_description')) %>
     </div>
   <% end %>
 <% end %>

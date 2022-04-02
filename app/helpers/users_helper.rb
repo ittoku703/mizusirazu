@@ -15,11 +15,11 @@ module UsersHelper
     form.submit(text, options)
   end
 
-  def user_form_destroy_field(form)
+  def user_form_destroy_field(form, submit_text, description)
     content_tag(:div) do
-      content_tag(:h1, 'Delete user', class: 'text-xl text-rose-500 pb-2 border-b border-gray-500 mb-4') +
-      user_destroy_link(@user, class: 'inline-block bg-rose-500 text-white hover:bg-red-500 hover:text-white px-2 py-1 rounded border border-black') +
-      content_tag(:span, 'Once you delete it, you can\'t get it back.', class: 'block text-xs text-gray-500 md:mt-1')
+      content_tag(:h1, submit_text, class: 'text-xl text-rose-500 pb-2 border-b border-gray-500 mb-4') +
+      user_destroy_link(submit_text, @user, class: 'inline-block bg-rose-500 text-white hover:bg-red-500 hover:text-white px-2 py-1 rounded border border-black') +
+      content_tag(:span, description, class: 'block text-xs text-gray-500 md:mt-1')
     end
   end
 
@@ -69,10 +69,10 @@ module UsersHelper
     end
   end
 
-  def user_destroy_link(user, options = {})
+  def user_destroy_link(text, user, options = {})
     options[:data] = { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
 
-    link_to('Delete User', user, options)
+    link_to(text, user, options)
   end
 
   private
