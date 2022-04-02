@@ -13,20 +13,20 @@
           <%= render 'modules/bottom_allow' %>
         </button>
       </div>
-      <div class="hidden arrow-top z-10 absolute right-0 mt-2 w-48 rounded shadow bg-lime-500" data-application-target="userList" tabindex="-1">
-        <div class="py-1 text-sm">
-        <%= header_link_to(t('.user_list'), users_path()) %>
-        <%= header_link_to(t('.micropost_list'), microposts_path()) %>
+      <div class="hidden arrow-top z-10 absolute right-0 mt-2 w-48 rounded shadow bg-gray-100 border border-gray-800" data-application-target="userList" tabindex="-1">
+        <div class="py-2 text-sm">
+        <%= header_link_to(t('.user_list'),          users_path()) %>
+        <%= header_link_to(t('.micropost_list'),     microposts_path()) %>
         <% if logged_in? %>
-          <%= header_link_to(t('.your_page'), user_path(current_user)) %>
+          <%= header_link_to(t('.your_page'),        user_path(current_user)) %>
           <%= header_link_to(t('.create_micropost'), new_micropost_path()) %>
-          <%= header_link_to(t('.settings'), edit_user_path()) %>
-          <%= header_link_to(t('.log_out'), session_path(), data: { turbo_method: :delete }) %>
+          <%= header_link_to(t('.settings'),         edit_user_path()) %>
+          <%= header_link_to(t('.log_out'),          session_path(), data: { turbo_method: :delete }) %>
         <% else %>
-          <%= header_link_to(t('.confirms'), new_account_activation_path()) %>
-          <%= header_link_to(t('.forget_password'), new_password_reset_path()) %>
-          <%= header_link_to(t('.sign_up'), new_user_path()) %>
-          <%= header_link_to(t('.log_in'), new_session_path()) %>
+          <%= header_link_to(t('.confirms'),         new_account_activation_path()) %>
+          <%= header_link_to(t('.forget_password'),  new_password_reset_path()) %>
+          <%= header_link_to(t('.sign_up'),          new_user_path()) %>
+          <%= header_link_to(t('.log_in'),           new_session_path()) %>
         <% end %>
         </div>
       </div>

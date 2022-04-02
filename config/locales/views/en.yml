@@ -1,6 +1,6 @@
 en:
   account_activations:
-    form:
+    new_form:
       email: 'Email'
       send_email: 'Send Email'
     new:

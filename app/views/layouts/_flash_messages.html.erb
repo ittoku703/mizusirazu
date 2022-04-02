@@ -1,5 +1,5 @@
 <% flash.each do |name, msg| %>
-  <%= content_tag(:div, id: name, class: 'w-full p-2 flex items-center', 'data-application-target': 'flashMessages') do %>
+  <%= content_tag(:div, id: name, class: 'w-full p-2 flex items-center border border-black', 'data-application-target': 'flashMessages') do %>
     <button type="button" data-action="click->application#flash_messages_close">
       <span class="sr-only">Close panel</span>
       <%= render 'modules/x' %>

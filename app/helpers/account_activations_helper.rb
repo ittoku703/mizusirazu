@@ -10,7 +10,7 @@ module AccountActivationsHelper
   end
 
   def account_activation_form_submit(form, text, options = {})
-    options[:class] = "#{options[:class]} ml-2 mt-4 p-2 bg-orange-300 hover:bg-orange-500 hover:text-white border border-emerald-500 rounded"
+    options[:class] = "#{options[:class]} mt-4 p-2 bg-orange-300 hover:bg-orange-500 text-black hover:text-white border border-emerald-500 rounded shadow"
 
     form.submit(text, options)
   end

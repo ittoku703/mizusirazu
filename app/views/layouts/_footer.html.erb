@@ -1,15 +1,17 @@
 <div class="w-full bg-amber-300 border-t border-orange-500 p-4">
-  <div class="bg-lime-500 rounded border-2 border-rose-500">
+  <div class="bg-amber-400 rounded border-2 border-rose-500">
     <%= content_tag(:h2, t('.technologys'), class: 'text-lg text-center text-white py-2') %>
-    <div class="p-4 text-sm">
-      <%= footer_technology_link_to(t('.source_code'), 'https://github.com/ittoku703/mizusirazu/', class: 'text-amber-500') %>
-      <%= footer_technology_link_to('Ruby on Rails', 'https://rubyonrails.org/', class: 'text-rose-500') %>
-      <%= footer_technology_link_to('Tailwindcss', 'https://tailwindcss.com/', class: 'text-sky-500') %>
-      <%= footer_technology_link_to('Wall Haven', 'https://wallhaven.cc/', class: 'text-purple-500') %>
+    <div class="p-4 text-sm text-center">
+      <%= footer_technology_link_to(t('.source_code'), 'https://github.com/ittoku703/mizusirazu/') %>
+      <%= footer_technology_link_to('Ruby on Rails',   'https://rubyonrails.org/') %>
+      <%= footer_technology_link_to('Tailwindcss',     'https://tailwindcss.com/') %>
+      <%= footer_technology_link_to('Wall Haven',      'https://wallhaven.cc/') %>
+      <%= footer_technology_link_to('Twitter',         'https://twitter.com/') %>
+      <%= footer_technology_link_to('Github',          'https://github.com/') %>
     </div>
   </div>
 
   <div class="mt-4">
-    <%= content_tag(:p, t('copy_right'), class: 'text-center p-4 border border-teal-500') %>
+    <%= content_tag(:p, t('copy_right'), class: 'text-center p-4 text-sm border border-teal-500') %>
   </div>
 </div>

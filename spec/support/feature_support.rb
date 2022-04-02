@@ -10,7 +10,7 @@ module FeatureSupport
   def activate_as(user)
     visit new_account_activation_path()
     fill_in 'account_activation[email]', with: user.email
-    click_button I18n.t('account_activations.form.send_email')
+    click_button I18n.t('account_activations.new_form.send_email')
     expect(page).to have_selector 'div#notice'
     visit activation_email_link
     log_in_as(user)

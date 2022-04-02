@@ -6,6 +6,10 @@ a, button, input[type="submit"] {
   @apply duration-300 hover:no-underline;
 }
 
+a {
+  @apply text-sky-500 hover:underline
+}
+
 /* Disable the background color when input auto complate */
 input:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s !important;
@@ -19,19 +23,19 @@ input:-webkit-autofill {
 
 /* flash messages */
 #notice {
-  @apply text-emerald-300 text-sm bg-emerald-700;
+  @apply text-emerald-200 text-sm bg-emerald-500;
 }
 
 #notice > button {
-  @apply text-emerald-400 hover:text-emerald-500;
+  @apply text-emerald-700 hover:text-emerald-300;
 }
 
 #alert {
-  @apply text-rose-300 text-sm bg-rose-700;
+  @apply text-rose-200 text-sm bg-rose-500;
 }
 
 #alert > button {
-  @apply text-rose-400 hover:text-rose-500;
+  @apply text-rose-700 hover:text-rose-300;
 }
 
 /* user error form */
@@ -46,7 +50,7 @@ input:-webkit-autofill {
   width: 24px;
   height: 12px;
   transform: translate(0, -100%);
-  @apply absolute top-0 left-3/4 bg-lime-500;
+  @apply absolute top-0 left-3/4 bg-gray-100;
 }
 
 .arrow-top::after {
@@ -55,7 +59,7 @@ input:-webkit-autofill {
   width: 24px;
   height: 12px;
   transform: translate(0, -100%);
-  @apply absolute top-0 left-3/4 bg-lime-500;
+  @apply absolute top-0 left-3/4 bg-gray-100;
 }
 
 @media (min-width: 1024px) {

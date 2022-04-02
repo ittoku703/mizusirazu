@@ -1,6 +1,6 @@
 ja:
   account_activations:
-    form:
+    new_form:
       email: 'メールアドレス'
       send_email: 'メールをおくる'
     new:
