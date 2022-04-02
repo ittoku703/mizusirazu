@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'notifications@mizusirazu.net'
+  default from: I18n.t('notifications_email')
   layout 'mailer'
 end

@@ -1,5 +1,5 @@
-<p>Hi <%= @user.name %> !</p>
+<%= content_tag(:p, "#{I18n.t('user_mailer.account_activation.hi')} #{@user.name} !") %>
 
-<p>Welcome to the Mizusirazu.net. Click on the link below to activate your account:</p>
+<%= content_tag(:p, I18n.t('user_mailer.account_activation.email_body')) %>
 
 <%= link_to('Activate account', edit_account_activation_url(@user.activation_token, email: @user.email)) %>

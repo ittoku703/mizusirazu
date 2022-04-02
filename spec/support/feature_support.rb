@@ -8,7 +8,7 @@ module FeatureSupport
   end
 
   def activate_as(user)
-    visit new_account_activation_path
+    visit new_account_activation_path()
     fill_in 'account_activation[email]', with: user.email
     click_button I18n.t('account_activations.form.send_email')
     expect(page).to have_selector 'div#notice'
@@ -18,14 +18,14 @@ module FeatureSupport
 
   def activation_email_link
     activation_email = ActionMailer::Base.deliveries.last
-    email_body = activation_email.body.encoded
+    email_body = activation_email.body.parts.first.body
     reg_url = %r{http://localhost:3000/confirms/[\w=%.?/-]*}
     email_body.match(reg_url).to_s
   end
 
   def password_reset_email_link
     activation_email = ActionMailer::Base.deliveries.last
-    email_body = activation_email.body.encoded
+    email_body = activation_email.body.parts.first.body
     reg_url = %r{http://localhost:3000/passwords/[\w=%.?/-]*}
     email_body.match(reg_url).to_s
   end
