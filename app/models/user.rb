@@ -3,8 +3,6 @@ class User < ApplicationRecord
   has_one :provider, dependent: :destroy
   has_many :microposts, dependent: :destroy
 
-  has_one_attached :avatar
-
   attr_accessor :remember_token, :activation_token, :reset_token,
                 :skip_create_profile_model
 
@@ -26,10 +24,6 @@ class User < ApplicationRecord
     length: { maximum: 256 },
     uniqueness: true,
     allow_blank: true
-
-  validates :avatar,
-    content_type: { in: %w[image/jpeg image/gif image/png image/jpg] },
-    size: { less_than: 5.megabytes }
 
   has_secure_password
 
@@ -111,11 +105,6 @@ class User < ApplicationRecord
     attribute_token  = "#{attribute}_token".to_sym
     self.send("#{attribute_token}=", User.new_token)
     update({ attribute_digest => User.digest(self.send(attribute_token)) })
-  end
-
-  # return resized avatar for display
-  def display_avatar
-    avatar.variant(resize_to_limit: [100, 100])
   end
 
   # OVERRIDE: changed params id to params name

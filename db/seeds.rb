@@ -6,12 +6,14 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+I18n.locale = :en
+
 puts 'Database seed start!'
 
 # asdf creation
 user = User.create!(name: 'asdf', email: 'asdf@asdf.com', password: 'password', activated: true)
-user.avatar.attach(io: File.open('app/assets/images/logo.png'), filename: 'asdf.png', content_type: 'image/png')
 user.profile.update!(name: 'Mr. asdf', bio: 'hello I\'m asdf', location: 'japan')
+user.profile.avatar.attach(io: File.open('app/assets/images/logo.png'), filename: 'asdf.png', content_type: 'image/png')
 user.microposts.create!(title: 'asdf introduction', content: 'hi i am asdf !!!')
 user.microposts.first.images.attach(io: File.open('app/assets/images/logo.png'), filename: 'asdf.micropost.png', content_type: 'image/png')
 
@@ -28,7 +30,7 @@ end
 users = User.all
 
 # Profile creation
-users[1..11].each do |user|
+users.each do |user|
   user.profile.update!({
     name:     Faker::Name.name,
     bio:      Faker::Lorem.paragraphs.join,
@@ -38,7 +40,7 @@ users[1..11].each do |user|
 end
 
 # Micropost creation
-users[1..5].each do |user|
+users.each do |user|
   user.microposts.create!({
     title:   Faker::Lorem.sentence(word_count: 3),
     content: Faker::Lorem.paragraph(sentence_count: 2)

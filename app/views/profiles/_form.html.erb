@@ -1,6 +1,7 @@
 <%= form_with model: [@user, @user.profile], method: :patch do |f| %>
   <div class="space-y-4">
     <%= render 'shared/form_errors', object: f.object %>
+    <%= profile_form_field(f, :avatar,   t('.avatar'),   t('.avatar_description')) %>
     <%= profile_form_field(f, :name,     t('.name'),     t('.name_description')) %>
     <%= profile_form_field(f, :bio,      t('.bio'),      t('.bio_description'), class: 'h-32') %>
     <%= profile_form_field(f, :location, t('.location'), t('.location_description')) %>

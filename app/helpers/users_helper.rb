@@ -24,23 +24,18 @@ module UsersHelper
   end
 
   def user_index_tag(user, attribute_name, options = {})
-    if (attribute_name == :avatar)
-      options[:class] = "#{options[:class]} w-12 h-12 max-w-none bg-white rounded-full border border-gray-500"
-    else
-      text = user.send(attribute_name)
-      options[:class] = "#{options[:class]} truncate"
-    end
+    text = user.send(attribute_name)
+    options[:class] = "#{options[:class]} block truncate"
 
     if text.nil?
       text = 'is empty'
       options[:class] += ' text-gray-400'
     end
 
-    if (attribute_name == :avatar)
-      link_to(user) do
-        user.avatar.attached? ?
-          image_tag(user.avatar, options) :
-          image_tag('image-not-found.png', options)
+    if attribute_name == :name
+      content_tag(:div, class: 'p-4') do
+        content_tag(:span, "#{attribute_name}", class: 'text-amber-500') +
+        link_to(text, user, options)
       end
     else
       content_tag(:div, class: 'p-4') do
@@ -95,7 +90,6 @@ module UsersHelper
       when :email                 then 'email_field'
       when :password              then 'password_field'
       when :password_confirmation then 'password_field'
-      when :avatar                then 'file_field'
       end
     end
 end

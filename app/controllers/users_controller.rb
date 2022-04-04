@@ -73,15 +73,15 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
   def set_user
     case action_name
-    when 'index'      then @users = User.with_attached_avatar.all
+    when 'index'      then @users = User.all
     when 'new'        then @user  = User.new
     when 'create'     then @user  = User.new(user_params)
-    when 'show'       then @user  = User.eager_load(:profile).find_by_name!(params[:name])
+    when 'show'       then @user  = User.eager_load(:microposts, profile: { avatar_attachment: :blob }).find_by_name!(params[:name])
     when 'edit'       then @user  = current_user
     when 'update'     then @user  = User.find_by_name!(params[:name])
     when 'destroy'    then @user  = User.find_by_name!(params[:name])

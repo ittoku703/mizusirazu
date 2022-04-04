@@ -7,6 +7,7 @@ RSpec.feature "ProfileEdits", type: :feature do
   scenario 'valid profile' do
     activate_as(user)
     visit edit_user_profile_path
+    attach_file 'profile[avatar]', 'spec/fixtures/files/test.png'
     fill_in 'profile[name]', with: profile_params[:name]
     fill_in 'profile[bio]', with: profile_params[:bio]
     fill_in 'profile[location]', with: profile_params[:location]

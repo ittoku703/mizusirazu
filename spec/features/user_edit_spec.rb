@@ -6,7 +6,6 @@ RSpec.feature 'UserEdit', type: :feature do
   scenario 'valid user settings' do
     activate_as(user)
     visit edit_user_path()
-    attach_file 'user[avatar]', 'spec/fixtures/files/test.png'
     fill_in 'user[name]',       with: 'update_user'
     fill_in 'user[email]',      with: user.email
     click_button I18n.t('users.form.update_user')

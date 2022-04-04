@@ -53,9 +53,11 @@ ja:
       description: 'パスワードを入力して、パスワードを再設定しましょう'
   profiles:
     form:
+      avatar: 'アバター'
       name: '名前'
       bio: '紹介文'
       location: '国'
+      avatar_description: '入力された画像は公開されます。また、いつでもこの画像は変更することができます'
       name_description: '入力された名前は公開されます。また、いつでもこの名前は変更することができます'
       bio_description: '入力された紹介文は公開されます。また、いつでもこの紹介文は変更することができます'
       location_description: '入力された国は公開されます。また、いつでもこの国は変更することができます'

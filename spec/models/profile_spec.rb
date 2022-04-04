@@ -26,6 +26,13 @@ RSpec.describe Profile, type: :model do
     end
   end
 
+  describe 'avatar' do
+    it 'should be attached' do
+      profile.avatar.attach(io: File.open('spec/fixtures/files/test.png'), filename: 'test.png', content_type: 'image/png')
+      expect(profile.avatar.attached?).to eq true
+    end
+  end
+
   def profile_valid?(profile)
     expect(profile).to be_valid
   end

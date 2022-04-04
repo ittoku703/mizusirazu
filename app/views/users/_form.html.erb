@@ -14,7 +14,6 @@
   <%= form_with model: @user, method: :patch do |f| %>
     <div class="space-y-6">
       <%= render 'shared/form_errors', object: f.object %>
-      <%= settings_form_tag(f, :avatar) %>
       <%= settings_form_tag(f, :name, t('.name_description')) %>
       <%= settings_form_tag(f, :email) %>
       <%= settings_form_tag(f, :password) %>

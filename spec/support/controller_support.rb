@@ -1,6 +1,7 @@
 module ControllerSupport
   # # # # # # # # # # # # # # # # # #
   # rspec user authentication methods
+  # # # # # # # # # # # # # # # # # #
 
   # return true if test user logged in
   def is_logged_in?
@@ -33,6 +34,7 @@ module ControllerSupport
 
   # # # # # # # # # # # # # # # # # #
   # rspec test methods
+  # # # # # # # # # # # # # # # # # #
 
   def it_should_be_success()
     expect(response).to(have_http_status(200))

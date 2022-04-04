@@ -19,6 +19,7 @@ module ProfilesHelper
 
   def get_profile_form_field_name(field)
     case field
+    when :avatar   then 'file_field'
     when :name     then 'text_field'
     when :bio      then 'text_area'
     when :location then 'text_field'

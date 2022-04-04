@@ -2,7 +2,7 @@
 
 <div class="block md:grid md:grid-cols-4 p-4 space-y-2 md:space-y-0 md:space-x-2">
   <div class="col-span-1 text-sm p-2 border bg-gray-200 border-amber-500 space-y-2">
-    <%= user_show_tag(@user,         :avatar,   class: 'border-yellow-500') %>
+    <%= user_show_tag(@user.profile, :avatar,   class: 'border-yellow-500') %>
     <%= user_show_tag(@user.profile, :name,     class: 'border-lime-500 truncate') %>
     <%= user_show_tag(@user,         :name,     class: 'border-rose-500 truncate') %>
     <%= user_show_tag(@user.profile, :bio,      class: 'border-sky-500 break-all') %>

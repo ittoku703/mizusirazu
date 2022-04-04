@@ -53,9 +53,11 @@ en:
       description: 'Enter your password and reset your password!'
   profiles:
     form:
+      avatar: 'Avatar'
       name: 'Name'
       bio: 'Biography'
       location: 'Location'
+      avatar_description: 'Teh Avatar you have entered will be made public. You can also change this Avatar at any time.'
       name_description: 'The Name you have entered will be made public. You can also change this Name at any time.'
       bio_description: 'The Biography you have entered will be made public. You can also change this Biography at any time.'
       location_description: 'The Location you have entered will be made public. You can also change this Location at any time.'

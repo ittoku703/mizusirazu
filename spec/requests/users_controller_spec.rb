@@ -107,7 +107,7 @@ RSpec.describe UsersController, type: :request do
 
   describe 'PATCH /users/:name' do
     let!(:user) { create(:user) }
-    let!(:valid_params) { attributes_for(:user, email: user.email, password_confirmation: 'password', avatar: fixture_file_upload('test.png')) }
+    let!(:valid_params) { attributes_for(:user, email: user.email, password_confirmation: 'password') }
     let!(:invalid_params) { attributes_for(:user, password_confirmation: 'bar') }
 
     context 'valid params' do
@@ -117,9 +117,6 @@ RSpec.describe UsersController, type: :request do
       end
 
       it { it_redirect_to(edit_user_path()) }
-      it 'avatar attached is true' do
-        expect(user.reload.avatar.attached?).to eq true
-      end
     end
 
     context 'invalid params' do
