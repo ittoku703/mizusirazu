@@ -50,17 +50,18 @@ en:
       edit_micropost: 'Edit Micropost'
       delete_micropost: 'Delete Micropost'
   password_resets:
-    form:
-      email: 'Email'
+    edit_form:
       password: 'Passowrd'
       password_confirmation: 'Password Confirmation'
-      send_email: 'Send Email'
-      password_reset: 'Reset Password'
+      submit: 'Reset Password'
+    new_form:
+      email: 'Email'
+      submit: 'Send Email'
     new:
-      password_reset: 'Password Reset'
+      title: 'New Password Reset'
       description: 'Forgot your password? Enter your email address and check your email to reset your password!'
     edit:
-      password_reset: 'Passowrd Reset'
+      title: 'Edit Passowrd Reset'
       description: 'Enter your password and reset your password!'
   profiles:
     form:

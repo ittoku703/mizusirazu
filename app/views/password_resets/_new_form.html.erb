@@ -1,0 +1,5 @@
+<%= form_with url: password_resets_path, scope: :password_reset, method: :post do |f| %>
+  <%= recaptcha_v3 action: 'password_reset', turbolinks: true %>
+  <%= password_reset_form_field(f, :email, t('.email')) %>
+  <%= password_reset_form_submit(f, t('.submit')) %>
+<% end %>

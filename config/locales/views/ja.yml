@@ -50,17 +50,18 @@ ja:
       edit_micropost: 'マイクロポストを編集'
       delete_micropost: 'マイクロポストを削除'
   password_resets:
-    form:
-      email: 'メールアドレス'
+    edit_form:
       password: 'パスワード'
       password_confirmation: '確認用パスワード'
-      send_email: 'メールをおくる'
-      password_reset: 'パスワードを再設定する'
+      submit: 'パスワードを再設定する'
+    new_form:
+      email: 'メールアドレス'
+      submit: 'メールをおくる'
     new:
-      password_reset: 'パスワード再設定'
+      title: 'パスワード再設定'
       description: 'パスワードをお忘れですか？メールアドレスを入力して、メールを確認して、パスワードをリセットしましょう'
     edit:
-      password_reset: 'パスワード再設定'
+      title: 'パスワード再設定'
       description: 'パスワードを入力して、パスワードを再設定しましょう'
   profiles:
     form:
