@@ -10,7 +10,9 @@
   </div>
 
   <div class="col-span-3 p-2 border bg-amber-500 border-gray-500">
-    <%= link_to(t('.your_micropost_list'), user_microposts_path(@user) ,class: 'block text-center text-base text-black hover:text-violet-500') %>
+    <div class="text-center text-base">
+      <%= link_to(t('.micropost_list'), user_microposts_path(@user)) %>
+    </div>
     <%= render partial: 'microposts/micropost', collection: @user.microposts.take(4) %>
   </div>
 </div>

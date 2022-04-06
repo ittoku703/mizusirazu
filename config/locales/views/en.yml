@@ -4,7 +4,7 @@ en:
       email: 'Email'
       send_email: 'Send Email'
     new:
-      account_activation: 'Account Activation'
+      title: 'Account Activation'
       description: 'verify your email, and account activation!'
   layouts:
     footer:
@@ -22,17 +22,28 @@ en:
       sign_up: 'Sign up'
       log_in: 'Log in'
   microposts:
-    form:
+    edit_form:
       title: 'Title'
       content: 'Content'
       images: 'Images'
-      create_micropost: 'Create Micropost'
       update_micropost: 'Update Micropost'
     micropost:
       contributor: 'Contributor'
       created_at: 'Created at'
       updated_at: 'Updated at'
+    new_form:
+      title: 'Title'
+      content: 'Content'
+      images: 'Images'
+      create_micropost: 'Create Micropost'
+    edit:
+      title: 'Edit Micropost'
+    index:
+      title: 'Micropost List'
+    new:
+      title: 'New Micropost'
     show:
+      title: 'Micropost Page'
       contributor: 'Contributor'
       created_at: 'Created at'
       updated_at: 'Updated at'

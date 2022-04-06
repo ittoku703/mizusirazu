@@ -9,7 +9,7 @@ RSpec.feature 'MicropostCreates', type: :feature do
     attach_file 'micropost[images]', 'spec/fixtures/files/test.png'
     fill_in 'micropost[title]', with: 'This is Title'
     fill_in 'micropost[content]', with: 'This is Content'
-    click_button I18n.t('microposts.form.create_micropost')
+    click_button I18n.t('microposts.new_form.create_micropost')
     expect(page).to have_selector('div#notice')
     expect(page).to have_selector('img[alt="micropost_image"]')
   end
@@ -19,7 +19,7 @@ RSpec.feature 'MicropostCreates', type: :feature do
     visit new_micropost_path()
     fill_in 'micropost[title]', with: ''
     fill_in 'micropost[content]', with: ''
-    click_button I18n.t('microposts.form.create_micropost')
+    click_button I18n.t('microposts.new_form.create_micropost')
     expect(page).to have_selector('div#error_explanation')
   end
 

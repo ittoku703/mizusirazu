@@ -4,7 +4,7 @@ ja:
       email: 'メールアドレス'
       send_email: 'メールをおくる'
     new:
-      account_activation: 'アカウント有効化'
+      title: 'アカウント有効化'
       description: 'メールアドレスを確認して、アカウントを有効化しましょう！'
   layouts:
     footer:
@@ -22,17 +22,28 @@ ja:
       sign_up: 'ユーザー作成'
       log_in: 'ログイン'
   microposts:
-    form:
+    edit_form:
       title: 'タイトル'
       content: '内容'
       images: '画像'
-      create_micropost: 'マイクロポストを作成'
-      update_micropost: 'マイクロポスを更新'
+      update_micropost: 'マイクロポストを更新'
     micropost:
       contributor: '投稿者'
       created_at: '作成時'
       updated_at: '更新時'
+    new_form:
+      title: 'タイトル'
+      content: '内容'
+      images: '画像'
+      create_micropost: 'マイクロポストを作成'
+    edit:
+      title: 'マイクロポスト編集'
+    index:
+      title: 'マイクロポストリスト'
+    new:
+      title: 'マイクロポスト作成'
     show:
+      title: 'マイクロポストページ'
       contributor: '投稿者'
       created_at: '作成時'
       updated_at: '更新時'
@@ -93,4 +104,4 @@ ja:
       title: 'サインアップ'
     show:
       title: 'ユーザページ'
-      your_micropost_list: 'あなたのマイクロポストリスト'
+      micropost_list: 'マイクロポストリスト'
