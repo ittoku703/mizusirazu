@@ -58,8 +58,8 @@ class MicropostsController < ApplicationController
     when 'create'  then @micropost  = current_user.microposts.new(micropost_params)
     when 'show'    then @micropost  = Micropost.eager_load(:user).with_attached_images.find(params[:id])
     when 'edit'    then @micropost  = Micropost.eager_load(:user).find(params[:id])
-    when 'update'  then @micropost  = Micropost.eager_load(:user).find(params[:id])
-    when 'destroy' then @micropost  = Micropost.eager_load(:user).find(params[:id])
+    when 'update'  then @micropost  = Micropost.with_attached_images.find(params[:id])
+    when 'destroy' then @micropost  = Micropost.eager_load(:user).with_attached_images.find(params[:id])
     end
   end
 
