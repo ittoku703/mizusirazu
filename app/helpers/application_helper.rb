@@ -33,11 +33,11 @@ module ApplicationHelper
   end
 
   def settings_link_to(link, text, options = {})
-    options[:class] = "block p-2 border-b border-amber-500 hover:text-sky-500 #{options[:class]}"
+    options[:class] = "#{options[:class]}"
 
-    link_to(link, options) do
+    link_to(link, class: 'flex items-center space-x-2 p-2 border-b hover:bg-sky-500 hover:no-underline text-black hover:text-white') do
       link_icon(text) +
-      content_tag(:span, text, class: 'ml-2')
+      content_tag(:span, text, options)
     end
   end
 

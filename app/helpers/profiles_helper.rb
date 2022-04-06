@@ -4,7 +4,7 @@ module ProfilesHelper
     options[:class] = "w-full md:w-64 block text-sm bg-white border border-gray-300 shadow rounded #{options[:class]}"
 
     content_tag(:div) do
-      form.label(text, class: 'block pl-2') +
+      form.label(text, class: 'block pt-4 pl-2') +
       form.send(send, field, options) +
       content_tag(:span, description, class: 'text-xs text-gray-500 italic tracking-tight')
     end

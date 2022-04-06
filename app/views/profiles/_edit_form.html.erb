@@ -1,0 +1,22 @@
+<%= form_with model: [@user, @user.profile], method: :patch do |f| %>
+  <div class="pt-4 space-y-4 divide-y">
+    <%= render 'shared/form_errors', object: f.object %>
+
+    <%#= Avatar form field %>
+    <div class="flex items-center space-x-4">
+      <%= image_tag(@user.profile.display_avatar, size: '100x100') %>
+      <div class="flex flex-col p-2 text-sm border border-gray-200 rounded bg-gray-100 space-y-2">
+        <%= f.label :avatar, class: 'cursor-pointer' do %>
+          <%= f.file_field(:avatar, class: 'hidden') %>
+          <%= content_tag(:span, 'Avatar Change', class: 'text-sky-500 hover:text-violet-500 hover:underline') %>
+        <% end %>
+        <%= link_to('Avatar Remove', root_path()) %>
+      </div>
+    </div>
+
+    <%= profile_form_field(f, :name,     t('.name'),     t('.name_description')) %>
+    <%= profile_form_field(f, :bio,      t('.bio'),      t('.bio_description'), class: 'h-32') %>
+    <%= profile_form_field(f, :location, t('.location'), t('.location_description')) %>
+    <%= profile_form_submit(f, t('.submit')) %>
+  </div>
+<% end %>

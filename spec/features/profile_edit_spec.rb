@@ -11,7 +11,7 @@ RSpec.feature "ProfileEdits", type: :feature do
     fill_in 'profile[name]', with: profile_params[:name]
     fill_in 'profile[bio]', with: profile_params[:bio]
     fill_in 'profile[location]', with: profile_params[:location]
-    click_button I18n.t('profiles.form.update_profile')
+    click_button I18n.t('profiles.edit_form.submit')
     expect(page).to have_selector 'div#notice'
   end
 
@@ -21,7 +21,7 @@ RSpec.feature "ProfileEdits", type: :feature do
     fill_in 'profile[name]', with: 'invalid' * 100
     fill_in 'profile[bio]', with: 'invalid' * 200
     fill_in 'profile[location]', with: 'unknown' * 100
-    click_button I18n.t('profiles.form.update_profile')
+    click_button I18n.t('profiles.edit_form.submit')
     expect(page).to have_selector 'div#error_explanation'
   end
 

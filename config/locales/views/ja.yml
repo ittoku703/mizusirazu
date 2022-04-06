@@ -64,7 +64,7 @@ ja:
       title: 'パスワード再設定'
       description: 'パスワードを入力して、パスワードを再設定しましょう'
   profiles:
-    form:
+    edit_form:
       avatar: 'アバター'
       name: '名前'
       bio: '紹介文'
@@ -73,7 +73,7 @@ ja:
       name_description: '入力された名前は公開されます。また、いつでもこの名前は変更することができます'
       bio_description: '入力された紹介文は公開されます。また、いつでもこの紹介文は変更することができます'
       location_description: '入力された国は公開されます。また、いつでもこの国は変更することができます'
-      update_profile: 'プロファイルを更新'
+      submit: 'プロファイルを更新'
     edit:
       title: 'プロファイル'
   sessions:

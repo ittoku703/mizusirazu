@@ -22,14 +22,15 @@ class ProfilesController < ApplicationController
   end
 
   private
+
   def profile_params
     params.require(:profile).permit(:name, :bio, :location, :avatar)
   end
 
   def set_profile_user
     case action_name
-    when 'edit'   then @user = current_user
-    when 'update' then @user = User.eager_load(:profile).find_by_name(params[:user_name])
+    when 'edit'   then @user = User.eager_load(profile: { avatar_attachment: :blob }).find(current_user.id)
+    when 'update' then @user = User.eager_load(profile: { avatar_attachment: :blob }).find_by_name(params[:user_name])
     end
   end
 end

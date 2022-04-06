@@ -9,4 +9,8 @@ class Profile < ApplicationRecord
   validates :avatar,
     content_type: { in: %w[image/jpeg image/gif image/png image/jpg] },
     size: { less_than: 5.megabytes }
+
+  def display_avatar
+    avatar.attached? ? avatar.variant(resize_to_limit: [100, 100]) : 'image-not-found.png'
+  end
 end

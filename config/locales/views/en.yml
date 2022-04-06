@@ -64,7 +64,7 @@ en:
       title: 'Edit Passowrd Reset'
       description: 'Enter your password and reset your password!'
   profiles:
-    form:
+    edit_form:
       avatar: 'Avatar'
       name: 'Name'
       bio: 'Biography'
@@ -73,7 +73,7 @@ en:
       name_description: 'The Name you have entered will be made public. You can also change this Name at any time.'
       bio_description: 'The Biography you have entered will be made public. You can also change this Biography at any time.'
       location_description: 'The Location you have entered will be made public. You can also change this Location at any time.'
-      update_profile: 'Update Profile'
+      submit: 'Update Profile'
     edit:
       title: 'Profile'
   sessions:

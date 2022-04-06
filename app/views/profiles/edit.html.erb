@@ -4,12 +4,12 @@
 
   <%= render 'shared/settings_sidebar' %>
 
-  <div class="md:basis-3/4 p-4 bg-amber-500 rounded shadow">
-    <div class="text-left pl-4 pb-2 border-b border-gray-800 mb-4">
+  <div class="md:basis-3/4 p-4 border border-gray-200 rounded shadow">
+    <div class="text-left pl-4 pb-2 border-b border-gray-800 mb-2">
       <%= content_tag(:h1, yield(:title), class: 'text-xl') %>
     </div>
     <div class="text-sm">
-      <%= render 'form' %>
+      <%= render 'edit_form' %>
     </div>
   </div>
 </div>
