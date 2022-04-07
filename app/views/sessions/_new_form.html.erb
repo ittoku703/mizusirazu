@@ -1,9 +1,9 @@
-<%= form_with url: sessions_path, scope: :session do |f| %>
+<%= form_with url: sessions_path, scope: :session, method: :post do |f| %>
   <div class="space-y-6 w-64 mx-auto">
     <%= recaptcha_v3 action: 'login', turbolinks: true %>
     <%= session_form_field(f, :name_or_email, t('.name_or_email'), value: yield(:name_or_email)) %>
     <%= session_form_field(f, :password,      t('.password')) %>
     <%= session_form_remember_me(f,           t('.save_the_login')) %>
-    <%= session_form_submit(f, yield(:title)) %>
+    <%= session_form_submit(f, t('.submit')) %>
   </div>
 <% end %>

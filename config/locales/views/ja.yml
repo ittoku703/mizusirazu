@@ -80,10 +80,11 @@ ja:
     links:
       sign_in_with: '他でログインする'
   sessions:
-    form:
+    new_form:
       name_or_email: 'Name or Email'
       password: 'Password'
       save_the_login: 'ログインを保存しますか？'
+      submit: 'ログイン'
     new:
       title: 'ログイン'
   shared:
