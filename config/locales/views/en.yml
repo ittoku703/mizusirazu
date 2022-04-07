@@ -76,6 +76,9 @@ en:
       submit: 'Update Profile'
     edit:
       title: 'Profile'
+  providers:
+    links:
+      sign_in_with: 'Sign in With'
   sessions:
     form:
       name_or_email: 'Name or Email'

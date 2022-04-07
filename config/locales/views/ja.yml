@@ -76,6 +76,9 @@ ja:
       submit: 'プロファイルを更新'
     edit:
       title: 'プロファイル'
+  providers:
+    links:
+      sign_in_with: '他でログインする'
   sessions:
     form:
       name_or_email: 'Name or Email'
