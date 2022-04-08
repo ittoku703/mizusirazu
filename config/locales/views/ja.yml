@@ -92,13 +92,16 @@ ja:
       account: 'アカウント'
       profile: 'プロファイル'
   users:
-    form:
+    edit_form:
       name_description: '小文字のアルファベット、数字、アンダースコア（＿）、のみ記入可能です'
       password_confirmation_description: 'もう一度パスワードを入力してください'
-      sign_up: 'サインアップ'
-      update_user: 'ユーザを更新する'
+      submit: 'ユーザを更新する'
       delete_user: 'ユーザを削除する'
       delete_user_description: '注意、一度削除すると、元に戻せなくなります'
+    new_form:
+      name_description: '小文字のアルファベット、数字、アンダースコア（＿）、のみ記入可能です'
+      password_confirmation_description: 'もう一度パスワードを入力してください'
+      submit: 'サインアップ'
     edit:
       title: 'ユーザ編集'
     index:

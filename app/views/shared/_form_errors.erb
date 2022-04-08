@@ -3,13 +3,14 @@
 %>
 
 <% if object.errors.any? %>
-  <div id="error_explanation" class="text-rose-700">
-    <%= content_tag(:h2, t('errors.template.header.other', model: object.model_name, count: object.errors.count)) %>
+  <div id="error_explanation" class="p-2 text-rose-500">
+    <%= content_tag(:h2, t('errors.template.header.other', model: object.model_name, count: object.errors.count), class: 'text-xl') %>
 
-    <% object.errors.full_messages.each do |message| %>
-      <%= content_tag(:p, "-> #{message}") %>
-    <% end %>
-
+    <ul class="list-decimal list-inside space-y-1">
+      <% object.errors.full_messages.each do |message| %>
+        <%= content_tag(:li, "#{message}") %>
+      <% end %>
+    </ul>
     <br>
   </div>
 <% end %>

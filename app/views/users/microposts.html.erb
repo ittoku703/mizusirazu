@@ -1,3 +1,5 @@
 <% provide(:title, t('.title')) %>
 
+<%= content_tag(:h1, t('.title'), class: 'text-center text-xl p-2') %>
+
 <%= render partial: 'microposts/micropost', collection: @user.microposts %>

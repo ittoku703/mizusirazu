@@ -92,13 +92,16 @@ en:
       account: 'Account'
       profile: 'Profile'
   users:
-    form:
+    edit_form:
       name_description: 'Only lowercase alphabets, numbers, and underscores(_) are allowed.'
       password_confirmation_description: 'Please enter the Password again'
-      sign_up: 'Sign up'
-      update_user: 'Update User'
+      submit: 'Update User'
       delete_user: 'Delete User'
       delete_user_description: 'Attention, once deleted, it cannot be restored'
+    new_form:
+      name_description: 'Only lowercase alphabets, numbers, and underscores(_) are allowed.'
+      password_confirmation_description: 'Please enter the Password again'
+      submit: 'Sign up'
     edit:
       title: 'Edit User'
     index:

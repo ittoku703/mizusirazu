@@ -8,7 +8,7 @@ RSpec.feature 'UserEdit', type: :feature do
     visit edit_user_path()
     fill_in 'user[name]',       with: 'update_user'
     fill_in 'user[email]',      with: user.email
-    click_button I18n.t('users.form.update_user')
+    click_button I18n.t('users.edit_form.submit')
     expect(page).to have_selector 'div#notice'
   end
 
@@ -17,7 +17,7 @@ RSpec.feature 'UserEdit', type: :feature do
     visit edit_user_path()
     fill_in 'user[name]',  with: 'hoge'
     fill_in 'user[email]', with: 'bar'
-    click_button I18n.t('users.form.update_user')
+    click_button I18n.t('users.edit_form.submit')
     expect(page).to have_selector 'div#error_explanation'
   end
 
@@ -31,7 +31,7 @@ RSpec.feature 'UserEdit', type: :feature do
     visit edit_user_path()
     fill_in 'user[name]',  with: 'update_user'
     fill_in 'user[email]', with: 'email@changed.com'
-    click_button I18n.t('users.form.update_user')
+    click_button I18n.t('users.edit_form.submit')
     expect(page).to have_selector 'div#notice'
     visit activation_email_link()
     expect(page).to have_selector 'div#notice'

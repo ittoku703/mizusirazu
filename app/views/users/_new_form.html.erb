@@ -1,0 +1,11 @@
+<%= form_with model: @user, method: :post do |f| %>
+  <div class="space-y-4">
+    <%= render 'shared/form_errors', object: f.object %>
+    <%= recaptcha_v3 action: 'signup', turbolinks: true %>
+    <%= user_form_field(f, :name, t('.name_description')) %>
+    <%= user_form_field(f, :email) %>
+    <%= user_form_field(f, :password) %>
+    <%= user_form_field(f, :password_confirmation, t('.password_confirmation_description')) %>
+    <%= user_form_submit(f, t('.submit')) %>
+  </div>
+<% end %>

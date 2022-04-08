@@ -9,7 +9,7 @@ RSpec.feature 'UserSignup', type: :feature do
     fill_in 'user[email]',                 with: user_params[:email]
     fill_in 'user[password]',              with: user_params[:password]
     fill_in 'user[password_confirmation]', with: user_params[:password]
-    click_button I18n.t('users.form.sign_up')
+    click_button I18n.t('users.new_form.submit')
     expect(page).to have_selector 'div#notice'
     visit activation_email_link
     expect(page).to have_selector 'div#notice'
@@ -21,7 +21,7 @@ RSpec.feature 'UserSignup', type: :feature do
     fill_in 'user[email]',                 with: 'hoge@bar.com'
     fill_in 'user[password]',              with: 'hoge'
     fill_in 'user[password_confirmation]', with: 'bar'
-    click_button I18n.t('users.form.sign_up')
+    click_button I18n.t('users.new_form.submit')
     expect(page).to have_selector 'div#error_explanation'
   end
 

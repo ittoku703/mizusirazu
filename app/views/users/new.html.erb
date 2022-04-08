@@ -5,14 +5,15 @@
     <%= image_tag 'signup.png' %>
   </div>
   <div class="w-full lg:max-w-lg text-sm">
-    <div class="flex flex-col p-4 bg-gray-200 lg:bg-white lg:bg-opacity-50 space-y-4">
-      <div class="inline-block mx-auto bg-emerald-500 border border-gray-500 rounded-full p-2">
+    <div class="flex flex-col p-4 bg-white lg:bg-opacity-50 space-y-4">
+      <div class="inline-block mx-auto bg-amber-300 border border-amber-500 rounded-full p-2">
         <%= site_logo(size: '64x64') %>
       </div>
       <div class="text-center text-xl pb-2 border-b border-gray-500 mb-4">
         <%= yield(:title) %>
       </div>
-      <%= render 'form' %>
+      <%= render 'new_form' %>
+
       <%= render 'providers/links' %>
     </div>
   </div>

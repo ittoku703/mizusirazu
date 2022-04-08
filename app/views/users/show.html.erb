@@ -1,15 +1,15 @@
 <% provide(:title, t('.title')) %>
 
 <div class="block md:grid md:grid-cols-4 p-4 space-y-2 md:space-y-0 md:space-x-2">
-  <div class="col-span-1 text-sm p-2 border bg-gray-200 border-amber-500 space-y-2">
-    <%= user_show_tag(@user.profile, :avatar,   class: 'border-yellow-500') %>
-    <%= user_show_tag(@user.profile, :name,     class: 'border-lime-500 truncate') %>
-    <%= user_show_tag(@user,         :name,     class: 'border-rose-500 truncate') %>
-    <%= user_show_tag(@user.profile, :bio,      class: 'border-sky-500 break-all') %>
-    <%= user_show_tag(@user.profile, :location, class: 'border-fuchsia-500') %>
+  <div class="col-span-1 text-sm p-2 border bg-white border-amber-500 shadow space-y-2 divide-y">
+    <%= user_show_tag(@user.profile, :avatar,   class: '') %>
+    <%= user_show_tag(@user.profile, :name,     class: '') %>
+    <%= user_show_tag(@user,         :name,     class: '') %>
+    <%= user_show_tag(@user.profile, :bio,      class: '') %>
+    <%= user_show_tag(@user.profile, :location, class: '') %>
   </div>
 
-  <div class="col-span-3 p-2 border bg-amber-500 border-gray-500">
+  <div class="col-span-3 p-2 border bg-white border-amber-500 shadow">
     <div class="text-center text-base">
       <%= link_to(t('.micropost_list'), user_microposts_path(@user)) %>
     </div>

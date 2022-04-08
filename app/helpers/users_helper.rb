@@ -46,7 +46,7 @@ module UsersHelper
   end
 
   def user_show_tag(object, attribute_name, options = {})
-    options[:class] = "#{options[:class]} flex items-center pb-2 border-b space-x-4"
+    options[:class] = "#{options[:class]} flex items-center pt-2 space-x-4 border-amber-500"
 
     if attribute_name == :avatar
       attribute_options = { class: 'w-12 h-12 rounded-full bg-white border border-gray-500'}
