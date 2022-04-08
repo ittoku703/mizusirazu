@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     respond_to do |format|
-      if verify_recaptcha(model: @user, action: 'signup', minimum_score: 0.5)
+      if verify_recaptcha(model: @user, action: 'signup')
         if @user.save
           flash[:notice] = t('.user_was_created')
           format.html { redirect_to root_path() }

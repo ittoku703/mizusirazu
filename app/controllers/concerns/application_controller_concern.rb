@@ -100,7 +100,7 @@ module ApplicationControllerConcern
 
   # check if it's a bot
   def valid_recaptcha(action)
-    unless verify_recaptcha(action: action, minimum_score: 0.5)
+    unless verify_recaptcha(action: action)
       flash.now[:alert] = I18n.t('recaptcha.errors.verification_failed')
       render(:new, status: :unprocessable_entity) && return
     end
