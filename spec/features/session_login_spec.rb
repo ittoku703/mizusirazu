@@ -7,8 +7,8 @@ RSpec.feature "SessionLogins", type: :feature do
     visit new_session_path
     fill_in 'session[name_or_email]', with: user.name
     fill_in 'session[password]', with: 'password'
-    check I18n.t('sessions.form.save_the_login')
-    click_button I18n.t('sessions.new.title')
+    check   'session[remember_me]'
+    click_button I18n.t('sessions.new_form.submit')
     expect(page).to have_selector 'div#notice'
   end
 
@@ -16,8 +16,8 @@ RSpec.feature "SessionLogins", type: :feature do
     visit new_session_path
     fill_in 'session[name_or_email]', with: 'hoge'
     fill_in 'session[password]', with: 'bar'
-    check I18n.t('sessions.form.save_the_login')
-    click_button I18n.t('sessions.new.title')
+    check   'session[remember_me]'
+    click_button I18n.t('sessions.new_form.submit')
     expect(page).to have_selector 'div#alert'
     expect(page).to have_field 'session[name_or_email]', with: 'hoge'
   end
