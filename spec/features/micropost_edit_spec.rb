@@ -7,7 +7,7 @@ RSpec.feature 'MicropostEdits', type: :feature do
   scenario 'edit micropost' do
     log_in_as(micropost.user)
     visit edit_micropost_path(micropost)
-    attach_file 'micropost[images]', 'spec/fixtures/files/test.png'
+    attach_file 'micropost[images][]', 'spec/fixtures/files/test.png'
     fill_in 'micropost[title]', with: 'Edit micropost title'
     fill_in 'micropost[content]', with: 'Edit micropost content'
     click_button I18n.t('microposts.edit_form.update_micropost')

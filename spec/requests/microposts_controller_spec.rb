@@ -33,7 +33,7 @@ RSpec.describe MicropostsController, type: :request do
 
   describe 'POST /microposts' do
     let!(:user) { create(:user) }
-    let!(:valid_params) { attributes_for(:micropost, images: fixture_file_upload('test.png')) }
+    let!(:valid_params) { attributes_for(:micropost, images: [fixture_file_upload('test.png', 'test.png')]) }
     let!(:invalid_params) { attributes_for(:micropost, content: '') }
 
     context 'valid params' do
@@ -110,7 +110,7 @@ RSpec.describe MicropostsController, type: :request do
   describe 'PATCH /microposts/:id' do
     let!(:micropost) { create(:micropost) }
     let!(:other_user) { create(:other_user) }
-    let!(:valid_params) { attributes_for(:micropost, images: fixture_file_upload('test.png')) }
+    let!(:valid_params) { attributes_for(:micropost, images: [fixture_file_upload('test.png')]) }
     let!(:invalid_params) { attributes_for(:micropost, content: '') }
 
     context 'valid params' do

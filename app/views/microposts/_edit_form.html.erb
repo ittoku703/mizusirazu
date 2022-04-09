@@ -3,7 +3,7 @@
     <%= render 'shared/form_errors', object: f.object %>
     <%= micropost_form_field(f, :title,   t('.title')) %>
     <%= micropost_form_field(f, :content, t('.content'), class: 'h-64') %>
-    <%= micropost_form_field(f, :images,  t('.images')) %>
+    <%= micropost_form_field(f, :images,  t('.images'), { multiple: true, include_hidden: false }) %>
     <%= micropost_form_submit(f, t('.update_micropost')) %>
   <div>
 <% end %>

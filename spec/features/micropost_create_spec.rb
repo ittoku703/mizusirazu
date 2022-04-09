@@ -6,7 +6,7 @@ RSpec.feature 'MicropostCreates', type: :feature do
   scenario 'create micropost' do
     log_in_as(user)
     visit new_micropost_path()
-    attach_file 'micropost[images]', 'spec/fixtures/files/test.png'
+    attach_file 'micropost[images][]', 'spec/fixtures/files/test.png'
     fill_in 'micropost[title]', with: 'This is Title'
     fill_in 'micropost[content]', with: 'This is Content'
     click_button I18n.t('microposts.new_form.create_micropost')
