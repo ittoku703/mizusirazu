@@ -55,8 +55,8 @@
 
 **Model structure**
 
-![Mizusirazu model](https://raw.githubusercontent.com/ittoku703/mizusirazu/2d764b7f18096231808cbf394b4a7db4f56e03a9/doc/images/model-structure.drawio.svg)
+![Mizusirazu model](https://raw.githubusercontent.com/ittoku703/mizusirazu/7c11208a1ccc8d1da260544e0a4eee230a5b9247/doc/images/model-structure.drawio.svg)
 
 **Routing**
 
-![Mizusirazu routing](https://raw.githubusercontent.com/ittoku703/mizusirazu/8bc9628b7a3e9bef24e147a310d59f976ab1b0df/doc/images/routing.drawio.svg)
+![Mizusirazu routing](https://raw.githubusercontent.com/ittoku703/mizusirazu/7c11208a1ccc8d1da260544e0a4eee230a5b9247/doc/images/routing.drawio.svg)
