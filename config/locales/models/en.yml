@@ -6,6 +6,7 @@ en:
       profile: 'Profile'
       provider: 'Provider'
       micropost: 'Micropost'
+      comment: 'Comment'
     # Model Attribute name
     attributes:
       id: 'ID'
@@ -31,6 +32,8 @@ en:
       micropost:
         title: 'Title'
         content: 'Content'
+      comment:
+        content: 'Comment'
   # Recaptcha error messages
   recaptcha:
     errors:

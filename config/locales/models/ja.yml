@@ -6,6 +6,7 @@ ja:
       profile: 'プロファイル'
       provider: 'プロバイダー'
       micropost: 'マイクロポスト'
+      comment: 'コメント'
     # Model Attribute name
     attributes:
       id: 'ID'
@@ -31,6 +32,8 @@ ja:
       micropost:
         title: 'タイトル'
         content: '内容'
+      comment:
+        content: 'コメント'
   # Recaptcha error messages
   recaptcha:
     errors:

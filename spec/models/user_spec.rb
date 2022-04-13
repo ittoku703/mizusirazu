@@ -148,6 +148,18 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'comments' do
+    before do
+      user.save
+      user.microposts.create!(title: 'test', content: 'test')
+      user.comments.create!(content: 'content', micropost_id: user.microposts.first.id)
+    end
+
+    it 'should be delete when user destroyed' do
+      expect { user.destroy }.to change(Comment, :count).by(-1)
+    end
+  end
+
   def user_valid?(user)
     expect(user).to be_valid
   end

@@ -16,6 +16,7 @@ user.profile.update!(name: 'Mr. asdf', bio: 'hello I\'m asdf', location: 'japan'
 user.profile.avatar.attach(io: File.open('app/assets/images/logo.png'), filename: 'asdf.png', content_type: 'image/png')
 user.microposts.create!(title: 'asdf introduction', content: 'hi i am asdf !!!')
 user.microposts.first.images.attach(io: File.open('app/assets/images/logo.png'), filename: 'asdf.micropost.png', content_type: 'image/png')
+user.comments.create!(content: 'asdf comment', micropost_id: user.microposts.first.id)
 
 # User creation
 20.times do
@@ -46,6 +47,15 @@ users.each do |user|
     content: Faker::Lorem.paragraph(sentence_count: 2)
   })
   puts "micropost_creation: #{user.microposts.first}"
+end
+
+# Comment creation
+users.each do |user|
+  user.comments.create!({
+    content: Faker::Lorem.sentence(),
+    micropost_id: (Micropost.last.id..Micropost.first.id).to_a.sample
+  })
+  puts "comment_creation: #{user.comments.first}"
 end
 
 # twitter provider creation
