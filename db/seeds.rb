@@ -10,7 +10,9 @@ I18n.locale = :en
 
 puts 'Database seed start!'
 
+# # # # # # # # # #
 # asdf creation
+# # # # # # # # # #
 user = User.create!(name: 'asdf', email: 'asdf@asdf.com', password: 'password', activated: true)
 user.profile.update!(name: 'Mr. asdf', bio: 'hello I\'m asdf', location: 'japan')
 user.profile.avatar.attach(io: File.open('app/assets/images/logo.png'), filename: 'asdf.png', content_type: 'image/png')
@@ -18,7 +20,11 @@ user.microposts.create!(title: 'asdf introduction', content: 'hi i am asdf !!!')
 user.microposts.first.images.attach(io: File.open('app/assets/images/logo.png'), filename: 'asdf.micropost.png', content_type: 'image/png')
 user.comments.create!(content: 'asdf comment', micropost_id: user.microposts.first.id)
 
+puts "asdf creation #{user}"
+
+# # # # # # # # # #
 # User creation
+# # # # # # # # # #
 20.times do
   user = User.create!({
     name: "#{Faker::Name.first_name.downcase}_#{Faker::Number.number(digits: 5)}",
@@ -30,7 +36,9 @@ end
 
 users = User.all
 
+# # # # # # # # # #
 # Profile creation
+# # # # # # # # # #
 users.each do |user|
   user.profile.update!({
     name:     Faker::Name.name,
@@ -40,7 +48,9 @@ users.each do |user|
   puts "profile_creation: #{user.profile}"
 end
 
+# # # # # # # # # #
 # Micropost creation
+# # # # # # # # # #
 users.each do |user|
   user.microposts.create!({
     title:   Faker::Lorem.sentence(word_count: 3),
@@ -49,16 +59,22 @@ users.each do |user|
   puts "micropost_creation: #{user.microposts.first}"
 end
 
+microposts = Micropost.all
+
+# # # # # # # # # #
 # Comment creation
+# # # # # # # # # #
 users.each do |user|
   user.comments.create!({
     content: Faker::Lorem.sentence(),
-    micropost_id: (Micropost.last.id..Micropost.first.id).to_a.sample
+    micropost_id: rand(microposts.last.id..microposts.first.id)
   })
   puts "comment_creation: #{user.comments.first}"
 end
 
+# # # # # # # # # # # # # # # # # # # #
 # twitter provider creation
+# # # # # # # # # # # # # # # # # # # #
 Provider.find_or_create_from_auth({
   :provider => 'twitter',
   :uid      => '123456',
@@ -73,7 +89,9 @@ Provider.find_or_create_from_auth({
   }
 })
 
+# # # # # # # # # # # # # # # # # # # #
 # github provider creation
+# # # # # # # # # # # # # # # # # # # #
 Provider.find_or_create_from_auth({
   :provider => 'github',
   :uid      => '123456',
