@@ -113,3 +113,12 @@ ja:
     show:
       title: 'ユーザページ'
       micropost_list: 'マイクロポストリスト'
+  comments:
+    edit_form:
+      update_submit: 'コメントを更新'
+      delete_submit: 'コメントを削除'
+    new_form:
+      submit: 'コメントを作成'
+    page:
+      title: 'コメント'
+      no_comments: 'コメントはありません'

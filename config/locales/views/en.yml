@@ -113,3 +113,12 @@ en:
     show:
       title: 'User Page'
       your_micropost_list: 'Your Micropost List'
+  comments:
+    edit_form:
+      update_submit: 'Update Comment'
+      delete_submit: 'Delete Comment'
+    new_form:
+      submit: 'Create Comment'
+    page:
+      title: 'Comments'
+      no_comments: 'No Comments'

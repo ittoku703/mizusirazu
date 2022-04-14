@@ -1,0 +1,7 @@
+<%= form_with(model: [@micropost, @micropost.comments.new]) do |f| %>
+  <div class="space-y-2">
+    <%= f.hidden_field(:micropost_id, value: @micropost.id) %>
+    <%= f.text_area :content, placeholder: 'comment input', class: 'block' %>
+    <%= create_comment_submit(f, t('.submit')) %>
+  </div>
+<% end %>

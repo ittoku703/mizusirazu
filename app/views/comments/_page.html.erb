@@ -1,0 +1,15 @@
+<div class="p-4 bg-white rounded shadow space-y-4">
+  <%= content_tag(:h1, t('.title'), class: 'inline-block text-xl text-left border-b border-amber-500') %>
+
+  <div class="p-2 border border-gray-200 shadow rounded space-y-4">
+    <% if @micropost.comments.any? %>
+      <%= render partial: 'comments/comment', collection: @micropost.comments %>
+    <% else %>
+      <%= content_tag(:p, t('.no_comments'), class: 'text-center') %>
+    <% end %>
+  </div>
+
+  <% if logged_in? %>
+    <%= render 'comments/new_form' %>
+  <% end %>
+</div>

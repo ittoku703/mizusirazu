@@ -1,0 +1,9 @@
+<%= form_with model: [@micropost, comment], method: :patch do |f| %>
+  <div class="space-y-2">
+    <%= f.text_area(:content) %>
+    <div class="flex items-center space-x-2">
+      <%= update_comment_submit(f, t('.update_submit')) %>
+      <%= destroy_comment_link_to(t('.delete_submit'), micropost_comment_path(@micropost, comment)) %>
+    </div>
+  </div>
+<% end %>
