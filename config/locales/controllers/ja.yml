@@ -43,3 +43,12 @@ ja:
       email_changed: 'メールアドレスが変更されました。もう一度アカウントを有効化してください'
     destroy:
       user_was_deleted: 'ユーザの削除に成功しました'
+  comments:
+    create:
+      success: 'コメントの作成に成功しました'
+      failed: 'コメントの作成に失敗しました'
+    update:
+      success: 'コメントの更新に成功しました'
+      failed: 'コメントの更新に失敗しました'
+    destroy:
+      success: 'コメントの削除に成功しました'

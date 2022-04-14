@@ -43,3 +43,12 @@ en:
       email_changed: 'Email changed. Please try again User activated'
     destroy:
       user_was_deleted: 'Successfully, User was delete'
+  comments:
+    create:
+      success: 'Successfully, Comment was created'
+      failed: 'Comment create was failed'
+    update:
+      success: 'Successfully, Comment was updated'
+      failed: 'Comment update was failed'
+    destroy:
+      success: 'Successfully, Comment was deleted'
