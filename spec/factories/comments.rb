@@ -1,8 +1,8 @@
 FactoryBot.define do
-  factory :comment do
-    content { 'test comment content' }
+  factory :comment, class: Comment do
+    content { 'test comment content 👍' }
 
-    user
     micropost
+    user
   end
 end
