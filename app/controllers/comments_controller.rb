@@ -43,8 +43,8 @@ class CommentsController < ApplicationController
   def set_comment
     case action_name
     when 'create'  then @comment = current_user.comments.new(comment_params)
-    when 'update'  then @comment = Comment.find(params[:id])
-    when 'destroy' then @comment = Comment.find(params[:id])
+    when 'update'  then @comment = Comment.eager_load(:user, :micropost).find(params[:id])
+    when 'destroy' then @comment = Comment.eager_load(:user).find(params[:id])
     end
   end
 

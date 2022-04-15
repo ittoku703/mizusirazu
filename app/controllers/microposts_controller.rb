@@ -56,7 +56,7 @@ class MicropostsController < ApplicationController
     when 'index'   then @microposts = Micropost.eager_load(:user).all
     when 'new'     then @micropost  = current_user.microposts.new()
     when 'create'  then @micropost  = current_user.microposts.new(micropost_params)
-    when 'show'    then @micropost  = Micropost.eager_load(:user).with_attached_images.find(params[:id])
+    when 'show'    then @micropost  = Micropost.eager_load(:user, comments: { user: { profile: { avatar_attachment: :blob }}}).with_attached_images.find(params[:id])
     when 'edit'    then @micropost  = Micropost.eager_load(:user).find(params[:id])
     when 'update'  then @micropost  = Micropost.with_attached_images.find(params[:id])
     when 'destroy' then @micropost  = Micropost.eager_load(:user).with_attached_images.find(params[:id])
