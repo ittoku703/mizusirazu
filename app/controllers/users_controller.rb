@@ -72,13 +72,14 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
   def set_user
     case action_name
-    when 'index'      then @users = User.all
+    when 'index'      then @users = User.all_sort(params[:sort])
     when 'new'        then @user  = User.new
     when 'create'     then @user  = User.new(user_params)
     when 'show'       then @user  = User.eager_load(:microposts, profile: { avatar_attachment: :blob }).find_by_name!(params[:name])

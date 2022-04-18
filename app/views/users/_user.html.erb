@@ -1,4 +1,4 @@
-<div class="w-full p-4">
+<%= content_tag(:div, id: dom_id(user), class: 'w-full p-4') do %>
   <div class="p-4 border border-gray-200 rounded shadow space-y-4">
     <div class="flex items-center overflow-scroll text-xs divide-x-2 bg-gray-100 rounded">
       <%= user_index_tag(user, :name) %>
@@ -17,5 +17,5 @@
       <%= user_index_tag(user, :created_at) %>
       <%= user_index_tag(user, :updated_at) %>
     </div>
-</div>
-</div>
+  </div>
+<% end %>

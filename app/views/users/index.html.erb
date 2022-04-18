@@ -1,3 +1,9 @@
 <% provide(:title, t('.title')) %>
 
-<%= render @users %>
+<div class="p-4">
+  <%= render 'select_form' %>
+</div>
+
+<div id="users">
+  <%= render @users %>
+</div>

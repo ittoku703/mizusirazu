@@ -102,6 +102,12 @@ ja:
       name_description: '小文字のアルファベット、数字、アンダースコア（＿）、のみ記入可能です'
       password_confirmation_description: 'もう一度パスワードを入力してください'
       submit: 'サインアップ'
+    select_form:
+      sort: '並び替える'
+      name: '名前順'
+      email: 'メールアドレス順'
+      new: '新しい順'
+      old: '古い順'
     edit:
       title: 'ユーザ編集'
     index:

@@ -108,6 +108,17 @@ class User < ApplicationRecord
     update({ attribute_digest => User.digest(self.send(attribute_token)) })
   end
 
+  #
+  def User.all_sort(selection)
+    case selection
+    when 'name'  then all.order(name: :ASC)
+    when 'email' then all.order(email: :ASC)
+    when 'new'   then all.order(created_at: :DESC)
+    when 'old'   then all.order(created_at: :ASC)
+    else all
+    end
+  end
+
   # OVERRIDE: changed params id to params name
   def to_param
     name

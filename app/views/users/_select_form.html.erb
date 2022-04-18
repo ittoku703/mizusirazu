@@ -1,0 +1,8 @@
+<%= form_with(url: users_path(), method: :get) do |f| %>
+  <%= f.select(:sort, [
+      [ t('.name'),  :name,   ],
+      [ t('.email'), :email,  ],
+      [ t('.new'),   :new,    ],
+      [ t('.old'),   :old,    ],
+    ], { include_blank: t('.sort') }, { onchange: 'this.form.submit()', class: 'block text-sm ml-auto p-2 border border-gray-200 bg-white rounded shadow focus:ring-amber-500 focus:border-amber-500' }) %>
+<% end %>

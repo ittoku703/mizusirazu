@@ -102,6 +102,12 @@ en:
       name_description: 'Only lowercase alphabets, numbers, and underscores(_) are allowed.'
       password_confirmation_description: 'Please enter the Password again'
       submit: 'Sign up'
+    select_form:
+      sort: 'Sort'
+      name: 'Name'
+      email: 'Email'
+      new: 'New'
+      old: 'Old'
     edit:
       title: 'Edit User'
     index:
