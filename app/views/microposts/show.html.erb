@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="py-2">
-      <%= simple_format(@micropost.content) %>
+      <%= @micropost.content %>
       <br>
       <% @micropost.images.each do |image| %>
         <%= image_tag(image.variant(resize_to_limit: [250, 250]), alt: 'micropost_image', class: 'inline-block p-2') %>

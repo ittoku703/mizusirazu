@@ -9,7 +9,7 @@
         <%= link_to(micropost.title, micropost_path(micropost), class: 'truncate text-black hover:text-violet-500') %>
       </div>
       <div class="text-sm text-gray-400">
-        <%= content_tag(:div, micropost.content, class: 'truncate') %>
+        <%= content_tag(:div, strip_tags(micropost.content.to_s), class: 'truncate') %>
       </div>
       <div class="block md:flex md:flex-row md:items-center text-xs md:space-x-2">
         <div class="text-xs">

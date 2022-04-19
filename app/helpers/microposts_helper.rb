@@ -20,7 +20,7 @@ module MicropostsHelper
   def get_micropost_form_field_name(field)
     case field
     when :title   then 'text_field'
-    when :content then 'text_area'
+    when :content then 'rich_text_area'
     when :images  then 'file_field'
     end
   end
