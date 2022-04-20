@@ -2,4 +2,4 @@
 
 <%= content_tag(:h1, t('.title'), class: 'text-center text-xl p-2') %>
 
-<%= render partial: 'microposts/micropost', collection: @user.microposts %>
+<%= render partial: 'microposts/micropost', collection: @user.microposts.order(created_at: :DESC) %>
