@@ -1,4 +1,10 @@
 en:
+  static_mailer:
+    contact:
+      subject: 'Contact'
+      body_1: 'Thank you for your contact'
+      body_2: 'Reply Email: %{reply_email}'
+      body_3: 'Contact Details: '
   user_mailer:
     account_activation:
       subject: 'Account Activation'

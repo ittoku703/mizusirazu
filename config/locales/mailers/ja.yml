@@ -1,4 +1,10 @@
 ja:
+  static_mailer:
+    contact:
+      subject: 'お問合せ'
+      body_1: 'お問合せいただきありがとうございます'
+      body_2: '返信先： %{reply_email}'
+      body_3: '問い合わせ内容：'
   user_mailer:
     account_activation:
       subject: 'アカウント有効化'
