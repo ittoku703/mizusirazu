@@ -1,5 +1,5 @@
-<%= content_tag(:p, "#{I18n.t('user_mailer.account_activation.hi')} #{@user.name} !") %>
+<%= content_tag(:p, t('.body_1', name: @user.name)) %>
 
-<%= content_tag(:p, I18n.t('user_mailer.account_activation.email_body')) %>
+<%= content_tag(:p, t('.body_2')) %>
 
 <%= link_to('Activate account', edit_account_activation_url(@user.activation_token, email: @user.email)) %>
