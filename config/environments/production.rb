@@ -82,9 +82,6 @@ Rails.application.configure do
     authentication: :plain
   }
 
-  # Prepare the ingress controller used to receive mail
-  config.action_mailbox.ingress = :mailgun
-
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
