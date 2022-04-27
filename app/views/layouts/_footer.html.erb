@@ -1,7 +1,7 @@
-<div class="w-full bg-amber-300 border-t border-orange-500 p-4">
+<div class="w-full text-sm bg-amber-300 border-t border-orange-500 p-4 space-y-4">
   <div class="bg-amber-400 rounded border-2 border-rose-500">
     <%= content_tag(:h2, t('.technologys'), class: 'text-lg text-center text-white py-2') %>
-    <div class="p-4 text-sm text-center">
+    <div class="p-4 text-center">
       <%= footer_technology_link_to(t('.source_code'), 'https://github.com/ittoku703/mizusirazu/') %>
       <%= footer_technology_link_to('Ruby on Rails',   'https://rubyonrails.org/') %>
       <%= footer_technology_link_to('Tailwindcss',     'https://tailwindcss.com/') %>
@@ -11,7 +11,11 @@
     </div>
   </div>
 
-  <div class="mt-4">
-    <%= content_tag(:p, t('copy_right'), class: 'text-center p-4 text-sm border border-teal-500') %>
+  <div class="text-center p-4 border border-violet-500 bg-amber-400 rounded">
+    <%= link_to(t('.contact'),  contact_path()) %>
+  </div>
+
+  <div class="text-center p-4 border border-teal-500 bg-amber-400 rounded">
+    <%= content_tag(:p, t('copy_right'), class: '') %>
   </div>
 </div>

@@ -1,0 +1,32 @@
+<% provide(:title, t('.title')) %>
+
+<div class="max-w-xl mx-auto p-4">
+  <div class="bg-gray-200 rounded p-2 space-y-4">
+    <%= content_tag(:h1, t('.title'), class: 'text-lg text-center') %>
+
+    <div>
+      <%= site_logo(size: '120x120', class: 'mx-auto bg-white rounded-full shadow') %>
+    </div>
+
+    <div class="px-2">
+      <%= form_with(url: contact_post_path(), scope: :contact, method: :post, data: { turbo_method: :post, turbo_confirm: t('.confirm') }) do |f| %>
+        <div class="space-y-2 text-sm">
+          <%= recaptcha_v3 action: 'contact', turbolinks: true %>
+
+          <%= f.label(:reply_email, class: 'block') do %>
+            <%= content_tag(:p, t('.reply_email')) %>
+            <%= f.text_field(:reply_email, class: 'w-full border border-gray-400 shadow focus:border-amber-500 focus:ring-amber-500 rounded') %>
+          <% end %>
+
+          <%= f.label(:content, class: 'block') do %>
+            <%= content_tag(:p, t('.content')) %>
+            <%= f.text_area(:content, class: 'w-full border border-gray-400 shadow focus:border-amber-500 focus:ring-amber-500 rounded h-36') %>
+            <%= content_tag(:p, t('.content_detail'), class: 'text-gray-500 pl-2') %>
+          <% end %>
+
+          <%= f.submit(t('.submit'), class: 'block p-2 border border-gray-500 shadow text-black hover:text-white bg-amber-400 hover:bg-amber-500 rounded-full') %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

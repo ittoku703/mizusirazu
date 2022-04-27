@@ -10,6 +10,7 @@ en:
     footer:
       technologys: 'technologys'
       source_code: 'Source Code'
+      contact: 'Contact'
     header:
       user_list: 'User List'
       micropost_list: 'Micropost List'
@@ -91,6 +92,14 @@ en:
     settings_sidebar:
       account: 'Account'
       profile: 'Profile'
+  static_pages:
+    contact:
+      title: 'Contact Form'
+      confirm: 'Are you sure you want to send Contact?'
+      reply_email: 'Reply Email'
+      content: 'Contact Details'
+      content_detail: 'Please limit to 1000 characters.'
+      submit: 'Send Email'
   users:
     edit_form:
       name_description: 'Only lowercase alphabets, numbers, and underscores(_) are allowed.'

@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
 
   def contact_post
     respond_to do |format|
-      flash[:notice] = t('.success')
+      flash.now[:notice] = t('.success')
       StaticMailer.contact(contact_params).deliver_later
       format.html { redirect_to(root_path()) }
     end
@@ -24,15 +24,15 @@ class StaticPagesController < ApplicationController
     content = params[:contact][:content]
 
     if reply_email.length > 1000
-      flash[:alert] = t('.reply_email_toolong')
+      flash.now[:alert] = t('.reply_email_toolong')
       render(:contact, status: :unprocessable_entity) && return
     end
 
     if content.empty?
-      flash[:alert] = t('.content_empty')
+      flash.now[:alert] = t('.content_empty')
       render( :contact, status: :unprocessable_entity) && return
     elsif content.length > 10000
-      flash[:alert] = t('.content_toolong')
+      flash.now[:alert] = t('.content_toolong')
       render( :contact, status: :unprocessable_entity) && return
     end
   end
