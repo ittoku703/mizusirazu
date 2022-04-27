@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'users#index'
 
+  get  '/contact',      to: 'static_pages#contact',      as: 'contact'
+  post '/contact_post', to: 'static_pages#contact_post', as: 'contact_post'
+
   get    '/signup', to: 'users#new', as: 'new_user'
   get    '/login', to: 'sessions#new', as: 'new_session'
   delete '/logout', to: 'sessions#destroy', as: 'session'

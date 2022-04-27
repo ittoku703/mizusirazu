@@ -57,7 +57,7 @@ module ControllerSupport
   end
 
   def it_no_send_email()
-    expect(ActionMailer::Base.deliveries.count).to(eq(1))
+    expect(ActionMailer::Base.deliveries.count).to(eq(0))
   end
 
   def it_create_object(object)
@@ -66,5 +66,9 @@ module ControllerSupport
 
   def it_delete_object(object)
     expect(object.count).to(eq(0))
+  end
+
+  def it_send_deliver_later_email()
+    assert_enqueued_emails(1)
   end
 end

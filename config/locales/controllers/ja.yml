@@ -35,6 +35,12 @@ ja:
       user_was_logged_in: 'ユーザのログインに成功しました'
     destroy:
       user_was_logged_out: 'ユーザのログアウトに成功しました'
+  static_pages:
+    contact_post:
+      reply_email_toolong: '返信用メールアドレスが長すぎます'
+      content_empty: '問い合わせ内容を入力してください'
+      content_toolong: '問い合わせ内容が長すぎます'
+      success: '問い合わせ内容の送信に成功しました'
   users:
     create:
       user_was_created: 'ユーザの作成に成功しました。メールをチェックしてアカウントを有効化してください'

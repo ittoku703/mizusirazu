@@ -35,6 +35,12 @@ en:
       user_was_logged_in: 'Successfully, User was logged in'
     destroy:
       user_was_logged_out: 'Successfully, User was logged out'
+  static_pages:
+    contact_post:
+      reply_email_toolong: 'Reply email is too long'
+      content_empty: 'Contact details is empty'
+      content_toolong: 'Contact details is too long'
+      success: 'Successfully, Contact Email is sending'
   users:
     create:
       user_was_created: 'Successfully, User was created. Please check email and activate your account'
