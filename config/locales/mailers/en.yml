@@ -1,10 +1,16 @@
 en:
+  static_mailer:
+    contact:
+      subject: 'Contact'
+      body_1: 'Thank you for your contact'
+      body_2: 'Reply Email: %{reply_email}'
+      body_3: 'Contact Details: '
   user_mailer:
     account_activation:
       subject: 'Account Activation'
-      hi: 'Hi'
-      email_body: 'Welcome to the Mizusirazu.net. Click on the link below to activate your account:'
+      body_1: 'Hi %{name}.'
+      body_2: 'Welcome to the Mizusirazu.net. Click on the link below to activate your account:'
     password_reset:
       subject: 'Password Reset'
-      hi: 'Hi'
-      email_body: 'Welcome to the Mizusirazu.net. Click on the link below to reset your password:'
+      body_1: 'Hi %{name}.'
+      body_2: 'Welcome to the Mizusirazu.net. Click on the link below to reset your password:'

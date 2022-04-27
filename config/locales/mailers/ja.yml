@@ -1,10 +1,16 @@
 ja:
+  static_mailer:
+    contact:
+      subject: 'お問合せ'
+      body_1: 'お問合せいただきありがとうございます'
+      body_2: '返信先： %{reply_email}'
+      body_3: '問い合わせ内容：'
   user_mailer:
     account_activation:
       subject: 'アカウント有効化'
-      hi: 'こんにちは'
-      email_body: 'ようこそ、みずしらず.netへ。下のリンクをクリックしてアカウントを有効化しましょう:'
+      body_1: 'こんにちは %{name}。'
+      body_2: 'ようこそ、みずしらず.netへ。下のリンクをクリックしてアカウントを有効化しましょう:'
     password_reset:
       subject: 'パスワード再設定'
-      hi: 'こんにちは'
-      email_body: 'ようこそ、みずしらず.netへ。下のリンクをクリックしてパスワードを再設定しましょう:'
+      body_1: 'こんにちは %{name}。'
+      body_2: 'ようこそ、みずしらず.netへ。下のリンクをクリックしてパスワードを再設定しましょう:'

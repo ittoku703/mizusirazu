@@ -1,0 +1,7 @@
+<%= content_tag(:p, t('.body_1')) %>
+
+<%= content_tag(:p, t('.body_2', reply_email: @params_contact[:reply_email] || 'noreply')) %>
+
+<%= content_tag(:p, t('.body_3')) %>
+
+<%= content_tag(:p, @params_contact[:content]) %>

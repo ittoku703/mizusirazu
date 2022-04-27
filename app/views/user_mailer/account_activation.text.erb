@@ -1,5 +1,5 @@
-<%= "#{I18n.t('user_mailer.account_activation.hi')} #{@user.name}" %> !
+<%= t('.body_1', name: @user.name) %>
 
-<%= I18n.t('user_mailer.account_activation.email_body') %>
+<%= t('.body_2') %>
 
 <%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

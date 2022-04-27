@@ -10,7 +10,7 @@ RSpec.describe UserMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to eq I18n.t('user_mailer.account_activation.subject')
       expect(mail.to).to eq([user.email])
-      expect(mail.from).to eq([I18n.t('notifications_email')])
+      expect(mail.from).to eq(['account-activation@mizusirazu.net'])
     end
 
     it 'renders the body' do
@@ -27,7 +27,7 @@ RSpec.describe UserMailer, type: :mailer do
     it 'renders the headers' do
       expect(mail.subject).to eq(I18n.t('user_mailer.password_reset.subject'))
       expect(mail.to).to eq([user.email])
-      expect(mail.from).to eq([I18n.t('notifications_email')])
+      expect(mail.from).to eq(['password-reset@mizusirazu.net'])
     end
 
     it 'renders the body' do
