@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
 
   def contact_post
     respond_to do |format|
-      flash.now[:notice] = t('.success')
+      flash[:notice] = t('.success')
       StaticMailer.contact(contact_params).deliver_later
       format.html { redirect_to(root_path()) }
     end
