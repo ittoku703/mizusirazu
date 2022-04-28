@@ -9,7 +9,10 @@
     <div class="relative inline-block">
       <div>
         <button type="button" class="inline-flex justify-center w-full px-4 py-2 text-gray-500" data-action="click->application#headerUserToggle" data-application-target="userBtn">
-          <%= logged_in? ? fa_icon('user') : fa_icon('sitemap') %>
+          <%= logged_in? && current_user.profile.avatar.attached? ?
+            image_tag(current_user.profile.avatar, class: 'w-10 h-10 rounded-full bg-white') :
+            fa_icon('sitemap')
+          %>
           <%= render 'modules/bottom_allow' %>
         </button>
       </div>
