@@ -1,4 +1,4 @@
-FROM ruby:3.1.1
+FROM ruby:3.1.2
 RUN apt-get update -qq && apt-get install -y default-libmysqlclient-dev
 WORKDIR /mizusirazu
 COPY Gemfile /mizusirazu/Gemfile
