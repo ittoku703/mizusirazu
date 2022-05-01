@@ -15,7 +15,7 @@
 
           <%= f.label(:reply_email, class: 'block') do %>
             <%= content_tag(:p, t('.reply_email')) %>
-            <%= f.text_field(:reply_email, class: 'w-full border border-gray-400 shadow focus:border-amber-500 focus:ring-amber-500 rounded') %>
+            <%= f.email_field(:reply_email, class: 'w-full border border-gray-400 shadow focus:border-amber-500 focus:ring-amber-500 rounded') %>
           <% end %>
 
           <%= f.label(:content, class: 'block') do %>
