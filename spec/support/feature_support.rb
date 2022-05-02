@@ -4,7 +4,7 @@ module FeatureSupport
     visit new_session_path()
     fill_in 'session[name_or_email]', with: user.name
     fill_in 'session[password]', with: 'password'
-    click_button I18n.t('sessions.new.title')
+    click_button I18n.t('sessions.new_form.submit')
   end
 
   def activate_as(user)

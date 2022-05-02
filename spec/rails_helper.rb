@@ -76,4 +76,9 @@ RSpec.configure do |config|
   config.include OmniauthMocks
   # add active storage helper
   config.include ActiveStorageValidations::Matchers
+
+  # set I18n only javascript feature test
+  config.before(:each, type: :feature, js: true) do
+    I18n.locale = :en
+  end
 end

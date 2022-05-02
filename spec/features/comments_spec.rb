@@ -23,12 +23,12 @@ RSpec.feature "Comments", type: :feature do
     expect(page).to have_content 'update comment!'
   end
 
-  # scenario 'delete comment' do
-  #   log_in_as(user)
-  #   user.comments.create!(content: 'create comment!', micropost_id: micropost.id)
-  #   visit micropost_path(micropost)
-  #   click_link I18n.t('comments.edit_form.delete_submit')
-  #   expect(page).to have_selector 'div#notice'
-  #   expect(page).not_to have_content 'create comment!'
-  # end
+  scenario 'delete comment', js: true do
+    log_in_as(user) and sleep(1)
+    user.comments.create!(content: 'create comment!', micropost_id: micropost.id)
+    visit micropost_path(micropost)
+    click_link(I18n.t('comments.edit_form.delete_submit')) and page.accept_confirm()
+    expect(page).to have_selector 'div#notice'
+    expect(page).not_to have_content 'create comment!'
+  end
 end
