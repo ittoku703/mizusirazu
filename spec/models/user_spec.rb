@@ -160,6 +160,59 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'active_relationships' do
+    let!(:other_user) { create(:other_user) }
+
+    before do
+      user.save
+      user.active_relationships.create!(followed_id: other_user.id)
+    end
+
+    it 'should be delete when user destroyed' do
+      expect { user.destroy }.to change(Relationship, :count).by(-1)
+    end
+  end
+
+  describe 'following' do
+    let!(:other_user) { create(:other_user) }
+
+    before do
+      user.save
+      user.active_relationships.create!(followed_id: other_user.id)
+    end
+
+    it 'return following user' do
+      expect(user.following).to include(other_user)
+    end
+
+  end
+
+  describe 'passive_relationships' do
+    let!(:other_user) { create(:other_user) }
+
+    before do
+      user.save
+      user.passive_relationships.create!(follower_id: other_user.id)
+    end
+
+    it 'should be delete when user destroyed' do
+      expect { user.destroy }.to change(Relationship, :count).by(-1)
+    end
+  end
+
+  describe 'followers' do
+    let!(:other_user) { create(:other_user) }
+
+    before do
+      user.save
+      user.passive_relationships.create!(follower_id: other_user.id)
+    end
+
+    it 'return follower user' do
+      expect(user.followers).to include(other_user)
+    end
+  end
+
   def user_valid?(user)
     expect(user).to be_valid
   end
@@ -276,6 +329,33 @@ RSpec.describe User, type: :model do
       it 'save reset digest in database for password reset' do
         expect { user.create_digest(:reset) }.to change { user.reset_digest.is_a?(String) }.from(false).to(true)
       end
+    end
+  end
+
+  describe 'follow(other_user)' do
+    let!(:other_user) { create(:other_user) }
+
+    it 'user follow other_user' do
+      user.save and user.follow(other_user)
+      expect(user.following).to include(other_user)
+    end
+  end
+
+  describe 'unfollow(other_user)' do
+    let!(:other_user) { create(:other_user) }
+
+    it 'user unfollow other_user' do
+      user.save and user.follow(other_user) and user.unfollow(other_user)
+      expect(user.reload.following).not_to include(other_user)
+    end
+  end
+
+  describe 'following?(other_user)' do
+    let!(:other_user) { create(:other_user) }
+
+    it 'return true if user following other_user' do
+      user.save and user.follow(other_user)
+      expect(user.following?(other_user)).to eq true
     end
   end
 
