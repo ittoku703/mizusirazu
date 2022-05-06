@@ -72,6 +72,17 @@ users.each do |user|
   puts "comment_creation: #{user.comments.first}"
 end
 
+# # # # # # # # # #
+# Relationship creation
+# # # # # # # # # #
+user_ids = User.all.ids
+
+users.each do |user|
+  ids = user_ids.select { |user_id| user.id != user_id }
+  user.active_relationships.create!(followed_id: ids.sample())
+  puts "relationship_creation: #{user.active_relationships.last}"
+end
+
 # # # # # # # # # # # # # # # # # # # #
 # twitter provider creation
 # # # # # # # # # # # # # # # # # # # #
