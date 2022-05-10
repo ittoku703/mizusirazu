@@ -30,6 +30,12 @@ ja:
   providers:
     create:
       user_was_authenticated: "%{provider}を使ったユーザ認証に成功しました"
+  relationships:
+    create:
+      success: 'ユーザのフォローに成功しました'
+      failed: 'ユーザのフォローに失敗しました'
+    destroy:
+      success: 'ユーザのフォロー解除に成功しました'
   sessions:
     create:
       user_was_logged_in: 'ユーザのログインに成功しました'

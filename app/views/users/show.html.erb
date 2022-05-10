@@ -9,6 +9,8 @@
     <%= user_show_tag(@user.profile, :location, class: '') %>
   </div>
 
+  <%= render 'relationships/page' if logged_in? %>
+
   <div class="col-span-3 p-2 border bg-white border-amber-500 shadow">
     <div class="text-center text-base">
       <%= link_to(t('.micropost_list'), user_microposts_path(@user)) %>
