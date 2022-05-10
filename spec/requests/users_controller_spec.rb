@@ -180,4 +180,24 @@ RSpec.describe UsersController, type: :request do
 
     it { it_should_be_success() }
   end
+
+  describe 'GET /users/:user_name/followers' do
+    let!(:user) { create(:user) }
+
+    before do
+      get user_followers_path(user)
+    end
+
+    it { it_should_be_success() }
+  end
+  
+  describe 'GET /users/:user_name/following' do
+    let!(:user) { create(:user) }
+
+    before do
+      get user_following_path(user)
+    end
+
+    it { it_should_be_success() }
+  end
 end

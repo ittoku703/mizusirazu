@@ -21,7 +21,10 @@ Rails.application.routes.draw do
 
   resources :users, except: %i[new], param: :name do
     resources :profiles, only: %i[update]
-    get       '/microposts', to: 'users#microposts'
+
+    get '/microposts', to: 'users#microposts'
+    get '/followers',  to: 'users#followers'
+    get '/following',  to: 'users#following'
   end
 
   resources :sessions, only: %i[create]
@@ -30,4 +33,5 @@ Rails.application.routes.draw do
   resources :microposts do
     resources :comments, only: %i[create update destroy]
   end
+  resources :relationships, only: %i[create destroy]
 end

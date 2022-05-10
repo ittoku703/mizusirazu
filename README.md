@@ -59,4 +59,4 @@
 
 **Routing**
 
-![Mizusirazu routing](https://raw.githubusercontent.com/ittoku703/mizusirazu/87678002a1719c476ecd5545de600ca9519a7de4/doc/images/routing.drawio.svg)
+![Mizusirazu routing](https://raw.githubusercontent.com/ittoku703/mizusirazu/777993b8c84852f0421ed6dff58fa91c4f26ab0c/doc/images/routing.drawio.svg)

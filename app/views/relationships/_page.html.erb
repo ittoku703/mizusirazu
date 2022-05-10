@@ -1,0 +1,11 @@
+<% unless current_user.following?(@user) %>
+  <%= form_with(model: current_user.active_relationships.build(), method: :post) do |f| %>
+    <%= f.hidden_field(:followed_id, value: @user.id) %>
+    <%= f.submit('follow') %>
+  <% end %>
+<% else %>
+  <%= form_with(model: current_user.active_relationships.find_by_followed_id(@user.id), method: :delete) do |f| %>
+    <%= f.hidden_field(:followed_id, value: @user.id) %>
+    <%= f.submit('unfollow') %>
+  <% end %>
+<% end %>

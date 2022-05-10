@@ -30,6 +30,12 @@ en:
   providers:
     create:
       user_was_authenticated:
+  relationships:
+    create:
+      success: 'Successfully, User followed'
+      failed: 'Failed to follow user'
+    destroy:
+      success: 'Successfully, User unfollowed'
   sessions:
     create:
       user_was_logged_in: 'Successfully, User was logged in'
