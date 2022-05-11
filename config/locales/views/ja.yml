@@ -80,6 +80,10 @@ ja:
   providers:
     links:
       sign_in_with: '他でログインする'
+  relationships:
+    page:
+      follow: 'フォローする'
+      unfollow: 'フォーローしない'
   sessions:
     new_form:
       name_or_email: 'Name or Email'
@@ -119,6 +123,10 @@ ja:
       old: '古い順'
     edit:
       title: 'ユーザ編集'
+    followers:
+      title: '%{user}（フォロワー）'
+    following:
+      title: '%{user}（フォロー）'
     index:
       title: 'ユーザーリスト'
     microposts:
@@ -127,6 +135,8 @@ ja:
       title: 'サインアップ'
     show:
       title: 'ユーザページ'
+      followers: 'フォロワー'
+      following: 'フォローユーザー'
       micropost_list: 'マイクロポストリスト'
   comments:
     edit_form:

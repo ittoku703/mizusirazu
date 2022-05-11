@@ -80,6 +80,10 @@ en:
   providers:
     links:
       sign_in_with: 'Sign in With'
+  relationships:
+    page:
+      follow: 'Follow'
+      unfollow: 'UnFollow'
   sessions:
     new_form:
       name_or_email: 'Name or Email'
@@ -119,6 +123,10 @@ en:
       old: 'Old'
     edit:
       title: 'Edit User'
+    followers:
+      title: '%{user} (Followers)'
+    following:
+      title: '%{user} (Following)'
     index:
       title: 'User List'
     microposts:
@@ -127,6 +135,8 @@ en:
       title: 'Sign up'
     show:
       title: 'User Page'
+      followers: 'Followers'
+      following: 'Following'
       your_micropost_list: 'Your Micropost List'
   comments:
     edit_form:

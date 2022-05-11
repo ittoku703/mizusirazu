@@ -1,17 +1,27 @@
 <% provide(:title, t('.title')) %>
 
-<div class="block md:grid md:grid-cols-4 p-4 space-y-2 md:space-y-0 md:space-x-2">
-  <div class="col-span-1 text-sm p-2 border bg-white border-amber-500 shadow space-y-2 divide-y">
+<div class="block md:grid md:grid-cols-6 p-4 space-y-2 md:space-y-0 md:space-x-2">
+  <div class="col-span-2 text-sm p-2 border bg-white border-amber-500 shadow space-y-2 divide-y">
     <%= user_show_tag(@user.profile, :avatar,   class: '') %>
     <%= user_show_tag(@user.profile, :name,     class: '') %>
     <%= user_show_tag(@user,         :name,     class: '') %>
     <%= user_show_tag(@user.profile, :bio,      class: '') %>
     <%= user_show_tag(@user.profile, :location, class: '') %>
+    <div class="flex items-center pt-2 space-x-4 border-amber-500">
+      <%= fa_icon 'users' %>
+      <div>
+        <%= link_to(t('.followers'), user_followers_path(@user)) %>
+        <span>|</span>
+        <%= link_to(t('.following'), user_following_path(@user)) %>
+      </div>
+    </div>
+    <div class="flex items-center pt-2 space-x-4 border-amber-500">
+      <%= fa_icon 'handshake-o' %>
+      <%= render 'relationships/page' if logged_in? %>
+    </div>
   </div>
 
-  <%= render 'relationships/page' if logged_in? %>
-
-  <div class="col-span-3 p-2 border bg-white border-amber-500 shadow">
+  <div class="col-span-4 p-2 border bg-white border-amber-500 shadow">
     <div class="text-center text-base">
       <%= link_to(t('.micropost_list'), user_microposts_path(@user)) %>
     </div>
