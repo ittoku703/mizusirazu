@@ -17,10 +17,9 @@ user = User.create!(name: 'asdf', email: 'asdf@asdf.com', password: 'password', 
 user.profile.update!(name: 'Mr. asdf', bio: 'hello I\'m asdf', location: 'japan')
 user.profile.avatar.attach(io: File.open('app/assets/images/logo.png'), filename: 'asdf.png', content_type: 'image/png')
 user.microposts.create!(title: 'asdf introduction', content: 'hi i am asdf !!!')
-user.microposts.first.images.attach(io: File.open('app/assets/images/logo.png'), filename: 'asdf.micropost.png', content_type: 'image/png')
 user.comments.create!(content: 'asdf comment', micropost_id: user.microposts.first.id)
 
-puts "asdf creation #{user}"
+puts "asdf creation: #{user}"
 
 # # # # # # # # # #
 # User creation

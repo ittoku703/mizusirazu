@@ -48,7 +48,7 @@ class MicropostsController < ApplicationController
   private
 
   def micropost_params
-    params.require(:micropost).permit(:title, :content, images: [])
+    params.require(:micropost).permit(:title, :content)
   end
 
   def set_micropost
@@ -56,10 +56,10 @@ class MicropostsController < ApplicationController
     when 'index'   then @microposts = Micropost.eager_load(:user).all.with_rich_text_content
     when 'new'     then @micropost  = current_user.microposts.new()
     when 'create'  then @micropost  = current_user.microposts.new(micropost_params)
-    when 'show'    then @micropost  = Micropost.eager_load(:user, comments: { user: { profile: { avatar_attachment: :blob }}}).with_rich_text_content.with_attached_images.find(params[:id])
+    when 'show'    then @micropost  = Micropost.eager_load(:user, comments: { user: { profile: { avatar_attachment: :blob }}}).with_rich_text_content.find(params[:id])
     when 'edit'    then @micropost  = Micropost.eager_load(:user).find(params[:id])
-    when 'update'  then @micropost  = Micropost.with_rich_text_content.with_attached_images.find(params[:id])
-    when 'destroy' then @micropost  = Micropost.eager_load(:user).with_rich_text_content.with_attached_images.find(params[:id])
+    when 'update'  then @micropost  = Micropost.with_rich_text_content.find(params[:id])
+    when 'destroy' then @micropost  = Micropost.eager_load(:user).with_rich_text_content.find(params[:id])
     end
   end
 

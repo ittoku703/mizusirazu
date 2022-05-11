@@ -93,7 +93,7 @@ class UsersController < ApplicationController
     when 'show'       then @user  = User.eager_load(:microposts, profile: { avatar_attachment: :blob }).find_by_name!(params[:name])
     when 'edit'       then @user  = current_user
     when 'update'     then @user  = User.find_by_name!(params[:name])
-    when 'destroy'    then @user  = User.eager_load(:provider, profile: { avatar_attachment: :blob }, microposts: { images_attachments: :blob }).find_by_name!(params[:name])
+    when 'destroy'    then @user  = User.eager_load(:provider, :microposts, profile: { avatar_attachment: :blob }).find_by_name!(params[:name])
     when 'microposts' then @user  = User.eager_load(:microposts).find_by_name!(params[:user_name])
     when 'followers'  then @user  = User.eager_load(:passive_relationships).find_by_name!(params[:user_name])
     when 'following'  then @user  = User.eager_load(:active_relationships).find_by_name!(params[:user_name])

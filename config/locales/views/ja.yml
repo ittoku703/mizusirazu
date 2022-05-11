@@ -26,7 +26,6 @@ ja:
     edit_form:
       title: 'タイトル'
       content: '内容'
-      images: '画像'
       update_micropost: 'マイクロポストを更新'
     micropost:
       contributor: '投稿者'
@@ -35,7 +34,6 @@ ja:
     new_form:
       title: 'タイトル'
       content: '内容'
-      images: '画像'
       create_micropost: 'マイクロポストを作成'
     edit:
       title: 'マイクロポスト編集'

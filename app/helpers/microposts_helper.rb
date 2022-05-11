@@ -21,7 +21,6 @@ module MicropostsHelper
     case field
     when :title   then 'text_field'
     when :content then 'rich_text_area'
-    when :images  then 'file_field'
     end
   end
 end

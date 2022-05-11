@@ -26,7 +26,6 @@ en:
     edit_form:
       title: 'Title'
       content: 'Content'
-      images: 'Images'
       update_micropost: 'Update Micropost'
     micropost:
       contributor: 'Contributor'
@@ -35,7 +34,6 @@ en:
     new_form:
       title: 'Title'
       content: 'Content'
-      images: 'Images'
       create_micropost: 'Create Micropost'
     edit:
       title: 'Edit Micropost'

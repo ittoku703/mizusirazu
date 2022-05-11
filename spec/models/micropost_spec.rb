@@ -29,13 +29,6 @@ RSpec.describe Micropost, type: :model do
     end
   end
 
-  describe 'images' do
-    it 'should be attached' do
-      micropost.images.attach(io: File.open('spec/fixtures/files/test.png'), filename: 'test.png', content_type: 'image/png')
-      expect(micropost.images.attached?).to eq true
-    end
-  end
-
   describe 'comments' do
     before do
       micropost.save
