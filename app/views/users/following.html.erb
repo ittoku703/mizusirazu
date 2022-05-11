@@ -1,5 +1,5 @@
-<% provide(:title, t('.title')) %>
+<% provide(:title, t('.title', user: @user.name)) %>
 
-<p>users/following page</p>
+<%= content_tag(:h1, t('.title', user: @user.name), class: 'text-xl text-left mt-2 ml-4 text-gray-800') %>
 
 <%= render partial: 'users/user', collection: @user.following %>
