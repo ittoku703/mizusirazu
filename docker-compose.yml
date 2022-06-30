@@ -1,28 +1,41 @@
 version: "3.9"
+
 services:
   db:
     image: mariadb
-    container_name: mizusirazu_db
-    ports:
-      - 3306:3306
-    volumes:
-      - ./api/tmp/db/:/var/lib/mysql/
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
       MYSQL_ROOT_PASSWORD: password
-  web:
-    build:
-      context: ./api/
-      dockerfile: Dockerfile
-    container_name: mizusirazu_api
-    command: "rails server -b 0.0.0.0"
-    volumes:
-      - ./api:/app
     ports:
-      - "3000:3000"
-    depends_on:
-      - db
+      - 4306:3306
+    volumes:
+      - mysql-db/:/var/lib/mysql/
+  backend:
     tty: true
     stdin_open: true
+    depends_on:
+      - db
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/backend
+    command: "rails server -b 0.0.0.0"
   chrome:
     image: seleniarm/standalone-chromium:latest
     container_name: mizusirazu_chrome
+  frontend:
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend/app:/usr/src/app
+    command: "yarn dev"
+    ports:
+      - "8000:3000"
+
+volumes:
+  mysql-db:
+    driver: local
