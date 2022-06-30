@@ -1,9 +1,9 @@
 FROM ruby:3.1.2
 RUN apt-get update -qq && apt-get install -y default-libmysqlclient-dev
-WORKDIR /mizusirazu
-COPY Gemfile /mizusirazu/Gemfile
-COPY Gemfile.lock /mizusirazu/Gemfile.lock
-RUN gem update bundler && bundle install
+WORKDIR /app
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
+RUN bundle install
 
 # Add a script to be executed every time the container starts
 COPY entrypoint.sh /usr/bin
