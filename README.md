@@ -11,8 +11,6 @@
 > - user reset password
 > - user multi-provider authentication
 > - user micropost create edit
->
-> The website is published at this URL: https://mizusirazu.net
 
 - Server start up:
   1. `docker-compose build`
